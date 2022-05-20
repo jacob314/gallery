@@ -78,71 +78,63 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
-       Column(
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              Semantics(
-                label: GalleryLocalizations.of(context)
-                    .demoSlidersEditableNumericalValue,
-                 SizedBox(
-                  width: 64,
-                  height: 48,
-                   TextField(
-                    textAlign: TextAlign.center,
-                    onSubmitted: (value) {
-                      final newValue = double.tryParse(value);
-                      if (newValue != null &&
-                          newValue != _continuousValue.value) {
-                        setState(() {
-                          _continuousValue.value =
-                              newValue.clamp(0, 100) as double;
-                        });
-                      }
-                    },
-                    keyboardType: TextInputType.number,
-                    controller: TextEditingController(
-                      text: _continuousValue.value.toStringAsFixed(0),
-                    ),
-                  ),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          Semantics(
+            label: GalleryLocalizations.of(context)
+                .demoSlidersEditableNumericalValue,
+            SizedBox(
+              width: 64,
+              height: 48,
+              TextField(
+                textAlign: TextAlign.center,
+                onSubmitted: (value) {
+                  final newValue = double.tryParse(value);
+                  if (newValue != null && newValue != _continuousValue.value) {
+                    setState(() {
+                      _continuousValue.value = newValue.clamp(0, 100) as double;
+                    });
+                  }
+                },
+                keyboardType: TextInputType.number,
+                controller: TextEditingController(
+                  text: _continuousValue.value.toStringAsFixed(0),
                 ),
               ),
-              Slider(
-                value: _continuousValue.value,
-                min: 0,
-                max: 100,
-                onChanged: (value) {
-                  setState(() {
-                    _continuousValue.value = value;
-                  });
-                },
-              ),
-              Text(GalleryLocalizations.of(context)
-                  .demoSlidersContinuousWithEditableNumericalValue)
-            ,
+            ),
           ),
-          const SizedBox(height: 80),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              Slider(
-                value: _discreteValue.value,
-                min: 0,
-                max: 200,
-                divisions: 5,
-                label: _discreteValue.value.round().toString(),
-                onChanged: (value) {
-                  setState(() {
-                    _discreteValue.value = value;
-                  });
-                },
-              ),
-              Text(GalleryLocalizations.of(context).demoSlidersDiscrete)
-            ,
-          )
-        ,
+          Slider(
+            value: _continuousValue.value,
+            min: 0,
+            max: 100,
+            onChanged: (value) {
+              setState(() {
+                _continuousValue.value = value;
+              });
+            },
+          ),
+          Text(GalleryLocalizations.of(context)
+              .demoSlidersContinuousWithEditableNumericalValue),
+        ),
+        const SizedBox(height: 80),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          Slider(
+            value: _discreteValue.value,
+            min: 0,
+            max: 200,
+            divisions: 5,
+            label: _discreteValue.value.round().toString(),
+            onChanged: (value) {
+              setState(() {
+                _discreteValue.value = value;
+              });
+            },
+          ),
+          Text(GalleryLocalizations.of(context).demoSlidersDiscrete),
+        ),
       ),
     );
   }
@@ -196,50 +188,44 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
-       Column(
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              RangeSlider(
-                values: _continuousValues,
-                min: 0,
-                max: 100,
-                onChanged: (values) {
-                  setState(() {
-                    _continuousStartValue.value = values.start;
-                    _continuousEndValue.value = values.end;
-                  });
-                },
-              ),
-              Text(GalleryLocalizations.of(context).demoSlidersContinuous)
-            ,
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          RangeSlider(
+            values: _continuousValues,
+            min: 0,
+            max: 100,
+            onChanged: (values) {
+              setState(() {
+                _continuousStartValue.value = values.start;
+                _continuousEndValue.value = values.end;
+              });
+            },
           ),
-          const SizedBox(height: 80),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              RangeSlider(
-                values: _discreteValues,
-                min: 0,
-                max: 200,
-                divisions: 5,
-                labels: RangeLabels(
-                  _discreteValues.start.round().toString(),
-                  _discreteValues.end.round().toString(),
-                ),
-                onChanged: (values) {
-                  setState(() {
-                    _discreteStartValue.value = values.start;
-                    _discreteEndValue.value = values.end;
-                  });
-                },
-              ),
-              Text(GalleryLocalizations.of(context).demoSlidersDiscrete)
-            ,
-          )
-        ,
+          Text(GalleryLocalizations.of(context).demoSlidersContinuous),
+        ),
+        const SizedBox(height: 80),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          RangeSlider(
+            values: _discreteValues,
+            min: 0,
+            max: 200,
+            divisions: 5,
+            labels: RangeLabels(
+              _discreteValues.start.round().toString(),
+              _discreteValues.end.round().toString(),
+            ),
+            onChanged: (values) {
+              setState(() {
+                _discreteStartValue.value = values.start;
+                _discreteEndValue.value = values.end;
+              });
+            },
+          ),
+          Text(GalleryLocalizations.of(context).demoSlidersDiscrete),
+        ),
       ),
     );
   }
@@ -503,82 +489,72 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
     final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
-       Column(
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              SliderTheme(
-                data: theme.sliderTheme.copyWith(
-                  trackHeight: 2,
-                  activeTrackColor: Colors.deepPurple,
-                  inactiveTrackColor:
-                      theme.colorScheme.onSurface.withOpacity(0.5),
-                  activeTickMarkColor:
-                      theme.colorScheme.onSurface.withOpacity(0.7),
-                  inactiveTickMarkColor:
-                      theme.colorScheme.surface.withOpacity(0.7),
-                  overlayColor: theme.colorScheme.onSurface.withOpacity(0.12),
-                  thumbColor: Colors.deepPurple,
-                  valueIndicatorColor: Colors.deepPurpleAccent,
-                  thumbShape: const _CustomThumbShape(),
-                  valueIndicatorShape: const _CustomValueIndicatorShape(),
-                  valueIndicatorTextStyle: theme.textTheme.bodyText1
-                      .copyWith(color: theme.colorScheme.onSurface),
-                ),
-                 Slider(
-                  value: _discreteCustomValue.value,
-                  min: 0,
-                  max: 200,
-                  divisions: 5,
-                  semanticFormatterCallback: (value) =>
-                      value.round().toString(),
-                  label: '${_discreteCustomValue.value.round()}',
-                  onChanged: (value) {
-                    setState(() {
-                      _discreteCustomValue.value = value;
-                    });
-                  },
-                ),
-              ),
-              Text(GalleryLocalizations.of(context)
-                  .demoSlidersDiscreteSliderWithCustomTheme)
-            ,
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          SliderTheme(
+            data: theme.sliderTheme.copyWith(
+              trackHeight: 2,
+              activeTrackColor: Colors.deepPurple,
+              inactiveTrackColor: theme.colorScheme.onSurface.withOpacity(0.5),
+              activeTickMarkColor: theme.colorScheme.onSurface.withOpacity(0.7),
+              inactiveTickMarkColor: theme.colorScheme.surface.withOpacity(0.7),
+              overlayColor: theme.colorScheme.onSurface.withOpacity(0.12),
+              thumbColor: Colors.deepPurple,
+              valueIndicatorColor: Colors.deepPurpleAccent,
+              thumbShape: const _CustomThumbShape(),
+              valueIndicatorShape: const _CustomValueIndicatorShape(),
+              valueIndicatorTextStyle: theme.textTheme.bodyText1
+                  .copyWith(color: theme.colorScheme.onSurface),
+            ),
+            Slider(
+              value: _discreteCustomValue.value,
+              min: 0,
+              max: 200,
+              divisions: 5,
+              semanticFormatterCallback: (value) => value.round().toString(),
+              label: '${_discreteCustomValue.value.round()}',
+              onChanged: (value) {
+                setState(() {
+                  _discreteCustomValue.value = value;
+                });
+              },
+            ),
           ),
-          const SizedBox(height: 80),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              SliderTheme(
-                data: const SliderThemeData(
-                  trackHeight: 2,
-                  activeTrackColor: Colors.deepPurple,
-                  inactiveTrackColor: Colors.black26,
-                  activeTickMarkColor: Colors.white70,
-                  inactiveTickMarkColor: Colors.black,
-                  overlayColor: Colors.black12,
-                  thumbColor: Colors.deepPurple,
-                  rangeThumbShape: _CustomRangeThumbShape(),
-                  showValueIndicator: ShowValueIndicator.never,
-                ),
-                 RangeSlider(
-                  values: customRangeValue,
-                  min: 0,
-                  max: 200,
-                  onChanged: (values) {
-                    setState(() {
-                      _continuousStartCustomValue.value = values.start;
-                      _continuousEndCustomValue.value = values.end;
-                    });
-                  },
-                ),
-              ),
-              Text(GalleryLocalizations.of(context)
-                  .demoSlidersContinuousRangeSliderWithCustomTheme)
-            ,
-          )
-        ,
+          Text(GalleryLocalizations.of(context)
+              .demoSlidersDiscreteSliderWithCustomTheme),
+        ),
+        const SizedBox(height: 80),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          SliderTheme(
+            data: const SliderThemeData(
+              trackHeight: 2,
+              activeTrackColor: Colors.deepPurple,
+              inactiveTrackColor: Colors.black26,
+              activeTickMarkColor: Colors.white70,
+              inactiveTickMarkColor: Colors.black,
+              overlayColor: Colors.black12,
+              thumbColor: Colors.deepPurple,
+              rangeThumbShape: _CustomRangeThumbShape(),
+              showValueIndicator: ShowValueIndicator.never,
+            ),
+            RangeSlider(
+              values: customRangeValue,
+              min: 0,
+              max: 200,
+              onChanged: (values) {
+                setState(() {
+                  _continuousStartCustomValue.value = values.start;
+                  _continuousEndCustomValue.value = values.end;
+                });
+              },
+            ),
+          ),
+          Text(GalleryLocalizations.of(context)
+              .demoSlidersContinuousRangeSliderWithCustomTheme),
+        ),
       ),
     );
   }

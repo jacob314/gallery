@@ -36,12 +36,12 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo>
           GalleryLocalizations.of(context).demoSelectionControlsSwitchTitle,
         ),
       ),
-       Center(
-         Semantics(
+      Center(
+        Semantics(
           container: true,
           label:
               GalleryLocalizations.of(context).demoSelectionControlsSwitchTitle,
-           CupertinoSwitch(
+          CupertinoSwitch(
             value: _switchValue.value,
             onChanged: (value) {
               setState(() {

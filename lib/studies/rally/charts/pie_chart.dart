@@ -118,7 +118,7 @@ class _RallyPieChartState extends State<RallyPieChart>
   @override
   Widget build(BuildContext context) {
     return MergeSemantics(
-       _AnimatedRallyPieChart(
+      _AnimatedRallyPieChart(
         animation: animation,
         centerLabel: widget.heroLabel,
         centerAmount: widget.heroAmount,
@@ -172,21 +172,19 @@ class _AnimatedRallyPieChart extends AnimatedWidget {
           total: total,
           segments: segments,
         ),
-         Container(
+        Container(
           height: constraints.maxHeight,
           alignment: Alignment.center,
-           Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            
-              Text(
-                centerLabel,
-                style: labelTextStyle,
-              ),
-              Text(
-                usdWithSignFormat(context).format(centerAmount),
-                style: headlineStyle,
-              )
-            ,
+            Text(
+              centerLabel,
+              style: labelTextStyle,
+            ),
+            Text(
+              usdWithSignFormat(context).format(centerAmount),
+              style: headlineStyle,
+            ),
           ),
         ),
       );

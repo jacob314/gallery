@@ -34,18 +34,16 @@ class EditBoardPoint extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      
-        Text(
-          '${boardPoint.q}, ${boardPoint.r}',
-          textAlign: TextAlign.right,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        ColorPicker(
-          colors: boardPointColors,
-          selectedColor: boardPoint.color,
-          onColorSelection: onColorSelection,
-        )
-      ,
+      Text(
+        '${boardPoint.q}, ${boardPoint.r}',
+        textAlign: TextAlign.right,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+      ColorPicker(
+        colors: boardPointColors,
+        selectedColor: boardPoint.color,
+        onColorSelection: onColorSelection,
+      ),
     );
   }
 }

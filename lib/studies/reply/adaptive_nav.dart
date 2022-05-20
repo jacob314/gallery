@@ -173,87 +173,84 @@ class _DesktopNavState extends State<_DesktopNav>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        
-          Consumer<EmailStore>(
-            builder: (context, model, child) {
-              return LayoutBuilder(
-                builder: (context, constraints) {
-                  final selectedIndex =
-                      widget.destinations.indexWhere((destination) {
-                    return destination.type == model.selectedMailboxPage;
-                  });
-                  return Container(
-                    color:
-                        Theme.of(context).navigationRailTheme.backgroundColor,
-                     SingleChildScrollView(
-                      clipBehavior: Clip.antiAlias,
-                       ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: constraints.maxHeight,
-                        ),
-                         IntrinsicHeight(
-                           ValueListenableBuilder<bool>(
-                            valueListenable: _isExtended,
-                            builder: (context, value, child) {
-                              return NavigationRail(
-                                destinations: [
-                                  for (var destination in widget.destinations)
-                                    NavigationRailDestination(
-                                      icon: Material(
-                                        key: ValueKey(
-                                          'Reply-${destination.textLabel}',
-                                        ),
-                                        color: Colors.transparent,
-                                         ImageIcon(
-                                          AssetImage(
-                                            destination.icon,
-                                            package: _assetsPackage,
-                                          ),
+        Consumer<EmailStore>(
+          builder: (context, model, child) {
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                final selectedIndex =
+                    widget.destinations.indexWhere((destination) {
+                  return destination.type == model.selectedMailboxPage;
+                });
+                return Container(
+                  color: Theme.of(context).navigationRailTheme.backgroundColor,
+                  SingleChildScrollView(
+                    clipBehavior: Clip.antiAlias,
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: constraints.maxHeight,
+                      ),
+                      IntrinsicHeight(
+                        ValueListenableBuilder<bool>(
+                          valueListenable: _isExtended,
+                          builder: (context, value, child) {
+                            return NavigationRail(
+                              destinations: [
+                                for (var destination in widget.destinations)
+                                  NavigationRailDestination(
+                                    icon: Material(
+                                      key: ValueKey(
+                                        'Reply-${destination.textLabel}',
+                                      ),
+                                      color: Colors.transparent,
+                                      ImageIcon(
+                                        AssetImage(
+                                          destination.icon,
+                                          package: _assetsPackage,
                                         ),
                                       ),
-                                      label: Text(destination.textLabel),
                                     ),
-                                ],
-                                extended: _isExtended.value,
-                                labelType: NavigationRailLabelType.none,
-                                leading: _NavigationRailHeader(
-                                  extended: _isExtended,
-                                ),
-                                trailing: _NavigationRailFolderSection(
-                                  folders: widget.folders,
-                                ),
-                                selectedIndex: selectedIndex,
-                                onDestinationSelected: (index) {
-                                  widget.onItemTapped(
-                                    index,
-                                    widget.destinations[index].type,
-                                  );
-                                },
-                              );
-                            },
-                          ),
+                                    label: Text(destination.textLabel),
+                                  ),
+                              ],
+                              extended: _isExtended.value,
+                              labelType: NavigationRailLabelType.none,
+                              leading: _NavigationRailHeader(
+                                extended: _isExtended,
+                              ),
+                              trailing: _NavigationRailFolderSection(
+                                folders: widget.folders,
+                              ),
+                              selectedIndex: selectedIndex,
+                              onDestinationSelected: (index) {
+                                widget.onItemTapped(
+                                  index,
+                                  widget.destinations[index].type,
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
                     ),
-                  );
-                },
-              );
-            },
-          ),
-          const VerticalDivider(thickness: 1, width: 1),
-          Expanded(
-             Center(
-               ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1340),
-                 _SharedAxisTransitionSwitcher(
-                  defaultChild: _MailNavigator(
-                     MailboxBody(key: widget.inboxKey),
                   ),
+                );
+              },
+            );
+          },
+        ),
+        const VerticalDivider(thickness: 1, width: 1),
+        Expanded(
+          Center(
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1340),
+              _SharedAxisTransitionSwitcher(
+                defaultChild: _MailNavigator(
+                  MailboxBody(key: widget.inboxKey),
                 ),
               ),
             ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }
@@ -277,79 +274,73 @@ class _NavigationRailHeader extends StatelessWidget {
         return Align(
           alignment: AlignmentDirectional.centerStart,
           widthFactor: animation.value,
-           Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            
-              SizedBox(
-                height: 56,
-                 Row(
-                   [
-                    const SizedBox(width: 6),
-                    InkWell(
-                      key: const ValueKey('ReplyLogo'),
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      onTap: () {
-                        extended.value = !extended.value;
-                      },
-                       Row(
-                        
-                          Transform.rotate(
-                            angle: animation.value * math.pi,
-                             const Icon(
-                              Icons.arrow_left,
-                              color: ReplyColors.white50,
-                              size: 16,
-                            ),
-                          ),
-                          const _ReplyLogo(),
-                          const SizedBox(width: 10),
-                          Align(
-                            alignment: AlignmentDirectional.centerStart,
-                            widthFactor: animation.value,
-                             Opacity(
-                              opacity: animation.value,
-                               Text(
-                                'REPLY',
-                                style: textTheme.bodyText1.copyWith(
-                                  color: ReplyColors.white50,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 18 * animation.value)
-                        ,
-                      ),
-                    ),
-                    if (animation.value > 0)
-                      Opacity(
-                        opacity: animation.value,
-                         Row(
-                          
-                            SizedBox(width: 18),
-                            ProfileAvatar(
-                              avatar: 'reply/avatars/avatar_2.jpg',
-                              radius: 16,
-                            ),
-                            SizedBox(width: 12),
-                            Icon(
-                              Icons.settings,
-                              color: ReplyColors.white50,
-                            )
-                          ,
+            SizedBox(
+              height: 56,
+              Row(
+                [
+                  const SizedBox(width: 6),
+                  InkWell(
+                    key: const ValueKey('ReplyLogo'),
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                    onTap: () {
+                      extended.value = !extended.value;
+                    },
+                    Row(
+                      Transform.rotate(
+                        angle: animation.value * math.pi,
+                        const Icon(
+                          Icons.arrow_left,
+                          color: ReplyColors.white50,
+                          size: 16,
                         ),
                       ),
-                  ],
-                ),
+                      const _ReplyLogo(),
+                      const SizedBox(width: 10),
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        widthFactor: animation.value,
+                        Opacity(
+                          opacity: animation.value,
+                          Text(
+                            'REPLY',
+                            style: textTheme.bodyText1.copyWith(
+                              color: ReplyColors.white50,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 18 * animation.value),
+                    ),
+                  ),
+                  if (animation.value > 0)
+                    Opacity(
+                      opacity: animation.value,
+                      Row(
+                        SizedBox(width: 18),
+                        ProfileAvatar(
+                          avatar: 'reply/avatars/avatar_2.jpg',
+                          radius: 16,
+                        ),
+                        SizedBox(width: 12),
+                        Icon(
+                          Icons.settings,
+                          color: ReplyColors.white50,
+                        ),
+                      ),
+                    ),
+                ],
               ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsetsDirectional.only(
-                  start: 8,
-                ),
-                 _ReplyFab(extended: extended.value),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(
+                start: 8,
               ),
-              const SizedBox(height: 8)
-            ,
+              _ReplyFab(extended: extended.value),
+            ),
+            const SizedBox(height: 8),
           ),
         );
       },
@@ -377,18 +368,18 @@ class _NavigationRailFolderSection extends StatelessWidget {
           maintainAnimation: true,
           maintainState: true,
           visible: animation.value > 0,
-           Opacity(
+          Opacity(
             opacity: animation.value,
-             Align(
+            Align(
               widthFactor: animation.value,
               alignment: AlignmentDirectional.centerStart,
-               SizedBox(
+              SizedBox(
                 height: 485,
                 width: 256,
-                 ListView(
+                ListView(
                   padding: const EdgeInsets.all(12),
                   physics: const NeverScrollableScrollPhysics(),
-                   [
+                  [
                     const Divider(
                       color: ReplyColors.blue200,
                       thickness: 0.4,
@@ -400,7 +391,7 @@ class _NavigationRailFolderSection extends StatelessWidget {
                       padding: const EdgeInsetsDirectional.only(
                         start: 16,
                       ),
-                       Text(
+                      Text(
                         'FOLDERS',
                         style: textTheme.caption.copyWith(
                           color: navigationRailTheme
@@ -415,31 +406,27 @@ class _NavigationRailFolderSection extends StatelessWidget {
                           Radius.circular(36),
                         ),
                         onTap: () {},
-                         Column(
-                          
-                            Row(
-                              
-                                const SizedBox(width: 12),
-                                ImageIcon(
-                                  AssetImage(
-                                    folders[folder],
-                                    package: _assetsPackage,
-                                  ),
-                                  color: navigationRailTheme
-                                      .unselectedLabelTextStyle.color,
-                                ),
-                                const SizedBox(width: 24),
-                                Text(
-                                  folder,
-                                  style: textTheme.bodyText1.copyWith(
-                                    color: navigationRailTheme
-                                        .unselectedLabelTextStyle.color,
-                                  ),
-                                ),
-                                const SizedBox(height: 72)
-                              ,
-                            )
-                          ,
+                        Column(
+                          Row(
+                            const SizedBox(width: 12),
+                            ImageIcon(
+                              AssetImage(
+                                folders[folder],
+                                package: _assetsPackage,
+                              ),
+                              color: navigationRailTheme
+                                  .unselectedLabelTextStyle.color,
+                            ),
+                            const SizedBox(width: 24),
+                            Text(
+                              folder,
+                              style: textTheme.bodyText1.copyWith(
+                                color: navigationRailTheme
+                                    .unselectedLabelTextStyle.color,
+                              ),
+                            ),
+                            const SizedBox(height: 72),
+                          ),
                         ),
                       ),
                   ],
@@ -622,57 +609,55 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
     return Stack(
       clipBehavior: Clip.none,
       key: _bottomDrawerKey,
-      
-        NotificationListener<ScrollNotification>(
-          onNotification: _handleScrollNotification,
-           _MailNavigator(
-             MailboxBody(
-              key: widget.inboxKey,
+      NotificationListener<ScrollNotification>(
+        onNotification: _handleScrollNotification,
+        _MailNavigator(
+          MailboxBody(
+            key: widget.inboxKey,
+          ),
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          _drawerController.reverse();
+          _dropArrowController.reverse();
+        },
+        Visibility(
+          maintainAnimation: true,
+          maintainState: true,
+          visible: _bottomDrawerVisible,
+          FadeTransition(
+            opacity: _drawerCurve,
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              color: Theme.of(context).bottomSheetTheme.modalBackgroundColor,
             ),
           ),
         ),
-        GestureDetector(
-          onTap: () {
-            _drawerController.reverse();
-            _dropArrowController.reverse();
-          },
-           Visibility(
-            maintainAnimation: true,
-            maintainState: true,
-            visible: _bottomDrawerVisible,
-             FadeTransition(
-              opacity: _drawerCurve,
-               Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: Theme.of(context).bottomSheetTheme.modalBackgroundColor,
-              ),
+      ),
+      PositionedTransition(
+        rect: drawerAnimation,
+        Visibility(
+          visible: _bottomDrawerVisible,
+          BottomDrawer(
+            onVerticalDragUpdate: _handleDragUpdate,
+            onVerticalDragEnd: _handleDragEnd,
+            leading: Consumer<EmailStore>(
+              builder: (context, model, child) {
+                return _BottomDrawerDestinations(
+                  destinations: widget.destinations,
+                  drawerController: _drawerController,
+                  dropArrowController: _dropArrowController,
+                  selectedMailbox: model.selectedMailboxPage,
+                  onItemTapped: widget.onItemTapped,
+                );
+              },
             ),
+            trailing: _BottomDrawerFolderSection(folders: widget.folders),
           ),
         ),
-        PositionedTransition(
-          rect: drawerAnimation,
-           Visibility(
-            visible: _bottomDrawerVisible,
-             BottomDrawer(
-              onVerticalDragUpdate: _handleDragUpdate,
-              onVerticalDragEnd: _handleDragEnd,
-              leading: Consumer<EmailStore>(
-                builder: (context, model, child) {
-                  return _BottomDrawerDestinations(
-                    destinations: widget.destinations,
-                    drawerController: _drawerController,
-                    dropArrowController: _dropArrowController,
-                    selectedMailbox: model.selectedMailboxPage,
-                    onItemTapped: widget.onItemTapped,
-                  );
-                },
-              ),
-              trailing: _BottomDrawerFolderSection(folders: widget.folders),
-            ),
-          ),
-        )
-      ,
+      ),
     );
   }
 
@@ -702,7 +687,7 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
             ? null
             : const Padding(
                 padding: EdgeInsetsDirectional.only(bottom: 8),
-                 _ReplyFab(),
+                _ReplyFab(),
               ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
@@ -745,69 +730,64 @@ class _AnimatedBottomAppBar extends StatelessWidget {
         return SizeTransition(
           sizeFactor: bottomAppBarCurve,
           axisAlignment: -1,
-           Padding(
+          Padding(
             padding: const EdgeInsetsDirectional.only(top: 2),
-             BottomAppBar(
+            BottomAppBar(
               shape: const WaterfallNotchedRectangle(),
               notchMargin: 6,
-               Container(
+              Container(
                 color: Colors.transparent,
                 height: kToolbarHeight,
-                 Row(
+                Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  
-                    InkWell(
-                      key: const ValueKey('navigation_button'),
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      onTap: toggleBottomDrawerVisibility,
-                       Row(
-                        
-                          const SizedBox(width: 16),
-                          RotationTransition(
-                            turns: Tween(
-                              begin: 0.0,
-                              end: 1.0,
-                            ).animate(dropArrowCurve),
-                             const Icon(
-                              Icons.arrow_drop_up,
-                              color: ReplyColors.white50,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const _ReplyLogo(),
-                          const SizedBox(width: 10),
-                          _FadeThroughTransitionSwitcher(
-                            fillColor: Colors.transparent,
-                             onMailView
-                                ? const SizedBox(width: 48)
-                                : FadeTransition(
-                                    opacity: fadeOut,
-                                     Text(
-                                      navigationDestinations
-                                          .firstWhere((destination) {
-                                        return destination.type ==
-                                            selectedMailbox;
-                                      }).textLabel,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1
-                                          .copyWith(color: ReplyColors.white50),
-                                    ),
-                                  ),
-                          )
-                        ,
-                      ),
-                    ),
-                    Expanded(
-                       Container(
-                        color: Colors.transparent,
-                         _BottomAppBarActionItems(
-                          drawerVisible: bottomDrawerVisible,
+                  InkWell(
+                    key: const ValueKey('navigation_button'),
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                    onTap: toggleBottomDrawerVisibility,
+                    Row(
+                      const SizedBox(width: 16),
+                      RotationTransition(
+                        turns: Tween(
+                          begin: 0.0,
+                          end: 1.0,
+                        ).animate(dropArrowCurve),
+                        const Icon(
+                          Icons.arrow_drop_up,
+                          color: ReplyColors.white50,
                         ),
                       ),
-                    )
-                  ,
+                      const SizedBox(width: 8),
+                      const _ReplyLogo(),
+                      const SizedBox(width: 10),
+                      _FadeThroughTransitionSwitcher(
+                        fillColor: Colors.transparent,
+                        onMailView
+                            ? const SizedBox(width: 48)
+                            : FadeTransition(
+                                opacity: fadeOut,
+                                Text(
+                                  navigationDestinations
+                                      .firstWhere((destination) {
+                                    return destination.type == selectedMailbox;
+                                  }).textLabel,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1
+                                      .copyWith(color: ReplyColors.white50),
+                                ),
+                              ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    Container(
+                      color: Colors.transparent,
+                      _BottomAppBarActionItems(
+                        drawerVisible: bottomDrawerVisible,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -839,11 +819,11 @@ class _BottomAppBarActionItems extends StatelessWidget {
 
         return _FadeThroughTransitionSwitcher(
           fillColor: Colors.transparent,
-           drawerVisible
+          drawerVisible
               ? Align(
                   key: UniqueKey(),
                   alignment: Alignment.centerRight,
-                   IconButton(
+                  IconButton(
                     icon: const Icon(Icons.settings),
                     color: ReplyColors.white50,
                     onPressed: () {},
@@ -853,58 +833,56 @@ class _BottomAppBarActionItems extends StatelessWidget {
                   ? Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
-                      
-                        IconButton(
-                          key: const ValueKey('star_email_button'),
-                          icon: ImageIcon(
-                            const AssetImage(
-                              '$_iconAssetLocation/twotone_star.png',
-                              package: _assetsPackage,
-                            ),
-                            color: starIconColor,
+                      IconButton(
+                        key: const ValueKey('star_email_button'),
+                        icon: ImageIcon(
+                          const AssetImage(
+                            '$_iconAssetLocation/twotone_star.png',
+                            package: _assetsPackage,
                           ),
-                          onPressed: () {
-                            final currentEmail = model.currentEmail;
-                            if (model.isCurrentEmailStarred) {
-                              model.unstarEmail(currentEmail.id);
-                            } else {
-                              model.starEmail(currentEmail.id);
-                            }
-                            if (model.selectedMailboxPage ==
-                                MailboxPageType.starred) {
-                              mobileMailNavKey.currentState.pop();
-                              model.selectedEmailId = -1;
-                            }
-                          },
-                          color: ReplyColors.white50,
+                          color: starIconColor,
                         ),
-                        IconButton(
-                          icon: const ImageIcon(
-                            AssetImage(
-                              '$_iconAssetLocation/twotone_delete.png',
-                              package: _assetsPackage,
-                            ),
-                          ),
-                          onPressed: () {
-                            model.deleteEmail(
-                              model.selectedEmailId,
-                            );
-
+                        onPressed: () {
+                          final currentEmail = model.currentEmail;
+                          if (model.isCurrentEmailStarred) {
+                            model.unstarEmail(currentEmail.id);
+                          } else {
+                            model.starEmail(currentEmail.id);
+                          }
+                          if (model.selectedMailboxPage ==
+                              MailboxPageType.starred) {
                             mobileMailNavKey.currentState.pop();
                             model.selectedEmailId = -1;
-                          },
-                          color: ReplyColors.white50,
+                          }
+                        },
+                        color: ReplyColors.white50,
+                      ),
+                      IconButton(
+                        icon: const ImageIcon(
+                          AssetImage(
+                            '$_iconAssetLocation/twotone_delete.png',
+                            package: _assetsPackage,
+                          ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.more_vert),
-                          onPressed: () {},
-                          color: ReplyColors.white50,
-                        )
-                      ,
+                        onPressed: () {
+                          model.deleteEmail(
+                            model.selectedEmailId,
+                          );
+
+                          mobileMailNavKey.currentState.pop();
+                          model.selectedEmailId = -1;
+                        },
+                        color: ReplyColors.white50,
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.more_vert),
+                        onPressed: () {},
+                        color: ReplyColors.white50,
+                      ),
                     )
                   : Align(
                       alignment: Alignment.centerRight,
-                       IconButton(
+                      IconButton(
                         key: const ValueKey('ReplySearch'),
                         icon: const Icon(Icons.search),
                         color: ReplyColors.white50,
@@ -966,7 +944,7 @@ class _BottomDrawerDestinations extends StatelessWidget {
               },
             );
           },
-           ListTile(
+          ListTile(
             leading: ImageIcon(
               AssetImage(
                 destination.icon,
@@ -990,7 +968,7 @@ class _BottomDrawerDestinations extends StatelessWidget {
     }
 
     return Column(
-       destinationButtons,
+      destinationButtons,
     );
   }
 }
@@ -1024,11 +1002,11 @@ class _BottomDrawerFolderSection extends StatelessWidget {
     final navigationRailTheme = theme.navigationRailTheme;
 
     return Column(
-       [
+      [
         for (var folder in folders.keys)
           InkWell(
             onTap: () {},
-             ListTile(
+            ListTile(
               leading: ImageIcon(
                 AssetImage(
                   folders[folder],
@@ -1076,7 +1054,7 @@ class _MailNavigatorState extends State<_MailNavigator> {
               builder: (context) {
                 return _FadeThroughTransitionSwitcher(
                   fillColor: Theme.of(context).scaffoldBackgroundColor,
-                   widget.child,
+                  widget.child,
                 );
               },
               settings: settings,
@@ -1157,7 +1135,7 @@ class _ReplyFabState extends State<_ReplyFab>
       builder: (context, onMailView, child) {
         final fabSwitcher = _FadeThroughTransitionSwitcher(
           fillColor: Colors.transparent,
-           onMailView
+          onMailView
               ? Icon(
                   Icons.reply_all,
                   key: fabKey,
@@ -1177,36 +1155,32 @@ class _ReplyFabState extends State<_ReplyFab>
             padding: EdgeInsets.symmetric(
               vertical: ui.lerpDouble(0, 6, animation.value),
             ),
-             animation.value == 0
+            animation.value == 0
                 ? FloatingActionButton(
                     tooltip: tooltip,
                     key: const ValueKey('ReplyFab'),
                     onPressed: onPressed,
-                     fabSwitcher,
+                    fabSwitcher,
                   )
                 : Align(
                     alignment: AlignmentDirectional.centerStart,
-                     FloatingActionButton.extended(
+                    FloatingActionButton.extended(
                       key: const ValueKey('ReplyFab'),
                       label: Row(
-                        
-                          fabSwitcher,
-                          SizedBox(width: 16 * animation.value),
-                          Align(
-                            alignment: AlignmentDirectional.centerStart,
-                            widthFactor: animation.value,
-                             Text(
-                              tooltip.toUpperCase(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline5
-                                  .copyWith(
-                                    fontSize: 16,
-                                    color: theme.colorScheme.onSecondary,
-                                  ),
-                            ),
-                          )
-                        ,
+                        fabSwitcher,
+                        SizedBox(width: 16 * animation.value),
+                        Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          widthFactor: animation.value,
+                          Text(
+                            tooltip.toUpperCase(),
+                            style:
+                                Theme.of(context).textTheme.headline5.copyWith(
+                                      fontSize: 16,
+                                      color: theme.colorScheme.onSecondary,
+                                    ),
+                          ),
+                        ),
                       ),
                       onPressed: onPressed,
                     ),
@@ -1227,15 +1201,15 @@ class _ReplyFabState extends State<_ReplyFab>
             closedBuilder: (context, openContainer) {
               return Tooltip(
                 message: tooltip,
-                 InkWell(
+                InkWell(
                   key: const ValueKey('ReplyFab'),
                   customBorder: circleFabBorder,
                   onTap: openContainer,
-                   SizedBox(
+                  SizedBox(
                     height: _mobileFabDimension,
                     width: _mobileFabDimension,
-                     Center(
-                       fabSwitcher,
+                    Center(
+                      fabSwitcher,
                     ),
                   ),
                 ),
@@ -1266,10 +1240,10 @@ class _FadeThroughTransitionSwitcher extends StatelessWidget {
           fillColor: fillColor,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-           child,
+          child,
         );
       },
-       child,
+      child,
     );
   }
 }
@@ -1294,10 +1268,10 @@ class _SharedAxisTransitionSwitcher extends StatelessWidget {
               animation: animation,
               secondaryAnimation: secondaryAnimation,
               transitionType: SharedAxisTransitionType.scaled,
-               child,
+              child,
             );
           },
-           onSearchPage ? const SearchPage() : defaultChild,
+          onSearchPage ? const SearchPage() : defaultChild,
         );
       },
     );

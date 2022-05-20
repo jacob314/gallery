@@ -23,39 +23,36 @@ class BottomDrawer extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onVerticalDragUpdate: onVerticalDragUpdate,
       onVerticalDragEnd: onVerticalDragEnd,
-       Material(
+      Material(
         color: theme.bottomSheetTheme.backgroundColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(12),
           topRight: Radius.circular(12),
         ),
-         ListView(
+        ListView(
           padding: const EdgeInsets.all(12),
           physics: const NeverScrollableScrollPhysics(),
-          
-            const SizedBox(height: 28),
-            leading,
-            const SizedBox(height: 8),
-            const Divider(
-              color: ReplyColors.blue200,
-              thickness: 0.25,
-              indent: 18,
-              endIndent: 160,
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(start: 18),
-               Text(
-                'FOLDERS',
-                style: theme.textTheme.caption.copyWith(
-                  color:
-                      theme.navigationRailTheme.unselectedLabelTextStyle.color,
-                ),
+          const SizedBox(height: 28),
+          leading,
+          const SizedBox(height: 8),
+          const Divider(
+            color: ReplyColors.blue200,
+            thickness: 0.25,
+            indent: 18,
+            endIndent: 160,
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 18),
+            Text(
+              'FOLDERS',
+              style: theme.textTheme.caption.copyWith(
+                color: theme.navigationRailTheme.unselectedLabelTextStyle.color,
               ),
             ),
-            const SizedBox(height: 4),
-            trailing
-          ,
+          ),
+          const SizedBox(height: 4),
+          trailing,
         ),
       ),
     );

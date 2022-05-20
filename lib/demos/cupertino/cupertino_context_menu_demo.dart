@@ -21,48 +21,46 @@ class CupertinoContextMenuDemo extends StatelessWidget {
           galleryLocalizations.demoCupertinoContextMenuTitle,
         ),
       ),
-       Column(
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
-          Center(
-             SizedBox(
-              width: 100,
-              height: 100,
-               CupertinoContextMenu(
-                actions: [
-                  CupertinoContextMenuAction(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                     Text(
-                      galleryLocalizations.demoCupertinoContextMenuActionOne,
-                    ),
+        Center(
+          SizedBox(
+            width: 100,
+            height: 100,
+            CupertinoContextMenu(
+              actions: [
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  Text(
+                    galleryLocalizations.demoCupertinoContextMenuActionOne,
                   ),
-                  CupertinoContextMenuAction(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                     Text(
-                      galleryLocalizations.demoCupertinoContextMenuActionTwo,
-                    ),
+                ),
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  Text(
+                    galleryLocalizations.demoCupertinoContextMenuActionTwo,
                   ),
-                ],
-                 const FlutterLogo(size: 250),
-              ),
+                ),
+              ],
+              const FlutterLogo(size: 250),
             ),
           ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.all(30),
-             Text(
-              galleryLocalizations.demoCupertinoContextMenuActionText,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.black,
-              ),
+        ),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.all(30),
+          Text(
+            galleryLocalizations.demoCupertinoContextMenuActionText,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.black,
             ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }

@@ -120,27 +120,25 @@ class _CategoryListItemState extends State<CategoryListItem>
   Widget _buildHeaderWithChildren(BuildContext context, Widget child) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      
-        _CategoryHeader(
-          margin: _headerMargin.value,
-          imagePadding: _headerImagePadding.value,
-          borderRadius: _headerBorderRadius.value,
-          height: _headerHeight.value,
-          chevronOpacity: _headerChevronOpacity.value,
-          imageString: widget.imageString,
-          category: widget.category,
-          onTap: _handleTap,
-        ),
-        Padding(
-          padding: _childrenPadding.value,
-           ClipRect(
-             Align(
-              heightFactor: _childrenHeightFactor.value,
-               child,
-            ),
+      _CategoryHeader(
+        margin: _headerMargin.value,
+        imagePadding: _headerImagePadding.value,
+        borderRadius: _headerBorderRadius.value,
+        height: _headerHeight.value,
+        chevronOpacity: _headerChevronOpacity.value,
+        imageString: widget.imageString,
+        category: widget.category,
+        onTap: _handleTap,
+      ),
+      Padding(
+        padding: _childrenPadding.value,
+        ClipRect(
+          Align(
+            heightFactor: _childrenHeightFactor.value,
+            child,
           ),
-        )
-      ,
+        ),
+      ),
     );
   }
 
@@ -149,7 +147,7 @@ class _CategoryListItemState extends State<CategoryListItem>
     return AnimatedBuilder(
       animation: _controller.view,
       builder: _buildHeaderWithChildren,
-       _shouldOpenList()
+      _shouldOpenList()
           ? null
           : _ExpandedCategoryDemos(
               category: widget.category,
@@ -186,63 +184,59 @@ class _CategoryHeader extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
       margin: margin,
-       Material(
+      Material(
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         color: colorScheme.onBackground,
         clipBehavior: Clip.antiAlias,
-         SizedBox(
+        SizedBox(
           width: MediaQuery.of(context).size.width,
-           InkWell(
+          InkWell(
             // Makes integration tests possible.
             key: ValueKey('${category.name}CategoryHeader'),
             onTap: onTap,
-             Row(
-              
-                Expanded(
-                   Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    
-                      Padding(
-                        padding: imagePadding,
-                         ExcludeSemantics(
-                           Image.asset(
-                            imageString,
-                            width: 64,
-                            height: 64,
-                            package: 'flutter_gallery_assets',
-                          ),
-                        ),
+            Row(
+              Expanded(
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  Padding(
+                    padding: imagePadding,
+                    ExcludeSemantics(
+                      Image.asset(
+                        imageString,
+                        width: 64,
+                        height: 64,
+                        package: 'flutter_gallery_assets',
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 8),
-                         Text(
-                          category.displayTitle(
-                            GalleryLocalizations.of(context),
-                          ),
-                          style: Theme.of(context).textTheme.headline5.apply(
-                                color: colorScheme.onSurface,
-                              ),
-                        ),
-                      )
-                    ,
+                    ),
                   ),
-                ),
-                Opacity(
-                  opacity: chevronOpacity,
-                   chevronOpacity != 0
-                      ? Padding(
-                          padding: const EdgeInsetsDirectional.only(
-                            start: 8,
-                            end: 32,
-                          ),
-                           Icon(
-                            Icons.keyboard_arrow_up,
+                  Padding(
+                    padding: const EdgeInsetsDirectional.only(start: 8),
+                    Text(
+                      category.displayTitle(
+                        GalleryLocalizations.of(context),
+                      ),
+                      style: Theme.of(context).textTheme.headline5.apply(
                             color: colorScheme.onSurface,
                           ),
-                        )
-                      : null,
-                )
-              ,
+                    ),
+                  ),
+                ),
+              ),
+              Opacity(
+                opacity: chevronOpacity,
+                chevronOpacity != 0
+                    ? Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                          start: 8,
+                          end: 32,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_up,
+                          color: colorScheme.onSurface,
+                        ),
+                      )
+                    : null,
+              ),
             ),
           ),
         ),
@@ -266,7 +260,7 @@ class _ExpandedCategoryDemos extends StatelessWidget {
     return Column(
       // Makes integration tests possible.
       key: ValueKey('${category.name}DemoList'),
-       [
+      [
         for (final demo in demos)
           CategoryDemoItem(
             demo: demo,
@@ -290,52 +284,48 @@ class CategoryDemoItem extends StatelessWidget {
       // Makes integration tests possible.
       key: ValueKey(demo.describe),
       color: Theme.of(context).colorScheme.surface,
-       MergeSemantics(
-         InkWell(
+      MergeSemantics(
+        InkWell(
           onTap: () {
             Navigator.of(context).restorablePushNamed(
               '${DemoPage.baseRoute}/${demo.slug}',
             );
           },
-           Padding(
+          Padding(
             padding: EdgeInsetsDirectional.only(
               start: 32,
               top: 20,
               end: isDisplayDesktop(context) ? 16 : 8,
             ),
-             Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              
-                Icon(
-                  demo.icon,
-                  color: colorScheme.primary,
-                ),
-                const SizedBox(width: 40),
-                Flexible(
-                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    
-                      Text(
-                        demo.title,
-                        style: textTheme.subtitle1
-                            .apply(color: colorScheme.onSurface),
-                      ),
-                      Text(
-                        demo.subtitle,
-                        style: textTheme.overline.apply(
-                          color: colorScheme.onSurface.withOpacity(0.5),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Divider(
-                        thickness: 1,
-                        height: 1,
-                        color: Theme.of(context).colorScheme.background,
-                      )
-                    ,
+              Icon(
+                demo.icon,
+                color: colorScheme.primary,
+              ),
+              const SizedBox(width: 40),
+              Flexible(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  Text(
+                    demo.title,
+                    style:
+                        textTheme.subtitle1.apply(color: colorScheme.onSurface),
                   ),
-                )
-              ,
+                  Text(
+                    demo.subtitle,
+                    style: textTheme.overline.apply(
+                      color: colorScheme.onSurface.withOpacity(0.5),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Divider(
+                    thickness: 1,
+                    height: 1,
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+              ),
             ),
           ),
         ),

@@ -29,7 +29,7 @@ class ReplyApp extends StatefulWidget {
           fillColor: Theme.of(context).cardColor,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-           child,
+          child,
         );
       },
       settings: settings,
@@ -73,7 +73,7 @@ class _ReplyAppState extends State<ReplyApp> with RestorationMixin {
           value: _appState.value,
         ),
       ],
-       MaterialApp(
+      MaterialApp(
         navigatorKey: rootNavKey,
         restorationScopeId: 'appNavigator',
         title: 'Reply',

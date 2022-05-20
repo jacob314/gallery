@@ -62,8 +62,8 @@ class _MenuDemoState extends State<MenuDemo> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-         Center(
-           demo,
+        Center(
+          demo,
         ),
       ),
     );
@@ -93,20 +93,20 @@ class _ContextMenuDemo extends StatelessWidget {
         itemBuilder: (context) => <PopupMenuItem<String>>[
           PopupMenuItem<String>(
             value: GalleryLocalizations.of(context).demoMenuContextMenuItemOne,
-             Text(
+            Text(
               GalleryLocalizations.of(context).demoMenuContextMenuItemOne,
             ),
           ),
           PopupMenuItem<String>(
             enabled: false,
-             Text(
+            Text(
               GalleryLocalizations.of(context).demoMenuADisabledMenuItem,
             ),
           ),
           PopupMenuItem<String>(
             value:
                 GalleryLocalizations.of(context).demoMenuContextMenuItemThree,
-             Text(
+            Text(
               GalleryLocalizations.of(context).demoMenuContextMenuItemThree,
             ),
           ),
@@ -140,7 +140,7 @@ class _SectionedMenuDemo extends StatelessWidget {
         itemBuilder: (context) => <PopupMenuEntry<String>>[
           PopupMenuItem<String>(
             value: GalleryLocalizations.of(context).demoMenuPreview,
-             ListTile(
+            ListTile(
               leading: const Icon(Icons.visibility),
               title: Text(
                 GalleryLocalizations.of(context).demoMenuPreview,
@@ -149,7 +149,7 @@ class _SectionedMenuDemo extends StatelessWidget {
           ),
           PopupMenuItem<String>(
             value: GalleryLocalizations.of(context).demoMenuShare,
-             ListTile(
+            ListTile(
               leading: const Icon(Icons.person_add),
               title: Text(
                 GalleryLocalizations.of(context).demoMenuShare,
@@ -158,7 +158,7 @@ class _SectionedMenuDemo extends StatelessWidget {
           ),
           PopupMenuItem<String>(
             value: GalleryLocalizations.of(context).demoMenuGetLink,
-             ListTile(
+            ListTile(
               leading: const Icon(Icons.link),
               title: Text(
                 GalleryLocalizations.of(context).demoMenuGetLink,
@@ -168,7 +168,7 @@ class _SectionedMenuDemo extends StatelessWidget {
           const PopupMenuDivider(),
           PopupMenuItem<String>(
             value: GalleryLocalizations.of(context).demoMenuRemove,
-             ListTile(
+            ListTile(
               leading: const Icon(Icons.delete),
               title: Text(
                 GalleryLocalizations.of(context).demoMenuRemove,
@@ -232,27 +232,27 @@ class _SimpleMenuDemoState extends State<_SimpleMenuDemo> {
       itemBuilder: (context) => <PopupMenuItem<SimpleValue>>[
         PopupMenuItem<SimpleValue>(
           value: SimpleValue.one,
-           Text(simpleValueToString(
+          Text(simpleValueToString(
             context,
             SimpleValue.one,
           )),
         ),
         PopupMenuItem<SimpleValue>(
           value: SimpleValue.two,
-           Text(simpleValueToString(
+          Text(simpleValueToString(
             context,
             SimpleValue.two,
           )),
         ),
         PopupMenuItem<SimpleValue>(
           value: SimpleValue.three,
-           Text(simpleValueToString(
+          Text(simpleValueToString(
             context,
             SimpleValue.three,
           )),
         ),
       ],
-       ListTile(
+      ListTile(
         title: Text(
             GalleryLocalizations.of(context).demoMenuAnItemWithASimpleMenu),
         subtitle: Text(simpleValueToString(context, _simpleValue)),
@@ -385,7 +385,7 @@ class _ChecklistMenuDemoState extends State<_ChecklistMenuDemo>
           CheckedPopupMenuItem<CheckedValue>(
             value: CheckedValue.one,
             checked: _checkedValues.isChecked(CheckedValue.one),
-             Text(
+            Text(
               checkedValueToString(context, CheckedValue.one),
             ),
           ),
@@ -393,21 +393,21 @@ class _ChecklistMenuDemoState extends State<_ChecklistMenuDemo>
             value: CheckedValue.two,
             enabled: false,
             checked: _checkedValues.isChecked(CheckedValue.two),
-             Text(
+            Text(
               checkedValueToString(context, CheckedValue.two),
             ),
           ),
           CheckedPopupMenuItem<CheckedValue>(
             value: CheckedValue.three,
             checked: _checkedValues.isChecked(CheckedValue.three),
-             Text(
+            Text(
               checkedValueToString(context, CheckedValue.three),
             ),
           ),
           CheckedPopupMenuItem<CheckedValue>(
             value: CheckedValue.four,
             checked: _checkedValues.isChecked(CheckedValue.four),
-             Text(
+            Text(
               checkedValueToString(context, CheckedValue.four),
             ),
           ),

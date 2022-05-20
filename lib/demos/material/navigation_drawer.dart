@@ -23,31 +23,29 @@ class NavDrawerDemo extends StatelessWidget {
         localization.demoNavigationDrawerUserEmail,
       ),
       currentAccountPicture: const CircleAvatar(
-         FlutterLogo(size: 42.0),
+        FlutterLogo(size: 42.0),
       ),
     );
     final drawerItems = ListView(
-      
-        drawerHeader,
-        ListTile(
-          title: Text(
-            localization.demoNavigationDrawerToPageOne,
-          ),
-          leading: const Icon(Icons.favorite),
-          onTap: () {
-            Navigator.pop(context);
-          },
+      drawerHeader,
+      ListTile(
+        title: Text(
+          localization.demoNavigationDrawerToPageOne,
         ),
-        ListTile(
-          title: Text(
-            localization.demoNavigationDrawerToPageTwo,
-          ),
-          leading: const Icon(Icons.comment),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        )
-      ,
+        leading: const Icon(Icons.favorite),
+        onTap: () {
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title: Text(
+          localization.demoNavigationDrawerToPageTwo,
+        ),
+        leading: const Icon(Icons.comment),
+        onTap: () {
+          Navigator.pop(context);
+        },
+      ),
     );
     return Scaffold(
       appBar: AppBar(
@@ -56,15 +54,15 @@ class NavDrawerDemo extends StatelessWidget {
         ),
       ),
       body: Center(
-         Padding(
+        Padding(
           padding: const EdgeInsets.all(50.0),
-           Text(
+          Text(
             localization.demoNavigationDrawerText,
           ),
         ),
       ),
       drawer: Drawer(
-         drawerItems,
+        drawerItems,
       ),
     );
   }

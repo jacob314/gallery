@@ -33,16 +33,14 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Column(
-          
-            Text(localizations.demoFadeThroughTitle),
-            Text(
-              '(${localizations.demoFadeThroughDemoInstructions})',
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2
-                  .copyWith(color: Colors.white),
-            )
-          ,
+          Text(localizations.demoFadeThroughTitle),
+          Text(
+            '(${localizations.demoFadeThroughDemoInstructions})',
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2
+                .copyWith(color: Colors.white),
+          ),
         ),
       ),
       body: PageTransitionSwitcher(
@@ -54,10 +52,10 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
           return FadeThroughTransition(
             animation: animation,
             secondaryAnimation: secondaryAnimation,
-             child,
+            child,
           );
         },
-         _pageList[_pageIndex],
+        _pageList[_pageIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
@@ -92,49 +90,43 @@ class _ExampleCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Expanded(
-       Card(
-         Stack(
-          
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              
-                Expanded(
-                   Container(
-                    color: Colors.black26,
-                     Padding(
-                      padding: const EdgeInsets.all(30),
-                       Ink.image(
-                        image: const AssetImage(
-                          'placeholders/placeholder_image.png',
-                          package: 'flutter_gallery_assets',
-                        ),
-                      ),
+      Card(
+        Stack(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            Expanded(
+              Container(
+                color: Colors.black26,
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  Ink.image(
+                    image: const AssetImage(
+                      'placeholders/placeholder_image.png',
+                      package: 'flutter_gallery_assets',
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    
-                      Text(
-                        localizations.demoFadeThroughTextPlaceholder,
-                        style: textTheme.bodyText1,
-                      ),
-                      Text(
-                        localizations.demoFadeThroughTextPlaceholder,
-                        style: textTheme.caption,
-                      )
-                    ,
-                  ),
-                )
-              ,
+              ),
             ),
-            InkWell(
-              splashColor: Colors.black38,
-              onTap: () {},
-            )
-          ,
+            Padding(
+              padding: const EdgeInsets.all(8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                Text(
+                  localizations.demoFadeThroughTextPlaceholder,
+                  style: textTheme.bodyText1,
+                ),
+                Text(
+                  localizations.demoFadeThroughTextPlaceholder,
+                  style: textTheme.caption,
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            splashColor: Colors.black38,
+            onTap: () {},
+          ),
         ),
       ),
     );
@@ -145,16 +137,14 @@ class _AlbumsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-       [
+      [
         ...List.generate(
           3,
           (index) => Expanded(
-             Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              
-                _ExampleCard(),
-                _ExampleCard()
-              ,
+              _ExampleCard(),
+              _ExampleCard(),
             ),
           ),
         ),
@@ -167,10 +157,8 @@ class _PhotosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      
-        _ExampleCard(),
-        _ExampleCard()
-      ,
+      _ExampleCard(),
+      _ExampleCard(),
     );
   }
 }

@@ -102,10 +102,10 @@ class __TabsScrollableDemoState extends State<_TabsScrollableDemo>
       ),
       body: TabBarView(
         controller: _tabController,
-         [
+        [
           for (final tab in tabs)
             Center(
-               Text(tab),
+              Text(tab),
             ),
         ],
       ),
@@ -185,10 +185,10 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
       ),
       body: TabBarView(
         controller: _tabController,
-         [
+        [
           for (final tab in tabs)
             Center(
-               Text(tab),
+              Text(tab),
             ),
         ],
       ),

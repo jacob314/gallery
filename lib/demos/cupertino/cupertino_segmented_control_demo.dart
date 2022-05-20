@@ -51,41 +51,39 @@ class _CupertinoSegmentedControlDemoState
           localizations.demoCupertinoSegmentedControlTitle,
         ),
       ),
-       DefaultTextStyle(
+      DefaultTextStyle(
         style: CupertinoTheme.of(context)
             .textTheme
             .textStyle
             .copyWith(fontSize: 13),
-         SafeArea(
-           ListView(
-            
-              const SizedBox(height: 16),
-              SizedBox(
-                width: segmentedControlMaxWidth,
-                 CupertinoSegmentedControl<int>(
+        SafeArea(
+          ListView(
+            const SizedBox(height: 16),
+            SizedBox(
+              width: segmentedControlMaxWidth,
+              CupertinoSegmentedControl<int>(
+                children: children,
+                onValueChanged: onValueChanged,
+                groupValue: currentSegment.value,
+              ),
+            ),
+            SizedBox(
+              width: segmentedControlMaxWidth,
+              Padding(
+                padding: const EdgeInsets.all(16),
+                CupertinoSlidingSegmentedControl<int>(
                   children: children,
                   onValueChanged: onValueChanged,
                   groupValue: currentSegment.value,
                 ),
               ),
-              SizedBox(
-                width: segmentedControlMaxWidth,
-                 Padding(
-                  padding: const EdgeInsets.all(16),
-                   CupertinoSlidingSegmentedControl<int>(
-                    children: children,
-                    onValueChanged: onValueChanged,
-                    groupValue: currentSegment.value,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(16),
-                height: 300,
-                alignment: Alignment.center,
-                 children[currentSegment.value],
-              )
-            ,
+            ),
+            Container(
+              padding: const EdgeInsets.all(16),
+              height: 300,
+              alignment: Alignment.center,
+              children[currentSegment.value],
+            ),
           ),
         ),
       ),

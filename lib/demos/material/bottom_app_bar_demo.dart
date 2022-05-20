@@ -74,63 +74,60 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
       ),
       body: ListView(
         padding: const EdgeInsets.only(bottom: 88),
-        
-          SwitchListTile(
-            title: Text(
-              GalleryLocalizations.of(context).demoFloatingButtonTitle,
-            ),
-            value: _showFab.value,
-            onChanged: _onShowFabChanged,
+        SwitchListTile(
+          title: Text(
+            GalleryLocalizations.of(context).demoFloatingButtonTitle,
           ),
-          SwitchListTile(
-            title: Text(GalleryLocalizations.of(context).bottomAppBarNotch),
-            value: _showNotch.value,
-            onChanged: _onShowNotchChanged,
+          value: _showFab.value,
+          onChanged: _onShowFabChanged,
+        ),
+        SwitchListTile(
+          title: Text(GalleryLocalizations.of(context).bottomAppBarNotch),
+          value: _showNotch.value,
+          onChanged: _onShowNotchChanged,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          Text(GalleryLocalizations.of(context).bottomAppBarPosition),
+        ),
+        RadioListTile<int>(
+          title: Text(
+            GalleryLocalizations.of(context).bottomAppBarPositionDockedEnd,
           ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-             Text(GalleryLocalizations.of(context).bottomAppBarPosition),
+          value: 0,
+          groupValue: _currentFabLocation.value,
+          onChanged: _onFabLocationChanged,
+        ),
+        RadioListTile<int>(
+          title: Text(
+            GalleryLocalizations.of(context).bottomAppBarPositionDockedCenter,
           ),
-          RadioListTile<int>(
-            title: Text(
-              GalleryLocalizations.of(context).bottomAppBarPositionDockedEnd,
-            ),
-            value: 0,
-            groupValue: _currentFabLocation.value,
-            onChanged: _onFabLocationChanged,
+          value: 1,
+          groupValue: _currentFabLocation.value,
+          onChanged: _onFabLocationChanged,
+        ),
+        RadioListTile<int>(
+          title: Text(
+            GalleryLocalizations.of(context).bottomAppBarPositionFloatingEnd,
           ),
-          RadioListTile<int>(
-            title: Text(
-              GalleryLocalizations.of(context).bottomAppBarPositionDockedCenter,
-            ),
-            value: 1,
-            groupValue: _currentFabLocation.value,
-            onChanged: _onFabLocationChanged,
+          value: 2,
+          groupValue: _currentFabLocation.value,
+          onChanged: _onFabLocationChanged,
+        ),
+        RadioListTile<int>(
+          title: Text(
+            GalleryLocalizations.of(context).bottomAppBarPositionFloatingCenter,
           ),
-          RadioListTile<int>(
-            title: Text(
-              GalleryLocalizations.of(context).bottomAppBarPositionFloatingEnd,
-            ),
-            value: 2,
-            groupValue: _currentFabLocation.value,
-            onChanged: _onFabLocationChanged,
-          ),
-          RadioListTile<int>(
-            title: Text(
-              GalleryLocalizations.of(context)
-                  .bottomAppBarPositionFloatingCenter,
-            ),
-            value: 3,
-            groupValue: _currentFabLocation.value,
-            onChanged: _onFabLocationChanged,
-          )
-        ,
+          value: 3,
+          groupValue: _currentFabLocation.value,
+          onChanged: _onFabLocationChanged,
+        ),
       ),
       floatingActionButton: _showFab.value
           ? FloatingActionButton(
               onPressed: () {},
               tooltip: GalleryLocalizations.of(context).buttonTextCreate,
-               const Icon(Icons.add),
+              const Icon(Icons.add),
             )
           : null,
       floatingActionButtonLocation: _fabLocations[_currentFabLocation.value],
@@ -160,10 +157,10 @@ class _DemoBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       shape: shape,
-       IconTheme(
+      IconTheme(
         data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-         Row(
-           [
+        Row(
+          [
             IconButton(
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               icon: const Icon(Icons.menu),

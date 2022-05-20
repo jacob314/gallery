@@ -24,41 +24,39 @@ class ComposePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-         SizedBox(
+        SizedBox(
           height: double.infinity,
-           Material(
+          Material(
             color: Theme.of(context).cardColor,
-             SingleChildScrollView(
-               Column(
+            SingleChildScrollView(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                
-                  _SubjectRow(
-                    subject: _subject,
-                  ),
-                  const _SectionDivider(),
-                  _SenderAddressRow(
-                    senderEmail: _senderEmail,
-                  ),
-                  const _SectionDivider(),
-                  _RecipientsRow(
-                    recipients: _recipient,
-                    avatar: _recipientAvatar,
-                  ),
-                  const _SectionDivider(),
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                     TextField(
-                      minLines: 6,
-                      maxLines: 20,
-                      decoration: const InputDecoration.collapsed(
-                        hintText: 'New Message...',
-                      ),
-                      autofocus: false,
-                      style: Theme.of(context).textTheme.bodyText2,
+                _SubjectRow(
+                  subject: _subject,
+                ),
+                const _SectionDivider(),
+                _SenderAddressRow(
+                  senderEmail: _senderEmail,
+                ),
+                const _SectionDivider(),
+                _RecipientsRow(
+                  recipients: _recipient,
+                  avatar: _recipientAvatar,
+                ),
+                const _SectionDivider(),
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  TextField(
+                    minLines: 6,
+                    maxLines: 20,
+                    decoration: const InputDecoration.collapsed(
+                      hintText: 'New Message...',
                     ),
-                  )
-                ,
+                    autofocus: false,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ),
               ),
             ),
           ),
@@ -98,45 +96,43 @@ class _SubjectRowState extends State<_SubjectRow> {
 
     return Padding(
       padding: const EdgeInsets.only(top: 8),
-       Row(
+      Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        
-          IconButton(
-            key: const ValueKey('ReplyExit'),
-            onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(
-              Icons.close,
+        IconButton(
+          key: const ValueKey('ReplyExit'),
+          onPressed: () => Navigator.of(context).pop(),
+          icon: Icon(
+            Icons.close,
+            color: colorScheme.onSurface,
+          ),
+        ),
+        Expanded(
+          TextField(
+            controller: _subjectController,
+            maxLines: 1,
+            autofocus: false,
+            style: theme.textTheme.headline6,
+            decoration: InputDecoration.collapsed(
+              hintText: 'Subject',
+              hintStyle: theme.textTheme.headline6.copyWith(
+                color: theme.colorScheme.primary.withOpacity(0.5),
+              ),
+            ),
+          ),
+        ),
+        IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: IconButton(
+            icon: ImageIcon(
+              const AssetImage(
+                'reply/icons/twotone_send.png',
+                package: 'flutter_gallery_assets',
+              ),
               color: colorScheme.onSurface,
             ),
-          ),
-          Expanded(
-             TextField(
-              controller: _subjectController,
-              maxLines: 1,
-              autofocus: false,
-              style: theme.textTheme.headline6,
-              decoration: InputDecoration.collapsed(
-                hintText: 'Subject',
-                hintStyle: theme.textTheme.headline6.copyWith(
-                  color: theme.colorScheme.primary.withOpacity(0.5),
-                ),
-              ),
-            ),
-          ),
-          IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: IconButton(
-              icon: ImageIcon(
-                const AssetImage(
-                  'reply/icons/twotone_send.png',
-                  package: 'flutter_gallery_assets',
-                ),
-                color: colorScheme.onSurface,
-              ),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }
@@ -180,40 +176,38 @@ class __SenderAddressRowState extends State<_SenderAddressRow> {
       itemBuilder: (context) => <PopupMenuItem<String>>[
         PopupMenuItem<String>(
           value: accounts[0],
-           Text(
+          Text(
             accounts[0],
             style: textTheme.bodyText2,
           ),
         ),
         PopupMenuItem<String>(
           value: accounts[1],
-           Text(
+          Text(
             accounts[1],
             style: textTheme.bodyText2,
           ),
         ),
       ],
-       Padding(
+      Padding(
         padding: const EdgeInsets.only(
           left: 12,
           top: 16,
           right: 10,
           bottom: 10,
         ),
-         Row(
+        Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          
-            Expanded(
-               Text(
-                senderEmail,
-                style: textTheme.bodyText2,
-              ),
+          Expanded(
+            Text(
+              senderEmail,
+              style: textTheme.bodyText2,
             ),
-            Icon(
-              Icons.arrow_drop_down,
-              color: theme.colorScheme.onSurface,
-            )
-          ,
+          ),
+          Icon(
+            Icons.arrow_drop_down,
+            color: theme.colorScheme.onSurface,
+          ),
         ),
       ),
     );
@@ -234,36 +228,32 @@ class _RecipientsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-       Row(
+      Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        
-          Expanded(
-             Wrap(
-              
-                Chip(
-                  backgroundColor:
-                      Theme.of(context).chipTheme.secondarySelectedColor,
-                  padding: EdgeInsets.zero,
-                  avatar: CircleAvatar(
-                    backgroundImage: AssetImage(
-                      avatar,
-                      package: 'flutter_gallery_assets',
-                    ),
-                  ),
-                  label: Text(
-                    recipients,
-                  ),
-                )
-              ,
+        Expanded(
+          Wrap(
+            Chip(
+              backgroundColor:
+                  Theme.of(context).chipTheme.secondarySelectedColor,
+              padding: EdgeInsets.zero,
+              avatar: CircleAvatar(
+                backgroundImage: AssetImage(
+                  avatar,
+                  package: 'flutter_gallery_assets',
+                ),
+              ),
+              label: Text(
+                recipients,
+              ),
             ),
           ),
-          InkResponse(
-            customBorder: const CircleBorder(),
-            onTap: () {},
-            radius: 24,
-             const Icon(Icons.add_circle_outline),
-          )
-        ,
+        ),
+        InkResponse(
+          customBorder: const CircleBorder(),
+          onTap: () {},
+          radius: 24,
+          const Icon(Icons.add_circle_outline),
+        ),
       ),
     );
   }

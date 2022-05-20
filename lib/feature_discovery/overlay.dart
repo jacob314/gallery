@@ -128,11 +128,11 @@ class Background extends StatelessWidget {
     return Positioned(
         left: centerPosition.dx,
         top: centerPosition.dy,
-         FractionalTranslation(
+        FractionalTranslation(
           translation: const Offset(-0.5, -0.5),
-           Opacity(
+          Opacity(
             opacity: opacity,
-             Container(
+            Container(
               height: radius * 2,
               width: radius * 2,
               decoration: BoxDecoration(
@@ -203,15 +203,13 @@ class Content extends StatelessWidget {
       height: position.bottom - position.top,
       width: position.right - position.left,
       top: position.top,
-       Opacity(
+      Opacity(
         opacity: opacity,
-         Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          
-            _buildTitle(textTheme),
-            const SizedBox(height: 12.0),
-            _buildDescription(textTheme)
-          ,
+          _buildTitle(textTheme),
+          const SizedBox(height: 12.0),
+          _buildDescription(textTheme),
         ),
       ),
     );
@@ -262,11 +260,11 @@ class Ripple extends StatelessWidget {
     return Positioned(
       left: center.dx,
       top: center.dy,
-       FractionalTranslation(
+      FractionalTranslation(
         translation: const Offset(-0.5, -0.5),
-         Opacity(
+        Opacity(
           opacity: opacity,
-           Container(
+          Container(
             height: radius * 2,
             width: radius * 2,
             decoration: const BoxDecoration(
@@ -314,20 +312,20 @@ class TapTarget extends StatelessWidget {
     return Positioned(
       left: center.dx,
       top: center.dy,
-       FractionalTranslation(
+      FractionalTranslation(
         translation: const Offset(-0.5, -0.5),
-         InkWell(
+        InkWell(
           onTap: onTap,
-           Opacity(
+          Opacity(
             opacity: opacity,
-             Container(
+            Container(
               height: radius * 2,
               width: radius * 2,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-               child,
+              child,
             ),
           ),
         ),

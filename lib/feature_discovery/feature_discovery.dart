@@ -148,47 +148,45 @@ class _FeatureDiscoveryState extends State<FeatureDiscovery>
     return Material(
       key: FeatureDiscovery.overlayKey,
       type: MaterialType.transparency,
-       Stack(
-        
-          GestureDetector(
-            key: FeatureDiscovery.gestureDetectorKey,
-            onTap: dismiss,
-             Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: Colors.transparent,
-            ),
+      Stack(
+        GestureDetector(
+          key: FeatureDiscovery.gestureDetectorKey,
+          onTap: dismiss,
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.transparent,
           ),
-          Background(
-            animations: animations,
-            status: status,
-            color: color,
-            center: center,
-            deviceSize: deviceSize,
-            textDirection: Directionality.of(ctx),
-          ),
-          Content(
-            animations: animations,
-            status: status,
-            center: center,
-            deviceSize: deviceSize,
-            title: widget.title,
-            description: widget.description,
-            textTheme: Theme.of(ctx).textTheme,
-          ),
-          Ripple(
-            animations: animations,
-            status: status,
-            center: center,
-          ),
-          TapTarget(
-            animations: animations,
-            status: status,
-            center: center,
-            onTap: tap,
-             widget.child,
-          )
-        ,
+        ),
+        Background(
+          animations: animations,
+          status: status,
+          color: color,
+          center: center,
+          deviceSize: deviceSize,
+          textDirection: Directionality.of(ctx),
+        ),
+        Content(
+          animations: animations,
+          status: status,
+          center: center,
+          deviceSize: deviceSize,
+          title: widget.title,
+          description: widget.description,
+          textTheme: Theme.of(ctx).textTheme,
+        ),
+        Ripple(
+          animations: animations,
+          status: status,
+          center: center,
+        ),
+        TapTarget(
+          animations: animations,
+          status: status,
+          center: center,
+          onTap: tap,
+          widget.child,
+        ),
       ),
     );
   }

@@ -41,38 +41,36 @@ class FinancialEntityView extends StatelessWidget {
     final maxWidth = pieChartMaxSize + (cappedTextScale(context) - 1.0) * 100.0;
     return LayoutBuilder(builder: (context, constraints) {
       return Column(
-        
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              // We decrease the max height to ensure the [RallyPieChart] does
-              // not take up the full height when it is smaller than
-              // [kPieChartMaxSize].
-              maxHeight: math.min(
-                constraints.biggest.shortestSide * 0.9,
-                maxWidth,
-              ),
-            ),
-             RallyPieChart(
-              heroLabel: heroLabel,
-              heroAmount: heroAmount,
-              wholeAmount: wholeAmount,
-              segments: segments,
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            // We decrease the max height to ensure the [RallyPieChart] does
+            // not take up the full height when it is smaller than
+            // [kPieChartMaxSize].
+            maxHeight: math.min(
+              constraints.biggest.shortestSide * 0.9,
+              maxWidth,
             ),
           ),
-          const SizedBox(height: 24),
-          Container(
-            height: 1,
-            constraints: BoxConstraints(maxWidth: maxWidth),
-            color: RallyColors.inputBackground,
+          RallyPieChart(
+            heroLabel: heroLabel,
+            heroAmount: heroAmount,
+            wholeAmount: wholeAmount,
+            segments: segments,
           ),
-          Container(
-            constraints: BoxConstraints(maxWidth: maxWidth),
-            color: RallyColors.cardBackground,
-             Column(
-               financialEntityCards,
-            ),
-          )
-        ,
+        ),
+        const SizedBox(height: 24),
+        Container(
+          height: 1,
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          color: RallyColors.inputBackground,
+        ),
+        Container(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          color: RallyColors.cardBackground,
+          Column(
+            financialEntityCards,
+          ),
+        ),
       );
     });
   }
@@ -113,7 +111,7 @@ class FinancialEntityCategoryView extends StatelessWidget {
       // FinancialEntityCategoryDetailsPage on mobile is blocked because
       // OpenContainer does not support restorablePush.
       // See https://github.com/flutter/flutter/issues/69924.
-       OpenContainer(
+      OpenContainer(
         transitionDuration: const Duration(milliseconds: 350),
         transitionType: ContainerTransitionType.fade,
         openBuilder: (context, openContainer) =>
@@ -125,68 +123,59 @@ class FinancialEntityCategoryView extends StatelessWidget {
           return TextButton(
             style: TextButton.styleFrom(primary: Colors.black),
             onPressed: openContainer,
-             Column(
-              
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-                   Row(
-                    
-                      Container(
-                        alignment: Alignment.center,
-                        height: 32 + 60 * (cappedTextScale(context) - 1),
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                         VerticalFractionBar(
-                          color: indicatorColor,
-                          fraction: indicatorFraction,
+            Column(
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+                Row(
+                  Container(
+                    alignment: Alignment.center,
+                    height: 32 + 60 * (cappedTextScale(context) - 1),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    VerticalFractionBar(
+                      color: indicatorColor,
+                      fraction: indicatorFraction,
+                    ),
+                  ),
+                  Expanded(
+                    Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        Text(
+                          title,
+                          style: textTheme.bodyText2.copyWith(fontSize: 16),
+                        ),
+                        Text(
+                          subtitle,
+                          style: textTheme.bodyText2
+                              .copyWith(color: RallyColors.gray60),
                         ),
                       ),
-                      Expanded(
-                         Wrap(
-                          alignment: WrapAlignment.spaceBetween,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              
-                                Text(
-                                  title,
-                                  style: textTheme.bodyText2
-                                      .copyWith(fontSize: 16),
-                                ),
-                                Text(
-                                  subtitle,
-                                  style: textTheme.bodyText2
-                                      .copyWith(color: RallyColors.gray60),
-                                )
-                              ,
-                            ),
-                            Text(
-                              amount,
-                              style: textTheme.bodyText1.copyWith(
-                                fontSize: 20,
-                                color: RallyColors.gray,
-                              ),
-                            )
-                          ,
+                      Text(
+                        amount,
+                        style: textTheme.bodyText1.copyWith(
+                          fontSize: 20,
+                          color: RallyColors.gray,
                         ),
                       ),
-                      Container(
-                        constraints: const BoxConstraints(minWidth: 32),
-                        padding: const EdgeInsetsDirectional.only(start: 12),
-                         suffix,
-                      )
-                    ,
+                    ),
+                  ),
+                  Container(
+                    constraints: const BoxConstraints(minWidth: 32),
+                    padding: const EdgeInsetsDirectional.only(start: 12),
+                    suffix,
                   ),
                 ),
-                const Divider(
-                  height: 1,
-                  indent: 16,
-                  endIndent: 16,
-                  color: RallyColors.dividerColor,
-                )
-              ,
+              ),
+              const Divider(
+                height: 1,
+                indent: 16,
+                endIndent: 16,
+                color: RallyColors.dividerColor,
+              ),
             ),
           );
         },
@@ -330,7 +319,7 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
     final isDesktop = isDisplayDesktop(context);
 
     return ApplyTextOptions(
-       Scaffold(
+      Scaffold(
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
@@ -340,29 +329,27 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
           ),
         ),
         body: Column(
-          
-            SizedBox(
-              height: 200,
-              width: double.infinity,
-               RallyLineChart(events: items),
-            ),
-            Expanded(
-               Padding(
-                padding: isDesktop ? const EdgeInsets.all(40) : EdgeInsets.zero,
-                 ListView(
-                  shrinkWrap: true,
-                   [
-                    for (DetailedEventData detailedEventData in items)
-                      _DetailedEventCard(
-                        title: detailedEventData.title,
-                        date: detailedEventData.date,
-                        amount: detailedEventData.amount,
-                      ),
-                  ],
-                ),
+          SizedBox(
+            height: 200,
+            width: double.infinity,
+            RallyLineChart(events: items),
+          ),
+          Expanded(
+            Padding(
+              padding: isDesktop ? const EdgeInsets.all(40) : EdgeInsets.zero,
+              ListView(
+                shrinkWrap: true,
+                [
+                  for (DetailedEventData detailedEventData in items)
+                    _DetailedEventCard(
+                      title: detailedEventData.title,
+                      date: detailedEventData.date,
+                      amount: detailedEventData.amount,
+                    ),
+                ],
               ),
-            )
-          ,
+            ),
+          ),
         ),
       ),
     );
@@ -389,50 +376,42 @@ class _DetailedEventCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
       ),
       onPressed: () {},
-       Column(
-        
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            width: double.infinity,
-             isDesktop
-                ? Row(
-                    
-                      Expanded(
-                        flex: 1,
-                         _EventTitle(title: title),
-                      ),
-                      _EventDate(date: date),
-                      Expanded(
-                        flex: 1,
-                         Align(
-                          alignment: AlignmentDirectional.centerEnd,
-                           _EventAmount(amount: amount),
-                        ),
-                      )
-                    ,
-                  )
-                : Wrap(
-                    alignment: WrapAlignment.spaceBetween,
-                    
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        
-                          _EventTitle(title: title),
-                          _EventDate(date: date)
-                        ,
-                      ),
-                      _EventAmount(amount: amount)
-                    ,
+      Column(
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          width: double.infinity,
+          isDesktop
+              ? Row(
+                  Expanded(
+                    flex: 1,
+                    _EventTitle(title: title),
                   ),
+                  _EventDate(date: date),
+                  Expanded(
+                    flex: 1,
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      _EventAmount(amount: amount),
+                    ),
+                  ),
+                )
+              : Wrap(
+                  alignment: WrapAlignment.spaceBetween,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    _EventTitle(title: title),
+                    _EventDate(date: date),
+                  ),
+                  _EventAmount(amount: amount),
+                ),
+        ),
+        SizedBox(
+          height: 1,
+          Container(
+            color: RallyColors.dividerColor,
           ),
-          SizedBox(
-            height: 1,
-             Container(
-              color: RallyColors.dividerColor,
-            ),
-          )
-        ,
+        ),
       ),
     );
   }

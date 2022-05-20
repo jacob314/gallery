@@ -106,7 +106,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
     return DialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-         AlertDialog(
+        AlertDialog(
           content: Text(
             GalleryLocalizations.of(context).dialogDiscardTitle,
             style: dialogTextStyle,
@@ -131,7 +131,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
     return DialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-         AlertDialog(
+        AlertDialog(
           title: Text(GalleryLocalizations.of(context).dialogLocationTitle),
           content: Text(
             GalleryLocalizations.of(context).dialogLocationDescription,
@@ -156,25 +156,23 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
     return DialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-         SimpleDialog(
+        SimpleDialog(
           title: Text(GalleryLocalizations.of(context).dialogSetBackup),
-          
-            _DialogDemoItem(
-              icon: Icons.account_circle,
-              color: theme.colorScheme.primary,
-              text: 'username@gmail.com',
-            ),
-            _DialogDemoItem(
-              icon: Icons.account_circle,
-              color: theme.colorScheme.secondary,
-              text: 'user02@gmail.com',
-            ),
-            _DialogDemoItem(
-              icon: Icons.add_circle,
-              text: GalleryLocalizations.of(context).dialogAddAccount,
-              color: theme.disabledColor,
-            )
-          ,
+          _DialogDemoItem(
+            icon: Icons.account_circle,
+            color: theme.colorScheme.primary,
+            text: 'username@gmail.com',
+          ),
+          _DialogDemoItem(
+            icon: Icons.account_circle,
+            color: theme.colorScheme.secondary,
+            text: 'user02@gmail.com',
+          ),
+          _DialogDemoItem(
+            icon: Icons.add_circle,
+            text: GalleryLocalizations.of(context).dialogAddAccount,
+            color: theme.disabledColor,
+          ),
         ),
       ),
     );
@@ -206,7 +204,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
               title: Text(_title(context)),
             ),
             body: Center(
-               ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   switch (widget.type) {
                     case DialogDemoType.alert:
@@ -224,7 +222,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
                       break;
                   }
                 },
-                 Text(GalleryLocalizations.of(context).dialogShow),
+                Text(GalleryLocalizations.of(context).dialogShow),
               ),
             ),
           ),
@@ -270,7 +268,7 @@ class _DialogButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop(text);
       },
-       Text(text),
+      Text(text),
     );
   }
 }
@@ -293,18 +291,16 @@ class _DialogDemoItem extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop(text);
       },
-       Row(
+      Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        
-          Icon(icon, size: 36, color: color),
-          Flexible(
-             Padding(
-              padding: const EdgeInsetsDirectional.only(start: 16),
-               Text(text),
-            ),
-          )
-        ,
+        Icon(icon, size: 36, color: color),
+        Flexible(
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 16),
+            Text(text),
+          ),
+        ),
       ),
     );
   }
@@ -321,8 +317,8 @@ class _FullScreenDialogDemo extends StatelessWidget {
       context: context,
       removeTop: true,
       removeBottom: true,
-       ApplyTextOptions(
-         Scaffold(
+      ApplyTextOptions(
+        Scaffold(
           appBar: AppBar(
             title: Text(GalleryLocalizations.of(context).dialogFullscreenTitle),
             actions: [
@@ -330,7 +326,7 @@ class _FullScreenDialogDemo extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                 Text(
+                Text(
                   GalleryLocalizations.of(context).dialogFullscreenSave,
                   style: theme.textTheme.bodyText2.copyWith(
                     color: theme.colorScheme.onPrimary,
@@ -340,7 +336,7 @@ class _FullScreenDialogDemo extends StatelessWidget {
             ],
           ),
           body: Center(
-             Text(
+            Text(
               GalleryLocalizations.of(context).dialogFullscreenDescription,
             ),
           ),

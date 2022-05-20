@@ -31,9 +31,9 @@ class FortnightlyApp extends StatelessWidget {
       theme: buildTheme(context).copyWith(
         platform: GalleryOptions.of(context).platform,
       ),
-      home: ApplyTextOptions( home),
+      home: ApplyTextOptions(home),
       routes: {
-        FortnightlyApp.defaultRoute: (context) => ApplyTextOptions( home),
+        FortnightlyApp.defaultRoute: (context) => ApplyTextOptions(home),
       },
       initialRoute: FortnightlyApp.defaultRoute,
       // L10n settings.
@@ -51,15 +51,15 @@ class _FortnightlyHomeMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drawer(
-         SafeArea(
-           NavigationMenu(isCloseable: true),
+        SafeArea(
+          NavigationMenu(isCloseable: true),
         ),
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Semantics(
           label: _fortnightlyTitle,
-           const FadeInImagePlaceholder(
+          const FadeInImagePlaceholder(
             image: AssetImage(
               'fortnightly/fortnightly_title.png',
               package: 'flutter_gallery_assets',
@@ -77,14 +77,14 @@ class _FortnightlyHomeMobile extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-         ListView(
+        ListView(
           restorationId: 'list_view',
-           [
+          [
             const HashtagBar(),
             for (final item in buildArticlePreviewItems(context))
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                 item,
+                item,
               ),
           ],
         ),
@@ -105,76 +105,70 @@ class _FortnightlyHomeDesktop extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
-         Column(
-          
-            SizedBox(
-              height: headerHeight,
-               Row(
-                
-                  Container(
-                    width: menuWidth,
-                    alignment: AlignmentDirectional.centerStart,
-                    margin: const EdgeInsets.only(left: 12),
-                     Semantics(
-                      label: _fortnightlyTitle,
-                       Image.asset(
-                        'fortnightly/fortnightly_title.png',
-                        package: 'flutter_gallery_assets',
-                        excludeFromSemantics: true,
-                      ),
-                    ),
+        Column(
+          SizedBox(
+            height: headerHeight,
+            Row(
+              Container(
+                width: menuWidth,
+                alignment: AlignmentDirectional.centerStart,
+                margin: const EdgeInsets.only(left: 12),
+                Semantics(
+                  label: _fortnightlyTitle,
+                  Image.asset(
+                    'fortnightly/fortnightly_title.png',
+                    package: 'flutter_gallery_assets',
+                    excludeFromSemantics: true,
                   ),
-                  spacer,
-                  const Flexible(
-                    flex: 2,
-                     HashtagBar(),
+                ),
+              ),
+              spacer,
+              const Flexible(
+                flex: 2,
+                HashtagBar(),
+              ),
+              spacer,
+              Flexible(
+                fit: FlexFit.tight,
+                Container(
+                  alignment: AlignmentDirectional.centerEnd,
+                  IconButton(
+                    icon: const Icon(Icons.search),
+                    tooltip:
+                        GalleryLocalizations.of(context).shrineTooltipSearch,
+                    onPressed: () {},
                   ),
-                  spacer,
-                  Flexible(
-                    fit: FlexFit.tight,
-                     Container(
-                      alignment: AlignmentDirectional.centerEnd,
-                       IconButton(
-                        icon: const Icon(Icons.search),
-                        tooltip: GalleryLocalizations.of(context)
-                            .shrineTooltipSearch,
-                        onPressed: () {},
-                      ),
-                    ),
-                  )
-                ,
+                ),
               ),
             ),
-            Flexible(
-               Row(
-                
-                  const SizedBox(
-                    width: menuWidth,
-                     NavigationMenu(),
-                  ),
-                  spacer,
-                  Flexible(
-                    flex: 2,
-                     ListView(
-                       buildArticlePreviewItems(context),
-                    ),
-                  ),
-                  spacer,
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.tight,
-                     ListView(
-                       [
-                        ...buildStockItems(context),
-                        const SizedBox(height: 32),
-                        ...buildVideoPreviewItems(context),
-                      ],
-                    ),
-                  )
-                ,
+          ),
+          Flexible(
+            Row(
+              const SizedBox(
+                width: menuWidth,
+                NavigationMenu(),
               ),
-            )
-          ,
+              spacer,
+              Flexible(
+                flex: 2,
+                ListView(
+                  buildArticlePreviewItems(context),
+                ),
+              ),
+              spacer,
+              Flexible(
+                flex: 1,
+                fit: FlexFit.tight,
+                ListView(
+                  [
+                    ...buildStockItems(context),
+                    const SizedBox(height: 32),
+                    ...buildVideoPreviewItems(context),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );

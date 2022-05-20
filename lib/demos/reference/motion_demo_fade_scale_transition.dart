@@ -59,7 +59,7 @@ class _FadeScaleTransitionDemoState extends State<FadeScaleTransitionDemo>
   Widget _showExampleAlertDialog() {
     return Theme(
       data: Theme.of(context),
-       _ExampleAlertDialog(),
+      _ExampleAlertDialog(),
     );
   }
 
@@ -71,16 +71,14 @@ class _FadeScaleTransitionDemoState extends State<FadeScaleTransitionDemo>
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Column(
-          
-            Text(localizations.demoFadeScaleTitle),
-            Text(
-              '(${localizations.demoFadeScaleDemoInstructions})',
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2
-                  .copyWith(color: Colors.white),
-            )
-          ,
+          Text(localizations.demoFadeScaleTitle),
+          Text(
+            '(${localizations.demoFadeScaleDemoInstructions})',
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2
+                .copyWith(color: Colors.white),
+          ),
         ),
       ),
       floatingActionButton: AnimatedBuilder(
@@ -88,53 +86,49 @@ class _FadeScaleTransitionDemoState extends State<FadeScaleTransitionDemo>
         builder: (context, child) {
           return FadeScaleTransition(
             animation: _controller,
-             child,
+            child,
           );
         },
-         Visibility(
+        Visibility(
           visible: _controller.status != AnimationStatus.dismissed,
-           FloatingActionButton(
+          FloatingActionButton(
             onPressed: () {},
-             const Icon(Icons.add),
+            const Icon(Icons.add),
           ),
         ),
       ),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
-        
-          const Divider(height: 0),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              
-                ElevatedButton(
-                  onPressed: () {
-                    showModal<void>(
-                        context: context,
-                        builder: (context) => _showExampleAlertDialog());
-                  },
-                   Text(localizations.demoFadeScaleShowAlertDialogButton),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_isAnimationRunningForwardsOrComplete) {
-                      _controller.reverse();
-                    } else {
-                      _controller.forward();
-                    }
-                  },
-                   Text(
-                    _isAnimationRunningForwardsOrComplete
-                        ? localizations.demoFadeScaleHideFabButton
-                        : localizations.demoFadeScaleShowFabButton,
-                  ),
-                )
-              ,
+        const Divider(height: 0),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            ElevatedButton(
+              onPressed: () {
+                showModal<void>(
+                    context: context,
+                    builder: (context) => _showExampleAlertDialog());
+              },
+              Text(localizations.demoFadeScaleShowAlertDialogButton),
             ),
-          )
-        ,
+            const SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () {
+                if (_isAnimationRunningForwardsOrComplete) {
+                  _controller.reverse();
+                } else {
+                  _controller.forward();
+                }
+              },
+              Text(
+                _isAnimationRunningForwardsOrComplete
+                    ? localizations.demoFadeScaleHideFabButton
+                    : localizations.demoFadeScaleShowFabButton,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -152,13 +146,13 @@ class _ExampleAlertDialog extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-           Text(localizations.demoFadeScaleAlertDialogCancelButton),
+          Text(localizations.demoFadeScaleAlertDialogCancelButton),
         ),
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-           Text(localizations.demoFadeScaleAlertDialogDiscardButton),
+          Text(localizations.demoFadeScaleAlertDialogDiscardButton),
         ),
       ],
     );

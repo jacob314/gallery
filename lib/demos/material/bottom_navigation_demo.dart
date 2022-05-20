@@ -95,15 +95,15 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo>
         title: Text(_title(context)),
       ),
       body: Center(
-         PageTransitionSwitcher(
+        PageTransitionSwitcher(
           transitionBuilder: (child, animation, secondaryAnimation) {
             return FadeThroughTransition(
               animation: animation,
               secondaryAnimation: secondaryAnimation,
-               child,
+              child,
             );
           },
-           _NavigationDestinationView(
+          _NavigationDestinationView(
             // Adding [UniqueKey] to make sure the widget rebuilds when transitioning.
             key: UniqueKey(),
             item: bottomNavigationBarItems[_currentIndex.value],
@@ -139,37 +139,35 @@ class _NavigationDestinationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      
-        ExcludeSemantics(
-           Center(
-             Padding(
-              padding: const EdgeInsets.all(16),
-               ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                 Image.asset(
-                  'assets/demos/bottom_navigation_background.png',
-                  package: 'flutter_gallery_assets',
-                ),
+      ExcludeSemantics(
+        Center(
+          Padding(
+            padding: const EdgeInsets.all(16),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              Image.asset(
+                'assets/demos/bottom_navigation_background.png',
+                package: 'flutter_gallery_assets',
               ),
             ),
           ),
         ),
-        Center(
-           IconTheme(
-            data: const IconThemeData(
-              color: Colors.white,
-              size: 80,
-            ),
-             Semantics(
-              label: GalleryLocalizations.of(context)
-                  .bottomNavigationContentPlaceholder(
-                item.label,
-              ),
-               item.icon,
-            ),
+      ),
+      Center(
+        IconTheme(
+          data: const IconThemeData(
+            color: Colors.white,
+            size: 80,
           ),
-        )
-      ,
+          Semantics(
+            label: GalleryLocalizations.of(context)
+                .bottomNavigationContentPlaceholder(
+              item.label,
+            ),
+            item.icon,
+          ),
+        ),
+      ),
     );
   }
 }

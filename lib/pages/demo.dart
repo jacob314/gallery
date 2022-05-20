@@ -62,8 +62,7 @@ class _DemoPageState extends State<DemoPage> {
       // Return to root if invalid slug.
       Navigator.of(context).pop();
     }
-    return ScaffoldMessenger(
-         GalleryDemoPage(
+    return ScaffoldMessenger(GalleryDemoPage(
       restorationId: widget.slug,
       demo: slugToDemoMap[widget.slug],
     ));
@@ -196,12 +195,10 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         builder: (context) {
           return SimpleDialog(
             title: Text(GalleryLocalizations.of(context).demoInvalidURL),
-            
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                 Text(url),
-              )
-            ,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              Text(url),
+            ),
           );
         },
       );
@@ -243,7 +240,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
       backgroundColor: Colors.transparent,
       leading: Padding(
         padding: EdgeInsetsDirectional.only(start: appBarPadding),
-         IconButton(
+        IconButton(
           key: const ValueKey('Back'),
           icon: const BackButtonIcon(),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
@@ -271,7 +268,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
                   _showFeatureHighlight = false;
                 });
               },
-               Icon(
+              Icon(
                 Icons.tune,
                 color: currentDemoState == _DemoState.options ||
                         _showFeatureHighlightForPlatform(context)
@@ -366,7 +363,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
           punctuationStyle: codeTheme.copyWith(color: const Color(0xFF8BE9FD)),
           classStyle: codeTheme.copyWith(color: const Color(0xFFD65BAD)),
           constantStyle: codeTheme.copyWith(color: const Color(0xFFFF8383)),
-           _DemoSectionCode(
+          _DemoSectionCode(
             maxHeight: maxSectionHeight,
             codeWidget: CodeDisplayPage(
               _currentConfig.code,
@@ -381,7 +378,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
 
     Widget body;
     Widget demoContent = ScaffoldMessenger(
-       DemoWrapper(
+      DemoWrapper(
         height: contentHeight,
         buildRoute: _currentConfig.buildRoute,
       ),
@@ -390,17 +387,17 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
       final isFullScreen = currentDemoState == _DemoState.fullscreen;
       final Widget sectionAndDemo = Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-         [
-          if (!isFullScreen) Expanded( section),
+        [
+          if (!isFullScreen) Expanded(section),
           SizedBox(width: !isFullScreen ? 48.0 : 0),
-          Expanded( demoContent),
+          Expanded(demoContent),
         ],
       );
 
       body = SafeArea(
-         Padding(
+        Padding(
           padding: const EdgeInsets.only(top: 56),
-           sectionAndDemo,
+          sectionAndDemo,
         ),
       );
     } else {
@@ -408,13 +405,13 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         duration: const Duration(milliseconds: 200),
         alignment: Alignment.topCenter,
         curve: Curves.easeIn,
-         section,
+        section,
       );
 
       // Add a tap gesture to collapse the currently opened section.
       demoContent = Semantics(
         label: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-         GestureDetector(
+        GestureDetector(
           onTap: () {
             if (currentDemoState != _DemoState.normal) {
               setStateAndUpdate(() {
@@ -422,25 +419,24 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
               });
             }
           },
-           Semantics(
+          Semantics(
             excludeSemantics: currentDemoState != _DemoState.normal,
-             demoContent,
+            demoContent,
           ),
         ),
       );
 
       body = SafeArea(
         bottom: false,
-         ListView(
+        ListView(
           // Use a non-scrollable ListView to enable animation of shifting the
           // demo offscreen.
           physics: const NeverScrollableScrollPhysics(),
-          
-            section,
-            demoContent,
-            // Fake the safe area to ensure the animation looks correct.
-            SizedBox(height: bottomSafeArea)
-          ,
+
+          section,
+          demoContent,
+          // Fake the safe area to ensure the animation looks correct.
+          SizedBox(height: bottomSafeArea),
         ),
       );
     }
@@ -467,8 +463,8 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
 
             Widget contents = Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-               ApplyTextOptions(
-                 Scaffold(
+              ApplyTextOptions(
+                Scaffold(
                   appBar: appBar,
                   body: body,
                   backgroundColor: Colors.transparent,
@@ -481,7 +477,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
               // dark background for code.
               Widget codeBackground = Container(
                 padding: const EdgeInsets.only(top: 56),
-                 Container(
+                Container(
                   color: ColorTween(
                     begin: Colors.transparent,
                     end: GalleryThemeData.darkThemeData.canvasColor,
@@ -490,23 +486,21 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
               );
 
               contents = Stack(
-                
-                  codeBackground,
-                  contents
-                ,
+                codeBackground,
+                contents,
               );
             }
 
             return Container(
               color: colorScheme.background,
-               contents,
+              contents,
             );
           });
     } else {
       page = Container(
         color: colorScheme.background,
-         ApplyTextOptions(
-           Scaffold(
+        ApplyTextOptions(
+          Scaffold(
             appBar: appBar,
             body: body,
             resizeToAvoidBottomInset: false,
@@ -520,8 +514,8 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
       page = MediaQuery.removePadding(
         removeTop: true,
         context: context,
-         SplashPage(
-           page,
+        SplashPage(
+          page,
         ),
       );
     }
@@ -553,49 +547,47 @@ class _DemoSectionOptions extends StatelessWidget {
 
     return Align(
       alignment: AlignmentDirectional.topStart,
-       Container(
+      Container(
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
-         Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                start: 24,
-                top: 12,
-                end: 24,
-              ),
-               Text(
-                GalleryLocalizations.of(context).demoOptionsTooltip,
-                style: textTheme.headline4.apply(
-                  color: colorScheme.onSurface,
-                  fontSizeDelta:
-                      isDisplayDesktop(context) ? desktopDisplay1FontDelta : 0,
-                ),
+          Padding(
+            padding: const EdgeInsetsDirectional.only(
+              start: 24,
+              top: 12,
+              end: 24,
+            ),
+            Text(
+              GalleryLocalizations.of(context).demoOptionsTooltip,
+              style: textTheme.headline4.apply(
+                color: colorScheme.onSurface,
+                fontSizeDelta:
+                    isDisplayDesktop(context) ? desktopDisplay1FontDelta : 0,
               ),
             ),
-            Divider(
-              thickness: 1,
-              height: 16,
-              color: colorScheme.onSurface,
+          ),
+          Divider(
+            thickness: 1,
+            height: 16,
+            color: colorScheme.onSurface,
+          ),
+          Flexible(
+            ListView(
+              shrinkWrap: true,
+              [
+                for (final configuration in configurations)
+                  _DemoSectionOptionsItem(
+                    title: configuration.title,
+                    isSelected: configuration == configurations[configIndex],
+                    onTap: () {
+                      onConfigChanged(configurations.indexOf(configuration));
+                    },
+                  ),
+              ],
             ),
-            Flexible(
-               ListView(
-                shrinkWrap: true,
-                 [
-                  for (final configuration in configurations)
-                    _DemoSectionOptionsItem(
-                      title: configuration.title,
-                      isSelected: configuration == configurations[configIndex],
-                      onTap: () {
-                        onConfigChanged(configurations.indexOf(configuration));
-                      },
-                    ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 12)
-          ,
+          ),
+          const SizedBox(height: 12),
         ),
       ),
     );
@@ -620,12 +612,12 @@ class _DemoSectionOptionsItem extends StatelessWidget {
 
     return Material(
       color: isSelected ? colorScheme.surface : null,
-       InkWell(
+      InkWell(
         onTap: onTap,
-         Container(
+        Container(
           constraints: const BoxConstraints(minWidth: double.infinity),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-           Text(
+          Text(
             title,
             style: Theme.of(context).textTheme.bodyText2.apply(
                   color:
@@ -659,7 +651,7 @@ class _DemoSectionInfo extends StatelessWidget {
 
     return Align(
       alignment: AlignmentDirectional.topStart,
-       Container(
+      Container(
         padding: const EdgeInsetsDirectional.only(
           start: 24,
           top: 12,
@@ -667,25 +659,23 @@ class _DemoSectionInfo extends StatelessWidget {
           bottom: 32,
         ),
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
-         SingleChildScrollView(
-           Column(
+        SingleChildScrollView(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            
-              Text(
-                title,
-                style: textTheme.headline4.apply(
-                  color: colorScheme.onSurface,
-                  fontSizeDelta:
-                      isDisplayDesktop(context) ? desktopDisplay1FontDelta : 0,
-                ),
+            Text(
+              title,
+              style: textTheme.headline4.apply(
+                color: colorScheme.onSurface,
+                fontSizeDelta:
+                    isDisplayDesktop(context) ? desktopDisplay1FontDelta : 0,
               ),
-              const SizedBox(height: 12),
-              Text(
-                description,
-                style: textTheme.bodyText2.apply(color: colorScheme.onSurface),
-              )
-            ,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              description,
+              style: textTheme.bodyText2.apply(color: colorScheme.onSurface),
+            ),
           ),
         ),
       ),
@@ -708,21 +698,21 @@ class DemoWrapper extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       height: height,
-       Material(
+      Material(
         clipBehavior: Clip.antiAlias,
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(10.0),
           bottom: Radius.circular(2.0),
         ),
-         Theme(
+        Theme(
           data: MaterialDemoThemeData.themeData.copyWith(
             platform: GalleryOptions.of(context).platform,
           ),
-           CupertinoTheme(
+          CupertinoTheme(
             data: const CupertinoThemeData()
                 .copyWith(brightness: Brightness.light),
-             ApplyTextOptions(
-               Builder(builder: buildRoute),
+            ApplyTextOptions(
+              Builder(builder: buildRoute),
             ),
           ),
         ),
@@ -747,13 +737,13 @@ class _DemoSectionCode extends StatelessWidget {
 
     return Theme(
       data: GalleryThemeData.darkThemeData,
-       Padding(
+      Padding(
         padding: const EdgeInsets.only(bottom: 16),
-         Container(
+        Container(
           color: isDesktop ? null : GalleryThemeData.darkThemeData.canvasColor,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: maxHeight,
-           codeWidget,
+          codeWidget,
         ),
       ),
     );
@@ -796,45 +786,43 @@ class CodeDisplayPage extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      
-        Padding(
-          padding: isDesktop
-              ? const EdgeInsets.only(bottom: 8)
-              : const EdgeInsets.symmetric(vertical: 8),
-           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white.withOpacity(0.15),
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-              ),
+      Padding(
+        padding: isDesktop
+            ? const EdgeInsets.only(bottom: 8)
+            : const EdgeInsets.symmetric(vertical: 8),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white.withOpacity(0.15),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4)),
             ),
-            onPressed: () async {
-              await Clipboard.setData(ClipboardData(text: _plainTextCode))
-                  .then(_showSnackBarOnCopySuccess)
-                  .catchError(_showSnackBarOnCopyFailure);
-            },
-             Text(
-              GalleryLocalizations.of(context).demoCodeViewerCopyAll,
-              style: Theme.of(context).textTheme.button.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
+          ),
+          onPressed: () async {
+            await Clipboard.setData(ClipboardData(text: _plainTextCode))
+                .then(_showSnackBarOnCopySuccess)
+                .catchError(_showSnackBarOnCopyFailure);
+          },
+          Text(
+            GalleryLocalizations.of(context).demoCodeViewerCopyAll,
+            style: Theme.of(context).textTheme.button.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+        ),
+      ),
+      Expanded(
+        SingleChildScrollView(
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            RichText(
+              textDirection: TextDirection.ltr,
+              text: _richTextCode,
             ),
           ),
         ),
-        Expanded(
-           SingleChildScrollView(
-             Container(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-               RichText(
-                textDirection: TextDirection.ltr,
-                text: _richTextCode,
-              ),
-            ),
-          ),
-        )
-      ,
+      ),
     );
   }
 }

@@ -43,7 +43,7 @@ class _Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ApplyTextOptions(
-       Backdrop(
+      Backdrop(
         frontLayer: SizedBox(),
         backLayerItems: [
           FlyForm(),

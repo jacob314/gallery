@@ -71,7 +71,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
       leading: _showLeading.value
           ? CircleAvatar(
               backgroundColor: colorScheme.primary,
-               Icon(Icons.access_alarm, color: colorScheme.onPrimary),
+              Icon(Icons.access_alarm, color: colorScheme.onPrimary),
             )
           : null,
       actions: [
@@ -81,7 +81,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
               _displayBanner.value = false;
             });
           },
-           Text(GalleryLocalizations.of(context).signIn),
+          Text(GalleryLocalizations.of(context).signIn),
         ),
         if (_showMultipleActions.value)
           TextButton(
@@ -90,7 +90,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
                 _displayBanner.value = false;
               });
             },
-             Text(GalleryLocalizations.of(context).dismiss),
+            Text(GalleryLocalizations.of(context).dismiss),
           ),
       ],
       backgroundColor: colorScheme.background,
@@ -106,21 +106,18 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
             itemBuilder: (context) => <PopupMenuEntry<BannerDemoAction>>[
               PopupMenuItem<BannerDemoAction>(
                 value: BannerDemoAction.reset,
-                
-                    Text(GalleryLocalizations.of(context).bannerDemoResetText),
+                Text(GalleryLocalizations.of(context).bannerDemoResetText),
               ),
               const PopupMenuDivider(),
               CheckedPopupMenuItem<BannerDemoAction>(
                 value: BannerDemoAction.showMultipleActions,
                 checked: _showMultipleActions.value,
-                 Text(
-                    GalleryLocalizations.of(context).bannerDemoMultipleText),
+                Text(GalleryLocalizations.of(context).bannerDemoMultipleText),
               ),
               CheckedPopupMenuItem<BannerDemoAction>(
                 value: BannerDemoAction.showLeading,
                 checked: _showLeading.value,
-                 Text(
-                    GalleryLocalizations.of(context).bannerDemoLeadingText),
+                Text(GalleryLocalizations.of(context).bannerDemoLeadingText),
               ),
             ],
           ),

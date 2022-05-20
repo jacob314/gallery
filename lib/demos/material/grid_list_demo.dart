@@ -92,7 +92,7 @@ class GridListDemo extends StatelessWidget {
         crossAxisSpacing: 8,
         padding: const EdgeInsets.all(8),
         childAspectRatio: 1,
-         _photos(context).map<Widget>((photo) {
+        _photos(context).map<Widget>((photo) {
           return _GridDemoPhotoItem(
             photo: photo,
             tileStyle: type,
@@ -126,7 +126,7 @@ class _GridTitleText extends StatelessWidget {
     return FittedBox(
       fit: BoxFit.scaleDown,
       alignment: AlignmentDirectional.centerStart,
-       Text(text),
+      Text(text),
     );
   }
 }
@@ -146,7 +146,7 @@ class _GridDemoPhotoItem extends StatelessWidget {
     final Widget image = Material(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       clipBehavior: Clip.antiAlias,
-       Image.asset(
+      Image.asset(
         photo.assetName,
         package: 'flutter_gallery_assets',
         fit: BoxFit.cover,
@@ -164,12 +164,12 @@ class _GridDemoPhotoItem extends StatelessWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(4)),
             ),
             clipBehavior: Clip.antiAlias,
-             GridTileBar(
+            GridTileBar(
               title: _GridTitleText(photo.title),
               backgroundColor: Colors.black45,
             ),
           ),
-           image,
+          image,
         );
       case GridListDemoType.footer:
         return GridTile(
@@ -179,13 +179,13 @@ class _GridDemoPhotoItem extends StatelessWidget {
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(4)),
             ),
             clipBehavior: Clip.antiAlias,
-             GridTileBar(
+            GridTileBar(
               backgroundColor: Colors.black45,
               title: _GridTitleText(photo.title),
               subtitle: _GridTitleText(photo.subtitle),
             ),
           ),
-           image,
+          image,
         );
     }
     return null;

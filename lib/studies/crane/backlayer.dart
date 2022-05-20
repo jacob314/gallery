@@ -33,11 +33,11 @@ class _BackLayerState extends State<BackLayer> {
     final tabIndex = widget.tabController.index;
     return IndexedStack(
       index: tabIndex,
-       [
+      [
         for (BackLayerItem backLayerItem in widget.backLayerItems)
           ExcludeFocus(
             excluding: backLayerItem.index != tabIndex,
-             backLayerItem,
+            backLayerItem,
           )
       ],
     );

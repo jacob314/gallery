@@ -30,7 +30,7 @@ class MobileProductCard extends StatelessWidget {
       container: true,
       button: true,
       enabled: true,
-       _buildProductCard(
+      _buildProductCard(
         context: context,
         product: product,
         imageAspectRatio: imageAspectRatio,
@@ -87,56 +87,50 @@ Widget _buildProductCard({
       return Semantics(
         hint:
             GalleryLocalizations.of(context).shrineScreenReaderProductAddToCart,
-         GestureDetector(
+        GestureDetector(
           onTap: () {
             model.addProductToCart(product.id);
           },
-           child,
+          child,
         ),
       );
     },
-     Stack(
-      
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          
-            isDesktop
-                ? imageWidget
-                : AspectRatio(
-                    aspectRatio: imageAspectRatio,
-                     imageWidget,
-                  ),
-            SizedBox(
-               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                
-                  const SizedBox(height: 23),
-                  SizedBox(
-                    width: imageWidth,
-                     Text(
-                      product == null ? '' : product.name(context),
-                      style: theme.textTheme.button,
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    product == null ? '' : formatter.format(product.price),
-                    style: theme.textTheme.caption,
-                  )
-                ,
+    Stack(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        isDesktop
+            ? imageWidget
+            : AspectRatio(
+                aspectRatio: imageAspectRatio,
+                imageWidget,
               ),
-            )
-          ,
+        SizedBox(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            const SizedBox(height: 23),
+            SizedBox(
+              width: imageWidth,
+              Text(
+                product == null ? '' : product.name(context),
+                style: theme.textTheme.button,
+                softWrap: true,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              product == null ? '' : formatter.format(product.price),
+              style: theme.textTheme.caption,
+            ),
+          ),
         ),
-        const Padding(
-          padding: EdgeInsets.all(16),
-           Icon(Icons.add_shopping_cart),
-        )
-      ,
+      ),
+      const Padding(
+        padding: EdgeInsets.all(16),
+        Icon(Icons.add_shopping_cart),
+      ),
     ),
   );
 }

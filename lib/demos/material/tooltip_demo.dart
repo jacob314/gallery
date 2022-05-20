@@ -18,26 +18,23 @@ class TooltipDemo extends StatelessWidget {
         title: Text(GalleryLocalizations.of(context).demoTooltipTitle),
       ),
       body: Center(
-         Padding(
+        Padding(
           padding: const EdgeInsets.all(8),
-           Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            
-              Text(
-                GalleryLocalizations.of(context).demoTooltipInstructions,
-                textAlign: TextAlign.center,
+            Text(
+              GalleryLocalizations.of(context).demoTooltipInstructions,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Tooltip(
+              message: GalleryLocalizations.of(context).starterAppTooltipSearch,
+              IconButton(
+                color: Theme.of(context).colorScheme.primary,
+                onPressed: () {},
+                icon: const Icon(Icons.search),
               ),
-              const SizedBox(height: 16),
-              Tooltip(
-                message:
-                    GalleryLocalizations.of(context).starterAppTooltipSearch,
-                 IconButton(
-                  color: Theme.of(context).colorScheme.primary,
-                  onPressed: () {},
-                  icon: const Icon(Icons.search),
-                ),
-              )
-            ,
+            ),
           ),
         ),
       ),

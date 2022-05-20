@@ -52,32 +52,30 @@ class _HorizontalDividerDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-       Column(
-        
-          Expanded(
-             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.deepPurpleAccent,
-              ),
+      Column(
+        Expanded(
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.deepPurpleAccent,
             ),
           ),
-          const Divider(
-            color: Colors.grey,
-            height: 20,
-            thickness: 1,
-            indent: 20,
-            endIndent: 0,
-          ),
-          Expanded(
-             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.deepOrangeAccent,
-              ),
+        ),
+        const Divider(
+          color: Colors.grey,
+          height: 20,
+          thickness: 1,
+          indent: 20,
+          endIndent: 0,
+        ),
+        Expanded(
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.deepOrangeAccent,
             ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }
@@ -92,32 +90,30 @@ class _VerticalDividerDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-       Row(
-        
-          Expanded(
-             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.deepPurpleAccent,
-              ),
+      Row(
+        Expanded(
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.deepPurpleAccent,
             ),
           ),
-          const VerticalDivider(
-            color: Colors.grey,
-            thickness: 1,
-            indent: 20,
-            endIndent: 0,
-            width: 20,
-          ),
-          Expanded(
-             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.deepOrangeAccent,
-              ),
+        ),
+        const VerticalDivider(
+          color: Colors.grey,
+          thickness: 1,
+          indent: 20,
+          endIndent: 0,
+          width: 20,
+        ),
+        Expanded(
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.deepOrangeAccent,
             ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }

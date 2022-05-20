@@ -88,9 +88,9 @@ class _HighlightFocusState extends State<HighlightFocus> {
           return KeyEventResult.ignored;
         }
       },
-       Container(
+      Container(
         foregroundDecoration: isFocused ? _highlightedDecoration : null,
-         widget.child,
+        widget.child,
       ),
     );
   }

@@ -17,19 +17,17 @@ class VerticalFractionBar extends StatelessWidget {
       return SizedBox(
         height: constraints.maxHeight,
         width: 4,
-         Column(
-          
-            SizedBox(
-              height: (1 - fraction) * constraints.maxHeight,
-               Container(
-                color: Colors.black,
-              ),
+        Column(
+          SizedBox(
+            height: (1 - fraction) * constraints.maxHeight,
+            Container(
+              color: Colors.black,
             ),
-            SizedBox(
-              height: fraction * constraints.maxHeight,
-               Container(color: color),
-            )
-          ,
+          ),
+          SizedBox(
+            height: fraction * constraints.maxHeight,
+            Container(color: color),
+          ),
         ),
       );
     });

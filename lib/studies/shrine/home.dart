@@ -49,25 +49,23 @@ class HomePage extends StatelessWidget {
     // This way, a11y users do not have to scroll through the entire list to
     // find the cart, and can easily get to the cart from anywhere on the page.
     return ApplyTextOptions(
-       Stack(
-        
+      Stack(
+        Semantics(
+          container: true,
+          sortKey: const OrdinalSortKey(1, name: _ordinalSortKeyName),
+          backdrop,
+        ),
+        ExcludeSemantics(scrim),
+        Align(
+          alignment: isDesktop
+              ? AlignmentDirectional.topEnd
+              : AlignmentDirectional.bottomEnd,
           Semantics(
             container: true,
-            sortKey: const OrdinalSortKey(1, name: _ordinalSortKeyName),
-             backdrop,
+            sortKey: const OrdinalSortKey(0, name: _ordinalSortKeyName),
+            expandingBottomSheet,
           ),
-          ExcludeSemantics( scrim),
-          Align(
-            alignment: isDesktop
-                ? AlignmentDirectional.topEnd
-                : AlignmentDirectional.bottomEnd,
-             Semantics(
-              container: true,
-              sortKey: const OrdinalSortKey(0, name: _ordinalSortKeyName),
-               expandingBottomSheet,
-            ),
-          )
-        ,
+        ),
       ),
     );
   }

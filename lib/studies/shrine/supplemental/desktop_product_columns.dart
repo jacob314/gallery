@@ -47,10 +47,10 @@ class DesktopProductCardColumn extends StatelessWidget {
 
       return SizedBox(
         width: largeImageWidth,
-         Column(
+        Column(
           crossAxisAlignment:
               alignToEnd ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-           [
+          [
             if (lowerStart) Container(height: columnTopSpace),
             ...List<Widget>.generate(currentColumnWidgetCount, (index) {
               Widget card;
@@ -73,7 +73,7 @@ class DesktopProductCardColumn extends StatelessWidget {
                   height: productCardDividerHeight,
                 );
               }
-              return RepaintBoundary( card);
+              return RepaintBoundary(card);
             }),
           ],
         ),

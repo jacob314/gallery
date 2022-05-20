@@ -38,10 +38,10 @@ class _LoginPageState extends State<LoginPage> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return ApplyTextOptions(
-       Scaffold(
+      Scaffold(
         appBar: AppBar(automaticallyImplyLeading: false),
         body: SafeArea(
-           _MainView(
+          _MainView(
             usernameController: _usernameController.value,
             passwordController: _passwordController.value,
           ),
@@ -115,16 +115,16 @@ class _MainView extends StatelessWidget {
     }
 
     return Column(
-       [
+      [
         if (isDesktop) const _TopBar(),
         Expanded(
-           Align(
+          Align(
             alignment: isDesktop ? Alignment.center : Alignment.topCenter,
-             ListView(
+            ListView(
               restorationId: 'login_list_view',
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 24),
-               listViewChildren,
+              listViewChildren,
             ),
           ),
         ),
@@ -145,51 +145,44 @@ class _TopBar extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.symmetric(horizontal: 30),
-       Wrap(
+      Wrap(
         alignment: WrapAlignment.spaceBetween,
-        
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            
-              ExcludeSemantics(
-                 SizedBox(
-                  height: 80,
-                   FadeInImagePlaceholder(
-                    image:
-                        const AssetImage('logo.png', package: 'rally_assets'),
-                    placeholder: LayoutBuilder(builder: (context, constraints) {
-                      return SizedBox(
-                        width: constraints.maxHeight,
-                        height: constraints.maxHeight,
-                      );
-                    }),
-                  ),
-                ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          ExcludeSemantics(
+            SizedBox(
+              height: 80,
+              FadeInImagePlaceholder(
+                image: const AssetImage('logo.png', package: 'rally_assets'),
+                placeholder: LayoutBuilder(builder: (context, constraints) {
+                  return SizedBox(
+                    width: constraints.maxHeight,
+                    height: constraints.maxHeight,
+                  );
+                }),
               ),
-              spacing,
-              Text(
-                GalleryLocalizations.of(context).rallyLoginLoginToRally,
-                style: Theme.of(context).textTheme.bodyText1.copyWith(
-                      fontSize: 35 / reducedTextScale(context),
-                      fontWeight: FontWeight.w600,
-                    ),
-              )
-            ,
+            ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            
-              Text(
-                GalleryLocalizations.of(context).rallyLoginNoAccount,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-              spacing,
-              _BorderButton(
-                text: GalleryLocalizations.of(context).rallyLoginSignUp,
-              )
-            ,
-          )
-        ,
+          spacing,
+          Text(
+            GalleryLocalizations.of(context).rallyLoginLoginToRally,
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  fontSize: 35 / reducedTextScale(context),
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          Text(
+            GalleryLocalizations.of(context).rallyLoginNoAccount,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          spacing,
+          _BorderButton(
+            text: GalleryLocalizations.of(context).rallyLoginSignUp,
+          ),
+        ),
       ),
     );
   }
@@ -204,10 +197,10 @@ class _SmallLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(vertical: 64),
-       SizedBox(
+      SizedBox(
         height: 160,
-         ExcludeSemantics(
-           FadeInImagePlaceholder(
+        ExcludeSemantics(
+          FadeInImagePlaceholder(
             image: AssetImage('logo.png', package: 'rally_assets'),
             placeholder: SizedBox.shrink(),
           ),
@@ -231,9 +224,9 @@ class _UsernameInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-       Container(
+      Container(
         constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
-         TextField(
+        TextField(
           textInputAction: TextInputAction.next,
           controller: usernameController,
           decoration: InputDecoration(
@@ -259,9 +252,9 @@ class _PasswordInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-       Container(
+      Container(
         constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
-         TextField(
+        TextField(
           controller: passwordController,
           decoration: InputDecoration(
             labelText: GalleryLocalizations.of(context).rallyLoginPassword,
@@ -293,9 +286,9 @@ class _ThumbButtonState extends State<_ThumbButton> {
       button: true,
       enabled: true,
       label: GalleryLocalizations.of(context).rallyLoginLabelLogin,
-       GestureDetector(
+      GestureDetector(
         onTap: widget.onTap,
-         Focus(
+        Focus(
           onKey: (node, event) {
             if (event is RawKeyDownEvent) {
               if (event.logicalKey == LogicalKeyboardKey.enter ||
@@ -322,11 +315,11 @@ class _ThumbButtonState extends State<_ThumbButton> {
               });
             }
           },
-           Container(
+          Container(
             decoration: borderDecoration,
             height: 120,
-             ExcludeSemantics(
-               Image.asset(
+            ExcludeSemantics(
+              Image.asset(
                 'thumb.png',
                 package: 'rally_assets',
               ),
@@ -352,21 +345,19 @@ class _LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-       Container(
+      Container(
         constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
         padding: const EdgeInsets.symmetric(vertical: 30),
-         Row(
-          
-            const Icon(Icons.check_circle_outline,
-                color: RallyColors.buttonColor),
-            const SizedBox(width: 12),
-            Text(GalleryLocalizations.of(context).rallyLoginRememberMe),
-            const Expanded( SizedBox.shrink()),
-            _FilledButton(
-              text: GalleryLocalizations.of(context).rallyLoginButtonLogin,
-              onTap: onTap,
-            )
-          ,
+        Row(
+          const Icon(Icons.check_circle_outline,
+              color: RallyColors.buttonColor),
+          const SizedBox(width: 12),
+          Text(GalleryLocalizations.of(context).rallyLoginRememberMe),
+          const Expanded(SizedBox.shrink()),
+          _FilledButton(
+            text: GalleryLocalizations.of(context).rallyLoginButtonLogin,
+            onTap: onTap,
+          ),
         ),
       ),
     );
@@ -392,7 +383,7 @@ class _BorderButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).restorablePushNamed(RallyApp.homeRoute);
       },
-       Text(text),
+      Text(text),
     );
   }
 }
@@ -416,12 +407,10 @@ class _FilledButton extends StatelessWidget {
         ),
       ),
       onPressed: onTap,
-       Row(
-        
-          const Icon(Icons.lock),
-          const SizedBox(width: 6),
-          Text(text)
-        ,
+      Row(
+        const Icon(Icons.lock),
+        const SizedBox(width: 6),
+        Text(text),
       ),
     );
   }

@@ -60,7 +60,7 @@ class _FrontLayerState extends State<_FrontLayer> {
         top: 20,
         bottom: 22,
       ),
-       Text(
+      Text(
         widget.title,
         style: Theme.of(context).textTheme.subtitle2,
       ),
@@ -80,11 +80,11 @@ class _FrontLayerState extends State<_FrontLayer> {
 
     return FocusTraversalGroup(
       policy: ReadingOrderTraversalPolicy(),
-       Padding(
+      Padding(
         padding: isDesktop
             ? EdgeInsets.zero
             : EdgeInsets.only(top: widget.mobileTopOffset),
-         PhysicalShape(
+        PhysicalShape(
           elevation: 16,
           color: cranePrimaryWhite,
           clipper: const ShapeBorderClipper(
@@ -95,7 +95,7 @@ class _FrontLayerState extends State<_FrontLayer> {
               ),
             ),
           ),
-           StaggeredGridView.countBuilder(
+          StaggeredGridView.countBuilder(
             key: ValueKey('CraneListView-${widget.index}'),
             restorationId: widget.restorationId,
             crossAxisCount: crossAxisCount,
@@ -215,11 +215,11 @@ class _BackdropState extends State<Backdrop>
 
     return Material(
       color: cranePurple800,
-       Padding(
+      Padding(
         padding: const EdgeInsets.only(top: 12),
-         FocusTraversalGroup(
+        FocusTraversalGroup(
           policy: ReadingOrderTraversalPolicy(),
-           Scaffold(
+          Scaffold(
             backgroundColor: cranePurple800,
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -232,70 +232,66 @@ class _BackdropState extends State<Backdrop>
               ),
             ),
             body: Stack(
-              
-                BackLayer(
-                  tabController: _tabController,
-                  backLayerItems: widget.backLayerItems,
+              BackLayer(
+                tabController: _tabController,
+                backLayerItems: widget.backLayerItems,
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: isDesktop
+                      ? (isDisplaySmallDesktop(context)
+                              ? textFieldHeight * 3
+                              : textFieldHeight * 2) +
+                          20 * textScaleFactor / 2
+                      : 175 + 140 * textScaleFactor / 2,
                 ),
-                Container(
-                  margin: EdgeInsets.only(
-                    top: isDesktop
-                        ? (isDisplaySmallDesktop(context)
-                                ? textFieldHeight * 3
-                                : textFieldHeight * 2) +
-                            20 * textScaleFactor / 2
-                        : 175 + 140 * textScaleFactor / 2,
-                  ),
-                  // To display the middle front layer higher than the others,
-                  // we allow the TabBarView to overflow by an offset
-                  // (doubled because it technically overflows top & bottom).
-                  // The other front layers are top padded by this offset.
-                   LayoutBuilder(builder: (context, constraints) {
-                    return OverflowBox(
-                      maxHeight:
-                          constraints.maxHeight + _sleepLayerTopOffset * 2,
-                       TabBarView(
-                        physics: isDesktop
-                            ? const NeverScrollableScrollPhysics()
-                            : null, // use default TabBarView physics
-                        controller: _tabController,
-                        
-                          SlideTransition(
-                            position: _flyLayerHorizontalOffset,
-                             _FrontLayer(
-                              title: GalleryLocalizations.of(context)
-                                  .craneFlySubhead,
-                              index: 0,
-                              mobileTopOffset: _sleepLayerTopOffset,
-                              restorationId: 'fly-subhead',
-                            ),
-                          ),
-                          SlideTransition(
-                            position: _sleepLayerHorizontalOffset,
-                             _FrontLayer(
-                              title: GalleryLocalizations.of(context)
-                                  .craneSleepSubhead,
-                              index: 1,
-                              mobileTopOffset: 0,
-                              restorationId: 'sleep-subhead',
-                            ),
-                          ),
-                          SlideTransition(
-                            position: _eatLayerHorizontalOffset,
-                             _FrontLayer(
-                              title: GalleryLocalizations.of(context)
-                                  .craneEatSubhead,
-                              index: 2,
-                              mobileTopOffset: _sleepLayerTopOffset,
-                              restorationId: 'eat-subhead',
-                            ),
-                          )
-                        ,
+                // To display the middle front layer higher than the others,
+                // we allow the TabBarView to overflow by an offset
+                // (doubled because it technically overflows top & bottom).
+                // The other front layers are top padded by this offset.
+                LayoutBuilder(builder: (context, constraints) {
+                  return OverflowBox(
+                    maxHeight: constraints.maxHeight + _sleepLayerTopOffset * 2,
+                    TabBarView(
+                      physics: isDesktop
+                          ? const NeverScrollableScrollPhysics()
+                          : null, // use default TabBarView physics
+                      controller: _tabController,
+
+                      SlideTransition(
+                        position: _flyLayerHorizontalOffset,
+                        _FrontLayer(
+                          title:
+                              GalleryLocalizations.of(context).craneFlySubhead,
+                          index: 0,
+                          mobileTopOffset: _sleepLayerTopOffset,
+                          restorationId: 'fly-subhead',
+                        ),
                       ),
-                    );
-                  }),
-                )
-              ,
+                      SlideTransition(
+                        position: _sleepLayerHorizontalOffset,
+                        _FrontLayer(
+                          title: GalleryLocalizations.of(context)
+                              .craneSleepSubhead,
+                          index: 1,
+                          mobileTopOffset: 0,
+                          restorationId: 'sleep-subhead',
+                        ),
+                      ),
+                      SlideTransition(
+                        position: _eatLayerHorizontalOffset,
+                        _FrontLayer(
+                          title:
+                              GalleryLocalizations.of(context).craneEatSubhead,
+                          index: 2,
+                          mobileTopOffset: _sleepLayerTopOffset,
+                          restorationId: 'eat-subhead',
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
             ),
           ),
         ),
@@ -323,63 +319,61 @@ class _CraneAppBarState extends State<CraneAppBar> {
     final textScaleFactor = GalleryOptions.of(context).textScaleFactor(context);
 
     return SafeArea(
-       Padding(
+      Padding(
         padding: EdgeInsets.symmetric(
           horizontal:
               isDesktop && !isSmallDesktop ? appPaddingLarge : appPaddingSmall,
         ),
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          
-            const ExcludeSemantics(
-               FadeInImagePlaceholder(
-                image: AssetImage(
-                  'crane/logo/logo.png',
-                  package: 'flutter_gallery_assets',
-                ),
-                placeholder: SizedBox(
-                  width: 40,
-                  height: 60,
-                ),
+          const ExcludeSemantics(
+            FadeInImagePlaceholder(
+              image: AssetImage(
+                'crane/logo/logo.png',
+                package: 'flutter_gallery_assets',
+              ),
+              placeholder: SizedBox(
                 width: 40,
                 height: 60,
               ),
+              width: 40,
+              height: 60,
             ),
-            Expanded(
-               Padding(
-                padding: const EdgeInsetsDirectional.only(start: 24),
-                 Theme(
-                  data: Theme.of(context).copyWith(
-                    splashColor: Colors.transparent,
+          ),
+          Expanded(
+            Padding(
+              padding: const EdgeInsetsDirectional.only(start: 24),
+              Theme(
+                data: Theme.of(context).copyWith(
+                  splashColor: Colors.transparent,
+                ),
+                TabBar(
+                  indicator: BorderTabIndicator(
+                    indicatorHeight: isDesktop ? 28 : 32,
+                    textScaleFactor: textScaleFactor,
                   ),
-                   TabBar(
-                    indicator: BorderTabIndicator(
-                      indicatorHeight: isDesktop ? 28 : 32,
-                      textScaleFactor: textScaleFactor,
-                    ),
-                    controller: widget.tabController,
-                    labelPadding: isDesktop
-                        ? const EdgeInsets.symmetric(horizontal: 32)
-                        : EdgeInsets.zero,
-                    isScrollable: isDesktop, // left-align tabs on desktop
-                    labelStyle: Theme.of(context).textTheme.button,
-                    labelColor: cranePrimaryWhite,
-                    unselectedLabelColor: cranePrimaryWhite.withOpacity(.6),
-                    onTap: (index) => widget.tabController.animateTo(
-                      index,
-                      duration: const Duration(milliseconds: 300),
-                    ),
-                    tabs: [
-                      Tab(text: GalleryLocalizations.of(context).craneFly),
-                      Tab(text: GalleryLocalizations.of(context).craneSleep),
-                      Tab(text: GalleryLocalizations.of(context).craneEat),
-                    ],
+                  controller: widget.tabController,
+                  labelPadding: isDesktop
+                      ? const EdgeInsets.symmetric(horizontal: 32)
+                      : EdgeInsets.zero,
+                  isScrollable: isDesktop, // left-align tabs on desktop
+                  labelStyle: Theme.of(context).textTheme.button,
+                  labelColor: cranePrimaryWhite,
+                  unselectedLabelColor: cranePrimaryWhite.withOpacity(.6),
+                  onTap: (index) => widget.tabController.animateTo(
+                    index,
+                    duration: const Duration(milliseconds: 300),
                   ),
+                  tabs: [
+                    Tab(text: GalleryLocalizations.of(context).craneFly),
+                    Tab(text: GalleryLocalizations.of(context).craneSleep),
+                    Tab(text: GalleryLocalizations.of(context).craneEat),
+                  ],
                 ),
               ),
-            )
-          ,
+            ),
+          ),
         ),
       ),
     );

@@ -65,20 +65,18 @@ class _TextButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Column(
+      Column(
         mainAxisSize: MainAxisSize.min,
-        
-          TextButton(
-            onPressed: () {},
-             Text(GalleryLocalizations.of(context).buttonText),
-          ),
-          const SizedBox(height: 12),
-          TextButton.icon(
-            icon: const Icon(Icons.add, size: 18),
-            label: Text(GalleryLocalizations.of(context).buttonText),
-            onPressed: () {},
-          )
-        ,
+        TextButton(
+          onPressed: () {},
+          Text(GalleryLocalizations.of(context).buttonText),
+        ),
+        const SizedBox(height: 12),
+        TextButton.icon(
+          icon: const Icon(Icons.add, size: 18),
+          label: Text(GalleryLocalizations.of(context).buttonText),
+          onPressed: () {},
+        ),
       ),
     );
   }
@@ -92,20 +90,18 @@ class _ElevatedButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Column(
+      Column(
         mainAxisSize: MainAxisSize.min,
-        
-          ElevatedButton(
-            onPressed: () {},
-             Text(GalleryLocalizations.of(context).buttonText),
-          ),
-          const SizedBox(height: 12),
-          ElevatedButton.icon(
-            icon: const Icon(Icons.add, size: 18),
-            label: Text(GalleryLocalizations.of(context).buttonText),
-            onPressed: () {},
-          )
-        ,
+        ElevatedButton(
+          onPressed: () {},
+          Text(GalleryLocalizations.of(context).buttonText),
+        ),
+        const SizedBox(height: 12),
+        ElevatedButton.icon(
+          icon: const Icon(Icons.add, size: 18),
+          label: Text(GalleryLocalizations.of(context).buttonText),
+          onPressed: () {},
+        ),
       ),
     );
   }
@@ -119,20 +115,18 @@ class _OutlinedButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Column(
+      Column(
         mainAxisSize: MainAxisSize.min,
-        
-          OutlinedButton(
-            onPressed: () {},
-             Text(GalleryLocalizations.of(context).buttonText),
-          ),
-          const SizedBox(height: 12),
-          OutlinedButton.icon(
-            icon: const Icon(Icons.add, size: 18),
-            label: Text(GalleryLocalizations.of(context).buttonText),
-            onPressed: () {},
-          )
-        ,
+        OutlinedButton(
+          onPressed: () {},
+          Text(GalleryLocalizations.of(context).buttonText),
+        ),
+        const SizedBox(height: 12),
+        OutlinedButton.icon(
+          icon: const Icon(Icons.add, size: 18),
+          label: Text(GalleryLocalizations.of(context).buttonText),
+          onPressed: () {},
+        ),
       ),
     );
   }
@@ -176,18 +170,16 @@ class _ToggleButtonsDemoState extends State<_ToggleButtonsDemo>
   @override
   Widget build(BuildContext context) {
     return Center(
-       ToggleButtons(
+      ToggleButtons(
         onPressed: (index) {
           setState(() {
             isSelected[index].value = !isSelected[index].value;
           });
         },
         isSelected: isSelected.map((element) => element.value).toList(),
-        
-          Icon(Icons.ac_unit),
-          Icon(Icons.call),
-          Icon(Icons.cake)
-        ,
+        Icon(Icons.ac_unit),
+        Icon(Icons.call),
+        Icon(Icons.cake),
       ),
     );
   }
@@ -201,21 +193,19 @@ class _FloatingActionButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Column(
+      Column(
         mainAxisSize: MainAxisSize.min,
-        
-          FloatingActionButton(
-            onPressed: () {},
-            tooltip: GalleryLocalizations.of(context).buttonTextCreate,
-             const Icon(Icons.add),
-          ),
-          const SizedBox(height: 20),
-          FloatingActionButton.extended(
-            icon: const Icon(Icons.add),
-            label: Text(GalleryLocalizations.of(context).buttonTextCreate),
-            onPressed: () {},
-          )
-        ,
+        FloatingActionButton(
+          onPressed: () {},
+          tooltip: GalleryLocalizations.of(context).buttonTextCreate,
+          const Icon(Icons.add),
+        ),
+        const SizedBox(height: 20),
+        FloatingActionButton.extended(
+          icon: const Icon(Icons.add),
+          label: Text(GalleryLocalizations.of(context).buttonTextCreate),
+          onPressed: () {},
+        ),
       ),
     );
   }

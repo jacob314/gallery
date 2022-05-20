@@ -22,35 +22,33 @@ class TabWithSidebar extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isDisplayDesktop(context)) {
       return Row(
-        
-          Flexible(
-            flex: 2,
-             SingleChildScrollView(
-               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
-                 mainView,
-              ),
+        Flexible(
+          flex: 2,
+          SingleChildScrollView(
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              mainView,
             ),
           ),
-          Expanded(
-            flex: 1,
-             Container(
-              color: RallyColors.inputBackground,
-              padding: const EdgeInsetsDirectional.only(start: 24),
-              height: double.infinity,
-              alignment: AlignmentDirectional.centerStart,
-               ListView(
-                shrinkWrap: true,
-                 sidebarItems,
-              ),
+        ),
+        Expanded(
+          flex: 1,
+          Container(
+            color: RallyColors.inputBackground,
+            padding: const EdgeInsetsDirectional.only(start: 24),
+            height: double.infinity,
+            alignment: AlignmentDirectional.centerStart,
+            ListView(
+              shrinkWrap: true,
+              sidebarItems,
             ),
-          )
-        ,
+          ),
+        ),
       );
     } else {
       return SingleChildScrollView(
         restorationId: restorationId,
-         mainView,
+        mainView,
       );
     }
   }
@@ -67,26 +65,24 @@ class SidebarItem extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      
-        const SizedBox(height: 8),
-        Text(
-          title,
-          style: textTheme.bodyText2.copyWith(
-            fontSize: 16,
-            color: RallyColors.gray60,
-          ),
+      const SizedBox(height: 8),
+      Text(
+        title,
+        style: textTheme.bodyText2.copyWith(
+          fontSize: 16,
+          color: RallyColors.gray60,
         ),
-        const SizedBox(height: 8),
-        Text(
-          value,
-          style: textTheme.bodyText1.copyWith(fontSize: 20),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          color: RallyColors.primaryBackground,
-          height: 1,
-        )
-      ,
+      ),
+      const SizedBox(height: 8),
+      Text(
+        value,
+        style: textTheme.bodyText1.copyWith(fontSize: 20),
+      ),
+      const SizedBox(height: 8),
+      Container(
+        color: RallyColors.primaryBackground,
+        height: 1,
+      ),
     );
   }
 }

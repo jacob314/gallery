@@ -40,21 +40,19 @@ class HorizontalArticlePreview extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
-       [
+      [
         Expanded(
-           Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            
-              Text(
-                data.category,
-                style: textTheme.subtitle1,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                data.title,
-                style: textTheme.headline5.copyWith(fontSize: 16),
-              )
-            ,
+            Text(
+              data.category,
+              style: textTheme.subtitle1,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              data.title,
+              style: textTheme.headline5.copyWith(fontSize: 16),
+            ),
           ),
         ),
         if (minutes != null) ...[
@@ -99,12 +97,12 @@ class VerticalArticlePreview extends StatelessWidget {
 
     return SizedBox(
       width: width ?? double.infinity,
-       Column(
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-         [
+        [
           SizedBox(
             width: double.infinity,
-             FadeInImagePlaceholder(
+            FadeInImagePlaceholder(
               image: AssetImage(
                 data.imageUrl,
                 package: 'flutter_gallery_assets',
@@ -247,47 +245,45 @@ class HashtagBar extends StatelessWidget {
 
     return SizedBox(
       height: height,
-       ListView(
+      ListView(
         restorationId: 'hashtag_bar_list_view',
         scrollDirection: Axis.horizontal,
-        
-          const SizedBox(width: 16),
-          Center(
-             Text(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingTechDesign}',
-              style: textTheme.subtitle2,
-            ),
+        const SizedBox(width: 16),
+        Center(
+          Text(
+            '#${GalleryLocalizations.of(context).fortnightlyTrendingTechDesign}',
+            style: textTheme.subtitle2,
           ),
-          verticalDivider,
-          Center(
-             Text(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingReform}',
-              style: textTheme.subtitle2,
-            ),
+        ),
+        verticalDivider,
+        Center(
+          Text(
+            '#${GalleryLocalizations.of(context).fortnightlyTrendingReform}',
+            style: textTheme.subtitle2,
           ),
-          verticalDivider,
-          Center(
-             Text(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingHealthcareRevolution}',
-              style: textTheme.subtitle2,
-            ),
+        ),
+        verticalDivider,
+        Center(
+          Text(
+            '#${GalleryLocalizations.of(context).fortnightlyTrendingHealthcareRevolution}',
+            style: textTheme.subtitle2,
           ),
-          verticalDivider,
-          Center(
-             Text(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingGreenArmy}',
-              style: textTheme.subtitle2,
-            ),
+        ),
+        verticalDivider,
+        Center(
+          Text(
+            '#${GalleryLocalizations.of(context).fortnightlyTrendingGreenArmy}',
+            style: textTheme.subtitle2,
           ),
-          verticalDivider,
-          Center(
-             Text(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingStocks}',
-              style: textTheme.subtitle2,
-            ),
+        ),
+        verticalDivider,
+        Center(
+          Text(
+            '#${GalleryLocalizations.of(context).fortnightlyTrendingStocks}',
+            style: textTheme.subtitle2,
           ),
-          verticalDivider
-        ,
+        ),
+        verticalDivider,
       ),
     );
   }
@@ -301,21 +297,19 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-       [
+      [
         if (isCloseable)
           Row(
-            
-              IconButton(
-                icon: const Icon(Icons.close),
-                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                onPressed: () => Navigator.pop(context),
-              ),
-              Image.asset(
-                'fortnightly/fortnightly_title.png',
-                package: 'flutter_gallery_assets',
-                excludeFromSemantics: true,
-              )
-            ,
+            IconButton(
+              icon: const Icon(Icons.close),
+              tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
+              onPressed: () => Navigator.pop(context),
+            ),
+            Image.asset(
+              'fortnightly/fortnightly_title.png',
+              package: 'flutter_gallery_assets',
+              excludeFromSemantics: true,
+            ),
           ),
         const SizedBox(height: 32),
         MenuItem(
@@ -346,23 +340,21 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
-       Row(
-        
-          Container(
-            width: 32,
-            alignment: Alignment.centerLeft,
-             header ? null : const Icon(Icons.arrow_drop_down),
+      Row(
+        Container(
+          width: 32,
+          alignment: Alignment.centerLeft,
+          header ? null : const Icon(Icons.arrow_drop_down),
+        ),
+        Expanded(
+          Text(
+            title,
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
+                  fontWeight: header ? FontWeight.w700 : FontWeight.w600,
+                  fontSize: 16,
+                ),
           ),
-          Expanded(
-             Text(
-              title,
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    fontWeight: header ? FontWeight.w700 : FontWeight.w600,
-                    fontSize: 16,
-                  ),
-            ),
-          )
-        ,
+        ),
       ),
     );
   }
@@ -386,39 +378,34 @@ class StockItem extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      
-        Text(ticker, style: textTheme.subtitle1),
-        const SizedBox(height: 2),
-        Row(
-          
-            Expanded(
-               Text(
-                price,
-                style: textTheme.subtitle2.copyWith(
-                  color: textTheme.subtitle2.color.withOpacity(0.75),
-                ),
-              ),
+      Text(ticker, style: textTheme.subtitle1),
+      const SizedBox(height: 2),
+      Row(
+        Expanded(
+          Text(
+            price,
+            style: textTheme.subtitle2.copyWith(
+              color: textTheme.subtitle2.color.withOpacity(0.75),
             ),
-            Text(
-              percent > 0 ? '+' : '-',
-              style: textTheme.subtitle2.copyWith(
-                fontSize: 12,
-                color: percent > 0
-                    ? const Color(0xff20CF63)
-                    : const Color(0xff661FFF),
-              ),
-            ),
-            const SizedBox(width: 4),
-            Text(
-              percentFormat.format(percent.abs() / 100),
-              style: textTheme.caption.copyWith(
-                fontSize: 12,
-                color: textTheme.subtitle2.color.withOpacity(0.75),
-              ),
-            )
-          ,
-        )
-      ,
+          ),
+        ),
+        Text(
+          percent > 0 ? '+' : '-',
+          style: textTheme.subtitle2.copyWith(
+            fontSize: 12,
+            color:
+                percent > 0 ? const Color(0xff20CF63) : const Color(0xff661FFF),
+          ),
+        ),
+        const SizedBox(width: 4),
+        Text(
+          percentFormat.format(percent.abs() / 100),
+          style: textTheme.caption.copyWith(
+            fontSize: 12,
+            color: textTheme.subtitle2.color.withOpacity(0.75),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -434,7 +421,7 @@ List<Widget> buildStockItems(BuildContext context) {
   return <Widget>[
     SizedBox(
       width: double.infinity,
-       FadeInImagePlaceholder(
+      FadeInImagePlaceholder(
         image: const AssetImage(
           'fortnightly/fortnightly_chart.png',
           package: 'flutter_gallery_assets',
@@ -497,38 +484,34 @@ class VideoPreview extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      
-        SizedBox(
-          width: double.infinity,
-           FadeInImagePlaceholder(
-            image: AssetImage(
-              data.imageUrl,
-              package: 'flutter_gallery_assets',
-            ),
-            placeholder: LayoutBuilder(builder: (context, constraints) {
-              return Container(
-                color: Colors.black.withOpacity(0.1),
-                width: constraints.maxWidth,
-                height: constraints.maxWidth / data.imageAspectRatio,
-              );
-            }),
-            fit: BoxFit.contain,
-            width: double.infinity,
-            excludeFromSemantics: true,
+      SizedBox(
+        width: double.infinity,
+        FadeInImagePlaceholder(
+          image: AssetImage(
+            data.imageUrl,
+            package: 'flutter_gallery_assets',
           ),
+          placeholder: LayoutBuilder(builder: (context, constraints) {
+            return Container(
+              color: Colors.black.withOpacity(0.1),
+              width: constraints.maxWidth,
+              height: constraints.maxWidth / data.imageAspectRatio,
+            );
+          }),
+          fit: BoxFit.contain,
+          width: double.infinity,
+          excludeFromSemantics: true,
         ),
-        const SizedBox(height: 4),
-        Row(
-          
-            Expanded(
-               Text(data.category, style: textTheme.subtitle1),
-            ),
-            Text(time, style: textTheme.bodyText1)
-          ,
+      ),
+      const SizedBox(height: 4),
+      Row(
+        Expanded(
+          Text(data.category, style: textTheme.subtitle1),
         ),
-        const SizedBox(height: 4),
-        Text(data.title, style: textTheme.headline5.copyWith(fontSize: 16))
-      ,
+        Text(time, style: textTheme.bodyText1),
+      ),
+      const SizedBox(height: 4),
+      Text(data.title, style: textTheme.headline5.copyWith(fontSize: 16)),
     );
   }
 }

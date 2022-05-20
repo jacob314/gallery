@@ -62,7 +62,7 @@ class _ActionChipDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       ActionChip(
+      ActionChip(
         onPressed: () {},
         avatar: const Icon(
           Icons.brightness_5,
@@ -104,38 +104,36 @@ class _ChoiceChipDemoState extends State<_ChoiceChipDemo>
   @override
   Widget build(BuildContext context) {
     return Center(
-       Wrap(
-        
-          ChoiceChip(
-            label: Text(GalleryLocalizations.of(context).chipSmall),
-            selected: _indexSelected.value == 0,
-            onSelected: (value) {
-              setState(() {
-                _indexSelected.value = value ? 0 : -1;
-              });
-            },
-          ),
-          const SizedBox(width: 8),
-          ChoiceChip(
-            label: Text(GalleryLocalizations.of(context).chipMedium),
-            selected: _indexSelected.value == 1,
-            onSelected: (value) {
-              setState(() {
-                _indexSelected.value = value ? 1 : -1;
-              });
-            },
-          ),
-          const SizedBox(width: 8),
-          ChoiceChip(
-            label: Text(GalleryLocalizations.of(context).chipLarge),
-            selected: _indexSelected.value == 2,
-            onSelected: (value) {
-              setState(() {
-                _indexSelected.value = value ? 2 : -1;
-              });
-            },
-          )
-        ,
+      Wrap(
+        ChoiceChip(
+          label: Text(GalleryLocalizations.of(context).chipSmall),
+          selected: _indexSelected.value == 0,
+          onSelected: (value) {
+            setState(() {
+              _indexSelected.value = value ? 0 : -1;
+            });
+          },
+        ),
+        const SizedBox(width: 8),
+        ChoiceChip(
+          label: Text(GalleryLocalizations.of(context).chipMedium),
+          selected: _indexSelected.value == 1,
+          onSelected: (value) {
+            setState(() {
+              _indexSelected.value = value ? 1 : -1;
+            });
+          },
+        ),
+        const SizedBox(width: 8),
+        ChoiceChip(
+          label: Text(GalleryLocalizations.of(context).chipLarge),
+          selected: _indexSelected.value == 2,
+          onSelected: (value) {
+            setState(() {
+              _indexSelected.value = value ? 2 : -1;
+            });
+          },
+        ),
       ),
     );
   }
@@ -207,12 +205,12 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
     ];
 
     return Center(
-       Wrap(
-         [
+      Wrap(
+        [
           for (final chip in chips)
             Padding(
               padding: const EdgeInsets.all(4),
-               chip,
+              chip,
             )
         ],
       ),
@@ -228,7 +226,7 @@ class _InputChipDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       InputChip(
+      InputChip(
         onPressed: () {},
         onDeleted: () {},
         avatar: const Icon(

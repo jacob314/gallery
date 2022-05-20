@@ -55,7 +55,7 @@ class BottomSheetDemo extends StatelessWidget {
             floatingActionButton: FloatingActionButton(
               onPressed: () {},
               backgroundColor: Theme.of(context).colorScheme.secondary,
-               Icon(
+              Icon(
                 Icons.add,
                 semanticLabel:
                     GalleryLocalizations.of(context).demoBottomSheetAddLabel,
@@ -76,30 +76,28 @@ class _BottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300,
-       Column(
-        
-          SizedBox(
-            height: 70,
-             Center(
-               Text(
-                GalleryLocalizations.of(context).demoBottomSheetHeader,
-                textAlign: TextAlign.center,
-              ),
+      Column(
+        SizedBox(
+          height: 70,
+          Center(
+            Text(
+              GalleryLocalizations.of(context).demoBottomSheetHeader,
+              textAlign: TextAlign.center,
             ),
           ),
-          const Divider(thickness: 1),
-          Expanded(
-             ListView.builder(
-              itemCount: 21,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(GalleryLocalizations.of(context)
-                      .demoBottomSheetItem(index)),
-                );
-              },
-            ),
-          )
-        ,
+        ),
+        const Divider(thickness: 1),
+        Expanded(
+          ListView.builder(
+            itemCount: 21,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(GalleryLocalizations.of(context)
+                    .demoBottomSheetItem(index)),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
@@ -122,11 +120,11 @@ class _ModalBottomSheetDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-       ElevatedButton(
+      ElevatedButton(
         onPressed: () {
           _showModalBottomSheet(context);
         },
-         Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
+        Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
       ),
     );
   }
@@ -179,9 +177,9 @@ class _PersistentBottomSheetDemoState
   @override
   Widget build(BuildContext context) {
     return Center(
-       ElevatedButton(
+      ElevatedButton(
         onPressed: _showBottomSheetCallback,
-         Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
+        Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
       ),
     );
   }

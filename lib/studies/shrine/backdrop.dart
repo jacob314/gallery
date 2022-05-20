@@ -41,22 +41,20 @@ class _FrontLayer extends StatelessWidget {
         borderRadius:
             BorderRadiusDirectional.only(topStart: Radius.circular(46)),
       ),
-       Column(
+      Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        
-          onTap != null
-              ? GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  excludeFromSemantics:
-                      true, // Because there is already a "Close Menu" button on screen.
-                  onTap: onTap,
-                   pageTopArea,
-                )
-              : pageTopArea,
-          Expanded(
-             child,
-          )
-        ,
+        onTap != null
+            ? GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                excludeFromSemantics:
+                    true, // Because there is already a "Close Menu" button on screen.
+                onTap: onTap,
+                pageTopArea,
+              )
+            : pageTopArea,
+        Expanded(
+          child,
+        ),
       ),
     );
   }
@@ -96,7 +94,7 @@ class _BackdropTitle extends AnimatedWidget {
             : Transform(
                 alignment: Alignment.center,
                 transform: Matrix4.rotationY(pi),
-                 slantedMenuIcon,
+                slantedMenuIcon,
               );
 
     final menuButtonTooltip = animation.isCompleted
@@ -109,27 +107,27 @@ class _BackdropTitle extends AnimatedWidget {
       style: Theme.of(context).primaryTextTheme.headline6,
       softWrap: false,
       overflow: TextOverflow.ellipsis,
-       Row(
+      Row(
         // branded icon
         SizedBox(
           width: 72,
-           Semantics(
+          Semantics(
             container: true,
-             IconButton(
+            IconButton(
               padding: const EdgeInsetsDirectional.only(end: 8),
               onPressed: onPress,
               tooltip: menuButtonTooltip,
               icon: Stack(
                 Opacity(
                   opacity: animation.value,
-                   directionalSlantedMenuIcon,
+                  directionalSlantedMenuIcon,
                 ),
                 FractionalTranslation(
                   translation: Tween<Offset>(
                     begin: Offset.zero,
                     end: Offset(1.0 * textDirectionScalar, 0.0),
                   ).evaluate(animation),
-                   const ImageIcon(
+                  const ImageIcon(
                     AssetImage('packages/shrine_images/diamond.png'),
                   ),
                 ),
@@ -140,34 +138,32 @@ class _BackdropTitle extends AnimatedWidget {
         // Here, we do a custom cross fade between backTitle and frontTitle.
         // This makes a smooth animation between the two texts.
         Stack(
-          
-            Opacity(
-              opacity: CurvedAnimation(
-                parent: ReverseAnimation(animation),
-                curve: const Interval(0.5, 1),
-              ).value,
-               FractionalTranslation(
-                translation: Tween<Offset>(
-                  begin: Offset.zero,
-                  end: Offset(0.5 * textDirectionScalar, 0),
-                ).evaluate(animation),
-                 backTitle,
-              ),
+          Opacity(
+            opacity: CurvedAnimation(
+              parent: ReverseAnimation(animation),
+              curve: const Interval(0.5, 1),
+            ).value,
+            FractionalTranslation(
+              translation: Tween<Offset>(
+                begin: Offset.zero,
+                end: Offset(0.5 * textDirectionScalar, 0),
+              ).evaluate(animation),
+              backTitle,
             ),
-            Opacity(
-              opacity: CurvedAnimation(
-                parent: animation,
-                curve: const Interval(0.5, 1),
-              ).value,
-               FractionalTranslation(
-                translation: Tween<Offset>(
-                  begin: Offset(-0.25 * textDirectionScalar, 0),
-                  end: Offset.zero,
-                ).evaluate(animation),
-                 frontTitle,
-              ),
-            )
-          ,
+          ),
+          Opacity(
+            opacity: CurvedAnimation(
+              parent: animation,
+              curve: const Interval(0.5, 1),
+            ).value,
+            FractionalTranslation(
+              translation: Tween<Offset>(
+                begin: Offset(-0.25 * textDirectionScalar, 0),
+                end: Offset.zero,
+              ).evaluate(animation),
+              frontTitle,
+            ),
+          ),
         ),
       ),
     );
@@ -297,30 +293,28 @@ class _BackdropState extends State<Backdrop>
 
     return Stack(
       key: _backdropKey,
-      
+      ExcludeSemantics(
+        excluding: _frontLayerVisible,
+        widget.backLayer,
+      ),
+      PositionedTransition(
+        rect: _layerAnimation,
         ExcludeSemantics(
-          excluding: _frontLayerVisible,
-           widget.backLayer,
-        ),
-        PositionedTransition(
-          rect: _layerAnimation,
-           ExcludeSemantics(
-            excluding: !_frontLayerVisible,
-             AnimatedBuilder(
-              animation: PageStatus.of(context).cartController,
-              builder: (context, child) => AnimatedBuilder(
-                animation: PageStatus.of(context).menuController,
-                builder: (context, child) => _FrontLayer(
-                  onTap: menuPageIsVisible(context)
-                      ? _toggleBackdropLayerVisibility
-                      : null,
-                   widget.frontLayer,
-                ),
+          excluding: !_frontLayerVisible,
+          AnimatedBuilder(
+            animation: PageStatus.of(context).cartController,
+            builder: (context, child) => AnimatedBuilder(
+              animation: PageStatus.of(context).menuController,
+              builder: (context, child) => _FrontLayer(
+                onTap: menuPageIsVisible(context)
+                    ? _toggleBackdropLayerVisibility
+                    : null,
+                widget.frontLayer,
               ),
             ),
           ),
-        )
-      ,
+        ),
+      ),
     );
   }
 
@@ -354,7 +348,7 @@ class _BackdropState extends State<Backdrop>
       animation: PageStatus.of(context).cartController,
       builder: (context, child) => ExcludeSemantics(
         excluding: cartPageIsVisible(context),
-         Scaffold(
+        Scaffold(
           appBar: appBar,
           body: LayoutBuilder(
             builder: _buildStack,
@@ -378,19 +372,17 @@ class DesktopBackdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      
-        backLayer,
-        Padding(
-          padding: EdgeInsetsDirectional.only(
-            start: desktopCategoryMenuPageWidth(context: context),
-          ),
-           Material(
-            elevation: 16,
-            color: Colors.white,
-             frontLayer,
-          ),
-        )
-      ,
+      backLayer,
+      Padding(
+        padding: EdgeInsetsDirectional.only(
+          start: desktopCategoryMenuPageWidth(context: context),
+        ),
+        Material(
+          elevation: 16,
+          color: Colors.white,
+          frontLayer,
+        ),
+      ),
     );
   }
 }

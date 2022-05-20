@@ -18,58 +18,54 @@ class HomePage extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final isDesktop = isDisplayDesktop(context);
     final body = SafeArea(
-       Padding(
+      Padding(
         padding: isDesktop
             ? const EdgeInsets.symmetric(horizontal: 72, vertical: 48)
             : const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-         Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          
-            Text(
-              GalleryLocalizations.of(context).starterAppGenericHeadline,
-              style: textTheme.headline3.copyWith(
-                color: colorScheme.onSecondary,
-              ),
+          Text(
+            GalleryLocalizations.of(context).starterAppGenericHeadline,
+            style: textTheme.headline3.copyWith(
+              color: colorScheme.onSecondary,
             ),
-            const SizedBox(height: 10),
-            Text(
-              GalleryLocalizations.of(context).starterAppGenericSubtitle,
-              style: textTheme.subtitle1,
-            ),
-            const SizedBox(height: 48),
-            Text(
-              GalleryLocalizations.of(context).starterAppGenericBody,
-              style: textTheme.bodyText1,
-            )
-          ,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            GalleryLocalizations.of(context).starterAppGenericSubtitle,
+            style: textTheme.subtitle1,
+          ),
+          const SizedBox(height: 48),
+          Text(
+            GalleryLocalizations.of(context).starterAppGenericBody,
+            style: textTheme.bodyText1,
+          ),
         ),
       ),
     );
 
     if (isDesktop) {
       return Row(
-        
-          const ListDrawer(),
-          const VerticalDivider(width: 1),
-          Expanded(
-             Scaffold(
-              appBar: const AdaptiveAppBar(
-                isDesktop: true,
-              ),
-              body: body,
-              floatingActionButton: FloatingActionButton.extended(
-                heroTag: 'Extended Add',
-                onPressed: () {},
-                label: Text(
-                  GalleryLocalizations.of(context).starterAppGenericButton,
-                  style: TextStyle(color: colorScheme.onSecondary),
-                ),
-                icon: Icon(Icons.add, color: colorScheme.onSecondary),
-                tooltip: GalleryLocalizations.of(context).starterAppTooltipAdd,
-              ),
+        const ListDrawer(),
+        const VerticalDivider(width: 1),
+        Expanded(
+          Scaffold(
+            appBar: const AdaptiveAppBar(
+              isDesktop: true,
             ),
-          )
-        ,
+            body: body,
+            floatingActionButton: FloatingActionButton.extended(
+              heroTag: 'Extended Add',
+              onPressed: () {},
+              label: Text(
+                GalleryLocalizations.of(context).starterAppGenericButton,
+                style: TextStyle(color: colorScheme.onSecondary),
+              ),
+              icon: Icon(Icons.add, color: colorScheme.onSecondary),
+              tooltip: GalleryLocalizations.of(context).starterAppTooltipAdd,
+            ),
+          ),
+        ),
       );
     } else {
       return Scaffold(
@@ -80,7 +76,7 @@ class HomePage extends StatelessWidget {
           heroTag: 'Add',
           onPressed: () {},
           tooltip: GalleryLocalizations.of(context).starterAppTooltipAdd,
-           Icon(
+          Icon(
             Icons.add,
             color: Theme.of(context).colorScheme.onSecondary,
           ),
@@ -114,10 +110,10 @@ class AdaptiveAppBar extends StatelessWidget implements PreferredSizeWidget {
       bottom: isDesktop
           ? PreferredSize(
               preferredSize: const Size.fromHeight(26),
-               Container(
+              Container(
                 alignment: AlignmentDirectional.centerStart,
                 margin: const EdgeInsetsDirectional.fromSTEB(72, 0, 0, 22),
-                 Text(
+                Text(
                   GalleryLocalizations.of(context).starterAppGenericTitle,
                   style: themeData.textTheme.headline6.copyWith(
                     color: themeData.colorScheme.onPrimary,
@@ -163,9 +159,9 @@ class _ListDrawerState extends State<ListDrawer> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Drawer(
-       SafeArea(
-         ListView(
-           [
+      SafeArea(
+        ListView(
+          [
             ListTile(
               title: Text(
                 GalleryLocalizations.of(context).starterAppTitle,

@@ -65,47 +65,43 @@ class _OpenContainerTransformDemoState
             return Container(
               height: 125,
               padding: const EdgeInsets.all(15),
-               Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                
-                  Text(
-                    localizations.demoContainerTransformModalBottomSheetTitle,
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  ToggleButtons(
-                    borderRadius: BorderRadius.circular(2),
-                    selectedBorderColor: Theme.of(context).colorScheme.primary,
-                    onPressed: (index) {
-                      setModalState(() {
-                        setState(() {
-                          _transitionType = index == 0
-                              ? ContainerTransitionType.fade
-                              : ContainerTransitionType.fadeThrough;
-                        });
+                Text(
+                  localizations.demoContainerTransformModalBottomSheetTitle,
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                ToggleButtons(
+                  borderRadius: BorderRadius.circular(2),
+                  selectedBorderColor: Theme.of(context).colorScheme.primary,
+                  onPressed: (index) {
+                    setModalState(() {
+                      setState(() {
+                        _transitionType = index == 0
+                            ? ContainerTransitionType.fade
+                            : ContainerTransitionType.fadeThrough;
                       });
-                    },
-                    isSelected: <bool>[
-                      _transitionType == ContainerTransitionType.fade,
-                      _transitionType == ContainerTransitionType.fadeThrough,
-                    ],
-                    
-                      Text(
-                        localizations.demoContainerTransformTypeFade,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                        ),
-                         Text(
-                          localizations.demoContainerTransformTypeFadeThrough,
-                        ),
-                      )
-                    ,
-                  )
-                ,
+                    });
+                  },
+                  isSelected: <bool>[
+                    _transitionType == ContainerTransitionType.fade,
+                    _transitionType == ContainerTransitionType.fadeThrough,
+                  ],
+                  Text(
+                    localizations.demoContainerTransformTypeFade,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
+                    Text(
+                      localizations.demoContainerTransformTypeFadeThrough,
+                    ),
+                  ),
+                ),
               ),
             );
           },
@@ -130,18 +126,16 @@ class _OpenContainerTransformDemoState
             appBar: AppBar(
               automaticallyImplyLeading: false,
               title: Column(
-                
-                  Text(
-                    localizations.demoContainerTransformTitle,
-                  ),
-                  Text(
-                    '(${localizations.demoContainerTransformDemoInstructions})',
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2
-                        .copyWith(color: Colors.white),
-                  )
-                ,
+                Text(
+                  localizations.demoContainerTransformTitle,
+                ),
+                Text(
+                  '(${localizations.demoContainerTransformDemoInstructions})',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2
+                      .copyWith(color: Colors.white),
+                ),
               ),
               actions: [
                 IconButton(
@@ -156,7 +150,7 @@ class _OpenContainerTransformDemoState
             ),
             body: ListView(
               padding: const EdgeInsets.all(8),
-               [
+              [
                 _OpenContainerWrapper(
                   transitionType: _transitionType,
                   closedBuilder: (context, openContainer) {
@@ -174,84 +168,78 @@ class _OpenContainerTransformDemoState
                   height: 16,
                 ),
                 Row(
-                  
-                    Expanded(
-                       _OpenContainerWrapper(
-                        transitionType: _transitionType,
-                        closedBuilder: (context, openContainer) {
-                          return _SmallDetailsCard(
-                            openContainer: openContainer,
-                            subtitle:
-                                localizations.demoMotionPlaceholderSubtitle,
-                          );
-                        },
-                      ),
+                  Expanded(
+                    _OpenContainerWrapper(
+                      transitionType: _transitionType,
+                      closedBuilder: (context, openContainer) {
+                        return _SmallDetailsCard(
+                          openContainer: openContainer,
+                          subtitle: localizations.demoMotionPlaceholderSubtitle,
+                        );
+                      },
                     ),
-                    const SizedBox(
-                      width: 8,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                    _OpenContainerWrapper(
+                      transitionType: _transitionType,
+                      closedBuilder: (context, openContainer) {
+                        return _SmallDetailsCard(
+                          openContainer: openContainer,
+                          subtitle: localizations.demoMotionPlaceholderSubtitle,
+                        );
+                      },
                     ),
-                    Expanded(
-                       _OpenContainerWrapper(
-                        transitionType: _transitionType,
-                        closedBuilder: (context, openContainer) {
-                          return _SmallDetailsCard(
-                            openContainer: openContainer,
-                            subtitle:
-                                localizations.demoMotionPlaceholderSubtitle,
-                          );
-                        },
-                      ),
-                    )
-                  ,
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 Row(
-                  
-                    Expanded(
-                       _OpenContainerWrapper(
-                        transitionType: _transitionType,
-                        closedBuilder: (context, openContainer) {
-                          return _SmallDetailsCard(
-                            openContainer: openContainer,
-                            subtitle: localizations
-                                .demoMotionSmallPlaceholderSubtitle,
-                          );
-                        },
-                      ),
+                  Expanded(
+                    _OpenContainerWrapper(
+                      transitionType: _transitionType,
+                      closedBuilder: (context, openContainer) {
+                        return _SmallDetailsCard(
+                          openContainer: openContainer,
+                          subtitle:
+                              localizations.demoMotionSmallPlaceholderSubtitle,
+                        );
+                      },
                     ),
-                    const SizedBox(
-                      width: 8,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                    _OpenContainerWrapper(
+                      transitionType: _transitionType,
+                      closedBuilder: (context, openContainer) {
+                        return _SmallDetailsCard(
+                          openContainer: openContainer,
+                          subtitle:
+                              localizations.demoMotionSmallPlaceholderSubtitle,
+                        );
+                      },
                     ),
-                    Expanded(
-                       _OpenContainerWrapper(
-                        transitionType: _transitionType,
-                        closedBuilder: (context, openContainer) {
-                          return _SmallDetailsCard(
-                            openContainer: openContainer,
-                            subtitle: localizations
-                                .demoMotionSmallPlaceholderSubtitle,
-                          );
-                        },
-                      ),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                    _OpenContainerWrapper(
+                      transitionType: _transitionType,
+                      closedBuilder: (context, openContainer) {
+                        return _SmallDetailsCard(
+                          openContainer: openContainer,
+                          subtitle:
+                              localizations.demoMotionSmallPlaceholderSubtitle,
+                        );
+                      },
                     ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Expanded(
-                       _OpenContainerWrapper(
-                        transitionType: _transitionType,
-                        closedBuilder: (context, openContainer) {
-                          return _SmallDetailsCard(
-                            openContainer: openContainer,
-                            subtitle: localizations
-                                .demoMotionSmallPlaceholderSubtitle,
-                          );
-                        },
-                      ),
-                    )
-                  ,
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
@@ -299,8 +287,8 @@ class _OpenContainerTransformDemoState
                 return SizedBox(
                   height: _fabDimension,
                   width: _fabDimension,
-                   Center(
-                     Icon(
+                  Center(
+                    Icon(
                       Icons.add,
                       color: colorScheme.onSecondary,
                     ),
@@ -347,45 +335,43 @@ class _DetailsCard extends StatelessWidget {
     return _InkWellOverlay(
       openContainer: openContainer,
       height: 300,
-       Column(
+      Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        
-          Expanded(
-             Container(
-              color: Colors.black38,
-               Center(
-                 Image.asset(
-                  'placeholders/placeholder_image.png',
-                  package: 'flutter_gallery_assets',
-                  width: 100,
-                ),
+        Expanded(
+          Container(
+            color: Colors.black38,
+            Center(
+              Image.asset(
+                'placeholders/placeholder_image.png',
+                package: 'flutter_gallery_assets',
+                width: 100,
               ),
             ),
           ),
-          ListTile(
-            title: Text(
-              localizations.demoMotionPlaceholderTitle,
-            ),
-            subtitle: Text(
-              localizations.demoMotionPlaceholderSubtitle,
-            ),
+        ),
+        ListTile(
+          title: Text(
+            localizations.demoMotionPlaceholderTitle,
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: 16,
-            ),
-             Text(
-              'Lorem ipsum dolor sit amet, consectetur '
-              'adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: Colors.black54,
-                    inherit: false,
-                  ),
-            ),
-          )
-        ,
+          subtitle: Text(
+            localizations.demoMotionPlaceholderSubtitle,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: 16,
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, consectetur '
+            'adipiscing elit, sed do eiusmod tempor.',
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  color: Colors.black54,
+                  inherit: false,
+                ),
+          ),
+        ),
       ),
     );
   }
@@ -407,43 +393,39 @@ class _SmallDetailsCard extends StatelessWidget {
     return _InkWellOverlay(
       openContainer: openContainer,
       height: 225,
-       Column(
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        
-          Container(
-            color: Colors.black38,
-            height: 150,
-             Center(
-               Image.asset(
-                'placeholders/placeholder_image.png',
-                package: 'flutter_gallery_assets',
-                width: 80,
+        Container(
+          color: Colors.black38,
+          height: 150,
+          Center(
+            Image.asset(
+              'placeholders/placeholder_image.png',
+              package: 'flutter_gallery_assets',
+              width: 80,
+            ),
+          ),
+        ),
+        Expanded(
+          Padding(
+            padding: const EdgeInsets.all(10),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              Text(
+                GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
+                style: textTheme.headline6,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Text(
+                subtitle,
+                style: textTheme.caption,
               ),
             ),
           ),
-          Expanded(
-             Padding(
-              padding: const EdgeInsets.all(10),
-               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                
-                  Text(
-                    GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
-                    style: textTheme.headline6,
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    subtitle,
-                    style: textTheme.caption,
-                  )
-                ,
-              ),
-            ),
-          )
-        ,
+        ),
       ),
     );
   }
@@ -462,43 +444,39 @@ class _DetailsListTile extends StatelessWidget {
     return _InkWellOverlay(
       openContainer: openContainer,
       height: height,
-       Row(
-        
-          Container(
-            color: Colors.black38,
-            height: height,
-            width: height,
-             Center(
-               Image.asset(
-                'placeholders/placeholder_image.png',
-                package: 'flutter_gallery_assets',
-                width: 60,
+      Row(
+        Container(
+          color: Colors.black38,
+          height: height,
+          width: height,
+          Center(
+            Image.asset(
+              'placeholders/placeholder_image.png',
+              package: 'flutter_gallery_assets',
+              width: 60,
+            ),
+          ),
+        ),
+        Expanded(
+          Padding(
+            padding: const EdgeInsets.all(20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              Text(
+                GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
+                style: textTheme.subtitle1,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'Lorem ipsum dolor sit amet, consectetur '
+                'adipiscing elit,',
+                style: textTheme.caption,
               ),
             ),
           ),
-          Expanded(
-             Padding(
-              padding: const EdgeInsets.all(20),
-               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                
-                  Text(
-                    GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
-                    style: textTheme.subtitle1,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur '
-                    'adipiscing elit,',
-                    style: textTheme.caption,
-                  )
-                ,
-              ),
-            ),
-          )
-        ,
+        ),
       ),
     );
   }
@@ -522,9 +500,9 @@ class _InkWellOverlay extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-       InkWell(
+      InkWell(
         onTap: openContainer,
-         child,
+        child,
       ),
     );
   }
@@ -545,45 +523,41 @@ class _DetailsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        
-          Container(
-            color: Colors.black38,
-            height: 250,
-             Padding(
-              padding: const EdgeInsets.all(70),
-               Image.asset(
-                'placeholders/placeholder_image.png',
-                package: 'flutter_gallery_assets',
+        Container(
+          color: Colors.black38,
+          height: 250,
+          Padding(
+            padding: const EdgeInsets.all(70),
+            Image.asset(
+              'placeholders/placeholder_image.png',
+              package: 'flutter_gallery_assets',
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            Text(
+              localizations.demoMotionPlaceholderTitle,
+              style: textTheme.headline5.copyWith(
+                color: Colors.black54,
+                fontSize: 30,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              _loremIpsumParagraph,
+              style: textTheme.bodyText2.copyWith(
+                color: Colors.black54,
+                height: 1.5,
+                fontSize: 16,
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              
-                Text(
-                  localizations.demoMotionPlaceholderTitle,
-                  style: textTheme.headline5.copyWith(
-                    color: Colors.black54,
-                    fontSize: 30,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  _loremIpsumParagraph,
-                  style: textTheme.bodyText2.copyWith(
-                    color: Colors.black54,
-                    height: 1.5,
-                    fontSize: 16,
-                  ),
-                )
-              ,
-            ),
-          )
-        ,
+        ),
       ),
     );
   }

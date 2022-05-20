@@ -127,7 +127,7 @@ class _BackdropState extends State<Backdrop> with TickerProviderStateMixin {
       builder: (context, isSettingsOpen, child) {
         return ExcludeSemantics(
           excluding: !isSettingsOpen,
-           isSettingsOpen
+          isSettingsOpen
               ? RawKeyboardListener(
                   includeSemantics: false,
                   focusNode: _settingsPageFocusNode,
@@ -136,9 +136,9 @@ class _BackdropState extends State<Backdrop> with TickerProviderStateMixin {
                       _toggleSettings();
                     }
                   },
-                   FocusScope( _settingsPage),
+                  FocusScope(_settingsPage),
                 )
-              : ExcludeFocus( _settingsPage),
+              : ExcludeFocus(_settingsPage),
         );
       },
     );
@@ -148,39 +148,39 @@ class _BackdropState extends State<Backdrop> with TickerProviderStateMixin {
       builder: (context, isSettingsOpen, child) {
         return ExcludeSemantics(
           excluding: isSettingsOpen,
-           FocusTraversalGroup( _homePage),
+          FocusTraversalGroup(_homePage),
         );
       },
     );
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: GalleryOptions.of(context).resolvedSystemUiOverlayStyle(),
-       Stack(
-         [
+      Stack(
+        [
           if (!isDesktop) ...[
             // Slides the settings page up and down from the top of the
             // screen.
             PositionedTransition(
               rect: _slideDownSettingsPageAnimation(constraints),
-               settingsPage,
+              settingsPage,
             ),
             // Slides the home page up and down below the bottom of the
             // screen.
             PositionedTransition(
               rect: _slideDownHomePageAnimation(constraints),
-               homePage,
+              homePage,
             ),
           ],
           if (isDesktop) ...[
-            Semantics(sortKey: const OrdinalSortKey(2),  homePage),
+            Semantics(sortKey: const OrdinalSortKey(2), homePage),
             ValueListenableBuilder<bool>(
               valueListenable: _isSettingsOpenNotifier,
               builder: (context, isSettingsOpen, child) {
                 if (isSettingsOpen) {
                   return ExcludeSemantics(
-                     Listener(
+                    Listener(
                       onPointerDown: (_) => _toggleSettings(),
-                       const ModalBarrier(dismissible: false),
+                      const ModalBarrier(dismissible: false),
                     ),
                   );
                 } else {
@@ -190,7 +190,7 @@ class _BackdropState extends State<Backdrop> with TickerProviderStateMixin {
             ),
             Semantics(
               sortKey: const OrdinalSortKey(3),
-               ScaleTransition(
+              ScaleTransition(
                 alignment: Directionality.of(context) == TextDirection.ltr
                     ? Alignment.topRight
                     : Alignment.topLeft,
@@ -199,20 +199,20 @@ class _BackdropState extends State<Backdrop> with TickerProviderStateMixin {
                   curve: Curves.easeIn,
                   reverseCurve: Curves.easeOut,
                 ),
-                 Align(
+                Align(
                   alignment: AlignmentDirectional.topEnd,
-                   Material(
+                  Material(
                     elevation: 7,
                     clipBehavior: Clip.antiAlias,
                     borderRadius: BorderRadius.circular(40),
                     color: Theme.of(context).colorScheme.secondaryVariant,
-                     Container(
+                    Container(
                       constraints: const BoxConstraints(
                         maxHeight: 560,
                         maxWidth: desktopSettingsWidth,
                         minWidth: desktopSettingsWidth,
                       ),
-                       settingsPage,
+                      settingsPage,
                     ),
                   ),
                 ),
@@ -261,17 +261,17 @@ class _SettingsIcon extends AnimatedWidget {
 
     return Align(
       alignment: AlignmentDirectional.topEnd,
-       Semantics(
+      Semantics(
         sortKey: const OrdinalSortKey(1),
         button: true,
         enabled: true,
         label: _settingsSemanticLabel(isSettingsOpenNotifier.value, context),
-         SizedBox(
+        SizedBox(
           width: _settingsButtonWidth,
           height: isDesktop
               ? _settingsButtonHeightDesktop
               : _settingsButtonHeightMobile + safeAreaTopPadding,
-           Material(
+          Material(
             borderRadius: const BorderRadiusDirectional.only(
               bottomStart: Radius.circular(10),
             ),
@@ -280,7 +280,7 @@ class _SettingsIcon extends AnimatedWidget {
                     ? Colors.transparent
                     : Theme.of(context).colorScheme.secondaryVariant,
             clipBehavior: Clip.antiAlias,
-             InkWell(
+            InkWell(
               onTap: () {
                 toggleSettings();
                 SemanticsService.announce(
@@ -288,9 +288,9 @@ class _SettingsIcon extends AnimatedWidget {
                   GalleryOptions.of(context).resolvedTextDirection(),
                 );
               },
-               Padding(
+              Padding(
                 padding: const EdgeInsetsDirectional.only(start: 3, end: 18),
-                 settings_icon.SettingsIcon(animationController.value),
+                settings_icon.SettingsIcon(animationController.value),
               ),
             ),
           ),

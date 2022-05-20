@@ -25,16 +25,14 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: Column(
-              
-                Text(localizations.demoSharedZAxisTitle),
-                Text(
-                  '(${localizations.demoSharedZAxisDemoInstructions})',
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2
-                      .copyWith(color: Colors.white),
-                )
-              ,
+              Text(localizations.demoSharedZAxisTitle),
+              Text(
+                '(${localizations.demoSharedZAxisDemoInstructions})',
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2
+                    .copyWith(color: Colors.white),
+              ),
             ),
             actions: [
               IconButton(
@@ -54,7 +52,7 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
           transitionType: SharedAxisTransitionType.scaled,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-           child,
+          child,
         );
       },
     );
@@ -70,7 +68,7 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
           transitionType: SharedAxisTransitionType.scaled,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-           child,
+          child,
         );
       },
     );
@@ -110,7 +108,7 @@ class _SettingsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-         [
+        [
           for (var setting in settingsList) _SettingsTile(setting),
         ],
       ),
@@ -125,13 +123,11 @@ class _SettingsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      
-        ListTile(
-          leading: Icon(settingData.settingIcon),
-          title: Text(settingData.settingsLabel),
-        ),
-        const Divider(thickness: 2)
-      ,
+      ListTile(
+        leading: Icon(settingData.settingIcon),
+        title: Text(settingData.settingsLabel),
+      ),
+      const Divider(thickness: 2),
     );
   }
 }
@@ -185,23 +181,21 @@ class _RecipePage extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      
-        const SizedBox(height: 8),
-        Padding(
-          padding: const EdgeInsetsDirectional.only(start: 8.0),
-           Text(localizations.demoSharedZAxisSavedRecipesListTitle),
+      const SizedBox(height: 8),
+      Padding(
+        padding: const EdgeInsetsDirectional.only(start: 8.0),
+        Text(localizations.demoSharedZAxisSavedRecipesListTitle),
+      ),
+      const SizedBox(height: 4),
+      Expanded(
+        ListView(
+          padding: const EdgeInsets.all(8),
+          [
+            for (var recipe in savedRecipes)
+              _RecipeTile(recipe, savedRecipes.indexOf(recipe))
+          ],
         ),
-        const SizedBox(height: 4),
-        Expanded(
-           ListView(
-            padding: const EdgeInsets.all(8),
-             [
-              for (var recipe in savedRecipes)
-                _RecipeTile(recipe, savedRecipes.indexOf(recipe))
-            ],
-          ),
-        )
-      ,
+      ),
     );
   }
 }
@@ -222,33 +216,29 @@ class _RecipeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      
-        SizedBox(
-          height: 70,
-          width: 100,
-           ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-             Image.asset(
-              _recipe.recipeImage,
-              package: 'flutter_gallery_assets',
-              fit: BoxFit.fill,
-            ),
+      SizedBox(
+        height: 70,
+        width: 100,
+        ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          Image.asset(
+            _recipe.recipeImage,
+            package: 'flutter_gallery_assets',
+            fit: BoxFit.fill,
           ),
         ),
-        const SizedBox(width: 24),
-        Expanded(
-           Column(
-            
-              ListTile(
-                title: Text(_recipe.recipeName),
-                subtitle: Text(_recipe.recipeDescription),
-                trailing: Text('0${_index + 1}'),
-              ),
-              const Divider(thickness: 2)
-            ,
+      ),
+      const SizedBox(width: 24),
+      Expanded(
+        Column(
+          ListTile(
+            title: Text(_recipe.recipeName),
+            subtitle: Text(_recipe.recipeDescription),
+            trailing: Text('0${_index + 1}'),
           ),
-        )
-      ,
+          const Divider(thickness: 2),
+        ),
+      ),
     );
   }
 }

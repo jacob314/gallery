@@ -28,7 +28,7 @@ class _CupertinoRefreshControlDemoState
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-       CustomScrollView(
+      CustomScrollView(
         // If left unspecified, the [CustomScrollView] appends an
         // [AlwaysScrollableScrollPhysics]. Behind the scene, the ScrollableState
         // will attach that [AlwaysScrollableScrollPhysics] to the output of

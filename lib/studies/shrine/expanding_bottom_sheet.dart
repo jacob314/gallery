@@ -395,51 +395,45 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
 
     if (isDesktop) {
       thumbnails = Column(
-        
-          AnimatedPadding(
-            padding: _verticalCartPaddingFor(numProducts),
-            duration: const Duration(milliseconds: 225),
-             const Icon(Icons.shopping_cart),
-          ),
-          SizedBox(
-            width: _width,
-            height: min(numProducts, _maxThumbnailCount) *
-                _paddedThumbnailHeight(context),
-             const ProductThumbnailRow(),
-          ),
-          const ExtraProductsNumber()
-        ,
+        AnimatedPadding(
+          padding: _verticalCartPaddingFor(numProducts),
+          duration: const Duration(milliseconds: 225),
+          const Icon(Icons.shopping_cart),
+        ),
+        SizedBox(
+          width: _width,
+          height: min(numProducts, _maxThumbnailCount) *
+              _paddedThumbnailHeight(context),
+          const ProductThumbnailRow(),
+        ),
+        const ExtraProductsNumber(),
       );
     } else {
       thumbnails = Column(
-        
-          Row(
-            
-              AnimatedPadding(
-                padding: _horizontalCartPaddingFor(numProducts),
-                duration: const Duration(milliseconds: 225),
-                 const Icon(Icons.shopping_cart),
-              ),
-              Container(
-                // Accounts for the overflow number
-                width: min(numProducts, _maxThumbnailCount) *
-                        _paddedThumbnailHeight(context) +
-                    (numProducts > 0 ? _thumbnailGap : 0),
-                height: _height - _bottomSafeArea,
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                 const ProductThumbnailRow(),
-              ),
-              const ExtraProductsNumber()
-            ,
-          )
-        ,
+        Row(
+          AnimatedPadding(
+            padding: _horizontalCartPaddingFor(numProducts),
+            duration: const Duration(milliseconds: 225),
+            const Icon(Icons.shopping_cart),
+          ),
+          Container(
+            // Accounts for the overflow number
+            width: min(numProducts, _maxThumbnailCount) *
+                    _paddedThumbnailHeight(context) +
+                (numProducts > 0 ? _thumbnailGap : 0),
+            height: _height - _bottomSafeArea,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            const ProductThumbnailRow(),
+          ),
+          const ExtraProductsNumber(),
+        ),
       );
     }
 
     return ExcludeSemantics(
-       Opacity(
+      Opacity(
         opacity: _thumbnailOpacityAnimation.value,
-         thumbnails,
+        thumbnails,
       ),
     );
   }
@@ -447,7 +441,7 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
   Widget _buildShoppingCartPage() {
     return Opacity(
       opacity: _cartOpacityAnimation.value,
-       const ShoppingCartPage(),
+      const ShoppingCartPage(),
     );
   }
 
@@ -486,7 +480,7 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
     final Widget child = SizedBox(
       width: _widthAnimation.value,
       height: _heightAnimation.value,
-       Material(
+      Material(
         animationDuration: const Duration(milliseconds: 0),
         shape: BeveledRectangleBorder(
           borderRadius: BorderRadiusDirectional.only(
@@ -496,7 +490,7 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
         ),
         elevation: 4,
         color: shrinePink50,
-         _cartIsVisible
+        _cartIsVisible
             ? _buildShoppingCartPage()
             : _buildThumbnails(context, numProducts),
       ),
@@ -508,17 +502,17 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
             enabled: true,
             label: GalleryLocalizations.of(context)
                 .shrineScreenReaderCart(totalCartQuantity),
-             GestureDetector(
+            GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: open,
-               child,
+              child,
             ),
           )
         : child;
 
     return Padding(
       padding: EdgeInsets.only(top: _gapAnimation.value),
-       childWithInteraction,
+      childWithInteraction,
     );
   }
 
@@ -542,7 +536,7 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
 
       return SlideTransition(
         position: _slideAnimation,
-         child,
+        child,
       );
     }
   }
@@ -554,7 +548,7 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet> {
       duration: const Duration(milliseconds: 225),
       curve: Curves.easeInOut,
       alignment: AlignmentDirectional.topStart,
-       AnimatedBuilder(
+      AnimatedBuilder(
         animation: widget.hideController,
         builder: (context, child) => AnimatedBuilder(
           animation: widget.expandingController,
@@ -743,9 +737,9 @@ class ProductThumbnail extends StatelessWidget {
 
     return FadeTransition(
       opacity: opacityAnimation,
-       ScaleTransition(
+      ScaleTransition(
         scale: animation,
-         Container(
+        Container(
           width: _thumbnailHeight(context),
           height: _thumbnailHeight(context),
           decoration: BoxDecoration(

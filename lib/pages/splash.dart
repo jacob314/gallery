@@ -112,9 +112,9 @@ class _SplashPageState extends State<SplashPage>
         _controller.forward();
         return true;
       },
-       SplashPageAnimation(
+      SplashPageAnimation(
         isFinished: _controller.status == AnimationStatus.dismissed,
-         LayoutBuilder(
+        LayoutBuilder(
           builder: (context, constraints) {
             final animation = _getPanelAnimation(context, constraints);
             var frontLayer = widget.child;
@@ -129,36 +129,34 @@ class _SplashPageState extends State<SplashPage>
                     _controller.reverse();
                   }
                 },
-                 IgnorePointer( frontLayer),
+                IgnorePointer(frontLayer),
               );
             }
 
             if (isDisplayDesktop(context)) {
               frontLayer = Padding(
                 padding: const EdgeInsets.only(top: 136),
-                 ClipRRect(
+                ClipRRect(
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(40),
                   ),
-                   frontLayer,
+                  frontLayer,
                 ),
               );
             }
 
             return Stack(
-              
-                _SplashBackLayer(
-                  isSplashCollapsed: !_isSplashVisible,
-                  effect: _effect,
-                  onTap: () {
-                    _controller.forward();
-                  },
-                ),
-                PositionedTransition(
-                  rect: animation,
-                   frontLayer,
-                )
-              ,
+              _SplashBackLayer(
+                isSplashCollapsed: !_isSplashVisible,
+                effect: _effect,
+                onTap: () {
+                  _controller.forward();
+                },
+              ),
+              PositionedTransition(
+                rect: animation,
+                frontLayer,
+              ),
             );
           },
         ),
@@ -192,37 +190,35 @@ class _SplashBackLayer extends StatelessWidget {
       child = isDisplayDesktop(context)
           ? Padding(
               padding: const EdgeInsets.only(top: 50),
-               Align(
+              Align(
                 alignment: Alignment.topCenter,
-                 GestureDetector(
+                GestureDetector(
                   onTap: onTap,
-                   flutterLogo,
+                  flutterLogo,
                 ),
               ),
             )
           : null;
     } else {
       child = Stack(
-        
-          Center(
-             Image.asset(
-              effectAsset,
-              package: 'flutter_gallery_assets',
-            ),
+        Center(
+          Image.asset(
+            effectAsset,
+            package: 'flutter_gallery_assets',
           ),
-          Center( flutterLogo)
-        ,
+        ),
+        Center(flutterLogo),
       );
     }
 
     return ExcludeSemantics(
-       Container(
+      Container(
         // This is the background color of the gifs.
         color: const Color(0xFF030303),
         padding: EdgeInsets.only(
           bottom: isDisplayDesktop(context) ? homePeekDesktop : homePeekMobile,
         ),
-         child,
+        child,
       ),
     );
   }

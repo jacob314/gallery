@@ -42,17 +42,17 @@ class AppBarDemo extends StatelessWidget {
             itemBuilder: (context) {
               return [
                 PopupMenuItem(
-                   Text(
+                  Text(
                     localization.demoNavigationRailFirst,
                   ),
                 ),
                 PopupMenuItem(
-                   Text(
+                  Text(
                     localization.demoNavigationRailSecond,
                   ),
                 ),
                 PopupMenuItem(
-                   Text(
+                  Text(
                     localization.demoNavigationRailThird,
                   ),
                 ),
@@ -62,7 +62,7 @@ class AppBarDemo extends StatelessWidget {
         ],
       ),
       body: Center(
-         Text(
+        Text(
           localization.cupertinoTabBarHomeTab,
         ),
       ),

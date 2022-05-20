@@ -36,66 +36,59 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
         automaticallyImplyLeading: false,
         middle: Text(GalleryLocalizations.of(context).demoCupertinoSliderTitle),
       ),
-       DefaultTextStyle(
+      DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
-         Center(
-           Column(
+        Center(
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                
-                  SizedBox(
-                    width: double.infinity,
-                     CupertinoSlider(
-                      value: _value.value,
-                      min: 0.0,
-                      max: 100.0,
-                      onChanged: (value) {
-                        setState(() {
-                          _value.value = value;
-                        });
-                      },
-                    ),
-                  ),
-                  MergeSemantics(
-                     Text(
-                      GalleryLocalizations.of(context)
-                          .demoCupertinoSliderContinuous(
-                        _value.value.toStringAsFixed(1),
-                      ),
-                    ),
-                  )
-                ,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              SizedBox(
+                width: double.infinity,
+                CupertinoSlider(
+                  value: _value.value,
+                  min: 0.0,
+                  max: 100.0,
+                  onChanged: (value) {
+                    setState(() {
+                      _value.value = value;
+                    });
+                  },
+                ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                
-                  SizedBox(
-                    width: double.infinity,
-                     CupertinoSlider(
-                      value: _discreteValue.value,
-                      min: 0.0,
-                      max: 100.0,
-                      divisions: 5,
-                      onChanged: (value) {
-                        setState(() {
-                          _discreteValue.value = value;
-                        });
-                      },
-                    ),
+              MergeSemantics(
+                Text(
+                  GalleryLocalizations.of(context)
+                      .demoCupertinoSliderContinuous(
+                    _value.value.toStringAsFixed(1),
                   ),
-                  MergeSemantics(
-                     Text(
-                      GalleryLocalizations.of(context)
-                          .demoCupertinoSliderDiscrete(
-                        _discreteValue.value.toStringAsFixed(1),
-                      ),
-                    ),
-                  )
-                ,
-              )
-            ,
+                ),
+              ),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              SizedBox(
+                width: double.infinity,
+                CupertinoSlider(
+                  value: _discreteValue.value,
+                  min: 0.0,
+                  max: 100.0,
+                  divisions: 5,
+                  onChanged: (value) {
+                    setState(() {
+                      _discreteValue.value = value;
+                    });
+                  },
+                ),
+              ),
+              MergeSemantics(
+                Text(
+                  GalleryLocalizations.of(context).demoCupertinoSliderDiscrete(
+                    _discreteValue.value.toStringAsFixed(1),
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       ),

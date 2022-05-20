@@ -71,89 +71,83 @@ class _HomePageState extends State<HomePage>
       final revertVerticalRotation =
           isTextDirectionRtl ? turnsToRotateRight : turnsToRotateLeft;
       tabBarView = Row(
-        
-          Container(
-            width: 150 + 50 * (cappedTextScale(context) - 1),
-            alignment: Alignment.topCenter,
-            padding: const EdgeInsets.symmetric(vertical: 32),
-             Column(
-              
-                const SizedBox(height: 24),
-                ExcludeSemantics(
-                   SizedBox(
-                    height: 80,
-                     Image.asset(
-                      'logo.png',
-                      package: 'rally_assets',
-                    ),
-                  ),
+        Container(
+          width: 150 + 50 * (cappedTextScale(context) - 1),
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.symmetric(vertical: 32),
+          Column(
+            const SizedBox(height: 24),
+            ExcludeSemantics(
+              SizedBox(
+                height: 80,
+                Image.asset(
+                  'logo.png',
+                  package: 'rally_assets',
                 ),
-                const SizedBox(height: 24),
-                // Rotate the tab bar, so the animation is vertical for desktops.
-                RotatedBox(
-                  quarterTurns: verticalRotation,
-                   _RallyTabBar(
-                    tabs: _buildTabs(
-                            context: context, theme: theme, isVertical: true)
-                        .map(
-                      (widget) {
-                        // Revert the rotation on the tabs.
-                        return RotatedBox(
-                          quarterTurns: revertVerticalRotation,
-                           widget,
-                        );
-                      },
-                    ).toList(),
-                    tabController: _tabController,
-                  ),
-                )
-              ,
+              ),
             ),
-          ),
-          Expanded(
-            // Rotate the tab views so we can swipe up and down.
-             RotatedBox(
+            const SizedBox(height: 24),
+            // Rotate the tab bar, so the animation is vertical for desktops.
+            RotatedBox(
               quarterTurns: verticalRotation,
-               TabBarView(
-                controller: _tabController,
-                 _buildTabViews().map(
+              _RallyTabBar(
+                tabs:
+                    _buildTabs(context: context, theme: theme, isVertical: true)
+                        .map(
                   (widget) {
-                    // Revert the rotation on the tab views.
+                    // Revert the rotation on the tabs.
                     return RotatedBox(
                       quarterTurns: revertVerticalRotation,
-                       widget,
+                      widget,
                     );
                   },
                 ).toList(),
+                tabController: _tabController,
               ),
             ),
-          )
-        ,
+          ),
+        ),
+        Expanded(
+          // Rotate the tab views so we can swipe up and down.
+          RotatedBox(
+            quarterTurns: verticalRotation,
+            TabBarView(
+              controller: _tabController,
+              _buildTabViews().map(
+                (widget) {
+                  // Revert the rotation on the tab views.
+                  return RotatedBox(
+                    quarterTurns: revertVerticalRotation,
+                    widget,
+                  );
+                },
+              ).toList(),
+            ),
+          ),
+        ),
       );
     } else {
       tabBarView = Column(
-        
-          _RallyTabBar(
-            tabs: _buildTabs(context: context, theme: theme),
-            tabController: _tabController,
+        _RallyTabBar(
+          tabs: _buildTabs(context: context, theme: theme),
+          tabController: _tabController,
+        ),
+        Expanded(
+          TabBarView(
+            controller: _tabController,
+            _buildTabViews(),
           ),
-          Expanded(
-             TabBarView(
-              controller: _tabController,
-               _buildTabViews(),
-            ),
-          )
-        ,
+        ),
       );
     }
     return ApplyTextOptions(
-       Scaffold(
+      Scaffold(
         body: SafeArea(
           // For desktop layout we do not want to have SafeArea at the top and
           // bottom to display 100% height content on the accounts view.
           top: !isDesktop,
           bottom: !isDesktop,
-           Theme(
+          Theme(
             // This theme effectively removes the default visual touch
             // feedback for tapping a tab, which is replaced with a custom
             // animation.
@@ -161,9 +155,9 @@ class _HomePageState extends State<HomePage>
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
             ),
-             FocusTraversalGroup(
+            FocusTraversalGroup(
               policy: OrderedTraversalPolicy(),
-               tabBarView,
+              tabBarView,
             ),
           ),
         ),
@@ -239,7 +233,7 @@ class _RallyTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusTraversalOrder(
       order: const NumericFocusOrder(0),
-       TabBar(
+      TabBar(
         // Setting isScrollable to true prevents the tabs from being
         // wrapped in [Expanded] widgets, which allows for more
         // flexible sizes and size animations among tabs.
@@ -311,24 +305,22 @@ class _RallyTabState extends State<_RallyTab>
   Widget build(BuildContext context) {
     if (widget.isVertical) {
       return Column(
-        
-          const SizedBox(height: 18),
-          FadeTransition(
-            opacity: _iconFadeAnimation,
-             widget.icon,
+        const SizedBox(height: 18),
+        FadeTransition(
+          opacity: _iconFadeAnimation,
+          widget.icon,
+        ),
+        const SizedBox(height: 12),
+        FadeTransition(
+          opacity: _titleFadeAnimation,
+          SizeTransition(
+            axis: Axis.vertical,
+            axisAlignment: -1,
+            sizeFactor: _titleSizeAnimation,
+            Center(ExcludeSemantics(widget.titleText)),
           ),
-          const SizedBox(height: 12),
-          FadeTransition(
-            opacity: _titleFadeAnimation,
-             SizeTransition(
-              axis: Axis.vertical,
-              axisAlignment: -1,
-              sizeFactor: _titleSizeAnimation,
-               Center( ExcludeSemantics( widget.titleText)),
-            ),
-          ),
-          const SizedBox(height: 18)
-        ,
+        ),
+        const SizedBox(height: 18),
       );
     }
 
@@ -342,30 +334,28 @@ class _RallyTabState extends State<_RallyTab>
 
     return ConstrainedBox(
       constraints: const BoxConstraints(minHeight: 56),
-       Row(
-        
-          FadeTransition(
-            opacity: _iconFadeAnimation,
-             SizedBox(
-              width: unitWidth,
-               widget.icon,
-            ),
+      Row(
+        FadeTransition(
+          opacity: _iconFadeAnimation,
+          SizedBox(
+            width: unitWidth,
+            widget.icon,
           ),
-          FadeTransition(
-            opacity: _titleFadeAnimation,
-             SizeTransition(
-              axis: Axis.horizontal,
-              axisAlignment: -1,
-              sizeFactor: _titleSizeAnimation,
-               SizedBox(
-                width: unitWidth * expandedTitleWidthMultiplier,
-                 Center(
-                   ExcludeSemantics( widget.titleText),
-                ),
+        ),
+        FadeTransition(
+          opacity: _titleFadeAnimation,
+          SizeTransition(
+            axis: Axis.horizontal,
+            axisAlignment: -1,
+            sizeFactor: _titleSizeAnimation,
+            SizedBox(
+              width: unitWidth * expandedTitleWidthMultiplier,
+              Center(
+                ExcludeSemantics(widget.titleText),
               ),
             ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }

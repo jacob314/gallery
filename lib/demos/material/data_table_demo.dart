@@ -151,79 +151,77 @@ class _DataTableDemoState extends State<DataTableDemo> with RestorationMixin {
         title: Text(localizations.demoDataTableTitle),
       ),
       body: Scrollbar(
-         ListView(
+        ListView(
           restorationId: 'data_table_list_view',
           padding: const EdgeInsets.all(16),
-          
-            PaginatedDataTable(
-              header: Text(localizations.dataTableHeader),
-              rowsPerPage: _rowsPerPage.value,
-              onRowsPerPageChanged: (value) {
-                setState(() {
-                  _rowsPerPage.value = value;
-                });
-              },
-              initialFirstRowIndex: _rowIndex.value,
-              onPageChanged: (rowIndex) {
-                setState(() {
-                  _rowIndex.value = rowIndex;
-                });
-              },
-              sortColumnIndex: _sortColumnIndex.value,
-              sortAscending: _sortAscending.value,
-              onSelectAll: _dessertsDataSource._selectAll,
-              columns: [
-                DataColumn(
-                  label: Text(localizations.dataTableColumnDessert),
-                  onSort: (columnIndex, ascending) =>
-                      _sort<String>((d) => d.name, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnCalories),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.calories, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnFat),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.fat, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnCarbs),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.carbs, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnProtein),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.protein, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnSodium),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.sodium, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnCalcium),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.calcium, columnIndex, ascending),
-                ),
-                DataColumn(
-                  label: Text(localizations.dataTableColumnIron),
-                  numeric: true,
-                  onSort: (columnIndex, ascending) =>
-                      _sort<num>((d) => d.iron, columnIndex, ascending),
-                ),
-              ],
-              source: _dessertsDataSource,
-            )
-          ,
+          PaginatedDataTable(
+            header: Text(localizations.dataTableHeader),
+            rowsPerPage: _rowsPerPage.value,
+            onRowsPerPageChanged: (value) {
+              setState(() {
+                _rowsPerPage.value = value;
+              });
+            },
+            initialFirstRowIndex: _rowIndex.value,
+            onPageChanged: (rowIndex) {
+              setState(() {
+                _rowIndex.value = rowIndex;
+              });
+            },
+            sortColumnIndex: _sortColumnIndex.value,
+            sortAscending: _sortAscending.value,
+            onSelectAll: _dessertsDataSource._selectAll,
+            columns: [
+              DataColumn(
+                label: Text(localizations.dataTableColumnDessert),
+                onSort: (columnIndex, ascending) =>
+                    _sort<String>((d) => d.name, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnCalories),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.calories, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnFat),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.fat, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnCarbs),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.carbs, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnProtein),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.protein, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnSodium),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.sodium, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnCalcium),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.calcium, columnIndex, ascending),
+              ),
+              DataColumn(
+                label: Text(localizations.dataTableColumnIron),
+                numeric: true,
+                onSort: (columnIndex, ascending) =>
+                    _sort<num>((d) => d.iron, columnIndex, ascending),
+              ),
+            ],
+            source: _dessertsDataSource,
+          ),
         ),
       ),
     );

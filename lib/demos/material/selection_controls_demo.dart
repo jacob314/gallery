@@ -84,35 +84,33 @@ class _CheckboxDemoState extends State<_CheckboxDemo> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Row(
+      Row(
         mainAxisSize: MainAxisSize.min,
-        
-          Checkbox(
-            value: checkboxValueA.value,
-            onChanged: (value) {
-              setState(() {
-                checkboxValueA.value = value;
-              });
-            },
-          ),
-          Checkbox(
-            value: checkboxValueB.value,
-            onChanged: (value) {
-              setState(() {
-                checkboxValueB.value = value;
-              });
-            },
-          ),
-          Checkbox(
-            value: checkboxValueC.value,
-            tristate: true,
-            onChanged: (value) {
-              setState(() {
-                checkboxValueC.value = value;
-              });
-            },
-          )
-        ,
+        Checkbox(
+          value: checkboxValueA.value,
+          onChanged: (value) {
+            setState(() {
+              checkboxValueA.value = value;
+            });
+          },
+        ),
+        Checkbox(
+          value: checkboxValueB.value,
+          onChanged: (value) {
+            setState(() {
+              checkboxValueB.value = value;
+            });
+          },
+        ),
+        Checkbox(
+          value: checkboxValueC.value,
+          tristate: true,
+          onChanged: (value) {
+            setState(() {
+              checkboxValueC.value = value;
+            });
+          },
+        ),
       ),
     );
   }
@@ -153,9 +151,9 @@ class _RadioDemoState extends State<_RadioDemo> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Row(
+      Row(
         mainAxisSize: MainAxisSize.min,
-         [
+        [
           for (int index = 0; index < 3; ++index)
             Radio<int>(
               value: index,
@@ -197,11 +195,11 @@ class _SwitchDemoState extends State<_SwitchDemo> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-       Semantics(
+      Semantics(
         container: true,
         label:
             GalleryLocalizations.of(context).demoSelectionControlsSwitchTitle,
-         Switch(
+        Switch(
           value: switchValue.value,
           onChanged: (value) {
             setState(() {

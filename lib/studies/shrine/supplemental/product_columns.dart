@@ -27,27 +27,25 @@ class TwoProductCardColumn extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return ListView(
         physics: const ClampingScrollPhysics(),
-        
-          Padding(
-            padding: const EdgeInsetsDirectional.only(start: horizontalPadding),
-             top != null
-                ? MobileProductCard(
-                    imageAspectRatio: imageAspectRatio,
-                    product: top,
-                  )
-                : const SizedBox(
-                    height: spacerHeight,
-                  ),
+        Padding(
+          padding: const EdgeInsetsDirectional.only(start: horizontalPadding),
+          top != null
+              ? MobileProductCard(
+                  imageAspectRatio: imageAspectRatio,
+                  product: top,
+                )
+              : const SizedBox(
+                  height: spacerHeight,
+                ),
+        ),
+        const SizedBox(height: spacerHeight),
+        Padding(
+          padding: const EdgeInsetsDirectional.only(end: horizontalPadding),
+          MobileProductCard(
+            imageAspectRatio: imageAspectRatio,
+            product: bottom,
           ),
-          const SizedBox(height: spacerHeight),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(end: horizontalPadding),
-             MobileProductCard(
-              imageAspectRatio: imageAspectRatio,
-              product: bottom,
-            ),
-          )
-        ,
+        ),
       );
     });
   }
@@ -70,14 +68,12 @@ class OneProductCardColumn extends StatelessWidget {
     return ListView(
       physics: const ClampingScrollPhysics(),
       reverse: reverse,
-      
-        const SizedBox(
-          height: 40,
-        ),
-        MobileProductCard(
-          product: product,
-        )
-      ,
+      const SizedBox(
+        height: 40,
+      ),
+      MobileProductCard(
+        product: product,
+      ),
     );
   }
 }

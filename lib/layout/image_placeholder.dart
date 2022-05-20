@@ -67,7 +67,7 @@ class FadeInImagePlaceholder extends StatelessWidget {
         } else {
           return AnimatedSwitcher(
             duration: duration,
-             frame != null ? this.child ?? child : placeholder,
+            frame != null ? this.child ?? child : placeholder,
           );
         }
       },

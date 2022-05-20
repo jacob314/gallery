@@ -33,25 +33,23 @@ class LoginPage extends StatelessWidget {
     final isDesktop = isDisplayDesktop(context);
 
     return ApplyTextOptions(
-       isDesktop
+      isDesktop
           ? LayoutBuilder(
               builder: (context, constraints) => Scaffold(
                 body: SafeArea(
-                   Center(
-                     SizedBox(
+                  Center(
+                    SizedBox(
                       width: desktopLoginScreenMainAreaWidth(context: context),
-                       Column(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        
-                          _ShrineLogo(),
-                          SizedBox(height: 40),
-                          _UsernameTextField(),
-                          SizedBox(height: 16),
-                          _PasswordTextField(),
-                          SizedBox(height: 24),
-                          _CancelAndNextButtons(),
-                          SizedBox(height: 62)
-                        ,
+                        _ShrineLogo(),
+                        SizedBox(height: 40),
+                        _UsernameTextField(),
+                        SizedBox(height: 16),
+                        _PasswordTextField(),
+                        SizedBox(height: 24),
+                        _CancelAndNextButtons(),
+                        SizedBox(height: 62),
                       ),
                     ),
                   ),
@@ -61,21 +59,19 @@ class LoginPage extends StatelessWidget {
           : Scaffold(
               appBar: AppBar(backgroundColor: Colors.white),
               body: SafeArea(
-                 ListView(
+                ListView(
                   restorationId: 'login_list_view',
                   physics: const ClampingScrollPhysics(),
                   padding: const EdgeInsets.symmetric(
                     horizontal: _horizontalPadding,
                   ),
-                  
-                    SizedBox(height: 80),
-                    _ShrineLogo(),
-                    SizedBox(height: 120),
-                    _UsernameTextField(),
-                    SizedBox(height: 12),
-                    _PasswordTextField(),
-                    _CancelAndNextButtons()
-                  ,
+                  SizedBox(height: 80),
+                  _ShrineLogo(),
+                  SizedBox(height: 120),
+                  _UsernameTextField(),
+                  SizedBox(height: 12),
+                  _PasswordTextField(),
+                  _CancelAndNextButtons(),
                 ),
               ),
             ),
@@ -89,21 +85,19 @@ class _ShrineLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExcludeSemantics(
-       Column(
-        
-          const FadeInImagePlaceholder(
-            image: AssetImage('packages/shrine_images/diamond.png'),
-            placeholder: SizedBox(
-              width: 34,
-              height: 34,
-            ),
+      Column(
+        const FadeInImagePlaceholder(
+          image: AssetImage('packages/shrine_images/diamond.png'),
+          placeholder: SizedBox(
+            width: 34,
+            height: 34,
           ),
-          const SizedBox(height: 16),
-          Text(
-            'SHRINE',
-            style: Theme.of(context).textTheme.headline5,
-          )
-        ,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'SHRINE',
+          style: Theme.of(context).textTheme.headline5,
+        ),
       ),
     );
   }
@@ -118,7 +112,7 @@ class _UsernameTextField extends StatelessWidget {
 
     return PrimaryColorOverride(
       color: shrineBrown900,
-       TextField(
+      TextField(
         textInputAction: TextInputAction.next,
         restorationId: 'username_text_field',
         cursorColor: colorScheme.onSurface,
@@ -141,7 +135,7 @@ class _PasswordTextField extends StatelessWidget {
 
     return PrimaryColorOverride(
       color: shrineBrown900,
-       TextField(
+      TextField(
         restorationId: 'password_text_field',
         cursorColor: colorScheme.onSurface,
         obscureText: true,
@@ -170,51 +164,49 @@ class _CancelAndNextButtons extends StatelessWidget {
 
     return Padding(
       padding: isDesktop ? EdgeInsets.zero : const EdgeInsets.all(8),
-       OverflowBar(
+      OverflowBar(
         spacing: isDesktop ? 0 : 8,
         alignment: MainAxisAlignment.end,
-        
-          TextButton(
-            style: TextButton.styleFrom(
-              shape: const BeveledRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(7)),
-              ),
-            ),
-            onPressed: () {
-              // The login screen is immediately displayed on top of
-              // the Shrine home screen using onGenerateRoute and so
-              // rootNavigator must be set to true in order to get out
-              // of Shrine completely.
-              Navigator.of(context, rootNavigator: true).pop();
-            },
-             Padding(
-              padding: buttonTextPadding,
-               Text(
-                GalleryLocalizations.of(context).shrineCancelButtonCaption,
-                style: TextStyle(color: colorScheme.onSurface),
-              ),
+        TextButton(
+          style: TextButton.styleFrom(
+            shape: const BeveledRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(7)),
             ),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 8,
-              shape: const BeveledRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(7)),
-              ),
+          onPressed: () {
+            // The login screen is immediately displayed on top of
+            // the Shrine home screen using onGenerateRoute and so
+            // rootNavigator must be set to true in order to get out
+            // of Shrine completely.
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+          Padding(
+            padding: buttonTextPadding,
+            Text(
+              GalleryLocalizations.of(context).shrineCancelButtonCaption,
+              style: TextStyle(color: colorScheme.onSurface),
             ),
-            onPressed: () {
-              Navigator.of(context).restorablePushNamed(ShrineApp.homeRoute);
-            },
-             Padding(
-              padding: buttonTextPadding,
-               Text(
-                GalleryLocalizations.of(context).shrineNextButtonCaption,
-                style: TextStyle(
-                    letterSpacing: letterSpacingOrNone(largeLetterSpacing)),
-              ),
+          ),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 8,
+            shape: const BeveledRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(7)),
             ),
-          )
-        ,
+          ),
+          onPressed: () {
+            Navigator.of(context).restorablePushNamed(ShrineApp.homeRoute);
+          },
+          Padding(
+            padding: buttonTextPadding,
+            Text(
+              GalleryLocalizations.of(context).shrineNextButtonCaption,
+              style: TextStyle(
+                  letterSpacing: letterSpacingOrNone(largeLetterSpacing)),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -231,7 +223,7 @@ class PrimaryColorOverride extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(primaryColor: color),
-       child,
+      child,
     );
   }
 }

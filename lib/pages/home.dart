@@ -170,46 +170,45 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsetsDirectional.only(
             top: isDesktop ? firstHeaderDesktopTopPadding : 21,
           ),
-          
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: _horizontalDesktopPadding,
-              ),
-               _GalleryHeader(),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: _horizontalDesktopPadding,
             ),
-            SizedBox(
-              height: carouselHeight,
-               _DesktopCarousel( carouselCards),
+            _GalleryHeader(),
+          ),
+          SizedBox(
+            height: carouselHeight,
+            _DesktopCarousel(carouselCards),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: _horizontalDesktopPadding,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: _horizontalDesktopPadding,
-              ),
-               _CategoriesHeader(),
+            _CategoriesHeader(),
+          ),
+          Container(
+            height: 585,
+            padding: const EdgeInsets.symmetric(
+              horizontal: _horizontalDesktopPadding,
             ),
-            Container(
-              height: 585,
-              padding: const EdgeInsets.symmetric(
-                horizontal: _horizontalDesktopPadding,
-              ),
-               Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 spaceBetween(28, desktopCategoryItems),
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spaceBetween(28, desktopCategoryItems),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                start: _horizontalDesktopPadding,
-                bottom: 81,
-                end: _horizontalDesktopPadding,
-                top: 109,
-              ),
-               Row(
-                
-                  FadeInImagePlaceholder(
-                    image: Theme.of(context).colorScheme.brightness ==
-                            Brightness.dark
+          ),
+          Padding(
+            padding: const EdgeInsetsDirectional.only(
+              start: _horizontalDesktopPadding,
+              bottom: 81,
+              end: _horizontalDesktopPadding,
+              top: 109,
+            ),
+            Row(
+              FadeInImagePlaceholder(
+                image:
+                    Theme.of(context).colorScheme.brightness == Brightness.dark
                         ? const AssetImage(
                             'assets/logo/flutter_logo.png',
                             package: 'flutter_gallery_assets',
@@ -218,24 +217,20 @@ class HomePage extends StatelessWidget {
                             'assets/logo/flutter_logo_color.png',
                             package: 'flutter_gallery_assets',
                           ),
-                    placeholder: const SizedBox.shrink(),
-                    excludeFromSemantics: true,
-                  ),
-                  Expanded(
-                     Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      alignment: WrapAlignment.end,
-                      
-                        SettingsAbout(),
-                        SettingsFeedback(),
-                        SettingsAttribution()
-                      ,
-                    ),
-                  )
-                ,
+                placeholder: const SizedBox.shrink(),
+                excludeFromSemantics: true,
               ),
-            )
-          ,
+              Expanded(
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  alignment: WrapAlignment.end,
+                  SettingsAbout(),
+                  SettingsFeedback(),
+                  SettingsAttribution(),
+                ),
+              ),
+            ),
+          ),
         ),
       );
     } else {
@@ -254,7 +249,7 @@ class HomePage extends StatelessWidget {
     return [
       for (int index = 0; index < children.length; index++) ...[
         Flexible(
-           children[index],
+          children[index],
         ),
         if (index < children.length - 1) SizedBox(width: paddingBetween),
       ],
@@ -295,7 +290,7 @@ class Header extends StatelessWidget {
         top: isDisplayDesktop(context) ? 63 : 15,
         bottom: isDisplayDesktop(context) ? 21 : 11,
       ),
-       Text(
+      Text(
         text,
         style: Theme.of(context).textTheme.headline4.apply(
               color: color,
@@ -383,98 +378,91 @@ class _AnimatedHomePageState extends State<_AnimatedHomePage>
     final localizations = GalleryLocalizations.of(context);
     final isTestMode = GalleryOptions.of(context).isTestMode;
     return Stack(
-      
-        ListView(
-          // Makes integration tests possible.
-          key: const ValueKey('HomeListView'),
-          restorationId: 'home_list_view',
-          
-            const SizedBox(height: 8),
-            Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: _horizontalPadding),
-               _GalleryHeader(),
-            ),
-            _Carousel(
-              animationController: _animationController,
-              restorationId: 'home_carousel',
-               widget.carouselCards,
-            ),
-            Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: _horizontalPadding),
-               _CategoriesHeader(),
-            ),
-            _AnimatedCategoryItem(
-              startDelayFraction: 0.00,
-              controller: _animationController,
-               CategoryListItem(
-                  key: const PageStorageKey<GalleryDemoCategory>(
-                    GalleryDemoCategory.material,
-                  ),
-                  restorationId: 'home_material_category_list',
-                  category: GalleryDemoCategory.material,
-                  imageString: 'assets/icons/material/material.png',
-                  demos: materialDemos(localizations),
-                  initiallyExpanded:
-                      _isMaterialListExpanded.value || isTestMode,
-                  onTap: (shouldOpenList) {
-                    _isMaterialListExpanded.value = shouldOpenList;
-                  }),
-            ),
-            _AnimatedCategoryItem(
-              startDelayFraction: 0.05,
-              controller: _animationController,
-               CategoryListItem(
-                  key: const PageStorageKey<GalleryDemoCategory>(
-                    GalleryDemoCategory.cupertino,
-                  ),
-                  restorationId: 'home_cupertino_category_list',
-                  category: GalleryDemoCategory.cupertino,
-                  imageString: 'assets/icons/cupertino/cupertino.png',
-                  demos: cupertinoDemos(localizations),
-                  initiallyExpanded:
-                      _isCupertinoListExpanded.value || isTestMode,
-                  onTap: (shouldOpenList) {
-                    _isCupertinoListExpanded.value = shouldOpenList;
-                  }),
-            ),
-            _AnimatedCategoryItem(
-              startDelayFraction: 0.10,
-              controller: _animationController,
-               CategoryListItem(
-                  key: const PageStorageKey<GalleryDemoCategory>(
-                    GalleryDemoCategory.other,
-                  ),
-                  restorationId: 'home_other_category_list',
-                  category: GalleryDemoCategory.other,
-                  imageString: 'assets/icons/reference/reference.png',
-                  demos: otherDemos(localizations),
-                  initiallyExpanded: _isOtherListExpanded.value || isTestMode,
-                  onTap: (shouldOpenList) {
-                    _isOtherListExpanded.value = shouldOpenList;
-                  }),
-            )
-          ,
+      ListView(
+        // Makes integration tests possible.
+        key: const ValueKey('HomeListView'),
+        restorationId: 'home_list_view',
+
+        const SizedBox(height: 8),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: _horizontalPadding),
+          _GalleryHeader(),
         ),
-        Align(
-          alignment: Alignment.topCenter,
-           GestureDetector(
-            onVerticalDragEnd: (details) {
-              if (details.velocity.pixelsPerSecond.dy > 200) {
-                ToggleSplashNotification().dispatch(context);
-              }
-            },
-             SafeArea(
-               Container(
-                height: 40,
-                // If we don't set the color, gestures are not detected.
-                color: Colors.transparent,
+        _Carousel(
+          animationController: _animationController,
+          restorationId: 'home_carousel',
+          widget.carouselCards,
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: _horizontalPadding),
+          _CategoriesHeader(),
+        ),
+        _AnimatedCategoryItem(
+          startDelayFraction: 0.00,
+          controller: _animationController,
+          CategoryListItem(
+              key: const PageStorageKey<GalleryDemoCategory>(
+                GalleryDemoCategory.material,
               ),
+              restorationId: 'home_material_category_list',
+              category: GalleryDemoCategory.material,
+              imageString: 'assets/icons/material/material.png',
+              demos: materialDemos(localizations),
+              initiallyExpanded: _isMaterialListExpanded.value || isTestMode,
+              onTap: (shouldOpenList) {
+                _isMaterialListExpanded.value = shouldOpenList;
+              }),
+        ),
+        _AnimatedCategoryItem(
+          startDelayFraction: 0.05,
+          controller: _animationController,
+          CategoryListItem(
+              key: const PageStorageKey<GalleryDemoCategory>(
+                GalleryDemoCategory.cupertino,
+              ),
+              restorationId: 'home_cupertino_category_list',
+              category: GalleryDemoCategory.cupertino,
+              imageString: 'assets/icons/cupertino/cupertino.png',
+              demos: cupertinoDemos(localizations),
+              initiallyExpanded: _isCupertinoListExpanded.value || isTestMode,
+              onTap: (shouldOpenList) {
+                _isCupertinoListExpanded.value = shouldOpenList;
+              }),
+        ),
+        _AnimatedCategoryItem(
+          startDelayFraction: 0.10,
+          controller: _animationController,
+          CategoryListItem(
+              key: const PageStorageKey<GalleryDemoCategory>(
+                GalleryDemoCategory.other,
+              ),
+              restorationId: 'home_other_category_list',
+              category: GalleryDemoCategory.other,
+              imageString: 'assets/icons/reference/reference.png',
+              demos: otherDemos(localizations),
+              initiallyExpanded: _isOtherListExpanded.value || isTestMode,
+              onTap: (shouldOpenList) {
+                _isOtherListExpanded.value = shouldOpenList;
+              }),
+        ),
+      ),
+      Align(
+        alignment: Alignment.topCenter,
+        GestureDetector(
+          onVerticalDragEnd: (details) {
+            if (details.velocity.pixelsPerSecond.dy > 200) {
+              ToggleSplashNotification().dispatch(context);
+            }
+          },
+          SafeArea(
+            Container(
+              height: 40,
+              // If we don't set the color, gestures are not detected.
+              color: Colors.transparent,
             ),
           ),
-        )
-      ,
+        ),
+      ),
     );
   }
 }
@@ -497,31 +485,29 @@ class _DesktopCategoryItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       clipBehavior: Clip.antiAlias,
       color: colorScheme.surface,
-       Semantics(
+      Semantics(
         container: true,
-         FocusTraversalGroup(
+        FocusTraversalGroup(
           policy: WidgetOrderTraversalPolicy(),
-           Column(
-            
-              _DesktopCategoryHeader(
-                category: category,
-                asset: asset,
+          Column(
+            _DesktopCategoryHeader(
+              category: category,
+              asset: asset,
+            ),
+            Divider(
+              height: 2,
+              thickness: 2,
+              color: colorScheme.background,
+            ),
+            Flexible(
+              ListView.builder(
+                // Makes integration tests possible.
+                key: ValueKey('${category.name}DemoList'),
+                itemBuilder: (context, index) =>
+                    CategoryDemoItem(demo: demos[index]),
+                itemCount: demos.length,
               ),
-              Divider(
-                height: 2,
-                thickness: 2,
-                color: colorScheme.background,
-              ),
-              Flexible(
-                 ListView.builder(
-                  // Makes integration tests possible.
-                  key: ValueKey('${category.name}DemoList'),
-                  itemBuilder: (context, index) =>
-                      CategoryDemoItem(demo: demos[index]),
-                  itemCount: demos.length,
-                ),
-              )
-            ,
+            ),
           ),
         ),
       ),
@@ -544,38 +530,36 @@ class _DesktopCategoryHeader extends StatelessWidget {
       // Makes integration tests possible.
       key: ValueKey('${category.name}CategoryHeader'),
       color: colorScheme.onBackground,
-       Row(
-        
-          Padding(
-            padding: const EdgeInsets.all(10),
-             FadeInImagePlaceholder(
-              image: asset,
-              placeholder: const SizedBox(
-                height: 64,
-                width: 64,
-              ),
-              width: 64,
+      Row(
+        Padding(
+          padding: const EdgeInsets.all(10),
+          FadeInImagePlaceholder(
+            image: asset,
+            placeholder: const SizedBox(
               height: 64,
-              excludeFromSemantics: true,
+              width: 64,
+            ),
+            width: 64,
+            height: 64,
+            excludeFromSemantics: true,
+          ),
+        ),
+        Flexible(
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 8),
+            Semantics(
+              header: true,
+              Text(
+                category.displayTitle(GalleryLocalizations.of(context)),
+                style: Theme.of(context).textTheme.headline5.apply(
+                      color: colorScheme.onSurface,
+                    ),
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
-          Flexible(
-             Padding(
-              padding: const EdgeInsetsDirectional.only(start: 8),
-               Semantics(
-                header: true,
-                 Text(
-                  category.displayTitle(GalleryLocalizations.of(context)),
-                  style: Theme.of(context).textTheme.headline5.apply(
-                        color: colorScheme.onSurface,
-                      ),
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-          )
-        ,
+        ),
       ),
     );
   }
@@ -616,10 +600,10 @@ class _AnimatedCategoryItem extends StatelessWidget {
       builder: (context, child) {
         return Padding(
           padding: EdgeInsets.only(top: topPaddingAnimation.value),
-           child,
+          child,
         );
       },
-       child,
+      child,
     );
   }
 }
@@ -653,23 +637,21 @@ class _AnimatedCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Stack(
-        
-          SizedBox(height: _carouselHeight(.4, context)),
-          AnimatedBuilder(
-            animation: controller,
-            builder: (context, child) {
-              return PositionedDirectional(
-                start: constraints.maxWidth * startPositionAnimation.value,
-                 child,
-              );
-            },
-             SizedBox(
-              height: _carouselHeight(.4, context),
-              width: constraints.maxWidth,
-               child,
-            ),
-          )
-        ,
+        SizedBox(height: _carouselHeight(.4, context)),
+        AnimatedBuilder(
+          animation: controller,
+          builder: (context, child) {
+            return PositionedDirectional(
+              start: constraints.maxWidth * startPositionAnimation.value,
+              child,
+            );
+          },
+          SizedBox(
+            height: _carouselHeight(.4, context),
+            width: constraints.maxWidth,
+            child,
+          ),
+        ),
       );
     });
   }
@@ -709,10 +691,10 @@ class _AnimatedCarouselCard extends StatelessWidget {
           padding: EdgeInsetsDirectional.only(
             start: startPaddingAnimation.value,
           ),
-           child,
+          child,
         );
       },
-       child,
+      child,
     );
   }
 }
@@ -786,21 +768,21 @@ class _CarouselState extends State<_Carousel>
         value = Curves.easeOut.transform(value);
 
         return Center(
-           Transform(
+          Transform(
             transform: Matrix4.diagonal3Values(1.0, value, 1.0),
             alignment: Alignment.center,
-             child,
+            child,
           ),
         );
       },
-       widget.children[index],
+      widget.children[index],
     );
 
     // We only want the second card to be animated.
     if (index == 1) {
       return _AnimatedCarouselCard(
         controller: widget.animationController,
-         carouselCard,
+        carouselCard,
       );
     } else {
       return carouselCard;
@@ -811,7 +793,7 @@ class _CarouselState extends State<_Carousel>
   Widget build(BuildContext context) {
     return _AnimatedCarousel(
       controller: widget.animationController,
-       PageView.builder(
+      PageView.builder(
         // Makes integration tests possible.
         key: const ValueKey('studyDemoList'),
         onPageChanged: (value) {
@@ -867,7 +849,7 @@ class _DesktopCarouselState extends State<_DesktopCarousel> {
         vertical: 8,
         horizontal: cardPadding,
       ),
-       widget.children[index],
+      widget.children[index],
     );
   }
 
@@ -886,12 +868,12 @@ class _DesktopCarouselState extends State<_DesktopCarousel> {
     final itemWidth = totalWidth / _desktopCardsPerPage;
 
     return Stack(
-       [
+      [
         Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: _horizontalDesktopPadding - cardPadding,
           ),
-           ListView.builder(
+          ListView.builder(
             scrollDirection: Axis.horizontal,
             physics: const _SnappingScrollPhysics(),
             controller: _controller,
@@ -995,28 +977,28 @@ class _DesktopPageButton extends StatelessWidget {
     const buttonSize = 58.0;
     const padding = _horizontalDesktopPadding - buttonSize / 2;
     return ExcludeSemantics(
-       Align(
+      Align(
         alignment: isEnd
             ? AlignmentDirectional.centerEnd
             : AlignmentDirectional.centerStart,
-         Container(
+        Container(
           width: buttonSize,
           height: buttonSize,
           margin: EdgeInsetsDirectional.only(
             start: isEnd ? 0 : padding,
             end: isEnd ? padding : 0,
           ),
-           Tooltip(
+          Tooltip(
             message: isEnd
                 ? MaterialLocalizations.of(context).nextPageTooltip
                 : MaterialLocalizations.of(context).previousPageTooltip,
-             Material(
+            Material(
               color: Colors.black.withOpacity(0.5),
               shape: const CircleBorder(),
               clipBehavior: Clip.antiAlias,
-               InkWell(
+              InkWell(
                 onTap: onTap,
-                 Icon(
+                Icon(
                   isEnd ? Icons.arrow_forward_ios : Icons.arrow_back_ios,
                   color: Colors.white,
                 ),
@@ -1062,47 +1044,45 @@ class _CarouselCard extends StatelessWidget {
       key: ValueKey(demo.describe),
       margin:
           EdgeInsets.all(isDisplayDesktop(context) ? 0 : _carouselItemMargin),
-       Material(
+      Material(
         elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         clipBehavior: Clip.antiAlias,
-         InkWell(
+        InkWell(
           onTap: () {
             Navigator.of(context).restorablePushNamed(studyRoute);
           },
-           Stack(
+          Stack(
             fit: StackFit.expand,
-             [
+            [
               if (asset != null)
                 FadeInImagePlaceholder(
                   image: asset,
                   placeholder: Container(
                     color: assetColor,
                   ),
-                   Ink.image(
+                  Ink.image(
                     image: asset,
                     fit: BoxFit.cover,
                   ),
                 ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
-                 Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
-                  
-                    Text(
-                      demo.title,
-                      style: textTheme.caption.apply(color: textColor),
-                      maxLines: 3,
-                      overflow: TextOverflow.visible,
-                    ),
-                    Text(
-                      demo.subtitle,
-                      style: textTheme.overline.apply(color: textColor),
-                      maxLines: 5,
-                      overflow: TextOverflow.visible,
-                    )
-                  ,
+                  Text(
+                    demo.title,
+                    style: textTheme.caption.apply(color: textColor),
+                    maxLines: 3,
+                    overflow: TextOverflow.visible,
+                  ),
+                  Text(
+                    demo.subtitle,
+                    style: textTheme.overline.apply(color: textColor),
+                    maxLines: 5,
+                    overflow: TextOverflow.visible,
+                  ),
                 ),
               ),
             ],
@@ -1143,52 +1123,49 @@ class _StudyWrapperState extends State<StudyWrapper> {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return ApplyTextOptions(
-       Stack(
-        
-          Semantics(
-            sortKey: const OrdinalSortKey(1),
-             RestorationScope(
-              restorationId: 'study_wrapper',
-               widget.study,
-            ),
+      Stack(
+        Semantics(
+          sortKey: const OrdinalSortKey(1),
+          RestorationScope(
+            restorationId: 'study_wrapper',
+            widget.study,
           ),
-          SafeArea(
-             Align(
-              alignment: widget.alignment,
-               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: widget.hasBottomNavBar
-                        ? kBottomNavigationBarHeight + 16.0
-                        : 16.0),
-                 Semantics(
-                  sortKey: const OrdinalSortKey(0),
-                  label: GalleryLocalizations.of(context).backToGallery,
-                  button: true,
-                  enabled: true,
-                  excludeSemantics: true,
-                   FloatingActionButton.extended(
-                    heroTag: _BackButtonHeroTag(),
-                    key: const ValueKey('Back'),
-                    onPressed: () {
-                      Navigator.of(context)
-                          .popUntil((route) => route.settings.name == '/');
-                    },
-                    icon: IconTheme(
-                      data: IconThemeData(color: colorScheme.onPrimary),
-                       const BackButtonIcon(),
-                    ),
-                    label: Text(
-                      MaterialLocalizations.of(context).backButtonTooltip,
-                      style:
-                          textTheme.button.apply(color: colorScheme.onPrimary),
-                    ),
+        ),
+        SafeArea(
+          Align(
+            alignment: widget.alignment,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: widget.hasBottomNavBar
+                      ? kBottomNavigationBarHeight + 16.0
+                      : 16.0),
+              Semantics(
+                sortKey: const OrdinalSortKey(0),
+                label: GalleryLocalizations.of(context).backToGallery,
+                button: true,
+                enabled: true,
+                excludeSemantics: true,
+                FloatingActionButton.extended(
+                  heroTag: _BackButtonHeroTag(),
+                  key: const ValueKey('Back'),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .popUntil((route) => route.settings.name == '/');
+                  },
+                  icon: IconTheme(
+                    data: IconThemeData(color: colorScheme.onPrimary),
+                    const BackButtonIcon(),
+                  ),
+                  label: Text(
+                    MaterialLocalizations.of(context).backButtonTooltip,
+                    style: textTheme.button.apply(color: colorScheme.onPrimary),
                   ),
                 ),
               ),
             ),
-          )
-        ,
+          ),
+        ),
       ),
     );
   }

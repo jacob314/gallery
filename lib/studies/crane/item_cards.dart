@@ -26,61 +26,56 @@ class DestinationCard extends StatelessWidget {
     Widget card = isDesktop
         ? Padding(
             padding: const EdgeInsets.only(bottom: 40),
-             Semantics(
+            Semantics(
               container: true,
-               Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(4)),
-                     _DestinationImage(destination: destination),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 10),
-                     Text(
-                      destination.destination,
-                      style: textTheme.subtitle1,
-                    ),
-                  ),
-                  Text(
-                    destination.subtitle(context),
-                    semanticsLabel: destination.subtitleSemantics(context),
-                    style: textTheme.subtitle2,
-                  )
-                ,
-              ),
-            ),
-          )
-        : Column(
-            mainAxisSize: MainAxisSize.min,
-            
-              ListTile(
-                contentPadding: const EdgeInsetsDirectional.only(end: 8),
-                leading: ClipRRect(
+                ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(4)),
-                   SizedBox(
-                    width: mobileThumbnailSize,
-                    height: mobileThumbnailSize,
-                     _DestinationImage(destination: destination),
+                  _DestinationImage(destination: destination),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 10),
+                  Text(
+                    destination.destination,
+                    style: textTheme.subtitle1,
                   ),
                 ),
-                title:
-                    Text(destination.destination, style: textTheme.subtitle1),
-                subtitle: Text(
+                Text(
                   destination.subtitle(context),
                   semanticsLabel: destination.subtitleSemantics(context),
                   style: textTheme.subtitle2,
                 ),
               ),
-              const Divider(thickness: 1)
-            ,
+            ),
+          )
+        : Column(
+            mainAxisSize: MainAxisSize.min,
+            ListTile(
+              contentPadding: const EdgeInsetsDirectional.only(end: 8),
+              leading: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(4)),
+                SizedBox(
+                  width: mobileThumbnailSize,
+                  height: mobileThumbnailSize,
+                  _DestinationImage(destination: destination),
+                ),
+              ),
+              title: Text(destination.destination, style: textTheme.subtitle1),
+              subtitle: Text(
+                destination.subtitle(context),
+                semanticsLabel: destination.subtitleSemantics(context),
+                style: textTheme.subtitle2,
+              ),
+            ),
+            const Divider(thickness: 1),
           );
 
     return HighlightFocus(
       debugLabel: 'DestinationCard: ${destination.destination}',
       highlightColor: Colors.red.withOpacity(0.5),
       onPressed: () {},
-       card,
+      card,
     );
   }
 }
@@ -96,8 +91,8 @@ class _DestinationImage extends StatelessWidget {
 
     return Semantics(
       label: destination.assetSemanticLabel,
-       ExcludeSemantics(
-         FadeInImagePlaceholder(
+      ExcludeSemantics(
+        FadeInImagePlaceholder(
           image: AssetImage(
             destination.assetName,
             package: 'flutter_gallery_assets',

@@ -199,30 +199,28 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
               title: Text(_title),
             ),
             body: Center(
-               Column(
+              Column(
                 mainAxisSize: MainAxisSize.min,
-                
-                  Text(_labelText),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      switch (widget.type) {
-                        case PickerDemoType.date:
-                          _restorableDatePickerRouteFuture.present();
-                          break;
-                        case PickerDemoType.time:
-                          _restorableTimePickerRouteFuture.present();
-                          break;
-                        case PickerDemoType.range:
-                          _restorableDateRangePickerRouteFuture.present();
-                          break;
-                      }
-                    },
-                     Text(
-                      GalleryLocalizations.of(context).demoPickersShowPicker,
-                    ),
-                  )
-                ,
+                Text(_labelText),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    switch (widget.type) {
+                      case PickerDemoType.date:
+                        _restorableDatePickerRouteFuture.present();
+                        break;
+                      case PickerDemoType.time:
+                        _restorableTimePickerRouteFuture.present();
+                        break;
+                      case PickerDemoType.range:
+                        _restorableDateRangePickerRouteFuture.present();
+                        break;
+                    }
+                  },
+                  Text(
+                    GalleryLocalizations.of(context).demoPickersShowPicker,
+                  ),
+                ),
               ),
             ),
           ),

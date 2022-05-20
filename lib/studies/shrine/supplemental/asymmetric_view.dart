@@ -87,9 +87,9 @@ class MobileAsymmetricView extends StatelessWidget {
         }
         return SizedBox(
           width: width,
-           Padding(
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-             column,
+            column,
           ),
         );
       }).toList();
@@ -100,9 +100,9 @@ class MobileAsymmetricView extends StatelessWidget {
         for (final product in products)
           SizedBox(
             width: _cardToScreenWidthRatio * MediaQuery.of(context).size.width,
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-               OneProductCardColumn(
+              OneProductCardColumn(
                 product: product,
                 reverse: false,
               ),
@@ -139,7 +139,7 @@ class MobileAsymmetricView extends StatelessWidget {
         animation: PageStatus.of(context).menuController,
         builder: (context, child) => ExcludeSemantics(
           excluding: !productPageIsVisible(context),
-           LayoutBuilder(
+          LayoutBuilder(
             builder: (context, constraints) {
               return ListView(
                 restorationId: 'product_page_list_view',
@@ -151,7 +151,7 @@ class MobileAsymmetricView extends StatelessWidget {
                   _bottomPadding,
                 ),
                 physics: const AlwaysScrollableScrollPhysics(),
-                 _buildColumns(context, constraints),
+                _buildColumns(context, constraints),
               );
             },
           ),
@@ -207,7 +207,7 @@ class DesktopAsymmetricView extends StatelessWidget {
       animation: PageStatus.of(context).cartController,
       builder: (context, child) => ExcludeSemantics(
         excluding: !productPageIsVisible(context),
-         DesktopColumns(
+        DesktopColumns(
           columnCount: columnCount,
           products: products,
           largeImageWidth: actualColumnWidth,
@@ -266,27 +266,25 @@ class DesktopColumns extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.vertical,
       physics: const AlwaysScrollableScrollPhysics(),
-      
-        Container(height: 60),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-           [
-            const Spacer(),
-            ...List<Widget>.generate(
-              2 * columnCount - 1,
-              (generalizedColumnIndex) {
-                if (generalizedColumnIndex % 2 == 0) {
-                  return productCardColumns[generalizedColumnIndex ~/ 2];
-                } else {
-                  return _gap;
-                }
-              },
-            ),
-            const Spacer(),
-          ],
-        ),
-        Container(height: 60)
-      ,
+      Container(height: 60),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        [
+          const Spacer(),
+          ...List<Widget>.generate(
+            2 * columnCount - 1,
+            (generalizedColumnIndex) {
+              if (generalizedColumnIndex % 2 == 0) {
+                return productCardColumns[generalizedColumnIndex ~/ 2];
+              } else {
+                return _gap;
+              }
+            },
+          ),
+          const Spacer(),
+        ],
+      ),
+      Container(height: 60),
     );
   }
 }

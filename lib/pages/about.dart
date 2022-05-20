@@ -48,54 +48,52 @@ class _AboutDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       content: Container(
         constraints: const BoxConstraints(maxWidth: 400),
-         Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          
-            FutureBuilder(
-              future: getVersionNumber(),
-              builder: (context, snapshot) => Text(
-                snapshot.hasData ? '$name ${snapshot.data}' : name,
-                style: textTheme.headline4.apply(color: colorScheme.onPrimary),
-              ),
+          FutureBuilder(
+            future: getVersionNumber(),
+            builder: (context, snapshot) => Text(
+              snapshot.hasData ? '$name ${snapshot.data}' : name,
+              style: textTheme.headline4.apply(color: colorScheme.onPrimary),
             ),
-            const SizedBox(height: 24),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    style: bodyTextStyle,
-                    text: seeSourceFirst,
+          ),
+          const SizedBox(height: 24),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  style: bodyTextStyle,
+                  text: seeSourceFirst,
+                ),
+                TextSpan(
+                  style: bodyTextStyle.copyWith(
+                    color: colorScheme.primary,
                   ),
-                  TextSpan(
-                    style: bodyTextStyle.copyWith(
-                      color: colorScheme.primary,
-                    ),
-                    text: repoText,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        const url = 'https://github.com/flutter/gallery/';
-                        if (await canLaunch(url)) {
-                          await launch(
-                            url,
-                            forceSafariVC: false,
-                          );
-                        }
-                      },
-                  ),
-                  TextSpan(
-                    style: bodyTextStyle,
-                    text: seeSourceSecond,
-                  ),
-                ],
-              ),
+                  text: repoText,
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      const url = 'https://github.com/flutter/gallery/';
+                      if (await canLaunch(url)) {
+                        await launch(
+                          url,
+                          forceSafariVC: false,
+                        );
+                      }
+                    },
+                ),
+                TextSpan(
+                  style: bodyTextStyle,
+                  text: seeSourceSecond,
+                ),
+              ],
             ),
-            const SizedBox(height: 18),
-            Text(
-              legalese,
-              style: bodyTextStyle,
-            )
-          ,
+          ),
+          const SizedBox(height: 18),
+          Text(
+            legalese,
+            style: bodyTextStyle,
+          ),
         ),
       ),
       actions: [
@@ -109,14 +107,14 @@ class _AboutDialog extends StatelessWidget {
                   ).black,
                   cardColor: Colors.white,
                 ),
-                 const LicensePage(
+                const LicensePage(
                   applicationName: name,
                   applicationLegalese: legalese,
                 ),
               ),
             ));
           },
-           Text(
+          Text(
             MaterialLocalizations.of(context).viewLicensesButtonLabel,
           ),
         ),
@@ -124,7 +122,7 @@ class _AboutDialog extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-           Text(MaterialLocalizations.of(context).closeButtonLabel),
+          Text(MaterialLocalizations.of(context).closeButtonLabel),
         ),
       ],
     );

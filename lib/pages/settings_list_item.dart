@@ -30,44 +30,40 @@ class SlowMotionSetting extends StatelessWidget {
 
     return Semantics(
       container: true,
-       Container(
+      Container(
         margin: settingItemHeaderMargin,
-         Material(
+        Material(
           shape: RoundedRectangleBorder(borderRadius: settingItemBorderRadius),
           color: colorScheme.secondary,
           clipBehavior: Clip.antiAlias,
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
-              Expanded(
-                 Padding(
-                  padding: const EdgeInsets.all(16),
-                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    
-                      Text(
-                        GalleryLocalizations.of(context).settingsSlowMotion,
-                        style: textTheme.subtitle1.apply(
-                          color: colorScheme.onSurface,
-                        ),
-                      )
-                    ,
+            Expanded(
+              Padding(
+                padding: const EdgeInsets.all(16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  Text(
+                    GalleryLocalizations.of(context).settingsSlowMotion,
+                    style: textTheme.subtitle1.apply(
+                      color: colorScheme.onSurface,
+                    ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.only(end: 8),
-                 Switch(
-                  activeColor: colorScheme.primary,
-                  value: options.timeDilation != 1.0,
-                  onChanged: (isOn) => GalleryOptions.update(
-                    context,
-                    options.copyWith(timeDilation: isOn ? 5.0 : 1.0),
-                  ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 8),
+              Switch(
+                activeColor: colorScheme.primary,
+                value: options.timeDilation != 1.0,
+                onChanged: (isOn) => GalleryOptions.update(
+                  context,
+                  options.copyWith(timeDilation: isOn ? 5.0 : 1.0),
                 ),
-              )
-            ,
+              ),
+            ),
           ),
         ),
       ),
@@ -170,27 +166,25 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
   Widget _buildHeaderWithChildren(BuildContext context, Widget child) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      
-        _CategoryHeader(
-          margin: _headerMargin.value,
-          padding: _headerPadding.value,
-          borderRadius: _headerBorderRadius.value,
-          subtitleHeight: _headerSubtitleHeight,
-          chevronRotation: _headerChevronRotation,
-          title: widget.title,
-          subtitle: widget.optionsMap[widget.selectedOption]?.title ?? '',
-          onTap: () => widget.onTapSetting(),
-        ),
-        Padding(
-          padding: _childrenPadding.value,
-           ClipRect(
-             Align(
-              heightFactor: _childrenHeightFactor.value,
-               child,
-            ),
+      _CategoryHeader(
+        margin: _headerMargin.value,
+        padding: _headerPadding.value,
+        borderRadius: _headerBorderRadius.value,
+        subtitleHeight: _headerSubtitleHeight,
+        chevronRotation: _headerChevronRotation,
+        title: widget.title,
+        subtitle: widget.optionsMap[widget.selectedOption]?.title ?? '',
+        onTap: () => widget.onTapSetting(),
+      ),
+      Padding(
+        padding: _childrenPadding.value,
+        ClipRect(
+          Align(
+            heightFactor: _childrenHeightFactor.value,
+            child,
           ),
-        )
-      ,
+        ),
+      ),
     );
   }
 
@@ -202,7 +196,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
     return AnimatedBuilder(
       animation: _controller.view,
       builder: _buildHeaderWithChildren,
-       Container(
+      Container(
         constraints: const BoxConstraints(maxHeight: 384),
         margin: const EdgeInsetsDirectional.only(start: 24, bottom: 40),
         decoration: BoxDecoration(
@@ -213,7 +207,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
             ),
           ),
         ),
-         ListView.builder(
+        ListView.builder(
           shrinkWrap: true,
           itemCount: widget.isExpanded ? _options.length : 0,
           itemBuilder: (context, index) {
@@ -222,7 +216,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
               value: _options.elementAt(index),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                 [
+                [
                   Text(
                     displayOption.title,
                     style: theme.textTheme.bodyText1.copyWith(
@@ -282,54 +276,50 @@ class _CategoryHeader extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Container(
       margin: margin,
-       Material(
+      Material(
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         color: colorScheme.secondary,
         clipBehavior: Clip.antiAlias,
-         InkWell(
+        InkWell(
           onTap: onTap,
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
-              Expanded(
-                 Padding(
-                  padding: padding,
-                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    
-                      Text(
-                        title,
-                        style: textTheme.subtitle1.apply(
-                          color: colorScheme.onSurface,
-                        ),
+            Expanded(
+              Padding(
+                padding: padding,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  Text(
+                    title,
+                    style: textTheme.subtitle1.apply(
+                      color: colorScheme.onSurface,
+                    ),
+                  ),
+                  SizeTransition(
+                    sizeFactor: subtitleHeight,
+                    Text(
+                      subtitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.overline.apply(
+                        color: colorScheme.primary,
                       ),
-                      SizeTransition(
-                        sizeFactor: subtitleHeight,
-                         Text(
-                          subtitle,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: textTheme.overline.apply(
-                            color: colorScheme.primary,
-                          ),
-                        ),
-                      )
-                    ,
+                    ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.only(
-                  start: 8,
-                  end: 24,
-                ),
-                 RotationTransition(
-                  turns: chevronRotation,
-                   const Icon(Icons.arrow_drop_down),
-                ),
-              )
-            ,
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(
+                start: 8,
+                end: 24,
+              ),
+              RotationTransition(
+                turns: chevronRotation,
+                const Icon(Icons.arrow_drop_down),
+              ),
+            ),
           ),
         ),
       ),

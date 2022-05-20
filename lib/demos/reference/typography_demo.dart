@@ -27,17 +27,15 @@ class _TextStyleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-       Row(
+      Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        
-          SizedBox(
-            width: 72,
-             Text(name, style: Theme.of(context).textTheme.caption),
-          ),
-          Expanded(
-             Text(text, style: style),
-          )
-        ,
+        SizedBox(
+          width: 72,
+          Text(name, style: Theme.of(context).textTheme.caption),
+        ),
+        Expanded(
+          Text(text, style: style),
+        ),
       ),
     );
   }
@@ -122,7 +120,7 @@ class TypographyDemo extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Text(GalleryLocalizations.of(context).demoTypographyTitle),
       ),
-      body: Scrollbar( ListView( styleItems)),
+      body: Scrollbar(ListView(styleItems)),
     );
   }
 }

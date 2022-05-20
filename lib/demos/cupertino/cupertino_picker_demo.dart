@@ -34,7 +34,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
     final themeData = CupertinoTheme.of(context);
     final dialogBody = CupertinoTheme(
       data: themeData,
-       child,
+      child,
     );
 
     showCupertinoModalPopup<void>(
@@ -49,7 +49,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         _showDemoPicker(
           context: context,
           child: _BottomPicker(
-             CupertinoDatePicker(
+            CupertinoDatePicker(
               backgroundColor:
                   CupertinoColors.systemBackground.resolveFrom(context),
               mode: CupertinoDatePickerMode.date,
@@ -61,7 +61,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
           ),
         );
       },
-       _Menu(
+      _Menu(
         Text(GalleryLocalizations.of(context).demoCupertinoPickerDate),
         Text(
           DateFormat.yMMMMd().format(date),
@@ -77,7 +77,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         _showDemoPicker(
           context: context,
           child: _BottomPicker(
-             CupertinoDatePicker(
+            CupertinoDatePicker(
               backgroundColor:
                   CupertinoColors.systemBackground.resolveFrom(context),
               mode: CupertinoDatePickerMode.time,
@@ -89,14 +89,12 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
           ),
         );
       },
-       _Menu(
-        
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerTime),
-          Text(
-            DateFormat.jm().format(time),
-            style: const TextStyle(color: CupertinoColors.inactiveGray),
-          )
-        ,
+      _Menu(
+        Text(GalleryLocalizations.of(context).demoCupertinoPickerTime),
+        Text(
+          DateFormat.jm().format(time),
+          style: const TextStyle(color: CupertinoColors.inactiveGray),
+        ),
       ),
     );
   }
@@ -107,7 +105,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         _showDemoPicker(
           context: context,
           child: _BottomPicker(
-             CupertinoDatePicker(
+            CupertinoDatePicker(
               backgroundColor:
                   CupertinoColors.systemBackground.resolveFrom(context),
               mode: CupertinoDatePickerMode.dateAndTime,
@@ -119,16 +117,14 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
           ),
         );
       },
-       _Menu(
-        
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerDateTime),
-          Flexible(
-             Text(
-              DateFormat.yMMMd().add_jm().format(dateTime),
-              style: const TextStyle(color: CupertinoColors.inactiveGray),
-            ),
-          )
-        ,
+      _Menu(
+        Text(GalleryLocalizations.of(context).demoCupertinoPickerDateTime),
+        Flexible(
+          Text(
+            DateFormat.yMMMd().add_jm().format(dateTime),
+            style: const TextStyle(color: CupertinoColors.inactiveGray),
+          ),
+        ),
       ),
     );
   }
@@ -139,7 +135,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         _showDemoPicker(
           context: context,
           child: _BottomPicker(
-             CupertinoTimerPicker(
+            CupertinoTimerPicker(
               backgroundColor:
                   CupertinoColors.systemBackground.resolveFrom(context),
               initialTimerDuration: timer,
@@ -150,16 +146,14 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
           ),
         );
       },
-       _Menu(
-        
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerTimer),
-          Text(
-            '${timer.inHours}:'
-            '${(timer.inMinutes % 60).toString().padLeft(2, '0')}:'
-            '${(timer.inSeconds % 60).toString().padLeft(2, '0')}',
-            style: const TextStyle(color: CupertinoColors.inactiveGray),
-          )
-        ,
+      _Menu(
+        Text(GalleryLocalizations.of(context).demoCupertinoPickerTimer),
+        Text(
+          '${timer.inHours}:'
+          '${(timer.inMinutes % 60).toString().padLeft(2, '0')}:'
+          '${(timer.inSeconds % 60).toString().padLeft(2, '0')}',
+          style: const TextStyle(color: CupertinoColors.inactiveGray),
+        ),
       ),
     );
   }
@@ -171,16 +165,14 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         automaticallyImplyLeading: false,
         middle: Text(GalleryLocalizations.of(context).demoCupertinoPickerTitle),
       ),
-       DefaultTextStyle(
+      DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
-         ListView(
-          
-            const SizedBox(height: 32),
-            _buildDatePicker(context),
-            _buildTimePicker(context),
-            _buildDateAndTimePicker(context),
-            _buildCountdownTimerPicker(context)
-          ,
+        ListView(
+          const SizedBox(height: 32),
+          _buildDatePicker(context),
+          _buildTimePicker(context),
+          _buildDateAndTimePicker(context),
+          _buildCountdownTimerPicker(context),
         ),
       ),
     );
@@ -205,17 +197,17 @@ class _BottomPicker extends StatelessWidget {
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
       color: CupertinoColors.systemBackground.resolveFrom(context),
-       DefaultTextStyle(
+      DefaultTextStyle(
         style: TextStyle(
           color: CupertinoColors.label.resolveFrom(context),
           fontSize: 22,
         ),
-         GestureDetector(
+        GestureDetector(
           // Blocks taps from propagating to the modal sheet and popping.
           onTap: () {},
-           SafeArea(
+          SafeArea(
             top: false,
-             child,
+            child,
           ),
         ),
       ),
@@ -242,11 +234,11 @@ class _Menu extends StatelessWidget {
         ),
       ),
       height: 44,
-       Padding(
+      Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-           children,
+          children,
         ),
       ),
     );

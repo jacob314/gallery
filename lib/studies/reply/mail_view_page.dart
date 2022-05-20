@@ -18,19 +18,19 @@ class MailViewPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-         SizedBox(
+        SizedBox(
           height: double.infinity,
-           Material(
+          Material(
             color: Theme.of(context).cardColor,
-             SingleChildScrollView(
+            SingleChildScrollView(
               padding: const EdgeInsetsDirectional.only(
                 top: 42,
                 start: 20,
                 end: 20,
               ),
-               Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                 [
+                [
                   _MailViewHeader(email: email),
                   const SizedBox(height: 32),
                   _MailViewBody(message: email.message),
@@ -61,59 +61,51 @@ class _MailViewHeader extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
-      
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          
-            Expanded(
-               Text(
-                email.subject,
-                style: textTheme.headline4.copyWith(height: 1.1),
-              ),
-            ),
-            IconButton(
-              key: const ValueKey('ReplyExit'),
-              icon: const Icon(Icons.keyboard_arrow_down),
-              onPressed: () {
-                Provider.of<EmailStore>(
-                  context,
-                  listen: false,
-                ).selectedEmailId = -1;
-                Navigator.pop(context);
-              },
-              splashRadius: 20,
-            )
-          ,
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        Expanded(
+          Text(
+            email.subject,
+            style: textTheme.headline4.copyWith(height: 1.1),
+          ),
         ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              
-                Text('${email.sender} - ${email.time}'),
-                const SizedBox(height: 4),
-                Text(
-                  'To ${email.recipients},',
-                  style: textTheme.caption.copyWith(
-                    color: Theme.of(context)
-                        .navigationRailTheme
-                        .unselectedLabelTextStyle
-                        .color,
-                  ),
-                )
-              ,
+        IconButton(
+          key: const ValueKey('ReplyExit'),
+          icon: const Icon(Icons.keyboard_arrow_down),
+          onPressed: () {
+            Provider.of<EmailStore>(
+              context,
+              listen: false,
+            ).selectedEmailId = -1;
+            Navigator.pop(context);
+          },
+          splashRadius: 20,
+        ),
+      ),
+      const SizedBox(height: 16),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Text('${email.sender} - ${email.time}'),
+          const SizedBox(height: 4),
+          Text(
+            'To ${email.recipients},',
+            style: textTheme.caption.copyWith(
+              color: Theme.of(context)
+                  .navigationRailTheme
+                  .unselectedLabelTextStyle
+                  .color,
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(end: 4),
-               ProfileAvatar(avatar: email.avatar),
-            )
-          ,
-        )
-      ,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsetsDirectional.only(end: 4),
+          ProfileAvatar(avatar: email.avatar),
+        ),
+      ),
     );
   }
 }
