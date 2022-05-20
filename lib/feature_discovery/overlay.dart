@@ -128,11 +128,11 @@ class Background extends StatelessWidget {
     return Positioned(
         left: centerPosition.dx,
         top: centerPosition.dy,
-        child: FractionalTranslation(
+         FractionalTranslation(
           translation: const Offset(-0.5, -0.5),
-          child: Opacity(
+           Opacity(
             opacity: opacity,
-            child: Container(
+             Container(
               height: radius * 2,
               width: radius * 2,
               decoration: BoxDecoration(
@@ -203,15 +203,15 @@ class Content extends StatelessWidget {
       height: position.bottom - position.top,
       width: position.right - position.left,
       top: position.top,
-      child: Opacity(
+       Opacity(
         opacity: opacity,
-        child: Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          
             _buildTitle(textTheme),
             const SizedBox(height: 12.0),
-            _buildDescription(textTheme),
-          ],
+            _buildDescription(textTheme)
+          ,
         ),
       ),
     );
@@ -262,11 +262,11 @@ class Ripple extends StatelessWidget {
     return Positioned(
       left: center.dx,
       top: center.dy,
-      child: FractionalTranslation(
+       FractionalTranslation(
         translation: const Offset(-0.5, -0.5),
-        child: Opacity(
+         Opacity(
           opacity: opacity,
-          child: Container(
+           Container(
             height: radius * 2,
             width: radius * 2,
             decoration: const BoxDecoration(
@@ -314,20 +314,20 @@ class TapTarget extends StatelessWidget {
     return Positioned(
       left: center.dx,
       top: center.dy,
-      child: FractionalTranslation(
+       FractionalTranslation(
         translation: const Offset(-0.5, -0.5),
-        child: InkWell(
+         InkWell(
           onTap: onTap,
-          child: Opacity(
+           Opacity(
             opacity: opacity,
-            child: Container(
+             Container(
               height: radius * 2,
               width: radius * 2,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-              child: child,
+               child,
             ),
           ),
         ),

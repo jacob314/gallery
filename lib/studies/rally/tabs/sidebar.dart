@@ -22,35 +22,35 @@ class TabWithSidebar extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isDisplayDesktop(context)) {
       return Row(
-        children: [
+        
           Flexible(
             flex: 2,
-            child: SingleChildScrollView(
-              child: Padding(
+             SingleChildScrollView(
+               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
-                child: mainView,
+                 mainView,
               ),
             ),
           ),
           Expanded(
             flex: 1,
-            child: Container(
+             Container(
               color: RallyColors.inputBackground,
               padding: const EdgeInsetsDirectional.only(start: 24),
               height: double.infinity,
               alignment: AlignmentDirectional.centerStart,
-              child: ListView(
+               ListView(
                 shrinkWrap: true,
-                children: sidebarItems,
+                 sidebarItems,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       );
     } else {
       return SingleChildScrollView(
         restorationId: restorationId,
-        child: mainView,
+         mainView,
       );
     }
   }
@@ -67,7 +67,7 @@ class SidebarItem extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      
         const SizedBox(height: 8),
         Text(
           title,
@@ -85,8 +85,8 @@ class SidebarItem extends StatelessWidget {
         Container(
           color: RallyColors.primaryBackground,
           height: 1,
-        ),
-      ],
+        )
+      ,
     );
   }
 }

@@ -163,17 +163,17 @@ class _ColorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Semantics(
       container: true,
-      child: Container(
+       Container(
         height: kColorItemHeight,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         color: color,
-        child: Row(
+         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          
             Text('$prefix$index'),
-            Flexible(child: Text(_colorString)),
-          ],
+            Flexible( Text(_colorString))
+          ,
         ),
       ),
     );
@@ -212,19 +212,19 @@ class PaletteTabView extends StatelessWidget {
       color: Colors.black,
     );
     return Scrollbar(
-      child: ListView(
+       ListView(
         itemExtent: kColorItemHeight,
-        children: [
+         [
           for (final key in primaryKeys)
             DefaultTextStyle(
               style: key > colors.threshold ? whiteTextStyle : blackTextStyle,
-              child: _ColorItem(index: key, color: colors.primary[key]),
+               _ColorItem(index: key, color: colors.primary[key]),
             ),
           if (colors.accent != null)
             for (final key in accentKeys)
               DefaultTextStyle(
                 style: key > colors.threshold ? whiteTextStyle : blackTextStyle,
-                child: _ColorItem(
+                 _ColorItem(
                   index: key,
                   color: colors.accent[key],
                   prefix: 'A',
@@ -244,7 +244,7 @@ class ColorsDemo extends StatelessWidget {
     final palettes = _allPalettes(context);
     return DefaultTabController(
       length: palettes.length,
-      child: Scaffold(
+       Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(GalleryLocalizations.of(context).demoColorsTitle),
@@ -256,7 +256,7 @@ class ColorsDemo extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          children: [
+           [
             for (final palette in palettes) PaletteTabView(colors: palette),
           ],
         ),

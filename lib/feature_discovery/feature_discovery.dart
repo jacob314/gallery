@@ -148,12 +148,12 @@ class _FeatureDiscoveryState extends State<FeatureDiscovery>
     return Material(
       key: FeatureDiscovery.overlayKey,
       type: MaterialType.transparency,
-      child: Stack(
-        children: [
+       Stack(
+        
           GestureDetector(
             key: FeatureDiscovery.gestureDetectorKey,
             onTap: dismiss,
-            child: Container(
+             Container(
               width: double.infinity,
               height: double.infinity,
               color: Colors.transparent,
@@ -186,9 +186,9 @@ class _FeatureDiscoveryState extends State<FeatureDiscovery>
             status: status,
             center: center,
             onTap: tap,
-            child: widget.child,
-          ),
-        ],
+             widget.child,
+          )
+        ,
       ),
     );
   }

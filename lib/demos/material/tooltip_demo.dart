@@ -18,11 +18,11 @@ class TooltipDemo extends StatelessWidget {
         title: Text(GalleryLocalizations.of(context).demoTooltipTitle),
       ),
       body: Center(
-        child: Padding(
+         Padding(
           padding: const EdgeInsets.all(8),
-          child: Column(
+           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            
               Text(
                 GalleryLocalizations.of(context).demoTooltipInstructions,
                 textAlign: TextAlign.center,
@@ -31,13 +31,13 @@ class TooltipDemo extends StatelessWidget {
               Tooltip(
                 message:
                     GalleryLocalizations.of(context).starterAppTooltipSearch,
-                child: IconButton(
+                 IconButton(
                   color: Theme.of(context).colorScheme.primary,
                   onPressed: () {},
                   icon: const Icon(Icons.search),
                 ),
-              ),
-            ],
+              )
+            ,
           ),
         ),
       ),

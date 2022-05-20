@@ -30,35 +30,35 @@ class SlowMotionSetting extends StatelessWidget {
 
     return Semantics(
       container: true,
-      child: Container(
+       Container(
         margin: settingItemHeaderMargin,
-        child: Material(
+         Material(
           shape: RoundedRectangleBorder(borderRadius: settingItemBorderRadius),
           color: colorScheme.secondary,
           clipBehavior: Clip.antiAlias,
-          child: Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            
               Expanded(
-                child: Padding(
+                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    
                       Text(
                         GalleryLocalizations.of(context).settingsSlowMotion,
                         style: textTheme.subtitle1.apply(
                           color: colorScheme.onSurface,
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.only(end: 8),
-                child: Switch(
+                 Switch(
                   activeColor: colorScheme.primary,
                   value: options.timeDilation != 1.0,
                   onChanged: (isOn) => GalleryOptions.update(
@@ -66,8 +66,8 @@ class SlowMotionSetting extends StatelessWidget {
                     options.copyWith(timeDilation: isOn ? 5.0 : 1.0),
                   ),
                 ),
-              ),
-            ],
+              )
+            ,
           ),
         ),
       ),
@@ -170,7 +170,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
   Widget _buildHeaderWithChildren(BuildContext context, Widget child) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      
         _CategoryHeader(
           margin: _headerMargin.value,
           padding: _headerPadding.value,
@@ -183,14 +183,14 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
         ),
         Padding(
           padding: _childrenPadding.value,
-          child: ClipRect(
-            child: Align(
+           ClipRect(
+             Align(
               heightFactor: _childrenHeightFactor.value,
-              child: child,
+               child,
             ),
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 
@@ -202,7 +202,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
     return AnimatedBuilder(
       animation: _controller.view,
       builder: _buildHeaderWithChildren,
-      child: Container(
+       Container(
         constraints: const BoxConstraints(maxHeight: 384),
         margin: const EdgeInsetsDirectional.only(start: 24, bottom: 40),
         decoration: BoxDecoration(
@@ -213,7 +213,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
             ),
           ),
         ),
-        child: ListView.builder(
+         ListView.builder(
           shrinkWrap: true,
           itemCount: widget.isExpanded ? _options.length : 0,
           itemBuilder: (context, index) {
@@ -222,7 +222,7 @@ class _SettingsListItemState<T> extends State<SettingsListItem<T>>
               value: _options.elementAt(index),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                 [
                   Text(
                     displayOption.title,
                     style: theme.textTheme.bodyText1.copyWith(
@@ -282,22 +282,22 @@ class _CategoryHeader extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Container(
       margin: margin,
-      child: Material(
+       Material(
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         color: colorScheme.secondary,
         clipBehavior: Clip.antiAlias,
-        child: InkWell(
+         InkWell(
           onTap: onTap,
-          child: Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            
               Expanded(
-                child: Padding(
+                 Padding(
                   padding: padding,
-                  child: Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    
                       Text(
                         title,
                         style: textTheme.subtitle1.apply(
@@ -306,7 +306,7 @@ class _CategoryHeader extends StatelessWidget {
                       ),
                       SizeTransition(
                         sizeFactor: subtitleHeight,
-                        child: Text(
+                         Text(
                           subtitle,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -315,7 +315,7 @@ class _CategoryHeader extends StatelessWidget {
                           ),
                         ),
                       )
-                    ],
+                    ,
                   ),
                 ),
               ),
@@ -324,12 +324,12 @@ class _CategoryHeader extends StatelessWidget {
                   start: 8,
                   end: 24,
                 ),
-                child: RotationTransition(
+                 RotationTransition(
                   turns: chevronRotation,
-                  child: const Icon(Icons.arrow_drop_down),
+                   const Icon(Icons.arrow_drop_down),
                 ),
               )
-            ],
+            ,
           ),
         ),
       ),

@@ -130,7 +130,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
     return CupertinoDialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-        child: CupertinoAlertDialog(
+         CupertinoAlertDialog(
           title: Text(GalleryLocalizations.of(context).dialogDiscardTitle),
           actions: [
             CupertinoDialogAction(
@@ -140,7 +140,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
                   context,
                 ).pop(GalleryLocalizations.of(context).cupertinoAlertDiscard);
               },
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertDiscard,
               ),
             ),
@@ -151,7 +151,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               ).pop(
                 GalleryLocalizations.of(context).cupertinoAlertCancel,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertCancel,
               ),
             ),
@@ -168,7 +168,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
     return CupertinoDialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-        child: CupertinoAlertDialog(
+         CupertinoAlertDialog(
           title: Text(
             GalleryLocalizations.of(context).cupertinoAlertLocationTitle,
           ),
@@ -182,7 +182,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               ).pop(
                 GalleryLocalizations.of(context).cupertinoAlertDontAllow,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertDontAllow,
               ),
             ),
@@ -192,7 +192,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               ).pop(
                 GalleryLocalizations.of(context).cupertinoAlertAllow,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertAllow,
               ),
             ),
@@ -209,7 +209,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
     return CupertinoDialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-        child: CupertinoDessertDialog(
+         CupertinoDessertDialog(
           title: Text(
             GalleryLocalizations.of(context).cupertinoAlertFavoriteDessert,
           ),
@@ -228,7 +228,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
     return CupertinoDialogRoute<String>(
       context: context,
       builder: (context) => const ApplyTextOptions(
-        child: CupertinoDessertDialog(),
+         CupertinoDessertDialog(),
       ),
     );
   }
@@ -239,7 +239,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
   ) {
     return CupertinoModalPopupRoute<String>(
       builder: (context) => ApplyTextOptions(
-        child: CupertinoActionSheet(
+         CupertinoActionSheet(
           title: Text(
             GalleryLocalizations.of(context).cupertinoAlertFavoriteDessert,
           ),
@@ -253,7 +253,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               ).pop(
                 GalleryLocalizations.of(context).cupertinoAlertCheesecake,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertCheesecake,
               ),
             ),
@@ -263,7 +263,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               ).pop(
                 GalleryLocalizations.of(context).cupertinoAlertTiramisu,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertTiramisu,
               ),
             ),
@@ -273,7 +273,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               ).pop(
                 GalleryLocalizations.of(context).cupertinoAlertApplePie,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).cupertinoAlertApplePie,
               ),
             ),
@@ -285,7 +285,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
             ).pop(
               GalleryLocalizations.of(context).cupertinoAlertCancel,
             ),
-            child: Text(
+             Text(
               GalleryLocalizations.of(context).cupertinoAlertCancel,
             ),
           ),
@@ -301,13 +301,13 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
         automaticallyImplyLeading: false,
         middle: Text(_title(context)),
       ),
-      child: Builder(
+       Builder(
         builder: (context) {
           return Column(
-            children: [
+             [
               Expanded(
-                child: Center(
-                  child: CupertinoButton.filled(
+                 Center(
+                   CupertinoButton.filled(
                     onPressed: () {
                       switch (widget.type) {
                         case AlertDemoType.alert:
@@ -327,7 +327,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
                           break;
                       }
                     },
-                    child: Text(
+                     Text(
                       GalleryLocalizations.of(context).cupertinoShowAlert,
                     ),
                   ),
@@ -336,7 +336,7 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo>
               if (lastSelectedValue.value != null)
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Text(
+                   Text(
                     GalleryLocalizations.of(context)
                         .dialogSelectedOption(lastSelectedValue.value),
                     style: CupertinoTheme.of(context).textTheme.textStyle,
@@ -375,7 +375,7 @@ class CupertinoDessertDialog extends StatelessWidget {
               GalleryLocalizations.of(context).cupertinoAlertCheesecake,
             );
           },
-          child: Text(
+           Text(
             GalleryLocalizations.of(context).cupertinoAlertCheesecake,
           ),
         ),
@@ -387,7 +387,7 @@ class CupertinoDessertDialog extends StatelessWidget {
               GalleryLocalizations.of(context).cupertinoAlertTiramisu,
             );
           },
-          child: Text(
+           Text(
             GalleryLocalizations.of(context).cupertinoAlertTiramisu,
           ),
         ),
@@ -399,7 +399,7 @@ class CupertinoDessertDialog extends StatelessWidget {
               GalleryLocalizations.of(context).cupertinoAlertApplePie,
             );
           },
-          child: Text(
+           Text(
             GalleryLocalizations.of(context).cupertinoAlertApplePie,
           ),
         ),
@@ -411,7 +411,7 @@ class CupertinoDessertDialog extends StatelessWidget {
               GalleryLocalizations.of(context).cupertinoAlertChocolateBrownie,
             );
           },
-          child: Text(
+           Text(
             GalleryLocalizations.of(context).cupertinoAlertChocolateBrownie,
           ),
         ),
@@ -424,7 +424,7 @@ class CupertinoDessertDialog extends StatelessWidget {
               GalleryLocalizations.of(context).cupertinoAlertCancel,
             );
           },
-          child: Text(
+           Text(
             GalleryLocalizations.of(context).cupertinoAlertCancel,
           ),
         ),

@@ -33,46 +33,46 @@ class _OverviewViewState extends State<OverviewView> {
       const sortKeyName = 'Overview';
       return SingleChildScrollView(
         restorationId: 'overview_scroll_view',
-        child: Padding(
+         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24),
-          child: Row(
+           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            
               Flexible(
                 flex: 7,
-                child: Semantics(
+                 Semantics(
                   sortKey: const OrdinalSortKey(1, name: sortKeyName),
-                  child: const _OverviewGrid(spacing: 24),
+                   const _OverviewGrid(spacing: 24),
                 ),
               ),
               const SizedBox(width: 24),
               Flexible(
                 flex: 3,
-                child: SizedBox(
+                 SizedBox(
                   width: 400,
-                  child: Semantics(
+                   Semantics(
                     sortKey: const OrdinalSortKey(2, name: sortKeyName),
-                    child: FocusTraversalGroup(
-                      child: _AlertsView(alerts: alerts),
+                     FocusTraversalGroup(
+                       _AlertsView(alerts: alerts),
                     ),
                   ),
                 ),
-              ),
-            ],
+              )
+            ,
           ),
         ),
       );
     } else {
       return SingleChildScrollView(
         restorationId: 'overview_scroll_view',
-        child: Padding(
+         Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Column(
-            children: [
+           Column(
+            
               _AlertsView(alerts: alerts.sublist(0, 1)),
               const SizedBox(height: 12),
-              const _OverviewGrid(spacing: 12),
-            ],
+              const _OverviewGrid(spacing: 12)
+            ,
           ),
         ),
       );
@@ -107,10 +107,10 @@ class _OverviewGrid extends StatelessWidget {
 
       return Wrap(
         runSpacing: spacing,
-        children: [
+         [
           SizedBox(
             width: boxWidth,
-            child: _FinancialView(
+             _FinancialView(
               title: GalleryLocalizations.of(context).rallyAccounts,
               total: sumAccountDataPrimaryAmount(accountDataList),
               financialItemViews:
@@ -123,7 +123,7 @@ class _OverviewGrid extends StatelessWidget {
           if (hasMultipleColumns) SizedBox(width: spacing),
           SizedBox(
             width: boxWidth,
-            child: _FinancialView(
+             _FinancialView(
               title: GalleryLocalizations.of(context).rallyBills,
               total: sumBillDataPrimaryAmount(billDataList),
               financialItemViews: buildBillDataListViews(billDataList, context),
@@ -159,23 +159,23 @@ class _AlertsView extends StatelessWidget {
     return Container(
       padding: const EdgeInsetsDirectional.only(start: 16, top: 4, bottom: 4),
       color: RallyColors.cardBackground,
-      child: Column(
-        children: [
+       Column(
+         [
           Container(
             width: double.infinity,
             padding:
                 isDesktop ? const EdgeInsets.symmetric(vertical: 16) : null,
-            child: MergeSemantics(
-              child: Wrap(
+             MergeSemantics(
+               Wrap(
                 alignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
+                 [
                   Text(GalleryLocalizations.of(context).rallyAlerts),
                   if (!isDesktop)
                     TextButton(
                       style: TextButton.styleFrom(primary: Colors.white),
                       onPressed: () {},
-                      child: Text(GalleryLocalizations.of(context).rallySeeAll),
+                       Text(GalleryLocalizations.of(context).rallySeeAll),
                     ),
                 ],
               ),
@@ -202,27 +202,27 @@ class _Alert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MergeSemantics(
-      child: Container(
+       Container(
         padding: isDisplayDesktop(context)
             ? const EdgeInsets.symmetric(vertical: 8)
             : null,
-        child: Row(
+         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          
             Expanded(
-              child: Text(alert.message),
+               Text(alert.message),
             ),
             SizedBox(
               width: 100,
-              child: Align(
+               Align(
                 alignment: Alignment.topRight,
-                child: IconButton(
+                 IconButton(
                   onPressed: () {},
                   icon: Icon(alert.iconData, color: RallyColors.white60),
                 ),
               ),
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -249,34 +249,34 @@ class _FinancialView extends StatelessWidget {
     final theme = Theme.of(context);
     return FocusTraversalOrder(
       order: NumericFocusOrder(order),
-      child: Container(
+       Container(
         color: RallyColors.cardBackground,
-        child: Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+           [
             MergeSemantics(
-              child: Column(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
+                
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 16,
                       left: 16,
                       right: 16,
                     ),
-                    child: Text(title),
+                     Text(title),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Text(
+                     Text(
                       usdWithSignFormat(context).format(total),
                       style: theme.textTheme.bodyText1.copyWith(
                         fontSize: 44 / reducedTextScale(context),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
-                ],
+                  )
+                ,
               ),
             ),
             ...financialItemViews.sublist(
@@ -284,7 +284,7 @@ class _FinancialView extends StatelessWidget {
             TextButton(
               style: TextButton.styleFrom(primary: Colors.white),
               onPressed: () {},
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).rallySeeAll,
                 semanticsLabel: buttonSemanticsLabel,
               ),

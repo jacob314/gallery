@@ -18,19 +18,19 @@ class MailViewPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: SizedBox(
+         SizedBox(
           height: double.infinity,
-          child: Material(
+           Material(
             color: Theme.of(context).cardColor,
-            child: SingleChildScrollView(
+             SingleChildScrollView(
               padding: const EdgeInsetsDirectional.only(
                 top: 42,
                 start: 20,
                 end: 20,
               ),
-              child: Column(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                 [
                   _MailViewHeader(email: email),
                   const SizedBox(height: 32),
                   _MailViewBody(message: email.message),
@@ -61,12 +61,12 @@ class _MailViewHeader extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
-      children: [
+      
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          
             Expanded(
-              child: Text(
+               Text(
                 email.subject,
                 style: textTheme.headline4.copyWith(height: 1.1),
               ),
@@ -82,18 +82,18 @@ class _MailViewHeader extends StatelessWidget {
                 Navigator.pop(context);
               },
               splashRadius: 20,
-            ),
-          ],
+            )
+          ,
         ),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+              
                 Text('${email.sender} - ${email.time}'),
                 const SizedBox(height: 4),
                 Text(
@@ -104,16 +104,16 @@ class _MailViewHeader extends StatelessWidget {
                         .unselectedLabelTextStyle
                         .color,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
             Padding(
               padding: const EdgeInsetsDirectional.only(end: 4),
-              child: ProfileAvatar(avatar: email.avatar),
-            ),
-          ],
-        ),
-      ],
+               ProfileAvatar(avatar: email.avatar),
+            )
+          ,
+        )
+      ,
     );
   }
 }

@@ -30,7 +30,7 @@ class _SharedYAxisTransitionDemoState extends State<SharedYAxisTransitionDemo>
   final _recentList = ListView(
     // Adding [UniqueKey] to make sure the widget rebuilds when transitioning.
     key: UniqueKey(),
-    children: [
+     [
       for (int i = 0; i < 10; i++) _AlbumTile((i + 1).toString()),
     ],
   );
@@ -38,7 +38,7 @@ class _SharedYAxisTransitionDemoState extends State<SharedYAxisTransitionDemo>
   final _alphabeticalList = ListView(
     // Adding [UniqueKey] to make sure the widget rebuilds when transitioning.
     key: UniqueKey(),
-    children: [
+     [
       for (final letter in _alphabet) _AlbumTile(letter),
     ],
   );
@@ -70,7 +70,7 @@ class _SharedYAxisTransitionDemoState extends State<SharedYAxisTransitionDemo>
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Column(
-          children: [
+          
             Text(localizations.demoSharedYAxisTitle),
             Text(
               '(${localizations.demoSharedYAxisDemoInstructions})',
@@ -78,23 +78,23 @@ class _SharedYAxisTransitionDemoState extends State<SharedYAxisTransitionDemo>
                   .textTheme
                   .subtitle2
                   .copyWith(color: Colors.white),
-            ),
-          ],
+            )
+          ,
         ),
       ),
       body: Column(
-        children: [
+        
           const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            
               Padding(
                 padding: const EdgeInsets.only(left: 15),
-                child: Text(localizations.demoSharedYAxisAlbumCount),
+                 Text(localizations.demoSharedYAxisAlbumCount),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 7),
-                child: InkWell(
+                 InkWell(
                   customBorder: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(4),
@@ -111,38 +111,38 @@ class _SharedYAxisTransitionDemoState extends State<SharedYAxisTransitionDemo>
                       _isAlphabetical = !_isAlphabetical;
                     });
                   },
-                  child: Row(
-                    children: [
+                   Row(
+                    
                       Text(_isAlphabetical
                           ? localizations.demoSharedYAxisAlphabeticalSortTitle
                           : localizations.demoSharedYAxisRecentSortTitle),
                       RotationTransition(
                         turns: Tween(begin: 0.0, end: 1.0)
                             .animate(_controller.view),
-                        child: const Icon(Icons.arrow_drop_down),
-                      ),
-                    ],
+                         const Icon(Icons.arrow_drop_down),
+                      )
+                    ,
                   ),
                 ),
-              ),
-            ],
+              )
+            ,
           ),
           const SizedBox(height: 10),
           Expanded(
-            child: PageTransitionSwitcher(
+             PageTransitionSwitcher(
               reverse: _isAlphabetical,
               transitionBuilder: (child, animation, secondaryAnimation) {
                 return SharedAxisTransition(
                   animation: animation,
                   secondaryAnimation: secondaryAnimation,
                   transitionType: SharedAxisTransitionType.vertical,
-                  child: child,
+                   child,
                 );
               },
-              child: _isAlphabetical ? _alphabeticalList : _recentList,
+               _isAlphabetical ? _alphabeticalList : _recentList,
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -158,7 +158,7 @@ class _AlbumTile extends StatelessWidget {
     final localizations = GalleryLocalizations.of(context);
 
     return Column(
-      children: [
+      
         ListTile(
           leading: Container(
             height: 60,
@@ -169,9 +169,9 @@ class _AlbumTile extends StatelessWidget {
               ),
               color: Colors.grey,
             ),
-            child: Padding(
+             Padding(
               padding: const EdgeInsets.all(6),
-              child: Image.asset(
+               Image.asset(
                 'placeholders/placeholder_image.png',
                 package: 'flutter_gallery_assets',
               ),
@@ -188,8 +188,8 @@ class _AlbumTile extends StatelessWidget {
             '${localizations.demoSharedYAxisAlbumTileDurationUnit}',
           ),
         ),
-        const Divider(height: 20, thickness: 1),
-      ],
+        const Divider(height: 20, thickness: 1)
+      ,
     );
   }
 }

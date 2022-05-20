@@ -120,7 +120,7 @@ class _CategoryListItemState extends State<CategoryListItem>
   Widget _buildHeaderWithChildren(BuildContext context, Widget child) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      
         _CategoryHeader(
           margin: _headerMargin.value,
           imagePadding: _headerImagePadding.value,
@@ -133,14 +133,14 @@ class _CategoryListItemState extends State<CategoryListItem>
         ),
         Padding(
           padding: _childrenPadding.value,
-          child: ClipRect(
-            child: Align(
+           ClipRect(
+             Align(
               heightFactor: _childrenHeightFactor.value,
-              child: child,
+               child,
             ),
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 
@@ -149,7 +149,7 @@ class _CategoryListItemState extends State<CategoryListItem>
     return AnimatedBuilder(
       animation: _controller.view,
       builder: _buildHeaderWithChildren,
-      child: _shouldOpenList()
+       _shouldOpenList()
           ? null
           : _ExpandedCategoryDemos(
               category: widget.category,
@@ -186,26 +186,26 @@ class _CategoryHeader extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
       margin: margin,
-      child: Material(
+       Material(
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         color: colorScheme.onBackground,
         clipBehavior: Clip.antiAlias,
-        child: SizedBox(
+         SizedBox(
           width: MediaQuery.of(context).size.width,
-          child: InkWell(
+           InkWell(
             // Makes integration tests possible.
             key: ValueKey('${category.name}CategoryHeader'),
             onTap: onTap,
-            child: Row(
-              children: [
+             Row(
+              
                 Expanded(
-                  child: Wrap(
+                   Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
+                    
                       Padding(
                         padding: imagePadding,
-                        child: ExcludeSemantics(
-                          child: Image.asset(
+                         ExcludeSemantics(
+                           Image.asset(
                             imageString,
                             width: 64,
                             height: 64,
@@ -215,7 +215,7 @@ class _CategoryHeader extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 8),
-                        child: Text(
+                         Text(
                           category.displayTitle(
                             GalleryLocalizations.of(context),
                           ),
@@ -223,26 +223,26 @@ class _CategoryHeader extends StatelessWidget {
                                 color: colorScheme.onSurface,
                               ),
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                 ),
                 Opacity(
                   opacity: chevronOpacity,
-                  child: chevronOpacity != 0
+                   chevronOpacity != 0
                       ? Padding(
                           padding: const EdgeInsetsDirectional.only(
                             start: 8,
                             end: 32,
                           ),
-                          child: Icon(
+                           Icon(
                             Icons.keyboard_arrow_up,
                             color: colorScheme.onSurface,
                           ),
                         )
                       : null,
-                ),
-              ],
+                )
+              ,
             ),
           ),
         ),
@@ -266,7 +266,7 @@ class _ExpandedCategoryDemos extends StatelessWidget {
     return Column(
       // Makes integration tests possible.
       key: ValueKey('${category.name}DemoList'),
-      children: [
+       [
         for (final demo in demos)
           CategoryDemoItem(
             demo: demo,
@@ -290,31 +290,31 @@ class CategoryDemoItem extends StatelessWidget {
       // Makes integration tests possible.
       key: ValueKey(demo.describe),
       color: Theme.of(context).colorScheme.surface,
-      child: MergeSemantics(
-        child: InkWell(
+       MergeSemantics(
+         InkWell(
           onTap: () {
             Navigator.of(context).restorablePushNamed(
               '${DemoPage.baseRoute}/${demo.slug}',
             );
           },
-          child: Padding(
+           Padding(
             padding: EdgeInsetsDirectional.only(
               start: 32,
               top: 20,
               end: isDisplayDesktop(context) ? 16 : 8,
             ),
-            child: Row(
+             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              
                 Icon(
                   demo.icon,
                   color: colorScheme.primary,
                 ),
                 const SizedBox(width: 40),
                 Flexible(
-                  child: Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    
                       Text(
                         demo.title,
                         style: textTheme.subtitle1
@@ -331,11 +331,11 @@ class CategoryDemoItem extends StatelessWidget {
                         thickness: 1,
                         height: 1,
                         color: Theme.of(context).colorScheme.background,
-                      ),
-                    ],
+                      )
+                    ,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
           ),
         ),

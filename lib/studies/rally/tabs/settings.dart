@@ -20,12 +20,12 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return FocusTraversalGroup(
-      child: Container(
+       Container(
         padding: EdgeInsets.only(top: isDisplayDesktop(context) ? 24 : 0),
-        child: ListView(
+         ListView(
           restorationId: 'settings_list_view',
           shrinkWrap: true,
-          children: [
+           [
             for (String title
                 in DummyDataService.getSettingsTitles(context)) ...[
               _SettingsItem(title),
@@ -56,10 +56,10 @@ class _SettingsItem extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).restorablePushNamed(rally_route.loginRoute);
       },
-      child: Container(
+       Container(
         alignment: AlignmentDirectional.centerStart,
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 28),
-        child: Text(title),
+         Text(title),
       ),
     );
   }

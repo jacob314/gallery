@@ -44,7 +44,7 @@ class GalleryApp extends StatelessWidget {
         platform: defaultTargetPlatform,
         isTestMode: isTestMode,
       ),
-      child: Builder(
+       Builder(
         builder: (context) {
           return MaterialApp(
             // By default on desktop, scrollbars are applied by the
@@ -90,8 +90,8 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ApplyTextOptions(
-      child: SplashPage(
-        child: Backdrop(),
+       SplashPage(
+         Backdrop(),
       ),
     );
   }

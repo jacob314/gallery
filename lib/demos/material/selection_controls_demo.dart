@@ -84,9 +84,9 @@ class _CheckboxDemoState extends State<_CheckboxDemo> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+       Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        
           Checkbox(
             value: checkboxValueA.value,
             onChanged: (value) {
@@ -111,8 +111,8 @@ class _CheckboxDemoState extends State<_CheckboxDemo> with RestorationMixin {
                 checkboxValueC.value = value;
               });
             },
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -153,9 +153,9 @@ class _RadioDemoState extends State<_RadioDemo> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+       Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
+         [
           for (int index = 0; index < 3; ++index)
             Radio<int>(
               value: index,
@@ -197,11 +197,11 @@ class _SwitchDemoState extends State<_SwitchDemo> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Semantics(
+       Semantics(
         container: true,
         label:
             GalleryLocalizations.of(context).demoSelectionControlsSwitchTitle,
-        child: Switch(
+         Switch(
           value: switchValue.value,
           onChanged: (value) {
             setState(() {

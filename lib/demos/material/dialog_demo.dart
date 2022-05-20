@@ -106,7 +106,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
     return DialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-        child: AlertDialog(
+         AlertDialog(
           content: Text(
             GalleryLocalizations.of(context).dialogDiscardTitle,
             style: dialogTextStyle,
@@ -131,7 +131,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
     return DialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-        child: AlertDialog(
+         AlertDialog(
           title: Text(GalleryLocalizations.of(context).dialogLocationTitle),
           content: Text(
             GalleryLocalizations.of(context).dialogLocationDescription,
@@ -156,9 +156,9 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
     return DialogRoute<String>(
       context: context,
       builder: (context) => ApplyTextOptions(
-        child: SimpleDialog(
+         SimpleDialog(
           title: Text(GalleryLocalizations.of(context).dialogSetBackup),
-          children: [
+          
             _DialogDemoItem(
               icon: Icons.account_circle,
               color: theme.colorScheme.primary,
@@ -173,8 +173,8 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
               icon: Icons.add_circle,
               text: GalleryLocalizations.of(context).dialogAddAccount,
               color: theme.disabledColor,
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -206,7 +206,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
               title: Text(_title(context)),
             ),
             body: Center(
-              child: ElevatedButton(
+               ElevatedButton(
                 onPressed: () {
                   switch (widget.type) {
                     case DialogDemoType.alert:
@@ -224,7 +224,7 @@ class _DialogDemoState extends State<DialogDemo> with RestorationMixin {
                       break;
                   }
                 },
-                child: Text(GalleryLocalizations.of(context).dialogShow),
+                 Text(GalleryLocalizations.of(context).dialogShow),
               ),
             ),
           ),
@@ -270,7 +270,7 @@ class _DialogButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop(text);
       },
-      child: Text(text),
+       Text(text),
     );
   }
 }
@@ -293,18 +293,18 @@ class _DialogDemoItem extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop(text);
       },
-      child: Row(
+       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        
           Icon(icon, size: 36, color: color),
           Flexible(
-            child: Padding(
+             Padding(
               padding: const EdgeInsetsDirectional.only(start: 16),
-              child: Text(text),
+               Text(text),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -321,8 +321,8 @@ class _FullScreenDialogDemo extends StatelessWidget {
       context: context,
       removeTop: true,
       removeBottom: true,
-      child: ApplyTextOptions(
-        child: Scaffold(
+       ApplyTextOptions(
+         Scaffold(
           appBar: AppBar(
             title: Text(GalleryLocalizations.of(context).dialogFullscreenTitle),
             actions: [
@@ -330,7 +330,7 @@ class _FullScreenDialogDemo extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
+                 Text(
                   GalleryLocalizations.of(context).dialogFullscreenSave,
                   style: theme.textTheme.bodyText2.copyWith(
                     color: theme.colorScheme.onPrimary,
@@ -340,7 +340,7 @@ class _FullScreenDialogDemo extends StatelessWidget {
             ],
           ),
           body: Center(
-            child: Text(
+             Text(
               GalleryLocalizations.of(context).dialogFullscreenDescription,
             ),
           ),

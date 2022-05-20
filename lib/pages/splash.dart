@@ -112,9 +112,9 @@ class _SplashPageState extends State<SplashPage>
         _controller.forward();
         return true;
       },
-      child: SplashPageAnimation(
+       SplashPageAnimation(
         isFinished: _controller.status == AnimationStatus.dismissed,
-        child: LayoutBuilder(
+         LayoutBuilder(
           builder: (context, constraints) {
             final animation = _getPanelAnimation(context, constraints);
             var frontLayer = widget.child;
@@ -129,24 +129,24 @@ class _SplashPageState extends State<SplashPage>
                     _controller.reverse();
                   }
                 },
-                child: IgnorePointer(child: frontLayer),
+                 IgnorePointer( frontLayer),
               );
             }
 
             if (isDisplayDesktop(context)) {
               frontLayer = Padding(
                 padding: const EdgeInsets.only(top: 136),
-                child: ClipRRect(
+                 ClipRRect(
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(40),
                   ),
-                  child: frontLayer,
+                   frontLayer,
                 ),
               );
             }
 
             return Stack(
-              children: [
+              
                 _SplashBackLayer(
                   isSplashCollapsed: !_isSplashVisible,
                   effect: _effect,
@@ -156,9 +156,9 @@ class _SplashPageState extends State<SplashPage>
                 ),
                 PositionedTransition(
                   rect: animation,
-                  child: frontLayer,
-                ),
-              ],
+                   frontLayer,
+                )
+              ,
             );
           },
         ),
@@ -192,37 +192,37 @@ class _SplashBackLayer extends StatelessWidget {
       child = isDisplayDesktop(context)
           ? Padding(
               padding: const EdgeInsets.only(top: 50),
-              child: Align(
+               Align(
                 alignment: Alignment.topCenter,
-                child: GestureDetector(
+                 GestureDetector(
                   onTap: onTap,
-                  child: flutterLogo,
+                   flutterLogo,
                 ),
               ),
             )
           : null;
     } else {
       child = Stack(
-        children: [
+        
           Center(
-            child: Image.asset(
+             Image.asset(
               effectAsset,
               package: 'flutter_gallery_assets',
             ),
           ),
-          Center(child: flutterLogo),
-        ],
+          Center( flutterLogo)
+        ,
       );
     }
 
     return ExcludeSemantics(
-      child: Container(
+       Container(
         // This is the background color of the gifs.
         color: const Color(0xFF030303),
         padding: EdgeInsets.only(
           bottom: isDisplayDesktop(context) ? homePeekDesktop : homePeekMobile,
         ),
-        child: child,
+         child,
       ),
     );
   }

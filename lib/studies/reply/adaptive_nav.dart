@@ -173,7 +173,7 @@ class _DesktopNavState extends State<_DesktopNav>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        children: [
+        
           Consumer<EmailStore>(
             builder: (context, model, child) {
               return LayoutBuilder(
@@ -185,14 +185,14 @@ class _DesktopNavState extends State<_DesktopNav>
                   return Container(
                     color:
                         Theme.of(context).navigationRailTheme.backgroundColor,
-                    child: SingleChildScrollView(
+                     SingleChildScrollView(
                       clipBehavior: Clip.antiAlias,
-                      child: ConstrainedBox(
+                       ConstrainedBox(
                         constraints: BoxConstraints(
                           minHeight: constraints.maxHeight,
                         ),
-                        child: IntrinsicHeight(
-                          child: ValueListenableBuilder<bool>(
+                         IntrinsicHeight(
+                           ValueListenableBuilder<bool>(
                             valueListenable: _isExtended,
                             builder: (context, value, child) {
                               return NavigationRail(
@@ -204,7 +204,7 @@ class _DesktopNavState extends State<_DesktopNav>
                                           'Reply-${destination.textLabel}',
                                         ),
                                         color: Colors.transparent,
-                                        child: ImageIcon(
+                                         ImageIcon(
                                           AssetImage(
                                             destination.icon,
                                             package: _assetsPackage,
@@ -242,18 +242,18 @@ class _DesktopNavState extends State<_DesktopNav>
           ),
           const VerticalDivider(thickness: 1, width: 1),
           Expanded(
-            child: Center(
-              child: ConstrainedBox(
+             Center(
+               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 1340),
-                child: _SharedAxisTransitionSwitcher(
+                 _SharedAxisTransitionSwitcher(
                   defaultChild: _MailNavigator(
-                    child: MailboxBody(key: widget.inboxKey),
+                     MailboxBody(key: widget.inboxKey),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -277,13 +277,13 @@ class _NavigationRailHeader extends StatelessWidget {
         return Align(
           alignment: AlignmentDirectional.centerStart,
           widthFactor: animation.value,
-          child: Column(
+           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            
               SizedBox(
                 height: 56,
-                child: Row(
-                  children: [
+                 Row(
+                   [
                     const SizedBox(width: 6),
                     InkWell(
                       key: const ValueKey('ReplyLogo'),
@@ -291,11 +291,11 @@ class _NavigationRailHeader extends StatelessWidget {
                       onTap: () {
                         extended.value = !extended.value;
                       },
-                      child: Row(
-                        children: [
+                       Row(
+                        
                           Transform.rotate(
                             angle: animation.value * math.pi,
-                            child: const Icon(
+                             const Icon(
                               Icons.arrow_left,
                               color: ReplyColors.white50,
                               size: 16,
@@ -306,9 +306,9 @@ class _NavigationRailHeader extends StatelessWidget {
                           Align(
                             alignment: AlignmentDirectional.centerStart,
                             widthFactor: animation.value,
-                            child: Opacity(
+                             Opacity(
                               opacity: animation.value,
-                              child: Text(
+                               Text(
                                 'REPLY',
                                 style: textTheme.bodyText1.copyWith(
                                   color: ReplyColors.white50,
@@ -316,15 +316,15 @@ class _NavigationRailHeader extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(width: 18 * animation.value),
-                        ],
+                          SizedBox(width: 18 * animation.value)
+                        ,
                       ),
                     ),
                     if (animation.value > 0)
                       Opacity(
                         opacity: animation.value,
-                        child: Row(
-                          children: const [
+                         Row(
+                          
                             SizedBox(width: 18),
                             ProfileAvatar(
                               avatar: 'reply/avatars/avatar_2.jpg',
@@ -334,8 +334,8 @@ class _NavigationRailHeader extends StatelessWidget {
                             Icon(
                               Icons.settings,
                               color: ReplyColors.white50,
-                            ),
-                          ],
+                            )
+                          ,
                         ),
                       ),
                   ],
@@ -346,10 +346,10 @@ class _NavigationRailHeader extends StatelessWidget {
                 padding: const EdgeInsetsDirectional.only(
                   start: 8,
                 ),
-                child: _ReplyFab(extended: extended.value),
+                 _ReplyFab(extended: extended.value),
               ),
-              const SizedBox(height: 8),
-            ],
+              const SizedBox(height: 8)
+            ,
           ),
         );
       },
@@ -377,18 +377,18 @@ class _NavigationRailFolderSection extends StatelessWidget {
           maintainAnimation: true,
           maintainState: true,
           visible: animation.value > 0,
-          child: Opacity(
+           Opacity(
             opacity: animation.value,
-            child: Align(
+             Align(
               widthFactor: animation.value,
               alignment: AlignmentDirectional.centerStart,
-              child: SizedBox(
+               SizedBox(
                 height: 485,
                 width: 256,
-                child: ListView(
+                 ListView(
                   padding: const EdgeInsets.all(12),
                   physics: const NeverScrollableScrollPhysics(),
-                  children: [
+                   [
                     const Divider(
                       color: ReplyColors.blue200,
                       thickness: 0.4,
@@ -400,7 +400,7 @@ class _NavigationRailFolderSection extends StatelessWidget {
                       padding: const EdgeInsetsDirectional.only(
                         start: 16,
                       ),
-                      child: Text(
+                       Text(
                         'FOLDERS',
                         style: textTheme.caption.copyWith(
                           color: navigationRailTheme
@@ -415,10 +415,10 @@ class _NavigationRailFolderSection extends StatelessWidget {
                           Radius.circular(36),
                         ),
                         onTap: () {},
-                        child: Column(
-                          children: [
+                         Column(
+                          
                             Row(
-                              children: [
+                              
                                 const SizedBox(width: 12),
                                 ImageIcon(
                                   AssetImage(
@@ -436,10 +436,10 @@ class _NavigationRailFolderSection extends StatelessWidget {
                                         .unselectedLabelTextStyle.color,
                                   ),
                                 ),
-                                const SizedBox(height: 72),
-                              ],
-                            ),
-                          ],
+                                const SizedBox(height: 72)
+                              ,
+                            )
+                          ,
                         ),
                       ),
                   ],
@@ -622,11 +622,11 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
     return Stack(
       clipBehavior: Clip.none,
       key: _bottomDrawerKey,
-      children: [
+      
         NotificationListener<ScrollNotification>(
           onNotification: _handleScrollNotification,
-          child: _MailNavigator(
-            child: MailboxBody(
+           _MailNavigator(
+             MailboxBody(
               key: widget.inboxKey,
             ),
           ),
@@ -636,13 +636,13 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
             _drawerController.reverse();
             _dropArrowController.reverse();
           },
-          child: Visibility(
+           Visibility(
             maintainAnimation: true,
             maintainState: true,
             visible: _bottomDrawerVisible,
-            child: FadeTransition(
+             FadeTransition(
               opacity: _drawerCurve,
-              child: Container(
+               Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 color: Theme.of(context).bottomSheetTheme.modalBackgroundColor,
@@ -652,9 +652,9 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
         ),
         PositionedTransition(
           rect: drawerAnimation,
-          child: Visibility(
+           Visibility(
             visible: _bottomDrawerVisible,
-            child: BottomDrawer(
+             BottomDrawer(
               onVerticalDragUpdate: _handleDragUpdate,
               onVerticalDragEnd: _handleDragEnd,
               leading: Consumer<EmailStore>(
@@ -671,8 +671,8 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
               trailing: _BottomDrawerFolderSection(folders: widget.folders),
             ),
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 
@@ -702,7 +702,7 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
             ? null
             : const Padding(
                 padding: EdgeInsetsDirectional.only(bottom: 8),
-                child: _ReplyFab(),
+                 _ReplyFab(),
               ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
@@ -745,31 +745,31 @@ class _AnimatedBottomAppBar extends StatelessWidget {
         return SizeTransition(
           sizeFactor: bottomAppBarCurve,
           axisAlignment: -1,
-          child: Padding(
+           Padding(
             padding: const EdgeInsetsDirectional.only(top: 2),
-            child: BottomAppBar(
+             BottomAppBar(
               shape: const WaterfallNotchedRectangle(),
               notchMargin: 6,
-              child: Container(
+               Container(
                 color: Colors.transparent,
                 height: kToolbarHeight,
-                child: Row(
+                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  
                     InkWell(
                       key: const ValueKey('navigation_button'),
                       borderRadius: const BorderRadius.all(Radius.circular(16)),
                       onTap: toggleBottomDrawerVisibility,
-                      child: Row(
-                        children: [
+                       Row(
+                        
                           const SizedBox(width: 16),
                           RotationTransition(
                             turns: Tween(
                               begin: 0.0,
                               end: 1.0,
                             ).animate(dropArrowCurve),
-                            child: const Icon(
+                             const Icon(
                               Icons.arrow_drop_up,
                               color: ReplyColors.white50,
                             ),
@@ -779,11 +779,11 @@ class _AnimatedBottomAppBar extends StatelessWidget {
                           const SizedBox(width: 10),
                           _FadeThroughTransitionSwitcher(
                             fillColor: Colors.transparent,
-                            child: onMailView
+                             onMailView
                                 ? const SizedBox(width: 48)
                                 : FadeTransition(
                                     opacity: fadeOut,
-                                    child: Text(
+                                     Text(
                                       navigationDestinations
                                           .firstWhere((destination) {
                                         return destination.type ==
@@ -795,19 +795,19 @@ class _AnimatedBottomAppBar extends StatelessWidget {
                                           .copyWith(color: ReplyColors.white50),
                                     ),
                                   ),
-                          ),
-                        ],
+                          )
+                        ,
                       ),
                     ),
                     Expanded(
-                      child: Container(
+                       Container(
                         color: Colors.transparent,
-                        child: _BottomAppBarActionItems(
+                         _BottomAppBarActionItems(
                           drawerVisible: bottomDrawerVisible,
                         ),
                       ),
-                    ),
-                  ],
+                    )
+                  ,
                 ),
               ),
             ),
@@ -839,11 +839,11 @@ class _BottomAppBarActionItems extends StatelessWidget {
 
         return _FadeThroughTransitionSwitcher(
           fillColor: Colors.transparent,
-          child: drawerVisible
+           drawerVisible
               ? Align(
                   key: UniqueKey(),
                   alignment: Alignment.centerRight,
-                  child: IconButton(
+                   IconButton(
                     icon: const Icon(Icons.settings),
                     color: ReplyColors.white50,
                     onPressed: () {},
@@ -853,7 +853,7 @@ class _BottomAppBarActionItems extends StatelessWidget {
                   ? Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      
                         IconButton(
                           key: const ValueKey('star_email_button'),
                           icon: ImageIcon(
@@ -899,12 +899,12 @@ class _BottomAppBarActionItems extends StatelessWidget {
                           icon: const Icon(Icons.more_vert),
                           onPressed: () {},
                           color: ReplyColors.white50,
-                        ),
-                      ],
+                        )
+                      ,
                     )
                   : Align(
                       alignment: Alignment.centerRight,
-                      child: IconButton(
+                       IconButton(
                         key: const ValueKey('ReplySearch'),
                         icon: const Icon(Icons.search),
                         color: ReplyColors.white50,
@@ -966,7 +966,7 @@ class _BottomDrawerDestinations extends StatelessWidget {
               },
             );
           },
-          child: ListTile(
+           ListTile(
             leading: ImageIcon(
               AssetImage(
                 destination.icon,
@@ -990,7 +990,7 @@ class _BottomDrawerDestinations extends StatelessWidget {
     }
 
     return Column(
-      children: destinationButtons,
+       destinationButtons,
     );
   }
 }
@@ -1024,11 +1024,11 @@ class _BottomDrawerFolderSection extends StatelessWidget {
     final navigationRailTheme = theme.navigationRailTheme;
 
     return Column(
-      children: [
+       [
         for (var folder in folders.keys)
           InkWell(
             onTap: () {},
-            child: ListTile(
+             ListTile(
               leading: ImageIcon(
                 AssetImage(
                   folders[folder],
@@ -1076,7 +1076,7 @@ class _MailNavigatorState extends State<_MailNavigator> {
               builder: (context) {
                 return _FadeThroughTransitionSwitcher(
                   fillColor: Theme.of(context).scaffoldBackgroundColor,
-                  child: widget.child,
+                   widget.child,
                 );
               },
               settings: settings,
@@ -1157,7 +1157,7 @@ class _ReplyFabState extends State<_ReplyFab>
       builder: (context, onMailView, child) {
         final fabSwitcher = _FadeThroughTransitionSwitcher(
           fillColor: Colors.transparent,
-          child: onMailView
+           onMailView
               ? Icon(
                   Icons.reply_all,
                   key: fabKey,
@@ -1177,25 +1177,25 @@ class _ReplyFabState extends State<_ReplyFab>
             padding: EdgeInsets.symmetric(
               vertical: ui.lerpDouble(0, 6, animation.value),
             ),
-            child: animation.value == 0
+             animation.value == 0
                 ? FloatingActionButton(
                     tooltip: tooltip,
                     key: const ValueKey('ReplyFab'),
                     onPressed: onPressed,
-                    child: fabSwitcher,
+                     fabSwitcher,
                   )
                 : Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: FloatingActionButton.extended(
+                     FloatingActionButton.extended(
                       key: const ValueKey('ReplyFab'),
                       label: Row(
-                        children: [
+                        
                           fabSwitcher,
                           SizedBox(width: 16 * animation.value),
                           Align(
                             alignment: AlignmentDirectional.centerStart,
                             widthFactor: animation.value,
-                            child: Text(
+                             Text(
                               tooltip.toUpperCase(),
                               style: Theme.of(context)
                                   .textTheme
@@ -1205,8 +1205,8 @@ class _ReplyFabState extends State<_ReplyFab>
                                     color: theme.colorScheme.onSecondary,
                                   ),
                             ),
-                          ),
-                        ],
+                          )
+                        ,
                       ),
                       onPressed: onPressed,
                     ),
@@ -1227,15 +1227,15 @@ class _ReplyFabState extends State<_ReplyFab>
             closedBuilder: (context, openContainer) {
               return Tooltip(
                 message: tooltip,
-                child: InkWell(
+                 InkWell(
                   key: const ValueKey('ReplyFab'),
                   customBorder: circleFabBorder,
                   onTap: openContainer,
-                  child: SizedBox(
+                   SizedBox(
                     height: _mobileFabDimension,
                     width: _mobileFabDimension,
-                    child: Center(
-                      child: fabSwitcher,
+                     Center(
+                       fabSwitcher,
                     ),
                   ),
                 ),
@@ -1266,10 +1266,10 @@ class _FadeThroughTransitionSwitcher extends StatelessWidget {
           fillColor: fillColor,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-          child: child,
+           child,
         );
       },
-      child: child,
+       child,
     );
   }
 }
@@ -1294,10 +1294,10 @@ class _SharedAxisTransitionSwitcher extends StatelessWidget {
               animation: animation,
               secondaryAnimation: secondaryAnimation,
               transitionType: SharedAxisTransitionType.scaled,
-              child: child,
+               child,
             );
           },
-          child: onSearchPage ? const SearchPage() : defaultChild,
+           onSearchPage ? const SearchPage() : defaultChild,
         );
       },
     );

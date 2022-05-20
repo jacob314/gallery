@@ -52,10 +52,10 @@ class _HorizontalDividerDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      child: Column(
-        children: [
+       Column(
+        
           Expanded(
-            child: Container(
+             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.deepPurpleAccent,
@@ -70,14 +70,14 @@ class _HorizontalDividerDemo extends StatelessWidget {
             endIndent: 0,
           ),
           Expanded(
-            child: Container(
+             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.deepOrangeAccent,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -92,10 +92,10 @@ class _VerticalDividerDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      child: Row(
-        children: [
+       Row(
+        
           Expanded(
-            child: Container(
+             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.deepPurpleAccent,
@@ -110,14 +110,14 @@ class _VerticalDividerDemo extends StatelessWidget {
             width: 20,
           ),
           Expanded(
-            child: Container(
+             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.deepOrangeAccent,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

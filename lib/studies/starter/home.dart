@@ -18,13 +18,13 @@ class HomePage extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final isDesktop = isDisplayDesktop(context);
     final body = SafeArea(
-      child: Padding(
+       Padding(
         padding: isDesktop
             ? const EdgeInsets.symmetric(horizontal: 72, vertical: 48)
             : const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          
             Text(
               GalleryLocalizations.of(context).starterAppGenericHeadline,
               style: textTheme.headline3.copyWith(
@@ -40,19 +40,19 @@ class HomePage extends StatelessWidget {
             Text(
               GalleryLocalizations.of(context).starterAppGenericBody,
               style: textTheme.bodyText1,
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
 
     if (isDesktop) {
       return Row(
-        children: [
+        
           const ListDrawer(),
           const VerticalDivider(width: 1),
           Expanded(
-            child: Scaffold(
+             Scaffold(
               appBar: const AdaptiveAppBar(
                 isDesktop: true,
               ),
@@ -68,8 +68,8 @@ class HomePage extends StatelessWidget {
                 tooltip: GalleryLocalizations.of(context).starterAppTooltipAdd,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       );
     } else {
       return Scaffold(
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
           heroTag: 'Add',
           onPressed: () {},
           tooltip: GalleryLocalizations.of(context).starterAppTooltipAdd,
-          child: Icon(
+           Icon(
             Icons.add,
             color: Theme.of(context).colorScheme.onSecondary,
           ),
@@ -114,10 +114,10 @@ class AdaptiveAppBar extends StatelessWidget implements PreferredSizeWidget {
       bottom: isDesktop
           ? PreferredSize(
               preferredSize: const Size.fromHeight(26),
-              child: Container(
+               Container(
                 alignment: AlignmentDirectional.centerStart,
                 margin: const EdgeInsetsDirectional.fromSTEB(72, 0, 0, 22),
-                child: Text(
+                 Text(
                   GalleryLocalizations.of(context).starterAppGenericTitle,
                   style: themeData.textTheme.headline6.copyWith(
                     color: themeData.colorScheme.onPrimary,
@@ -163,9 +163,9 @@ class _ListDrawerState extends State<ListDrawer> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Drawer(
-      child: SafeArea(
-        child: ListView(
-          children: [
+       SafeArea(
+         ListView(
+           [
             ListTile(
               title: Text(
                 GalleryLocalizations.of(context).starterAppTitle,

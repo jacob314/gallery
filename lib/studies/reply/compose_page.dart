@@ -24,15 +24,15 @@ class ComposePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: SizedBox(
+         SizedBox(
           height: double.infinity,
-          child: Material(
+           Material(
             color: Theme.of(context).cardColor,
-            child: SingleChildScrollView(
-              child: Column(
+             SingleChildScrollView(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                
                   _SubjectRow(
                     subject: _subject,
                   ),
@@ -48,7 +48,7 @@ class ComposePage extends StatelessWidget {
                   const _SectionDivider(),
                   Padding(
                     padding: const EdgeInsets.all(12),
-                    child: TextField(
+                     TextField(
                       minLines: 6,
                       maxLines: 20,
                       decoration: const InputDecoration.collapsed(
@@ -57,8 +57,8 @@ class ComposePage extends StatelessWidget {
                       autofocus: false,
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
-                  ),
-                ],
+                  )
+                ,
               ),
             ),
           ),
@@ -98,9 +98,9 @@ class _SubjectRowState extends State<_SubjectRow> {
 
     return Padding(
       padding: const EdgeInsets.only(top: 8),
-      child: Row(
+       Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        
           IconButton(
             key: const ValueKey('ReplyExit'),
             onPressed: () => Navigator.of(context).pop(),
@@ -110,7 +110,7 @@ class _SubjectRowState extends State<_SubjectRow> {
             ),
           ),
           Expanded(
-            child: TextField(
+             TextField(
               controller: _subjectController,
               maxLines: 1,
               autofocus: false,
@@ -135,8 +135,8 @@ class _SubjectRowState extends State<_SubjectRow> {
               ),
               onPressed: () => Navigator.of(context).pop(),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -180,31 +180,31 @@ class __SenderAddressRowState extends State<_SenderAddressRow> {
       itemBuilder: (context) => <PopupMenuItem<String>>[
         PopupMenuItem<String>(
           value: accounts[0],
-          child: Text(
+           Text(
             accounts[0],
             style: textTheme.bodyText2,
           ),
         ),
         PopupMenuItem<String>(
           value: accounts[1],
-          child: Text(
+           Text(
             accounts[1],
             style: textTheme.bodyText2,
           ),
         ),
       ],
-      child: Padding(
+       Padding(
         padding: const EdgeInsets.only(
           left: 12,
           top: 16,
           right: 10,
           bottom: 10,
         ),
-        child: Row(
+         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          
             Expanded(
-              child: Text(
+               Text(
                 senderEmail,
                 style: textTheme.bodyText2,
               ),
@@ -212,8 +212,8 @@ class __SenderAddressRowState extends State<_SenderAddressRow> {
             Icon(
               Icons.arrow_drop_down,
               color: theme.colorScheme.onSurface,
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -234,12 +234,12 @@ class _RecipientsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-      child: Row(
+       Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        
           Expanded(
-            child: Wrap(
-              children: [
+             Wrap(
+              
                 Chip(
                   backgroundColor:
                       Theme.of(context).chipTheme.secondarySelectedColor,
@@ -253,17 +253,17 @@ class _RecipientsRow extends StatelessWidget {
                   label: Text(
                     recipients,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
           ),
           InkResponse(
             customBorder: const CircleBorder(),
             onTap: () {},
             radius: 24,
-            child: const Icon(Icons.add_circle_outline),
-          ),
-        ],
+             const Icon(Icons.add_circle_outline),
+          )
+        ,
       ),
     );
   }

@@ -180,13 +180,13 @@ class ApplyTextOptions extends StatelessWidget {
       data: MediaQuery.of(context).copyWith(
         textScaleFactor: textScaleFactor,
       ),
-      child: child,
+       child,
     );
     return textDirection == null
         ? widget
         : Directionality(
             textDirection: textDirection,
-            child: widget,
+             widget,
           );
   }
 }
@@ -270,7 +270,7 @@ class _ModelBindingState extends State<ModelBinding> {
   Widget build(BuildContext context) {
     return _ModelBindingScope(
       modelBindingState: this,
-      child: widget.child,
+       widget.child,
     );
   }
 }

@@ -74,7 +74,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
       ),
       body: ListView(
         padding: const EdgeInsets.only(bottom: 88),
-        children: [
+        
           SwitchListTile(
             title: Text(
               GalleryLocalizations.of(context).demoFloatingButtonTitle,
@@ -89,7 +89,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
           ),
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Text(GalleryLocalizations.of(context).bottomAppBarPosition),
+             Text(GalleryLocalizations.of(context).bottomAppBarPosition),
           ),
           RadioListTile<int>(
             title: Text(
@@ -123,14 +123,14 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
             value: 3,
             groupValue: _currentFabLocation.value,
             onChanged: _onFabLocationChanged,
-          ),
-        ],
+          )
+        ,
       ),
       floatingActionButton: _showFab.value
           ? FloatingActionButton(
               onPressed: () {},
               tooltip: GalleryLocalizations.of(context).buttonTextCreate,
-              child: const Icon(Icons.add),
+               const Icon(Icons.add),
             )
           : null,
       floatingActionButtonLocation: _fabLocations[_currentFabLocation.value],
@@ -160,10 +160,10 @@ class _DemoBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       shape: shape,
-      child: IconTheme(
+       IconTheme(
         data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-        child: Row(
-          children: [
+         Row(
+           [
             IconButton(
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               icon: const Icon(Icons.menu),

@@ -66,19 +66,19 @@ class _ProgressIndicatorDemoState extends State<ProgressIndicatorDemo>
     switch (widget.type) {
       case ProgressIndicatorDemoType.circular:
         return Column(
-          children: [
+          
             const CircularProgressIndicator(),
             const SizedBox(height: 32),
-            CircularProgressIndicator(value: _animation.value),
-          ],
+            CircularProgressIndicator(value: _animation.value)
+          ,
         );
       case ProgressIndicatorDemoType.linear:
         return Column(
-          children: [
+          
             const LinearProgressIndicator(),
             const SizedBox(height: 32),
-            LinearProgressIndicator(value: _animation.value),
-          ],
+            LinearProgressIndicator(value: _animation.value)
+          ,
         );
       default:
         return Container();
@@ -93,10 +93,10 @@ class _ProgressIndicatorDemoState extends State<ProgressIndicatorDemo>
         title: Text(_title),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Container(
+         SingleChildScrollView(
+           Container(
             padding: const EdgeInsets.all(8),
-            child: AnimatedBuilder(
+             AnimatedBuilder(
               animation: _animation,
               builder: _buildIndicators,
             ),

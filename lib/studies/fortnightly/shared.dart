@@ -40,11 +40,11 @@ class HorizontalArticlePreview extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+       [
         Expanded(
-          child: Column(
+           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            
               Text(
                 data.category,
                 style: textTheme.subtitle1,
@@ -53,8 +53,8 @@ class HorizontalArticlePreview extends StatelessWidget {
               Text(
                 data.title,
                 style: textTheme.headline5.copyWith(fontSize: 16),
-              ),
-            ],
+              )
+            ,
           ),
         ),
         if (minutes != null) ...[
@@ -99,12 +99,12 @@ class VerticalArticlePreview extends StatelessWidget {
 
     return SizedBox(
       width: width ?? double.infinity,
-      child: Column(
+       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+         [
           SizedBox(
             width: double.infinity,
-            child: FadeInImagePlaceholder(
+             FadeInImagePlaceholder(
               image: AssetImage(
                 data.imageUrl,
                 package: 'flutter_gallery_assets',
@@ -247,47 +247,47 @@ class HashtagBar extends StatelessWidget {
 
     return SizedBox(
       height: height,
-      child: ListView(
+       ListView(
         restorationId: 'hashtag_bar_list_view',
         scrollDirection: Axis.horizontal,
-        children: [
+        
           const SizedBox(width: 16),
           Center(
-            child: Text(
+             Text(
               '#${GalleryLocalizations.of(context).fortnightlyTrendingTechDesign}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
-            child: Text(
+             Text(
               '#${GalleryLocalizations.of(context).fortnightlyTrendingReform}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
-            child: Text(
+             Text(
               '#${GalleryLocalizations.of(context).fortnightlyTrendingHealthcareRevolution}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
-            child: Text(
+             Text(
               '#${GalleryLocalizations.of(context).fortnightlyTrendingGreenArmy}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
-            child: Text(
+             Text(
               '#${GalleryLocalizations.of(context).fortnightlyTrendingStocks}',
               style: textTheme.subtitle2,
             ),
           ),
-          verticalDivider,
-        ],
+          verticalDivider
+        ,
       ),
     );
   }
@@ -301,10 +301,10 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
+       [
         if (isCloseable)
           Row(
-            children: [
+            
               IconButton(
                 icon: const Icon(Icons.close),
                 tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
@@ -314,8 +314,8 @@ class NavigationMenu extends StatelessWidget {
                 'fortnightly/fortnightly_title.png',
                 package: 'flutter_gallery_assets',
                 excludeFromSemantics: true,
-              ),
-            ],
+              )
+            ,
           ),
         const SizedBox(height: 32),
         MenuItem(
@@ -346,23 +346,23 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        children: [
+       Row(
+        
           Container(
             width: 32,
             alignment: Alignment.centerLeft,
-            child: header ? null : const Icon(Icons.arrow_drop_down),
+             header ? null : const Icon(Icons.arrow_drop_down),
           ),
           Expanded(
-            child: Text(
+             Text(
               title,
               style: Theme.of(context).textTheme.subtitle1.copyWith(
                     fontWeight: header ? FontWeight.w700 : FontWeight.w600,
                     fontSize: 16,
                   ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -386,13 +386,13 @@ class StockItem extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      
         Text(ticker, style: textTheme.subtitle1),
         const SizedBox(height: 2),
         Row(
-          children: [
+          
             Expanded(
-              child: Text(
+               Text(
                 price,
                 style: textTheme.subtitle2.copyWith(
                   color: textTheme.subtitle2.color.withOpacity(0.75),
@@ -415,10 +415,10 @@ class StockItem extends StatelessWidget {
                 fontSize: 12,
                 color: textTheme.subtitle2.color.withOpacity(0.75),
               ),
-            ),
-          ],
+            )
+          ,
         )
-      ],
+      ,
     );
   }
 }
@@ -434,7 +434,7 @@ List<Widget> buildStockItems(BuildContext context) {
   return <Widget>[
     SizedBox(
       width: double.infinity,
-      child: FadeInImagePlaceholder(
+       FadeInImagePlaceholder(
         image: const AssetImage(
           'fortnightly/fortnightly_chart.png',
           package: 'flutter_gallery_assets',
@@ -497,10 +497,10 @@ class VideoPreview extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      
         SizedBox(
           width: double.infinity,
-          child: FadeInImagePlaceholder(
+           FadeInImagePlaceholder(
             image: AssetImage(
               data.imageUrl,
               package: 'flutter_gallery_assets',
@@ -519,16 +519,16 @@ class VideoPreview extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Row(
-          children: [
+          
             Expanded(
-              child: Text(data.category, style: textTheme.subtitle1),
+               Text(data.category, style: textTheme.subtitle1),
             ),
             Text(time, style: textTheme.bodyText1)
-          ],
+          ,
         ),
         const SizedBox(height: 4),
-        Text(data.title, style: textTheme.headline5.copyWith(fontSize: 16)),
-      ],
+        Text(data.title, style: textTheme.headline5.copyWith(fontSize: 16))
+      ,
     );
   }
 }

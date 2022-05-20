@@ -23,11 +23,11 @@ class NavDrawerDemo extends StatelessWidget {
         localization.demoNavigationDrawerUserEmail,
       ),
       currentAccountPicture: const CircleAvatar(
-        child: FlutterLogo(size: 42.0),
+         FlutterLogo(size: 42.0),
       ),
     );
     final drawerItems = ListView(
-      children: [
+      
         drawerHeader,
         ListTile(
           title: Text(
@@ -46,8 +46,8 @@ class NavDrawerDemo extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
           },
-        ),
-      ],
+        )
+      ,
     );
     return Scaffold(
       appBar: AppBar(
@@ -56,15 +56,15 @@ class NavDrawerDemo extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Padding(
+         Padding(
           padding: const EdgeInsets.all(50.0),
-          child: Text(
+           Text(
             localization.demoNavigationDrawerText,
           ),
         ),
       ),
       drawer: Drawer(
-        child: drawerItems,
+         drawerItems,
       ),
     );
   }

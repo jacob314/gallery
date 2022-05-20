@@ -62,7 +62,7 @@ class _ActionChipDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ActionChip(
+       ActionChip(
         onPressed: () {},
         avatar: const Icon(
           Icons.brightness_5,
@@ -104,8 +104,8 @@ class _ChoiceChipDemoState extends State<_ChoiceChipDemo>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Wrap(
-        children: [
+       Wrap(
+        
           ChoiceChip(
             label: Text(GalleryLocalizations.of(context).chipSmall),
             selected: _indexSelected.value == 0,
@@ -134,8 +134,8 @@ class _ChoiceChipDemoState extends State<_ChoiceChipDemo>
                 _indexSelected.value = value ? 2 : -1;
               });
             },
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -207,12 +207,12 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
     ];
 
     return Center(
-      child: Wrap(
-        children: [
+       Wrap(
+         [
           for (final chip in chips)
             Padding(
               padding: const EdgeInsets.all(4),
-              child: chip,
+               chip,
             )
         ],
       ),
@@ -228,7 +228,7 @@ class _InputChipDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: InputChip(
+       InputChip(
         onPressed: () {},
         onDeleted: () {},
         avatar: const Icon(

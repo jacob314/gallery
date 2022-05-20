@@ -34,7 +34,7 @@ class EditBoardPoint extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+      
         Text(
           '${boardPoint.q}, ${boardPoint.r}',
           textAlign: TextAlign.right,
@@ -44,8 +44,8 @@ class EditBoardPoint extends StatelessWidget {
           colors: boardPointColors,
           selectedColor: boardPoint.color,
           onColorSelection: onColorSelection,
-        ),
-      ],
+        )
+      ,
     );
   }
 }

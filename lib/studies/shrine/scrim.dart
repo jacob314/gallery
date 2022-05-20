@@ -13,7 +13,7 @@ class Scrim extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return ExcludeSemantics(
-      child: AnimatedBuilder(
+       AnimatedBuilder(
         animation: controller,
         builder: (context, child) {
           final color =
@@ -31,10 +31,10 @@ class Scrim extends StatelessWidget {
               onTap: () {
                 controller.reverse();
               },
-              child: scrimRectangle,
+               scrimRectangle,
             );
           } else if (ignorePointer) {
-            return IgnorePointer(child: scrimRectangle);
+            return IgnorePointer( scrimRectangle);
           } else {
             return scrimRectangle;
           }

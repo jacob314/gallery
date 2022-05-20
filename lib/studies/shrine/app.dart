@@ -133,10 +133,10 @@ class _ShrineAppState extends State<ShrineApp>
     final backdrop = isDesktop ? desktopBackdrop() : mobileBackdrop();
     final Widget home = LayoutCache(
       layouts: _layouts,
-      child: PageStatus(
+       PageStatus(
         menuController: _controller,
         cartController: _expandingController,
-        child: HomePage(
+         HomePage(
           backdrop: backdrop,
           scrim: Scrim(controller: _expandingController),
           expandingBottomSheet: ExpandingBottomSheet(
@@ -149,9 +149,9 @@ class _ShrineAppState extends State<ShrineApp>
 
     return ScopedModel<AppStateModel>(
       model: _model.value,
-      child: WillPopScope(
+       WillPopScope(
         onWillPop: _onWillPop,
-        child: MaterialApp(
+         MaterialApp(
           restorationScopeId: 'shrineApp',
           title: 'Shrine',
           debugShowCheckedModeBanner: false,

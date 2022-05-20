@@ -60,7 +60,7 @@ class _FrontLayerState extends State<_FrontLayer> {
         top: 20,
         bottom: 22,
       ),
-      child: Text(
+       Text(
         widget.title,
         style: Theme.of(context).textTheme.subtitle2,
       ),
@@ -80,11 +80,11 @@ class _FrontLayerState extends State<_FrontLayer> {
 
     return FocusTraversalGroup(
       policy: ReadingOrderTraversalPolicy(),
-      child: Padding(
+       Padding(
         padding: isDesktop
             ? EdgeInsets.zero
             : EdgeInsets.only(top: widget.mobileTopOffset),
-        child: PhysicalShape(
+         PhysicalShape(
           elevation: 16,
           color: cranePrimaryWhite,
           clipper: const ShapeBorderClipper(
@@ -95,7 +95,7 @@ class _FrontLayerState extends State<_FrontLayer> {
               ),
             ),
           ),
-          child: StaggeredGridView.countBuilder(
+           StaggeredGridView.countBuilder(
             key: ValueKey('CraneListView-${widget.index}'),
             restorationId: widget.restorationId,
             crossAxisCount: crossAxisCount,
@@ -215,11 +215,11 @@ class _BackdropState extends State<Backdrop>
 
     return Material(
       color: cranePurple800,
-      child: Padding(
+       Padding(
         padding: const EdgeInsets.only(top: 12),
-        child: FocusTraversalGroup(
+         FocusTraversalGroup(
           policy: ReadingOrderTraversalPolicy(),
-          child: Scaffold(
+           Scaffold(
             backgroundColor: cranePurple800,
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -232,7 +232,7 @@ class _BackdropState extends State<Backdrop>
               ),
             ),
             body: Stack(
-              children: [
+              
                 BackLayer(
                   tabController: _tabController,
                   backLayerItems: widget.backLayerItems,
@@ -250,19 +250,19 @@ class _BackdropState extends State<Backdrop>
                   // we allow the TabBarView to overflow by an offset
                   // (doubled because it technically overflows top & bottom).
                   // The other front layers are top padded by this offset.
-                  child: LayoutBuilder(builder: (context, constraints) {
+                   LayoutBuilder(builder: (context, constraints) {
                     return OverflowBox(
                       maxHeight:
                           constraints.maxHeight + _sleepLayerTopOffset * 2,
-                      child: TabBarView(
+                       TabBarView(
                         physics: isDesktop
                             ? const NeverScrollableScrollPhysics()
                             : null, // use default TabBarView physics
                         controller: _tabController,
-                        children: [
+                        
                           SlideTransition(
                             position: _flyLayerHorizontalOffset,
-                            child: _FrontLayer(
+                             _FrontLayer(
                               title: GalleryLocalizations.of(context)
                                   .craneFlySubhead,
                               index: 0,
@@ -272,7 +272,7 @@ class _BackdropState extends State<Backdrop>
                           ),
                           SlideTransition(
                             position: _sleepLayerHorizontalOffset,
-                            child: _FrontLayer(
+                             _FrontLayer(
                               title: GalleryLocalizations.of(context)
                                   .craneSleepSubhead,
                               index: 1,
@@ -282,20 +282,20 @@ class _BackdropState extends State<Backdrop>
                           ),
                           SlideTransition(
                             position: _eatLayerHorizontalOffset,
-                            child: _FrontLayer(
+                             _FrontLayer(
                               title: GalleryLocalizations.of(context)
                                   .craneEatSubhead,
                               index: 2,
                               mobileTopOffset: _sleepLayerTopOffset,
                               restorationId: 'eat-subhead',
                             ),
-                          ),
-                        ],
+                          )
+                        ,
                       ),
                     );
                   }),
-                ),
-              ],
+                )
+              ,
             ),
           ),
         ),
@@ -323,17 +323,17 @@ class _CraneAppBarState extends State<CraneAppBar> {
     final textScaleFactor = GalleryOptions.of(context).textScaleFactor(context);
 
     return SafeArea(
-      child: Padding(
+       Padding(
         padding: EdgeInsets.symmetric(
           horizontal:
               isDesktop && !isSmallDesktop ? appPaddingLarge : appPaddingSmall,
         ),
-        child: Row(
+         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          
             const ExcludeSemantics(
-              child: FadeInImagePlaceholder(
+               FadeInImagePlaceholder(
                 image: AssetImage(
                   'crane/logo/logo.png',
                   package: 'flutter_gallery_assets',
@@ -347,13 +347,13 @@ class _CraneAppBarState extends State<CraneAppBar> {
               ),
             ),
             Expanded(
-              child: Padding(
+               Padding(
                 padding: const EdgeInsetsDirectional.only(start: 24),
-                child: Theme(
+                 Theme(
                   data: Theme.of(context).copyWith(
                     splashColor: Colors.transparent,
                   ),
-                  child: TabBar(
+                   TabBar(
                     indicator: BorderTabIndicator(
                       indicatorHeight: isDesktop ? 28 : 32,
                       textScaleFactor: textScaleFactor,
@@ -378,8 +378,8 @@ class _CraneAppBarState extends State<CraneAppBar> {
                   ),
                 ),
               ),
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );

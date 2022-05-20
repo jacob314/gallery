@@ -22,14 +22,14 @@ class ListDemo extends StatelessWidget {
         title: Text(GalleryLocalizations.of(context).demoListsTitle),
       ),
       body: Scrollbar(
-        child: ListView(
+         ListView(
           restorationId: 'list_demo_list_view',
           padding: const EdgeInsets.symmetric(vertical: 8),
-          children: [
+           [
             for (int index = 1; index < 21; index++)
               ListTile(
                 leading: ExcludeSemantics(
-                  child: CircleAvatar(child: Text('$index')),
+                   CircleAvatar( Text('$index')),
                 ),
                 title: Text(
                   GalleryLocalizations.of(context).demoBottomSheetItem(index),

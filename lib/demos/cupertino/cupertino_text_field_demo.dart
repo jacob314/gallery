@@ -18,14 +18,14 @@ class CupertinoTextFieldDemo extends StatelessWidget {
         automaticallyImplyLeading: false,
         middle: Text(localizations.demoCupertinoTextFieldTitle),
       ),
-      child: SafeArea(
-        child: ListView(
+       SafeArea(
+         ListView(
           restorationId: 'text_field_demo_list_view',
           padding: const EdgeInsets.all(16),
-          children: [
+          
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: CupertinoTextField(
+               CupertinoTextField(
                 textInputAction: TextInputAction.next,
                 restorationId: 'email_address_text_field',
                 placeholder: localizations.demoTextFieldEmail,
@@ -36,7 +36,7 @@ class CupertinoTextFieldDemo extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: CupertinoTextField(
+               CupertinoTextField(
                 textInputAction: TextInputAction.next,
                 restorationId: 'login_password_text_field',
                 placeholder: localizations.rallyLoginPassword,
@@ -64,8 +64,8 @@ class CupertinoTextFieldDemo extends StatelessWidget {
                 ),
               ),
               placeholder: localizations.demoCupertinoTextFieldPIN,
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );

@@ -66,12 +66,12 @@ class MailboxBody extends StatelessWidget {
 
         return SafeArea(
           bottom: false,
-          child: Row(
+           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+             [
               Expanded(
-                child: emails.isEmpty
-                    ? Center(child: Text('Empty in $destinationString'))
+                 emails.isEmpty
+                    ? Center( Text('Empty in $destinationString'))
                     : ListView.separated(
                         itemCount: emails.length,
                         padding: EdgeInsetsDirectional.only(
@@ -100,8 +100,8 @@ class MailboxBody extends StatelessWidget {
               if (isDesktop) ...[
                 Padding(
                   padding: const EdgeInsetsDirectional.only(top: 14),
-                  child: Row(
-                    children: [
+                   Row(
+                    
                       IconButton(
                         key: const ValueKey('ReplySearch'),
                         icon: const Icon(Icons.search),
@@ -112,8 +112,8 @@ class MailboxBody extends StatelessWidget {
                           ).onSearchPage = true;
                         },
                       ),
-                      SizedBox(width: isTablet ? 30 : 60),
-                    ],
+                      SizedBox(width: isTablet ? 30 : 60)
+                    ,
                   ),
                 ),
               ]

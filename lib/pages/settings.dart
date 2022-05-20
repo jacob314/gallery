@@ -254,24 +254,24 @@ class _SettingsPageState extends State<SettingsPage> {
 
     return Material(
       color: colorScheme.secondaryVariant,
-      child: Padding(
+       Padding(
         padding: isDesktop
             ? EdgeInsets.zero
             : const EdgeInsets.only(
                 bottom: galleryHeaderHeight,
               ),
         // Remove ListView top padding as it is already accounted for.
-        child: MediaQuery.removePadding(
+         MediaQuery.removePadding(
           removeTop: isDesktop,
           context: context,
-          child: ListView(
-            children: [
+           ListView(
+             [
               if (isDesktop)
                 const SizedBox(height: firstHeaderDesktopTopPadding),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: ExcludeSemantics(
-                  child: Header(
+                 ExcludeSemantics(
+                   Header(
                     color: Theme.of(context).colorScheme.onSurface,
                     text: GalleryLocalizations.of(context).settingsTitle,
                   ),
@@ -282,7 +282,7 @@ class _SettingsPageState extends State<SettingsPage> {
               else ...[
                 _AnimateSettingsListItems(
                   animation: _staggerSettingsItemsAnimation,
-                  children: settingsListItems,
+                   settingsListItems,
                 ),
                 const SizedBox(height: 16),
                 Divider(thickness: 2, height: 0, color: colorScheme.background),
@@ -345,14 +345,14 @@ class SettingsAttribution extends StatelessWidget {
     final isDesktop = isDisplayDesktop(context);
     final verticalPadding = isDesktop ? 0.0 : 28.0;
     return MergeSemantics(
-      child: Padding(
+       Padding(
         padding: EdgeInsetsDirectional.only(
           start: isDesktop ? 24 : 32,
           end: isDesktop ? 0 : 32,
           top: verticalPadding,
           bottom: verticalPadding,
         ),
-        child: Text(
+         Text(
           GalleryLocalizations.of(context).settingsAttribution,
           style: Theme.of(context).textTheme.bodyText1.copyWith(
                 fontSize: 12,
@@ -380,26 +380,26 @@ class _SettingsLink extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: Padding(
+       Padding(
         padding: EdgeInsets.symmetric(
           horizontal: isDesktop ? 24 : 32,
         ),
-        child: Row(
+         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          
             Icon(
               icon,
               color: colorScheme.onSecondary.withOpacity(0.5),
               size: 24,
             ),
             Flexible(
-              child: Padding(
+               Padding(
                 padding: const EdgeInsetsDirectional.only(
                   start: 16,
                   top: 12,
                   bottom: 12,
                 ),
-                child: Text(
+                 Text(
                   title,
                   style: textTheme.subtitle2.apply(
                     color: colorScheme.onSecondary,
@@ -407,8 +407,8 @@ class _SettingsLink extends StatelessWidget {
                   textAlign: isDesktop ? TextAlign.end : TextAlign.start,
                 ),
               ),
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -444,8 +444,8 @@ class _AnimateSettingsListItems extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(top: topPaddingTween.animate(animation).value),
-      child: Column(
-        children: [
+       Column(
+         [
           for (Widget child in children)
             AnimatedBuilder(
               animation: animation,
@@ -454,10 +454,10 @@ class _AnimateSettingsListItems extends StatelessWidget {
                   padding: EdgeInsets.only(
                     top: dividerTween.animate(animation).value,
                   ),
-                  child: child,
+                   child,
                 );
               },
-              child: child,
+               child,
             ),
         ],
       ),

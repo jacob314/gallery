@@ -110,7 +110,7 @@ class MailPreviewCard extends StatelessWidget {
               alignment: Alignment.centerRight,
               padding: const EdgeInsetsDirectional.only(end: 20),
             ),
-            child: mailPreview,
+             mailPreview,
           );
         }
       },
@@ -145,9 +145,9 @@ class _DismissibleContainer extends StatelessWidget {
       color: backgroundColor,
       duration: kThemeAnimationDuration,
       padding: padding,
-      child: Material(
+       Material(
         color: Colors.transparent,
-        child: ImageIcon(
+         ImageIcon(
           AssetImage(
             'reply/icons/$icon.png',
             package: 'flutter_gallery_assets',
@@ -193,33 +193,33 @@ class _MailPreview extends StatelessWidget {
         ).selectedEmailId = id;
         onTap();
       },
-      child: LayoutBuilder(
+       LayoutBuilder(
         builder: (context, constraints) {
           return ConstrainedBox(
             constraints: BoxConstraints(maxHeight: constraints.maxHeight),
-            child: Padding(
+             Padding(
               padding: const EdgeInsets.all(20),
-              child: Column(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                 [
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    
                       Expanded(
-                        child: Column(
+                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
+                          
                             Text(
                               '${email.sender} - ${email.time}',
                               style: textTheme.caption,
                             ),
                             const SizedBox(height: 4),
                             Text(email.subject, style: textTheme.headline5),
-                            const SizedBox(height: 16),
-                          ],
+                            const SizedBox(height: 16)
+                          ,
                         ),
                       ),
                       _MailPreviewActionBar(
@@ -227,14 +227,14 @@ class _MailPreview extends StatelessWidget {
                         isStarred: emailStore.isEmailStarred(email.id),
                         onStar: onStar,
                         onDelete: onDelete,
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.only(
                       end: 20,
                     ),
-                    child: Text(
+                     Text(
                       email.message,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
@@ -244,11 +244,11 @@ class _MailPreview extends StatelessWidget {
                   if (email.containsPictures) ...[
                     Flexible(
                       fit: FlexFit.loose,
-                      child: Column(
-                        children: const [
+                       Column(
+                        
                           SizedBox(height: 20),
-                          _PicturePreview(),
-                        ],
+                          _PicturePreview()
+                        ,
                       ),
                     ),
                   ],
@@ -269,13 +269,13 @@ class _PicturePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 96,
-      child: ListView.builder(
+       ListView.builder(
         itemCount: 4,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsetsDirectional.only(end: 4),
-            child: Image.asset(
+             Image.asset(
               'reply/attachments/paris_${index + 1}.jpg',
               gaplessPlayback: true,
               package: 'flutter_gallery_assets',
@@ -309,7 +309,7 @@ class _MailPreviewActionBar extends StatelessWidget {
         isStarred ? Theme.of(context).colorScheme.secondary : color;
 
     return Row(
-      children: [
+       [
         if (isDesktop) ...[
           IconButton(
             icon: ImageIcon(

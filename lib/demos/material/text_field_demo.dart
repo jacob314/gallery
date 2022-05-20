@@ -102,7 +102,7 @@ class _PasswordFieldState extends State<PasswordField> with RestorationMixin {
               _obscureText.value = !_obscureText.value;
             });
           },
-          child: Icon(
+           Icon(
             _obscureText.value ? Icons.visibility : Icons.visibility_off,
             semanticLabel: _obscureText.value
                 ? GalleryLocalizations.of(context)
@@ -219,12 +219,12 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo>
     return Form(
       key: _formKey,
       autovalidateMode: AutovalidateMode.values[_autoValidateModeIndex.value],
-      child: Scrollbar(
-        child: SingleChildScrollView(
+       Scrollbar(
+         SingleChildScrollView(
           restorationId: 'text_field_demo_scroll_view',
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
+           Column(
+            
               sizedBoxSpace,
               TextFormField(
                 restorationId: 'name_field',
@@ -355,9 +355,9 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo>
               ),
               sizedBoxSpace,
               Center(
-                child: ElevatedButton(
+                 ElevatedButton(
                   onPressed: _handleSubmitted,
-                  child: Text(
+                   Text(
                       GalleryLocalizations.of(context).demoTextFieldSubmit),
                 ),
               ),
@@ -366,8 +366,8 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo>
                 GalleryLocalizations.of(context).demoTextFieldRequiredField,
                 style: Theme.of(context).textTheme.caption,
               ),
-              sizedBoxSpace,
-            ],
+              sizedBoxSpace
+            ,
           ),
         ),
       ),

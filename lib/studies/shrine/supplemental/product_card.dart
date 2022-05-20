@@ -30,7 +30,7 @@ class MobileProductCard extends StatelessWidget {
       container: true,
       button: true,
       enabled: true,
-      child: _buildProductCard(
+       _buildProductCard(
         context: context,
         product: product,
         imageAspectRatio: imageAspectRatio,
@@ -87,35 +87,35 @@ Widget _buildProductCard({
       return Semantics(
         hint:
             GalleryLocalizations.of(context).shrineScreenReaderProductAddToCart,
-        child: GestureDetector(
+         GestureDetector(
           onTap: () {
             model.addProductToCart(product.id);
           },
-          child: child,
+           child,
         ),
       );
     },
-    child: Stack(
-      children: [
+     Stack(
+      
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          
             isDesktop
                 ? imageWidget
                 : AspectRatio(
                     aspectRatio: imageAspectRatio,
-                    child: imageWidget,
+                     imageWidget,
                   ),
             SizedBox(
-              child: Column(
+               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                
                   const SizedBox(height: 23),
                   SizedBox(
                     width: imageWidth,
-                    child: Text(
+                     Text(
                       product == null ? '' : product.name(context),
                       style: theme.textTheme.button,
                       softWrap: true,
@@ -126,17 +126,17 @@ Widget _buildProductCard({
                   Text(
                     product == null ? '' : formatter.format(product.price),
                     style: theme.textTheme.caption,
-                  ),
-                ],
+                  )
+                ,
               ),
-            ),
-          ],
+            )
+          ,
         ),
         const Padding(
           padding: EdgeInsets.all(16),
-          child: Icon(Icons.add_shopping_cart),
-        ),
-      ],
+           Icon(Icons.add_shopping_cart),
+        )
+      ,
     ),
   );
 }

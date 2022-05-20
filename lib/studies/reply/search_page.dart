@@ -9,16 +9,16 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Material(
+         Material(
           color: Theme.of(context).colorScheme.surface,
-          child: Column(
-            children: [
+           Column(
+            
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Row(
+                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  
                     BackButton(
                       key: const ValueKey('ReplyExit'),
                       onPressed: () {
@@ -29,7 +29,7 @@ class SearchPage extends StatelessWidget {
                       },
                     ),
                     const Expanded(
-                      child: TextField(
+                       TextField(
                         decoration: InputDecoration.collapsed(
                           hintText: 'Search email',
                         ),
@@ -39,15 +39,15 @@ class SearchPage extends StatelessWidget {
                       icon: const Icon(Icons.mic),
                       onPressed: () {},
                     )
-                  ],
+                  ,
                 ),
               ),
               const Divider(thickness: 1),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
+                 SingleChildScrollView(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    
                       _SectionHeader(title: 'YESTERDAY'),
                       _SearchHistoryTile(
                         search: '481 Van Brunt Street',
@@ -70,12 +70,12 @@ class SearchPage extends StatelessWidget {
                       _SearchHistoryTile(
                         search: 'IFC Center',
                         address: '6th Avenue, New York, NY',
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                 ),
-              ),
-            ],
+              )
+            ,
           ),
         ),
       ),
@@ -97,7 +97,7 @@ class _SectionHeader extends StatelessWidget {
         top: 16,
         bottom: 16,
       ),
-      child: Text(
+       Text(
         title,
         style: Theme.of(context).textTheme.button,
       ),

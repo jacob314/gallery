@@ -31,9 +31,9 @@ class FortnightlyApp extends StatelessWidget {
       theme: buildTheme(context).copyWith(
         platform: GalleryOptions.of(context).platform,
       ),
-      home: ApplyTextOptions(child: home),
+      home: ApplyTextOptions( home),
       routes: {
-        FortnightlyApp.defaultRoute: (context) => ApplyTextOptions(child: home),
+        FortnightlyApp.defaultRoute: (context) => ApplyTextOptions( home),
       },
       initialRoute: FortnightlyApp.defaultRoute,
       // L10n settings.
@@ -51,15 +51,15 @@ class _FortnightlyHomeMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drawer(
-        child: SafeArea(
-          child: NavigationMenu(isCloseable: true),
+         SafeArea(
+           NavigationMenu(isCloseable: true),
         ),
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Semantics(
           label: _fortnightlyTitle,
-          child: const FadeInImagePlaceholder(
+           const FadeInImagePlaceholder(
             image: AssetImage(
               'fortnightly/fortnightly_title.png',
               package: 'flutter_gallery_assets',
@@ -77,14 +77,14 @@ class _FortnightlyHomeMobile extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: ListView(
+         ListView(
           restorationId: 'list_view',
-          children: [
+           [
             const HashtagBar(),
             for (final item in buildArticlePreviewItems(context))
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: item,
+                 item,
               ),
           ],
         ),
@@ -105,19 +105,19 @@ class _FortnightlyHomeDesktop extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
+         Column(
+          
             SizedBox(
               height: headerHeight,
-              child: Row(
-                children: [
+               Row(
+                
                   Container(
                     width: menuWidth,
                     alignment: AlignmentDirectional.centerStart,
                     margin: const EdgeInsets.only(left: 12),
-                    child: Semantics(
+                     Semantics(
                       label: _fortnightlyTitle,
-                      child: Image.asset(
+                       Image.asset(
                         'fortnightly/fortnightly_title.png',
                         package: 'flutter_gallery_assets',
                         excludeFromSemantics: true,
@@ -127,54 +127,54 @@ class _FortnightlyHomeDesktop extends StatelessWidget {
                   spacer,
                   const Flexible(
                     flex: 2,
-                    child: HashtagBar(),
+                     HashtagBar(),
                   ),
                   spacer,
                   Flexible(
                     fit: FlexFit.tight,
-                    child: Container(
+                     Container(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: IconButton(
+                       IconButton(
                         icon: const Icon(Icons.search),
                         tooltip: GalleryLocalizations.of(context)
                             .shrineTooltipSearch,
                         onPressed: () {},
                       ),
                     ),
-                  ),
-                ],
+                  )
+                ,
               ),
             ),
             Flexible(
-              child: Row(
-                children: [
+               Row(
+                
                   const SizedBox(
                     width: menuWidth,
-                    child: NavigationMenu(),
+                     NavigationMenu(),
                   ),
                   spacer,
                   Flexible(
                     flex: 2,
-                    child: ListView(
-                      children: buildArticlePreviewItems(context),
+                     ListView(
+                       buildArticlePreviewItems(context),
                     ),
                   ),
                   spacer,
                   Flexible(
                     flex: 1,
                     fit: FlexFit.tight,
-                    child: ListView(
-                      children: [
+                     ListView(
+                       [
                         ...buildStockItems(context),
                         const SizedBox(height: 32),
                         ...buildVideoPreviewItems(context),
                       ],
                     ),
-                  ),
-                ],
+                  )
+                ,
               ),
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );

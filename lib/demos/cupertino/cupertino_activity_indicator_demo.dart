@@ -19,8 +19,8 @@ class CupertinoProgressIndicatorDemo extends StatelessWidget {
           GalleryLocalizations.of(context).demoCupertinoActivityIndicatorTitle,
         ),
       ),
-      child: const Center(
-        child: CupertinoActivityIndicator(),
+       const Center(
+         CupertinoActivityIndicator(),
       ),
     );
   }

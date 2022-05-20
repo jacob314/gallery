@@ -78,19 +78,19 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
+       Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               Semantics(
                 label: GalleryLocalizations.of(context)
                     .demoSlidersEditableNumericalValue,
-                child: SizedBox(
+                 SizedBox(
                   width: 64,
                   height: 48,
-                  child: TextField(
+                   TextField(
                     textAlign: TextAlign.center,
                     onSubmitted: (value) {
                       final newValue = double.tryParse(value);
@@ -120,13 +120,13 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
                 },
               ),
               Text(GalleryLocalizations.of(context)
-                  .demoSlidersContinuousWithEditableNumericalValue),
-            ],
+                  .demoSlidersContinuousWithEditableNumericalValue)
+            ,
           ),
           const SizedBox(height: 80),
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               Slider(
                 value: _discreteValue.value,
                 min: 0,
@@ -139,10 +139,10 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context).demoSlidersDiscrete),
-            ],
-          ),
-        ],
+              Text(GalleryLocalizations.of(context).demoSlidersDiscrete)
+            ,
+          )
+        ,
       ),
     );
   }
@@ -196,12 +196,12 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
+       Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               RangeSlider(
                 values: _continuousValues,
                 min: 0,
@@ -213,13 +213,13 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context).demoSlidersContinuous),
-            ],
+              Text(GalleryLocalizations.of(context).demoSlidersContinuous)
+            ,
           ),
           const SizedBox(height: 80),
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               RangeSlider(
                 values: _discreteValues,
                 min: 0,
@@ -236,10 +236,10 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context).demoSlidersDiscrete),
-            ],
-          ),
-        ],
+              Text(GalleryLocalizations.of(context).demoSlidersDiscrete)
+            ,
+          )
+        ,
       ),
     );
   }
@@ -503,12 +503,12 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
     final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
+       Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               SliderTheme(
                 data: theme.sliderTheme.copyWith(
                   trackHeight: 2,
@@ -527,7 +527,7 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                   valueIndicatorTextStyle: theme.textTheme.bodyText1
                       .copyWith(color: theme.colorScheme.onSurface),
                 ),
-                child: Slider(
+                 Slider(
                   value: _discreteCustomValue.value,
                   min: 0,
                   max: 200,
@@ -543,13 +543,13 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                 ),
               ),
               Text(GalleryLocalizations.of(context)
-                  .demoSlidersDiscreteSliderWithCustomTheme),
-            ],
+                  .demoSlidersDiscreteSliderWithCustomTheme)
+            ,
           ),
           const SizedBox(height: 80),
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               SliderTheme(
                 data: const SliderThemeData(
                   trackHeight: 2,
@@ -562,7 +562,7 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                   rangeThumbShape: _CustomRangeThumbShape(),
                   showValueIndicator: ShowValueIndicator.never,
                 ),
-                child: RangeSlider(
+                 RangeSlider(
                   values: customRangeValue,
                   min: 0,
                   max: 200,
@@ -575,10 +575,10 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                 ),
               ),
               Text(GalleryLocalizations.of(context)
-                  .demoSlidersContinuousRangeSliderWithCustomTheme),
-            ],
-          ),
-        ],
+                  .demoSlidersContinuousRangeSliderWithCustomTheme)
+            ,
+          )
+        ,
       ),
     );
   }

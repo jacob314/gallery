@@ -55,7 +55,7 @@ class BottomSheetDemo extends StatelessWidget {
             floatingActionButton: FloatingActionButton(
               onPressed: () {},
               backgroundColor: Theme.of(context).colorScheme.secondary,
-              child: Icon(
+               Icon(
                 Icons.add,
                 semanticLabel:
                     GalleryLocalizations.of(context).demoBottomSheetAddLabel,
@@ -76,12 +76,12 @@ class _BottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300,
-      child: Column(
-        children: [
+       Column(
+        
           SizedBox(
             height: 70,
-            child: Center(
-              child: Text(
+             Center(
+               Text(
                 GalleryLocalizations.of(context).demoBottomSheetHeader,
                 textAlign: TextAlign.center,
               ),
@@ -89,7 +89,7 @@ class _BottomSheetContent extends StatelessWidget {
           ),
           const Divider(thickness: 1),
           Expanded(
-            child: ListView.builder(
+             ListView.builder(
               itemCount: 21,
               itemBuilder: (context, index) {
                 return ListTile(
@@ -98,8 +98,8 @@ class _BottomSheetContent extends StatelessWidget {
                 );
               },
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -122,11 +122,11 @@ class _ModalBottomSheetDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
+       ElevatedButton(
         onPressed: () {
           _showModalBottomSheet(context);
         },
-        child: Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
+         Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
       ),
     );
   }
@@ -179,9 +179,9 @@ class _PersistentBottomSheetDemoState
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
+       ElevatedButton(
         onPressed: _showBottomSheetCallback,
-        child: Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
+         Text(GalleryLocalizations.of(context).demoBottomSheetButtonText),
       ),
     );
   }

@@ -49,11 +49,11 @@ class _NavRailDemoState extends State<NavRailDemo> with RestorationMixin {
         ),
       ),
       body: Row(
-        children: [
+        
           NavigationRail(
             leading: FloatingActionButton(
               onPressed: () {},
-              child: const Icon(Icons.add),
+               const Icon(Icons.add),
             ),
             selectedIndex: _selectedIndex.value,
             onDestinationSelected: (index) {
@@ -100,13 +100,13 @@ class _NavRailDemoState extends State<NavRailDemo> with RestorationMixin {
           ),
           const VerticalDivider(thickness: 1, width: 1),
           Expanded(
-            child: Center(
-              child: Text(
+             Center(
+               Text(
                 selectedItem[_selectedIndex.value],
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

@@ -24,7 +24,7 @@ class ColorPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: colors.map((color) {
+       colors.map((color) {
         return _ColorPickerSwatch(
           color: color,
           selected: color == selectedColor,
@@ -59,14 +59,14 @@ class _ColorPickerSwatch extends StatelessWidget {
       width: 60,
       height: 60,
       padding: const EdgeInsets.fromLTRB(2, 0, 2, 0),
-      child: RawMaterialButton(
+       RawMaterialButton(
         fillColor: color,
         onPressed: () {
           if (onTap != null) {
             onTap();
           }
         },
-        child: !selected
+         !selected
             ? null
             : const Icon(
                 Icons.check,

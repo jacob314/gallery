@@ -199,9 +199,9 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
               title: Text(_title),
             ),
             body: Center(
-              child: Column(
+               Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                
                   Text(_labelText),
                   const SizedBox(height: 16),
                   ElevatedButton(
@@ -218,11 +218,11 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
                           break;
                       }
                     },
-                    child: Text(
+                     Text(
                       GalleryLocalizations.of(context).demoPickersShowPicker,
                     ),
                   )
-                ],
+                ,
               ),
             ),
           ),

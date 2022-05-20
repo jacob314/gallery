@@ -15,11 +15,11 @@ class ProfileAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
-      child: CircleAvatar(
+       CircleAvatar(
         radius: radius,
         backgroundColor: Theme.of(context).cardColor,
-        child: ClipOval(
-          child: Image.asset(
+         ClipOval(
+           Image.asset(
             avatar,
             gaplessPlayback: true,
             package: 'flutter_gallery_assets',

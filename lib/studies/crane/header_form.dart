@@ -39,7 +39,7 @@ class HeaderForm extends StatelessWidget {
         horizontal:
             isDesktop && !isSmallDesktop ? appPaddingLarge : appPaddingSmall,
       ),
-      child: isDesktop
+       isDesktop
           ? LayoutBuilder(builder: (context, constraints) {
               var crossAxisCount = isSmallDesktop ? 2 : 4;
               if (fields.length < crossAxisCount) {
@@ -50,25 +50,25 @@ class HeaderForm extends StatelessWidget {
                 crossAxisCount: crossAxisCount,
                 childAspectRatio: itemWidth / textFieldHeight,
                 physics: const NeverScrollableScrollPhysics(),
-                children: [
+                 [
                   for (final field in fields)
                     if ((field.index + 1) % crossAxisCount == 0)
                       _HeaderTextField(field: field)
                     else
                       Padding(
                         padding: const EdgeInsetsDirectional.only(end: 16),
-                        child: _HeaderTextField(field: field),
+                         _HeaderTextField(field: field),
                       ),
                 ],
               );
             })
           : Column(
               mainAxisSize: MainAxisSize.min,
-              children: [
+               [
                 for (final field in fields)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
-                    child: _HeaderTextField(field: field),
+                     _HeaderTextField(field: field),
                   )
               ],
             ),

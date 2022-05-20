@@ -45,20 +45,20 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     return Scaffold(
       backgroundColor: shrinePink50,
       body: SafeArea(
-        child: ScopedModelDescendant<AppStateModel>(
+         ScopedModelDescendant<AppStateModel>(
           builder: (context, child, model) {
             return Stack(
-              children: [
+              
                 ListView(
-                  children: [
+                  
                     Semantics(
                       sortKey:
                           const OrdinalSortKey(0, name: _ordinalSortKeyName),
-                      child: Row(
-                        children: [
+                       Row(
+                        
                           SizedBox(
                             width: _startColumnWidth,
-                            child: IconButton(
+                             IconButton(
                               icon: const Icon(Icons.keyboard_arrow_down),
                               onPressed: () =>
                                   ExpandingBottomSheet.of(context).close(),
@@ -78,33 +78,33 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                                 .shrineCartItemCount(
                               model.totalCartQuantity,
                             ),
-                          ),
-                        ],
+                          )
+                        ,
                       ),
                     ),
                     const SizedBox(height: 16),
                     Semantics(
                       sortKey:
                           const OrdinalSortKey(1, name: _ordinalSortKeyName),
-                      child: Column(
-                        children: _createShoppingCartRows(model),
+                       Column(
+                         _createShoppingCartRows(model),
                       ),
                     ),
                     Semantics(
                       sortKey:
                           const OrdinalSortKey(2, name: _ordinalSortKeyName),
-                      child: ShoppingCartSummary(model: model),
+                       ShoppingCartSummary(model: model),
                     ),
-                    const SizedBox(height: 100),
-                  ],
+                    const SizedBox(height: 100)
+                  ,
                 ),
                 PositionedDirectional(
                   bottom: 16,
                   start: 16,
                   end: 16,
-                  child: Semantics(
+                   Semantics(
                     sortKey: const OrdinalSortKey(3, name: _ordinalSortKeyName),
-                    child: ElevatedButton(
+                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: const BeveledRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(7)),
@@ -115,9 +115,9 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                         model.clearCart();
                         ExpandingBottomSheet.of(context).close();
                       },
-                      child: Padding(
+                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: Text(
+                         Text(
                           GalleryLocalizations.of(context)
                               .shrineCartClearButtonCaption,
                           style: TextStyle(
@@ -127,8 +127,8 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                )
+              ,
             );
           },
         ),
@@ -156,88 +156,88 @@ class ShoppingCartSummary extends StatelessWidget {
     );
 
     return Row(
-      children: [
+      
         const SizedBox(width: _startColumnWidth),
         Expanded(
-          child: Padding(
+           Padding(
             padding: const EdgeInsetsDirectional.only(end: 16),
-            child: Column(
-              children: [
+             Column(
+              
                 MergeSemantics(
-                  child: Row(
+                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                    
                       Text(
                         GalleryLocalizations.of(context).shrineCartTotalCaption,
                       ),
                       Expanded(
-                        child: Text(
+                         Text(
                           formatter.format(model.totalCost),
                           style: largeAmountStyle,
                           textAlign: TextAlign.end,
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                 ),
                 const SizedBox(height: 16),
                 MergeSemantics(
-                  child: Row(
-                    children: [
+                   Row(
+                    
                       Text(
                         GalleryLocalizations.of(context)
                             .shrineCartSubtotalCaption,
                       ),
                       Expanded(
-                        child: Text(
+                         Text(
                           formatter.format(model.subtotalCost),
                           style: smallAmountStyle,
                           textAlign: TextAlign.end,
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                 ),
                 const SizedBox(height: 4),
                 MergeSemantics(
-                  child: Row(
-                    children: [
+                   Row(
+                    
                       Text(
                         GalleryLocalizations.of(context)
                             .shrineCartShippingCaption,
                       ),
                       Expanded(
-                        child: Text(
+                         Text(
                           formatter.format(model.shippingCost),
                           style: smallAmountStyle,
                           textAlign: TextAlign.end,
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                 ),
                 const SizedBox(height: 4),
                 MergeSemantics(
-                  child: Row(
-                    children: [
+                   Row(
+                    
                       Text(
                         GalleryLocalizations.of(context).shrineCartTaxCaption,
                       ),
                       Expanded(
-                        child: Text(
+                         Text(
                           formatter.format(model.tax),
                           style: smallAmountStyle,
                           textAlign: TextAlign.end,
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 }
@@ -264,20 +264,20 @@ class ShoppingCartRow extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
+       Row(
         key: ValueKey<int>(product.id),
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        
           Semantics(
             container: true,
             label: GalleryLocalizations.of(context)
                 .shrineScreenReaderRemoveProductButton(product.name(context)),
             button: true,
             enabled: true,
-            child: ExcludeSemantics(
-              child: SizedBox(
+             ExcludeSemantics(
+               SizedBox(
                 width: _startColumnWidth,
-                child: IconButton(
+                 IconButton(
                   icon: const Icon(Icons.remove_circle_outline),
                   onPressed: onPressed,
                   tooltip:
@@ -287,13 +287,13 @@ class ShoppingCartRow extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Padding(
+             Padding(
               padding: const EdgeInsetsDirectional.only(end: 16),
-              child: Column(
-                children: [
+               Column(
+                
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    
                       Image.asset(
                         product.assetName,
                         package: product.assetPackage,
@@ -304,15 +304,15 @@ class ShoppingCartRow extends StatelessWidget {
                       ),
                       const SizedBox(width: 16),
                       Expanded(
-                        child: MergeSemantics(
-                          child: Column(
+                         MergeSemantics(
+                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            
                               MergeSemantics(
-                                child: Row(
-                                  children: [
+                                 Row(
+                                  
                                     Expanded(
-                                      child: Text(
+                                       Text(
                                         GalleryLocalizations.of(context)
                                             .shrineProductQuantity(quantity),
                                       ),
@@ -322,31 +322,31 @@ class ShoppingCartRow extends StatelessWidget {
                                           .shrineProductPrice(
                                         formatter.format(product.price),
                                       ),
-                                    ),
-                                  ],
+                                    )
+                                  ,
                                 ),
                               ),
                               Text(
                                 product.name(context),
                                 style: localTheme.textTheme.subtitle1
                                     .copyWith(fontWeight: FontWeight.w600),
-                              ),
-                            ],
+                              )
+                            ,
                           ),
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   ),
                   const SizedBox(height: 16),
                   const Divider(
                     color: shrineBrown900,
                     height: 10,
-                  ),
-                ],
+                  )
+                ,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

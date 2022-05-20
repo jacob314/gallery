@@ -62,7 +62,7 @@ class _Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ApplyTextOptions(
-      child: HomePage(),
+       HomePage(),
     );
   }
 }

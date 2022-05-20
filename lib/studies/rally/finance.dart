@@ -41,7 +41,7 @@ class FinancialEntityView extends StatelessWidget {
     final maxWidth = pieChartMaxSize + (cappedTextScale(context) - 1.0) * 100.0;
     return LayoutBuilder(builder: (context, constraints) {
       return Column(
-        children: [
+        
           ConstrainedBox(
             constraints: BoxConstraints(
               // We decrease the max height to ensure the [RallyPieChart] does
@@ -52,7 +52,7 @@ class FinancialEntityView extends StatelessWidget {
                 maxWidth,
               ),
             ),
-            child: RallyPieChart(
+             RallyPieChart(
               heroLabel: heroLabel,
               heroAmount: heroAmount,
               wholeAmount: wholeAmount,
@@ -68,11 +68,11 @@ class FinancialEntityView extends StatelessWidget {
           Container(
             constraints: BoxConstraints(maxWidth: maxWidth),
             color: RallyColors.cardBackground,
-            child: Column(
-              children: financialEntityCards,
+             Column(
+               financialEntityCards,
             ),
-          ),
-        ],
+          )
+        ,
       );
     });
   }
@@ -113,7 +113,7 @@ class FinancialEntityCategoryView extends StatelessWidget {
       // FinancialEntityCategoryDetailsPage on mobile is blocked because
       // OpenContainer does not support restorablePush.
       // See https://github.com/flutter/flutter/issues/69924.
-      child: OpenContainer(
+       OpenContainer(
         transitionDuration: const Duration(milliseconds: 350),
         transitionType: ContainerTransitionType.fade,
         openBuilder: (context, openContainer) =>
@@ -125,31 +125,31 @@ class FinancialEntityCategoryView extends StatelessWidget {
           return TextButton(
             style: TextButton.styleFrom(primary: Colors.black),
             onPressed: openContainer,
-            child: Column(
-              children: [
+             Column(
+              
                 Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-                  child: Row(
-                    children: [
+                   Row(
+                    
                       Container(
                         alignment: Alignment.center,
                         height: 32 + 60 * (cappedTextScale(context) - 1),
                         padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: VerticalFractionBar(
+                         VerticalFractionBar(
                           color: indicatorColor,
                           fraction: indicatorFraction,
                         ),
                       ),
                       Expanded(
-                        child: Wrap(
+                         Wrap(
                           alignment: WrapAlignment.spaceBetween,
                           crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
+                          
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                              
                                 Text(
                                   title,
                                   style: textTheme.bodyText2
@@ -159,8 +159,8 @@ class FinancialEntityCategoryView extends StatelessWidget {
                                   subtitle,
                                   style: textTheme.bodyText2
                                       .copyWith(color: RallyColors.gray60),
-                                ),
-                              ],
+                                )
+                              ,
                             ),
                             Text(
                               amount,
@@ -168,16 +168,16 @@ class FinancialEntityCategoryView extends StatelessWidget {
                                 fontSize: 20,
                                 color: RallyColors.gray,
                               ),
-                            ),
-                          ],
+                            )
+                          ,
                         ),
                       ),
                       Container(
                         constraints: const BoxConstraints(minWidth: 32),
                         padding: const EdgeInsetsDirectional.only(start: 12),
-                        child: suffix,
-                      ),
-                    ],
+                         suffix,
+                      )
+                    ,
                   ),
                 ),
                 const Divider(
@@ -185,8 +185,8 @@ class FinancialEntityCategoryView extends StatelessWidget {
                   indent: 16,
                   endIndent: 16,
                   color: RallyColors.dividerColor,
-                ),
-              ],
+                )
+              ,
             ),
           );
         },
@@ -330,7 +330,7 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
     final isDesktop = isDisplayDesktop(context);
 
     return ApplyTextOptions(
-      child: Scaffold(
+       Scaffold(
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
@@ -340,18 +340,18 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
           ),
         ),
         body: Column(
-          children: [
+          
             SizedBox(
               height: 200,
               width: double.infinity,
-              child: RallyLineChart(events: items),
+               RallyLineChart(events: items),
             ),
             Expanded(
-              child: Padding(
+               Padding(
                 padding: isDesktop ? const EdgeInsets.all(40) : EdgeInsets.zero,
-                child: ListView(
+                 ListView(
                   shrinkWrap: true,
-                  children: [
+                   [
                     for (DetailedEventData detailedEventData in items)
                       _DetailedEventCard(
                         title: detailedEventData.title,
@@ -361,8 +361,8 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -389,50 +389,50 @@ class _DetailedEventCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
       ),
       onPressed: () {},
-      child: Column(
-        children: [
+       Column(
+        
           Container(
             padding: const EdgeInsets.symmetric(vertical: 16),
             width: double.infinity,
-            child: isDesktop
+             isDesktop
                 ? Row(
-                    children: [
+                    
                       Expanded(
                         flex: 1,
-                        child: _EventTitle(title: title),
+                         _EventTitle(title: title),
                       ),
                       _EventDate(date: date),
                       Expanded(
                         flex: 1,
-                        child: Align(
+                         Align(
                           alignment: AlignmentDirectional.centerEnd,
-                          child: _EventAmount(amount: amount),
+                           _EventAmount(amount: amount),
                         ),
-                      ),
-                    ],
+                      )
+                    ,
                   )
                 : Wrap(
                     alignment: WrapAlignment.spaceBetween,
-                    children: [
+                    
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        
                           _EventTitle(title: title),
-                          _EventDate(date: date),
-                        ],
+                          _EventDate(date: date)
+                        ,
                       ),
-                      _EventAmount(amount: amount),
-                    ],
+                      _EventAmount(amount: amount)
+                    ,
                   ),
           ),
           SizedBox(
             height: 1,
-            child: Container(
+             Container(
               color: RallyColors.dividerColor,
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

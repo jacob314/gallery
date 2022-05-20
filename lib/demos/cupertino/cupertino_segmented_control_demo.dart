@@ -51,18 +51,18 @@ class _CupertinoSegmentedControlDemoState
           localizations.demoCupertinoSegmentedControlTitle,
         ),
       ),
-      child: DefaultTextStyle(
+       DefaultTextStyle(
         style: CupertinoTheme.of(context)
             .textTheme
             .textStyle
             .copyWith(fontSize: 13),
-        child: SafeArea(
-          child: ListView(
-            children: [
+         SafeArea(
+           ListView(
+            
               const SizedBox(height: 16),
               SizedBox(
                 width: segmentedControlMaxWidth,
-                child: CupertinoSegmentedControl<int>(
+                 CupertinoSegmentedControl<int>(
                   children: children,
                   onValueChanged: onValueChanged,
                   groupValue: currentSegment.value,
@@ -70,9 +70,9 @@ class _CupertinoSegmentedControlDemoState
               ),
               SizedBox(
                 width: segmentedControlMaxWidth,
-                child: Padding(
+                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: CupertinoSlidingSegmentedControl<int>(
+                   CupertinoSlidingSegmentedControl<int>(
                     children: children,
                     onValueChanged: onValueChanged,
                     groupValue: currentSegment.value,
@@ -83,9 +83,9 @@ class _CupertinoSegmentedControlDemoState
                 padding: const EdgeInsets.all(16),
                 height: 300,
                 alignment: Alignment.center,
-                child: children[currentSegment.value],
-              ),
-            ],
+                 children[currentSegment.value],
+              )
+            ,
           ),
         ),
       ),

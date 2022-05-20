@@ -63,7 +63,7 @@ class _DemoPageState extends State<DemoPage> {
       Navigator.of(context).pop();
     }
     return ScaffoldMessenger(
-        child: GalleryDemoPage(
+         GalleryDemoPage(
       restorationId: widget.slug,
       demo: slugToDemoMap[widget.slug],
     ));
@@ -196,12 +196,12 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         builder: (context) {
           return SimpleDialog(
             title: Text(GalleryLocalizations.of(context).demoInvalidURL),
-            children: [
+            
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(url),
-              ),
-            ],
+                 Text(url),
+              )
+            ,
           );
         },
       );
@@ -243,7 +243,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
       backgroundColor: Colors.transparent,
       leading: Padding(
         padding: EdgeInsetsDirectional.only(start: appBarPadding),
-        child: IconButton(
+         IconButton(
           key: const ValueKey('Back'),
           icon: const BackButtonIcon(),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
@@ -271,7 +271,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
                   _showFeatureHighlight = false;
                 });
               },
-              child: Icon(
+               Icon(
                 Icons.tune,
                 color: currentDemoState == _DemoState.options ||
                         _showFeatureHighlightForPlatform(context)
@@ -366,7 +366,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
           punctuationStyle: codeTheme.copyWith(color: const Color(0xFF8BE9FD)),
           classStyle: codeTheme.copyWith(color: const Color(0xFFD65BAD)),
           constantStyle: codeTheme.copyWith(color: const Color(0xFFFF8383)),
-          child: _DemoSectionCode(
+           _DemoSectionCode(
             maxHeight: maxSectionHeight,
             codeWidget: CodeDisplayPage(
               _currentConfig.code,
@@ -381,7 +381,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
 
     Widget body;
     Widget demoContent = ScaffoldMessenger(
-      child: DemoWrapper(
+       DemoWrapper(
         height: contentHeight,
         buildRoute: _currentConfig.buildRoute,
       ),
@@ -390,17 +390,17 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
       final isFullScreen = currentDemoState == _DemoState.fullscreen;
       final Widget sectionAndDemo = Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (!isFullScreen) Expanded(child: section),
+         [
+          if (!isFullScreen) Expanded( section),
           SizedBox(width: !isFullScreen ? 48.0 : 0),
-          Expanded(child: demoContent),
+          Expanded( demoContent),
         ],
       );
 
       body = SafeArea(
-        child: Padding(
+         Padding(
           padding: const EdgeInsets.only(top: 56),
-          child: sectionAndDemo,
+           sectionAndDemo,
         ),
       );
     } else {
@@ -408,13 +408,13 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         duration: const Duration(milliseconds: 200),
         alignment: Alignment.topCenter,
         curve: Curves.easeIn,
-        child: section,
+         section,
       );
 
       // Add a tap gesture to collapse the currently opened section.
       demoContent = Semantics(
         label: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        child: GestureDetector(
+         GestureDetector(
           onTap: () {
             if (currentDemoState != _DemoState.normal) {
               setStateAndUpdate(() {
@@ -422,25 +422,25 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
               });
             }
           },
-          child: Semantics(
+           Semantics(
             excludeSemantics: currentDemoState != _DemoState.normal,
-            child: demoContent,
+             demoContent,
           ),
         ),
       );
 
       body = SafeArea(
         bottom: false,
-        child: ListView(
+         ListView(
           // Use a non-scrollable ListView to enable animation of shifting the
           // demo offscreen.
           physics: const NeverScrollableScrollPhysics(),
-          children: [
+          
             section,
             demoContent,
             // Fake the safe area to ensure the animation looks correct.
-            SizedBox(height: bottomSafeArea),
-          ],
+            SizedBox(height: bottomSafeArea)
+          ,
         ),
       );
     }
@@ -467,8 +467,8 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
 
             Widget contents = Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: ApplyTextOptions(
-                child: Scaffold(
+               ApplyTextOptions(
+                 Scaffold(
                   appBar: appBar,
                   body: body,
                   backgroundColor: Colors.transparent,
@@ -481,7 +481,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
               // dark background for code.
               Widget codeBackground = Container(
                 padding: const EdgeInsets.only(top: 56),
-                child: Container(
+                 Container(
                   color: ColorTween(
                     begin: Colors.transparent,
                     end: GalleryThemeData.darkThemeData.canvasColor,
@@ -490,23 +490,23 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
               );
 
               contents = Stack(
-                children: [
+                
                   codeBackground,
-                  contents,
-                ],
+                  contents
+                ,
               );
             }
 
             return Container(
               color: colorScheme.background,
-              child: contents,
+               contents,
             );
           });
     } else {
       page = Container(
         color: colorScheme.background,
-        child: ApplyTextOptions(
-          child: Scaffold(
+         ApplyTextOptions(
+           Scaffold(
             appBar: appBar,
             body: body,
             resizeToAvoidBottomInset: false,
@@ -520,8 +520,8 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
       page = MediaQuery.removePadding(
         removeTop: true,
         context: context,
-        child: SplashPage(
-          child: page,
+         SplashPage(
+           page,
         ),
       );
     }
@@ -553,19 +553,19 @@ class _DemoSectionOptions extends StatelessWidget {
 
     return Align(
       alignment: AlignmentDirectional.topStart,
-      child: Container(
+       Container(
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
-        child: Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [
+          
             Padding(
               padding: const EdgeInsetsDirectional.only(
                 start: 24,
                 top: 12,
                 end: 24,
               ),
-              child: Text(
+               Text(
                 GalleryLocalizations.of(context).demoOptionsTooltip,
                 style: textTheme.headline4.apply(
                   color: colorScheme.onSurface,
@@ -580,9 +580,9 @@ class _DemoSectionOptions extends StatelessWidget {
               color: colorScheme.onSurface,
             ),
             Flexible(
-              child: ListView(
+               ListView(
                 shrinkWrap: true,
-                children: [
+                 [
                   for (final configuration in configurations)
                     _DemoSectionOptionsItem(
                       title: configuration.title,
@@ -594,8 +594,8 @@ class _DemoSectionOptions extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
-          ],
+            const SizedBox(height: 12)
+          ,
         ),
       ),
     );
@@ -620,12 +620,12 @@ class _DemoSectionOptionsItem extends StatelessWidget {
 
     return Material(
       color: isSelected ? colorScheme.surface : null,
-      child: InkWell(
+       InkWell(
         onTap: onTap,
-        child: Container(
+         Container(
           constraints: const BoxConstraints(minWidth: double.infinity),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-          child: Text(
+           Text(
             title,
             style: Theme.of(context).textTheme.bodyText2.apply(
                   color:
@@ -659,7 +659,7 @@ class _DemoSectionInfo extends StatelessWidget {
 
     return Align(
       alignment: AlignmentDirectional.topStart,
-      child: Container(
+       Container(
         padding: const EdgeInsetsDirectional.only(
           start: 24,
           top: 12,
@@ -667,11 +667,11 @@ class _DemoSectionInfo extends StatelessWidget {
           bottom: 32,
         ),
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
-        child: SingleChildScrollView(
-          child: Column(
+         SingleChildScrollView(
+           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               Text(
                 title,
                 style: textTheme.headline4.apply(
@@ -684,8 +684,8 @@ class _DemoSectionInfo extends StatelessWidget {
               Text(
                 description,
                 style: textTheme.bodyText2.apply(color: colorScheme.onSurface),
-              ),
-            ],
+              )
+            ,
           ),
         ),
       ),
@@ -708,21 +708,21 @@ class DemoWrapper extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       height: height,
-      child: Material(
+       Material(
         clipBehavior: Clip.antiAlias,
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(10.0),
           bottom: Radius.circular(2.0),
         ),
-        child: Theme(
+         Theme(
           data: MaterialDemoThemeData.themeData.copyWith(
             platform: GalleryOptions.of(context).platform,
           ),
-          child: CupertinoTheme(
+           CupertinoTheme(
             data: const CupertinoThemeData()
                 .copyWith(brightness: Brightness.light),
-            child: ApplyTextOptions(
-              child: Builder(builder: buildRoute),
+             ApplyTextOptions(
+               Builder(builder: buildRoute),
             ),
           ),
         ),
@@ -747,13 +747,13 @@ class _DemoSectionCode extends StatelessWidget {
 
     return Theme(
       data: GalleryThemeData.darkThemeData,
-      child: Padding(
+       Padding(
         padding: const EdgeInsets.only(bottom: 16),
-        child: Container(
+         Container(
           color: isDesktop ? null : GalleryThemeData.darkThemeData.canvasColor,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: maxHeight,
-          child: codeWidget,
+           codeWidget,
         ),
       ),
     );
@@ -796,12 +796,12 @@ class CodeDisplayPage extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      
         Padding(
           padding: isDesktop
               ? const EdgeInsets.only(bottom: 8)
               : const EdgeInsets.symmetric(vertical: 8),
-          child: ElevatedButton(
+           ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: Colors.white.withOpacity(0.15),
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -814,7 +814,7 @@ class CodeDisplayPage extends StatelessWidget {
                   .then(_showSnackBarOnCopySuccess)
                   .catchError(_showSnackBarOnCopyFailure);
             },
-            child: Text(
+             Text(
               GalleryLocalizations.of(context).demoCodeViewerCopyAll,
               style: Theme.of(context).textTheme.button.copyWith(
                     color: Colors.white,
@@ -824,17 +824,17 @@ class CodeDisplayPage extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: SingleChildScrollView(
-            child: Container(
+           SingleChildScrollView(
+             Container(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: RichText(
+               RichText(
                 textDirection: TextDirection.ltr,
                 text: _richTextCode,
               ),
             ),
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 }

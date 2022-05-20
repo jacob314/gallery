@@ -95,15 +95,15 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo>
         title: Text(_title(context)),
       ),
       body: Center(
-        child: PageTransitionSwitcher(
+         PageTransitionSwitcher(
           transitionBuilder: (child, animation, secondaryAnimation) {
             return FadeThroughTransition(
               animation: animation,
               secondaryAnimation: secondaryAnimation,
-              child: child,
+               child,
             );
           },
-          child: _NavigationDestinationView(
+           _NavigationDestinationView(
             // Adding [UniqueKey] to make sure the widget rebuilds when transitioning.
             key: UniqueKey(),
             item: bottomNavigationBarItems[_currentIndex.value],
@@ -139,14 +139,14 @@ class _NavigationDestinationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      
         ExcludeSemantics(
-          child: Center(
-            child: Padding(
+           Center(
+             Padding(
               padding: const EdgeInsets.all(16),
-              child: ClipRRect(
+               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
+                 Image.asset(
                   'assets/demos/bottom_navigation_background.png',
                   package: 'flutter_gallery_assets',
                 ),
@@ -155,21 +155,21 @@ class _NavigationDestinationView extends StatelessWidget {
           ),
         ),
         Center(
-          child: IconTheme(
+           IconTheme(
             data: const IconThemeData(
               color: Colors.white,
               size: 80,
             ),
-            child: Semantics(
+             Semantics(
               label: GalleryLocalizations.of(context)
                   .bottomNavigationContentPlaceholder(
                 item.label,
               ),
-              child: item.icon,
+               item.icon,
             ),
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 }

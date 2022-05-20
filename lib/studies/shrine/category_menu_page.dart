@@ -32,7 +32,7 @@ class CategoryMenuPage extends StatelessWidget {
   Widget _buttonText(String caption, TextStyle style) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Text(
+       Text(
         caption,
         style: style,
         textAlign: TextAlign.center,
@@ -70,20 +70,20 @@ class CategoryMenuPage extends StatelessWidget {
         selected: model.selectedCategory == category,
         button: true,
         enabled: true,
-        child: GestureDetector(
+         GestureDetector(
           onTap: () {
             model.setCategory(category);
             if (onCategoryTap != null) {
               onCategoryTap();
             }
           },
-          child: model.selectedCategory == category
+           model.selectedCategory == category
               ? CustomPaint(
                   painter: TriangleCategoryIndicator(
                     indicatorWidth,
                     indicatorHeight,
                   ),
-                  child: _buttonText(categoryString, selectedCategoryTextStyle),
+                   _buttonText(categoryString, selectedCategoryTextStyle),
                 )
               : _buttonText(categoryString, unselectedCategoryTextStyle),
         ),
@@ -105,12 +105,12 @@ class CategoryMenuPage extends StatelessWidget {
         animation: PageStatus.of(context).cartController,
         builder: (context, child) => ExcludeSemantics(
           excluding: !menuPageIsVisible(context),
-          child: Material(
-            child: Container(
+           Material(
+             Container(
               color: shrinePink100,
               width: desktopCategoryMenuPageWidth(context: context),
-              child: Column(
-                children: [
+               Column(
+                 [
                   const SizedBox(height: 64),
                   Image.asset(
                     'packages/shrine_images/diamond.png',
@@ -119,7 +119,7 @@ class CategoryMenuPage extends StatelessWidget {
                   const SizedBox(height: 16),
                   Semantics(
                     container: true,
-                    child: Text(
+                     Text(
                       'SHRINE',
                       style: Theme.of(context).textTheme.headline5,
                     ),
@@ -131,12 +131,12 @@ class CategoryMenuPage extends StatelessWidget {
                   Semantics(
                     button: true,
                     enabled: true,
-                    child: GestureDetector(
+                     GestureDetector(
                       onTap: () {
                         Navigator.of(context)
                             .restorablePushNamed(ShrineApp.loginRoute);
                       },
-                      child: _buttonText(
+                       _buttonText(
                         GalleryLocalizations.of(context)
                             .shrineLogoutButtonCaption,
                         logoutTextStyle,
@@ -164,21 +164,21 @@ class CategoryMenuPage extends StatelessWidget {
           animation: PageStatus.of(context).menuController,
           builder: (context, child) => ExcludeSemantics(
             excluding: !menuPageIsVisible(context),
-            child: Center(
-              child: Container(
+             Center(
+               Container(
                 padding: const EdgeInsets.only(top: 40),
                 color: shrinePink100,
-                child: ListView(
-                  children: [
+                 ListView(
+                   [
                     for (final category in categories)
                       _buildCategory(category, context),
                     Center(
-                      child: _divider(context: context),
+                       _divider(context: context),
                     ),
                     Semantics(
                       button: true,
                       enabled: true,
-                      child: GestureDetector(
+                       GestureDetector(
                         onTap: () {
                           if (onCategoryTap != null) {
                             onCategoryTap();
@@ -186,7 +186,7 @@ class CategoryMenuPage extends StatelessWidget {
                           Navigator.of(context)
                               .restorablePushNamed(ShrineApp.loginRoute);
                         },
-                        child: _buttonText(
+                         _buttonText(
                           GalleryLocalizations.of(context)
                               .shrineLogoutButtonCaption,
                           logoutTextStyle,

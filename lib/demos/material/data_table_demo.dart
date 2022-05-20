@@ -151,10 +151,10 @@ class _DataTableDemoState extends State<DataTableDemo> with RestorationMixin {
         title: Text(localizations.demoDataTableTitle),
       ),
       body: Scrollbar(
-        child: ListView(
+         ListView(
           restorationId: 'data_table_list_view',
           padding: const EdgeInsets.all(16),
-          children: [
+          
             PaginatedDataTable(
               header: Text(localizations.dataTableHeader),
               rowsPerPage: _rowsPerPage.value,
@@ -222,8 +222,8 @@ class _DataTableDemoState extends State<DataTableDemo> with RestorationMixin {
                 ),
               ],
               source: _dessertsDataSource,
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );

@@ -38,10 +38,10 @@ class _LoginPageState extends State<LoginPage> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return ApplyTextOptions(
-      child: Scaffold(
+       Scaffold(
         appBar: AppBar(automaticallyImplyLeading: false),
         body: SafeArea(
-          child: _MainView(
+           _MainView(
             usernameController: _usernameController.value,
             passwordController: _passwordController.value,
           ),
@@ -115,16 +115,16 @@ class _MainView extends StatelessWidget {
     }
 
     return Column(
-      children: [
+       [
         if (isDesktop) const _TopBar(),
         Expanded(
-          child: Align(
+           Align(
             alignment: isDesktop ? Alignment.center : Alignment.topCenter,
-            child: ListView(
+             ListView(
               restorationId: 'login_list_view',
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              children: listViewChildren,
+               listViewChildren,
             ),
           ),
         ),
@@ -145,16 +145,16 @@ class _TopBar extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Wrap(
+       Wrap(
         alignment: WrapAlignment.spaceBetween,
-        children: [
+        
           Row(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               ExcludeSemantics(
-                child: SizedBox(
+                 SizedBox(
                   height: 80,
-                  child: FadeInImagePlaceholder(
+                   FadeInImagePlaceholder(
                     image:
                         const AssetImage('logo.png', package: 'rally_assets'),
                     placeholder: LayoutBuilder(builder: (context, constraints) {
@@ -173,12 +173,12 @@ class _TopBar extends StatelessWidget {
                       fontSize: 35 / reducedTextScale(context),
                       fontWeight: FontWeight.w600,
                     ),
-              ),
-            ],
+              )
+            ,
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            
               Text(
                 GalleryLocalizations.of(context).rallyLoginNoAccount,
                 style: Theme.of(context).textTheme.subtitle1,
@@ -186,10 +186,10 @@ class _TopBar extends StatelessWidget {
               spacing,
               _BorderButton(
                 text: GalleryLocalizations.of(context).rallyLoginSignUp,
-              ),
-            ],
-          ),
-        ],
+              )
+            ,
+          )
+        ,
       ),
     );
   }
@@ -204,10 +204,10 @@ class _SmallLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(vertical: 64),
-      child: SizedBox(
+       SizedBox(
         height: 160,
-        child: ExcludeSemantics(
-          child: FadeInImagePlaceholder(
+         ExcludeSemantics(
+           FadeInImagePlaceholder(
             image: AssetImage('logo.png', package: 'rally_assets'),
             placeholder: SizedBox.shrink(),
           ),
@@ -231,9 +231,9 @@ class _UsernameInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child: Container(
+       Container(
         constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
-        child: TextField(
+         TextField(
           textInputAction: TextInputAction.next,
           controller: usernameController,
           decoration: InputDecoration(
@@ -259,9 +259,9 @@ class _PasswordInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child: Container(
+       Container(
         constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
-        child: TextField(
+         TextField(
           controller: passwordController,
           decoration: InputDecoration(
             labelText: GalleryLocalizations.of(context).rallyLoginPassword,
@@ -293,9 +293,9 @@ class _ThumbButtonState extends State<_ThumbButton> {
       button: true,
       enabled: true,
       label: GalleryLocalizations.of(context).rallyLoginLabelLogin,
-      child: GestureDetector(
+       GestureDetector(
         onTap: widget.onTap,
-        child: Focus(
+         Focus(
           onKey: (node, event) {
             if (event is RawKeyDownEvent) {
               if (event.logicalKey == LogicalKeyboardKey.enter ||
@@ -322,11 +322,11 @@ class _ThumbButtonState extends State<_ThumbButton> {
               });
             }
           },
-          child: Container(
+           Container(
             decoration: borderDecoration,
             height: 120,
-            child: ExcludeSemantics(
-              child: Image.asset(
+             ExcludeSemantics(
+               Image.asset(
                 'thumb.png',
                 package: 'rally_assets',
               ),
@@ -352,21 +352,21 @@ class _LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child: Container(
+       Container(
         constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
         padding: const EdgeInsets.symmetric(vertical: 30),
-        child: Row(
-          children: [
+         Row(
+          
             const Icon(Icons.check_circle_outline,
                 color: RallyColors.buttonColor),
             const SizedBox(width: 12),
             Text(GalleryLocalizations.of(context).rallyLoginRememberMe),
-            const Expanded(child: SizedBox.shrink()),
+            const Expanded( SizedBox.shrink()),
             _FilledButton(
               text: GalleryLocalizations.of(context).rallyLoginButtonLogin,
               onTap: onTap,
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -392,7 +392,7 @@ class _BorderButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).restorablePushNamed(RallyApp.homeRoute);
       },
-      child: Text(text),
+       Text(text),
     );
   }
 }
@@ -416,12 +416,12 @@ class _FilledButton extends StatelessWidget {
         ),
       ),
       onPressed: onTap,
-      child: Row(
-        children: [
+       Row(
+        
           const Icon(Icons.lock),
           const SizedBox(width: 6),
-          Text(text),
-        ],
+          Text(text)
+        ,
       ),
     );
   }

@@ -65,9 +65,9 @@ class _OpenContainerTransformDemoState
             return Container(
               height: 125,
               padding: const EdgeInsets.all(15),
-              child: Column(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                
                   Text(
                     localizations.demoContainerTransformModalBottomSheetTitle,
                     style: Theme.of(context).textTheme.caption,
@@ -91,7 +91,7 @@ class _OpenContainerTransformDemoState
                       _transitionType == ContainerTransitionType.fade,
                       _transitionType == ContainerTransitionType.fadeThrough,
                     ],
-                    children: [
+                    
                       Text(
                         localizations.demoContainerTransformTypeFade,
                       ),
@@ -99,13 +99,13 @@ class _OpenContainerTransformDemoState
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
                         ),
-                        child: Text(
+                         Text(
                           localizations.demoContainerTransformTypeFadeThrough,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      )
+                    ,
+                  )
+                ,
               ),
             );
           },
@@ -130,7 +130,7 @@ class _OpenContainerTransformDemoState
             appBar: AppBar(
               automaticallyImplyLeading: false,
               title: Column(
-                children: [
+                
                   Text(
                     localizations.demoContainerTransformTitle,
                   ),
@@ -140,8 +140,8 @@ class _OpenContainerTransformDemoState
                         .textTheme
                         .subtitle2
                         .copyWith(color: Colors.white),
-                  ),
-                ],
+                  )
+                ,
               ),
               actions: [
                 IconButton(
@@ -156,7 +156,7 @@ class _OpenContainerTransformDemoState
             ),
             body: ListView(
               padding: const EdgeInsets.all(8),
-              children: [
+               [
                 _OpenContainerWrapper(
                   transitionType: _transitionType,
                   closedBuilder: (context, openContainer) {
@@ -174,9 +174,9 @@ class _OpenContainerTransformDemoState
                   height: 16,
                 ),
                 Row(
-                  children: [
+                  
                     Expanded(
-                      child: _OpenContainerWrapper(
+                       _OpenContainerWrapper(
                         transitionType: _transitionType,
                         closedBuilder: (context, openContainer) {
                           return _SmallDetailsCard(
@@ -191,7 +191,7 @@ class _OpenContainerTransformDemoState
                       width: 8,
                     ),
                     Expanded(
-                      child: _OpenContainerWrapper(
+                       _OpenContainerWrapper(
                         transitionType: _transitionType,
                         closedBuilder: (context, openContainer) {
                           return _SmallDetailsCard(
@@ -201,16 +201,16 @@ class _OpenContainerTransformDemoState
                           );
                         },
                       ),
-                    ),
-                  ],
+                    )
+                  ,
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 Row(
-                  children: [
+                  
                     Expanded(
-                      child: _OpenContainerWrapper(
+                       _OpenContainerWrapper(
                         transitionType: _transitionType,
                         closedBuilder: (context, openContainer) {
                           return _SmallDetailsCard(
@@ -225,7 +225,7 @@ class _OpenContainerTransformDemoState
                       width: 8,
                     ),
                     Expanded(
-                      child: _OpenContainerWrapper(
+                       _OpenContainerWrapper(
                         transitionType: _transitionType,
                         closedBuilder: (context, openContainer) {
                           return _SmallDetailsCard(
@@ -240,7 +240,7 @@ class _OpenContainerTransformDemoState
                       width: 8,
                     ),
                     Expanded(
-                      child: _OpenContainerWrapper(
+                       _OpenContainerWrapper(
                         transitionType: _transitionType,
                         closedBuilder: (context, openContainer) {
                           return _SmallDetailsCard(
@@ -250,8 +250,8 @@ class _OpenContainerTransformDemoState
                           );
                         },
                       ),
-                    ),
-                  ],
+                    )
+                  ,
                 ),
                 const SizedBox(
                   height: 16,
@@ -299,8 +299,8 @@ class _OpenContainerTransformDemoState
                 return SizedBox(
                   height: _fabDimension,
                   width: _fabDimension,
-                  child: Center(
-                    child: Icon(
+                   Center(
+                     Icon(
                       Icons.add,
                       color: colorScheme.onSecondary,
                     ),
@@ -347,14 +347,14 @@ class _DetailsCard extends StatelessWidget {
     return _InkWellOverlay(
       openContainer: openContainer,
       height: 300,
-      child: Column(
+       Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
+        
           Expanded(
-            child: Container(
+             Container(
               color: Colors.black38,
-              child: Center(
-                child: Image.asset(
+               Center(
+                 Image.asset(
                   'placeholders/placeholder_image.png',
                   package: 'flutter_gallery_assets',
                   width: 100,
@@ -376,7 +376,7 @@ class _DetailsCard extends StatelessWidget {
               right: 16,
               bottom: 16,
             ),
-            child: Text(
+             Text(
               'Lorem ipsum dolor sit amet, consectetur '
               'adipiscing elit, sed do eiusmod tempor.',
               style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -384,8 +384,8 @@ class _DetailsCard extends StatelessWidget {
                     inherit: false,
                   ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -407,14 +407,14 @@ class _SmallDetailsCard extends StatelessWidget {
     return _InkWellOverlay(
       openContainer: openContainer,
       height: 225,
-      child: Column(
+       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        
           Container(
             color: Colors.black38,
             height: 150,
-            child: Center(
-              child: Image.asset(
+             Center(
+               Image.asset(
                 'placeholders/placeholder_image.png',
                 package: 'flutter_gallery_assets',
                 width: 80,
@@ -422,12 +422,12 @@ class _SmallDetailsCard extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Padding(
+             Padding(
               padding: const EdgeInsets.all(10),
-              child: Column(
+               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                
                   Text(
                     GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
                     style: textTheme.headline6,
@@ -438,12 +438,12 @@ class _SmallDetailsCard extends StatelessWidget {
                   Text(
                     subtitle,
                     style: textTheme.caption,
-                  ),
-                ],
+                  )
+                ,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -462,14 +462,14 @@ class _DetailsListTile extends StatelessWidget {
     return _InkWellOverlay(
       openContainer: openContainer,
       height: height,
-      child: Row(
-        children: [
+       Row(
+        
           Container(
             color: Colors.black38,
             height: height,
             width: height,
-            child: Center(
-              child: Image.asset(
+             Center(
+               Image.asset(
                 'placeholders/placeholder_image.png',
                 package: 'flutter_gallery_assets',
                 width: 60,
@@ -477,11 +477,11 @@ class _DetailsListTile extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Padding(
+             Padding(
               padding: const EdgeInsets.all(20),
-              child: Column(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                
                   Text(
                     GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
                     style: textTheme.subtitle1,
@@ -493,12 +493,12 @@ class _DetailsListTile extends StatelessWidget {
                     'Lorem ipsum dolor sit amet, consectetur '
                     'adipiscing elit,',
                     style: textTheme.caption,
-                  ),
-                ],
+                  )
+                ,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -522,9 +522,9 @@ class _InkWellOverlay extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-      child: InkWell(
+       InkWell(
         onTap: openContainer,
-        child: child,
+         child,
       ),
     );
   }
@@ -545,13 +545,13 @@ class _DetailsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: [
+        
           Container(
             color: Colors.black38,
             height: 250,
-            child: Padding(
+             Padding(
               padding: const EdgeInsets.all(70),
-              child: Image.asset(
+               Image.asset(
                 'placeholders/placeholder_image.png',
                 package: 'flutter_gallery_assets',
               ),
@@ -559,9 +559,9 @@ class _DetailsPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Column(
+             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              
                 Text(
                   localizations.demoMotionPlaceholderTitle,
                   style: textTheme.headline5.copyWith(
@@ -579,11 +579,11 @@ class _DetailsPage extends StatelessWidget {
                     height: 1.5,
                     fontSize: 16,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

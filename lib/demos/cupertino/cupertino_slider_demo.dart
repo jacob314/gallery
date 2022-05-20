@@ -36,18 +36,18 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
         automaticallyImplyLeading: false,
         middle: Text(GalleryLocalizations.of(context).demoCupertinoSliderTitle),
       ),
-      child: DefaultTextStyle(
+       DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
-        child: Center(
-          child: Column(
+         Center(
+           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
+            
               Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                
                   SizedBox(
                     width: double.infinity,
-                    child: CupertinoSlider(
+                     CupertinoSlider(
                       value: _value.value,
                       min: 0.0,
                       max: 100.0,
@@ -59,21 +59,21 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
                     ),
                   ),
                   MergeSemantics(
-                    child: Text(
+                     Text(
                       GalleryLocalizations.of(context)
                           .demoCupertinoSliderContinuous(
                         _value.value.toStringAsFixed(1),
                       ),
                     ),
-                  ),
-                ],
+                  )
+                ,
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                
                   SizedBox(
                     width: double.infinity,
-                    child: CupertinoSlider(
+                     CupertinoSlider(
                       value: _discreteValue.value,
                       min: 0.0,
                       max: 100.0,
@@ -86,16 +86,16 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
                     ),
                   ),
                   MergeSemantics(
-                    child: Text(
+                     Text(
                       GalleryLocalizations.of(context)
                           .demoCupertinoSliderDiscrete(
                         _discreteValue.value.toStringAsFixed(1),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  )
+                ,
+              )
+            ,
           ),
         ),
       ),

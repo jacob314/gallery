@@ -33,7 +33,7 @@ class _SharedXAxisTransitionDemoState extends State<SharedXAxisTransitionDemo> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Column(
-          children: [
+          
             Text(localizations.demoSharedXAxisTitle),
             Text(
               '(${localizations.demoSharedXAxisDemoInstructions})',
@@ -41,15 +41,15 @@ class _SharedXAxisTransitionDemoState extends State<SharedXAxisTransitionDemo> {
                   .textTheme
                   .subtitle2
                   .copyWith(color: Colors.white),
-            ),
-          ],
+            )
+          ,
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
+         Column(
+          
             Expanded(
-              child: PageTransitionSwitcher(
+               PageTransitionSwitcher(
                 duration: const Duration(milliseconds: 300),
                 reverse: !_isLoggedIn,
                 transitionBuilder: (
@@ -61,29 +61,29 @@ class _SharedXAxisTransitionDemoState extends State<SharedXAxisTransitionDemo> {
                     animation: animation,
                     secondaryAnimation: secondaryAnimation,
                     transitionType: SharedAxisTransitionType.horizontal,
-                    child: child,
+                     child,
                   );
                 },
-                child: _isLoggedIn ? const _CoursePage() : const _SignInPage(),
+                 _isLoggedIn ? const _CoursePage() : const _SignInPage(),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-              child: Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                
                   TextButton(
                     onPressed: _isLoggedIn ? _toggleLoginStatus : null,
-                    child: Text(localizations.demoSharedXAxisBackButtonText),
+                     Text(localizations.demoSharedXAxisBackButtonText),
                   ),
                   ElevatedButton(
                     onPressed: _isLoggedIn ? null : _toggleLoginStatus,
-                    child: Text(localizations.demoSharedXAxisNextButtonText),
-                  ),
-                ],
+                     Text(localizations.demoSharedXAxisNextButtonText),
+                  )
+                ,
               ),
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -98,7 +98,7 @@ class _CoursePage extends StatelessWidget {
     final localizations = GalleryLocalizations.of(context);
 
     return ListView(
-      children: [
+      
         const SizedBox(height: 16),
         Text(
           localizations.demoSharedXAxisCoursePageTitle,
@@ -108,7 +108,7 @@ class _CoursePage extends StatelessWidget {
         const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
+           Text(
             localizations.demoSharedXAxisCoursePageSubtitle,
             style: const TextStyle(
               fontSize: 12,
@@ -123,8 +123,8 @@ class _CoursePage extends StatelessWidget {
         _CourseSwitch(
             course: localizations.demoSharedXAxisIllustrationCourseTitle),
         _CourseSwitch(course: localizations.demoSharedXAxisDesignCourseTitle),
-        _CourseSwitch(course: localizations.demoSharedXAxisCulinaryCourseTitle),
-      ],
+        _CourseSwitch(course: localizations.demoSharedXAxisCulinaryCourseTitle)
+      ,
     );
   }
 }
@@ -176,7 +176,7 @@ class _SignInPage extends StatelessWidget {
         final spacing = SizedBox(height: maxHeight / 25);
 
         return ListView(
-          children: [
+          
             SizedBox(height: maxHeight / 10),
             Image.asset(
               'placeholders/avatar_logo.png',
@@ -198,7 +198,7 @@ class _SignInPage extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
                     top: 40,
@@ -206,7 +206,7 @@ class _SignInPage extends StatelessWidget {
                     end: 15,
                     bottom: 10,
                   ),
-                  child: TextField(
+                   TextField(
                     decoration: InputDecoration(
                       suffixIcon: const Icon(
                         Icons.visibility,
@@ -222,25 +222,25 @@ class _SignInPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.only(start: 10),
-                  child: TextButton(
+                   TextButton(
                     onPressed: () {},
-                    child: Text(
+                     Text(
                       localizations.demoSharedXAxisForgotEmailButtonText,
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.only(start: 10),
-                  child: TextButton(
+                   TextButton(
                     onPressed: () {},
-                    child: Text(
+                     Text(
                       localizations.demoSharedXAxisCreateAccountButtonText,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                )
+              ,
+            )
+          ,
         );
       },
     );

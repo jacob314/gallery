@@ -27,10 +27,10 @@ class TwoProductCardColumn extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return ListView(
         physics: const ClampingScrollPhysics(),
-        children: [
+        
           Padding(
             padding: const EdgeInsetsDirectional.only(start: horizontalPadding),
-            child: top != null
+             top != null
                 ? MobileProductCard(
                     imageAspectRatio: imageAspectRatio,
                     product: top,
@@ -42,12 +42,12 @@ class TwoProductCardColumn extends StatelessWidget {
           const SizedBox(height: spacerHeight),
           Padding(
             padding: const EdgeInsetsDirectional.only(end: horizontalPadding),
-            child: MobileProductCard(
+             MobileProductCard(
               imageAspectRatio: imageAspectRatio,
               product: bottom,
             ),
-          ),
-        ],
+          )
+        ,
       );
     });
   }
@@ -70,14 +70,14 @@ class OneProductCardColumn extends StatelessWidget {
     return ListView(
       physics: const ClampingScrollPhysics(),
       reverse: reverse,
-      children: [
+      
         const SizedBox(
           height: 40,
         ),
         MobileProductCard(
           product: product,
-        ),
-      ],
+        )
+      ,
     );
   }
 }

@@ -65,20 +65,20 @@ class _TextButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
+       Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        
           TextButton(
             onPressed: () {},
-            child: Text(GalleryLocalizations.of(context).buttonText),
+             Text(GalleryLocalizations.of(context).buttonText),
           ),
           const SizedBox(height: 12),
           TextButton.icon(
             icon: const Icon(Icons.add, size: 18),
             label: Text(GalleryLocalizations.of(context).buttonText),
             onPressed: () {},
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -92,20 +92,20 @@ class _ElevatedButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
+       Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        
           ElevatedButton(
             onPressed: () {},
-            child: Text(GalleryLocalizations.of(context).buttonText),
+             Text(GalleryLocalizations.of(context).buttonText),
           ),
           const SizedBox(height: 12),
           ElevatedButton.icon(
             icon: const Icon(Icons.add, size: 18),
             label: Text(GalleryLocalizations.of(context).buttonText),
             onPressed: () {},
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -119,20 +119,20 @@ class _OutlinedButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
+       Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        
           OutlinedButton(
             onPressed: () {},
-            child: Text(GalleryLocalizations.of(context).buttonText),
+             Text(GalleryLocalizations.of(context).buttonText),
           ),
           const SizedBox(height: 12),
           OutlinedButton.icon(
             icon: const Icon(Icons.add, size: 18),
             label: Text(GalleryLocalizations.of(context).buttonText),
             onPressed: () {},
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
@@ -176,18 +176,18 @@ class _ToggleButtonsDemoState extends State<_ToggleButtonsDemo>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ToggleButtons(
+       ToggleButtons(
         onPressed: (index) {
           setState(() {
             isSelected[index].value = !isSelected[index].value;
           });
         },
         isSelected: isSelected.map((element) => element.value).toList(),
-        children: const [
+        
           Icon(Icons.ac_unit),
           Icon(Icons.call),
-          Icon(Icons.cake),
-        ],
+          Icon(Icons.cake)
+        ,
       ),
     );
   }
@@ -201,21 +201,21 @@ class _FloatingActionButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
+       Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        
           FloatingActionButton(
             onPressed: () {},
             tooltip: GalleryLocalizations.of(context).buttonTextCreate,
-            child: const Icon(Icons.add),
+             const Icon(Icons.add),
           ),
           const SizedBox(height: 20),
           FloatingActionButton.extended(
             icon: const Icon(Icons.add),
             label: Text(GalleryLocalizations.of(context).buttonTextCreate),
             onPressed: () {},
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

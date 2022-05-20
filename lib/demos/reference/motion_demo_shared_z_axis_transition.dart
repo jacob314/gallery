@@ -25,7 +25,7 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: Column(
-              children: [
+              
                 Text(localizations.demoSharedZAxisTitle),
                 Text(
                   '(${localizations.demoSharedZAxisDemoInstructions})',
@@ -33,8 +33,8 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
                       .textTheme
                       .subtitle2
                       .copyWith(color: Colors.white),
-                ),
-              ],
+                )
+              ,
             ),
             actions: [
               IconButton(
@@ -54,7 +54,7 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
           transitionType: SharedAxisTransitionType.scaled,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-          child: child,
+           child,
         );
       },
     );
@@ -70,7 +70,7 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
           transitionType: SharedAxisTransitionType.scaled,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-          child: child,
+           child,
         );
       },
     );
@@ -110,7 +110,7 @@ class _SettingsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: [
+         [
           for (var setting in settingsList) _SettingsTile(setting),
         ],
       ),
@@ -125,13 +125,13 @@ class _SettingsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      
         ListTile(
           leading: Icon(settingData.settingIcon),
           title: Text(settingData.settingsLabel),
         ),
-        const Divider(thickness: 2),
-      ],
+        const Divider(thickness: 2)
+      ,
     );
   }
 }
@@ -185,23 +185,23 @@ class _RecipePage extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      
         const SizedBox(height: 8),
         Padding(
           padding: const EdgeInsetsDirectional.only(start: 8.0),
-          child: Text(localizations.demoSharedZAxisSavedRecipesListTitle),
+           Text(localizations.demoSharedZAxisSavedRecipesListTitle),
         ),
         const SizedBox(height: 4),
         Expanded(
-          child: ListView(
+           ListView(
             padding: const EdgeInsets.all(8),
-            children: [
+             [
               for (var recipe in savedRecipes)
                 _RecipeTile(recipe, savedRecipes.indexOf(recipe))
             ],
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 }
@@ -222,13 +222,13 @@ class _RecipeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      
         SizedBox(
           height: 70,
           width: 100,
-          child: ClipRRect(
+           ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(4)),
-            child: Image.asset(
+             Image.asset(
               _recipe.recipeImage,
               package: 'flutter_gallery_assets',
               fit: BoxFit.fill,
@@ -237,18 +237,18 @@ class _RecipeTile extends StatelessWidget {
         ),
         const SizedBox(width: 24),
         Expanded(
-          child: Column(
-            children: [
+           Column(
+            
               ListTile(
                 title: Text(_recipe.recipeName),
                 subtitle: Text(_recipe.recipeDescription),
                 trailing: Text('0${_index + 1}'),
               ),
-              const Divider(thickness: 2),
-            ],
+              const Divider(thickness: 2)
+            ,
           ),
-        ),
-      ],
+        )
+      ,
     );
   }
 }

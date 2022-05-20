@@ -37,7 +37,7 @@ class CupertinoTabBarDemo extends StatelessWidget {
 
     return DefaultTextStyle(
       style: CupertinoTheme.of(context).textTheme.textStyle,
-      child: CupertinoTabScaffold(
+       CupertinoTabScaffold(
         restorationId: 'cupertino_tab_scaffold',
         tabBar: CupertinoTabBar(
           items: [
@@ -78,8 +78,8 @@ class _CupertinoDemoTab extends StatelessWidget {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(),
       backgroundColor: CupertinoColors.systemBackground,
-      child: Center(
-        child: Icon(
+       Center(
+         Icon(
           icon,
           semanticLabel: title,
           size: 100,

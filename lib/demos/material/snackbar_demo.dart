@@ -18,7 +18,7 @@ class SnackbarsDemo extends StatelessWidget {
         title: Text(GalleryLocalizations.of(context).demoSnackbarsTitle),
       ),
       body: Center(
-        child: ElevatedButton(
+         ElevatedButton(
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -36,7 +36,7 @@ class SnackbarsDemo extends StatelessWidget {
               ),
             ));
           },
-          child:
+          
               Text(GalleryLocalizations.of(context).demoSnackbarsButtonLabel),
         ),
       ),

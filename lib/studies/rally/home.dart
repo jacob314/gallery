@@ -71,18 +71,18 @@ class _HomePageState extends State<HomePage>
       final revertVerticalRotation =
           isTextDirectionRtl ? turnsToRotateRight : turnsToRotateLeft;
       tabBarView = Row(
-        children: [
+        
           Container(
             width: 150 + 50 * (cappedTextScale(context) - 1),
             alignment: Alignment.topCenter,
             padding: const EdgeInsets.symmetric(vertical: 32),
-            child: Column(
-              children: [
+             Column(
+              
                 const SizedBox(height: 24),
                 ExcludeSemantics(
-                  child: SizedBox(
+                   SizedBox(
                     height: 80,
-                    child: Image.asset(
+                     Image.asset(
                       'logo.png',
                       package: 'rally_assets',
                     ),
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage>
                 // Rotate the tab bar, so the animation is vertical for desktops.
                 RotatedBox(
                   quarterTurns: verticalRotation,
-                  child: _RallyTabBar(
+                   _RallyTabBar(
                     tabs: _buildTabs(
                             context: context, theme: theme, isVertical: true)
                         .map(
@@ -100,60 +100,60 @@ class _HomePageState extends State<HomePage>
                         // Revert the rotation on the tabs.
                         return RotatedBox(
                           quarterTurns: revertVerticalRotation,
-                          child: widget,
+                           widget,
                         );
                       },
                     ).toList(),
                     tabController: _tabController,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
           ),
           Expanded(
             // Rotate the tab views so we can swipe up and down.
-            child: RotatedBox(
+             RotatedBox(
               quarterTurns: verticalRotation,
-              child: TabBarView(
+               TabBarView(
                 controller: _tabController,
-                children: _buildTabViews().map(
+                 _buildTabViews().map(
                   (widget) {
                     // Revert the rotation on the tab views.
                     return RotatedBox(
                       quarterTurns: revertVerticalRotation,
-                      child: widget,
+                       widget,
                     );
                   },
                 ).toList(),
               ),
             ),
-          ),
-        ],
+          )
+        ,
       );
     } else {
       tabBarView = Column(
-        children: [
+        
           _RallyTabBar(
             tabs: _buildTabs(context: context, theme: theme),
             tabController: _tabController,
           ),
           Expanded(
-            child: TabBarView(
+             TabBarView(
               controller: _tabController,
-              children: _buildTabViews(),
+               _buildTabViews(),
             ),
-          ),
-        ],
+          )
+        ,
       );
     }
     return ApplyTextOptions(
-      child: Scaffold(
+       Scaffold(
         body: SafeArea(
           // For desktop layout we do not want to have SafeArea at the top and
           // bottom to display 100% height content on the accounts view.
           top: !isDesktop,
           bottom: !isDesktop,
-          child: Theme(
+           Theme(
             // This theme effectively removes the default visual touch
             // feedback for tapping a tab, which is replaced with a custom
             // animation.
@@ -161,9 +161,9 @@ class _HomePageState extends State<HomePage>
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
             ),
-            child: FocusTraversalGroup(
+             FocusTraversalGroup(
               policy: OrderedTraversalPolicy(),
-              child: tabBarView,
+               tabBarView,
             ),
           ),
         ),
@@ -239,7 +239,7 @@ class _RallyTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusTraversalOrder(
       order: const NumericFocusOrder(0),
-      child: TabBar(
+       TabBar(
         // Setting isScrollable to true prevents the tabs from being
         // wrapped in [Expanded] widgets, which allows for more
         // flexible sizes and size animations among tabs.
@@ -311,24 +311,24 @@ class _RallyTabState extends State<_RallyTab>
   Widget build(BuildContext context) {
     if (widget.isVertical) {
       return Column(
-        children: [
+        
           const SizedBox(height: 18),
           FadeTransition(
             opacity: _iconFadeAnimation,
-            child: widget.icon,
+             widget.icon,
           ),
           const SizedBox(height: 12),
           FadeTransition(
             opacity: _titleFadeAnimation,
-            child: SizeTransition(
+             SizeTransition(
               axis: Axis.vertical,
               axisAlignment: -1,
               sizeFactor: _titleSizeAnimation,
-              child: Center(child: ExcludeSemantics(child: widget.titleText)),
+               Center( ExcludeSemantics( widget.titleText)),
             ),
           ),
-          const SizedBox(height: 18),
-        ],
+          const SizedBox(height: 18)
+        ,
       );
     }
 
@@ -342,30 +342,30 @@ class _RallyTabState extends State<_RallyTab>
 
     return ConstrainedBox(
       constraints: const BoxConstraints(minHeight: 56),
-      child: Row(
-        children: [
+       Row(
+        
           FadeTransition(
             opacity: _iconFadeAnimation,
-            child: SizedBox(
+             SizedBox(
               width: unitWidth,
-              child: widget.icon,
+               widget.icon,
             ),
           ),
           FadeTransition(
             opacity: _titleFadeAnimation,
-            child: SizeTransition(
+             SizeTransition(
               axis: Axis.horizontal,
               axisAlignment: -1,
               sizeFactor: _titleSizeAnimation,
-              child: SizedBox(
+               SizedBox(
                 width: unitWidth * expandedTitleWidthMultiplier,
-                child: Center(
-                  child: ExcludeSemantics(child: widget.titleText),
+                 Center(
+                   ExcludeSemantics( widget.titleText),
                 ),
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }

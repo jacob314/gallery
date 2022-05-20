@@ -48,10 +48,10 @@ class _AboutDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       content: Container(
         constraints: const BoxConstraints(maxWidth: 400),
-        child: Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [
+          
             FutureBuilder(
               future: getVersionNumber(),
               builder: (context, snapshot) => Text(
@@ -94,8 +94,8 @@ class _AboutDialog extends StatelessWidget {
             Text(
               legalese,
               style: bodyTextStyle,
-            ),
-          ],
+            )
+          ,
         ),
       ),
       actions: [
@@ -109,14 +109,14 @@ class _AboutDialog extends StatelessWidget {
                   ).black,
                   cardColor: Colors.white,
                 ),
-                child: const LicensePage(
+                 const LicensePage(
                   applicationName: name,
                   applicationLegalese: legalese,
                 ),
               ),
             ));
           },
-          child: Text(
+           Text(
             MaterialLocalizations.of(context).viewLicensesButtonLabel,
           ),
         ),
@@ -124,7 +124,7 @@ class _AboutDialog extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text(MaterialLocalizations.of(context).closeButtonLabel),
+           Text(MaterialLocalizations.of(context).closeButtonLabel),
         ),
       ],
     );

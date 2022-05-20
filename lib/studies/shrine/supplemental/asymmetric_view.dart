@@ -87,9 +87,9 @@ class MobileAsymmetricView extends StatelessWidget {
         }
         return SizedBox(
           width: width,
-          child: Padding(
+           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: column,
+             column,
           ),
         );
       }).toList();
@@ -100,9 +100,9 @@ class MobileAsymmetricView extends StatelessWidget {
         for (final product in products)
           SizedBox(
             width: _cardToScreenWidthRatio * MediaQuery.of(context).size.width,
-            child: Padding(
+             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: OneProductCardColumn(
+               OneProductCardColumn(
                 product: product,
                 reverse: false,
               ),
@@ -139,7 +139,7 @@ class MobileAsymmetricView extends StatelessWidget {
         animation: PageStatus.of(context).menuController,
         builder: (context, child) => ExcludeSemantics(
           excluding: !productPageIsVisible(context),
-          child: LayoutBuilder(
+           LayoutBuilder(
             builder: (context, constraints) {
               return ListView(
                 restorationId: 'product_page_list_view',
@@ -151,7 +151,7 @@ class MobileAsymmetricView extends StatelessWidget {
                   _bottomPadding,
                 ),
                 physics: const AlwaysScrollableScrollPhysics(),
-                children: _buildColumns(context, constraints),
+                 _buildColumns(context, constraints),
               );
             },
           ),
@@ -207,7 +207,7 @@ class DesktopAsymmetricView extends StatelessWidget {
       animation: PageStatus.of(context).cartController,
       builder: (context, child) => ExcludeSemantics(
         excluding: !productPageIsVisible(context),
-        child: DesktopColumns(
+         DesktopColumns(
           columnCount: columnCount,
           products: products,
           largeImageWidth: actualColumnWidth,
@@ -266,11 +266,11 @@ class DesktopColumns extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.vertical,
       physics: const AlwaysScrollableScrollPhysics(),
-      children: [
+      
         Container(height: 60),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+           [
             const Spacer(),
             ...List<Widget>.generate(
               2 * columnCount - 1,
@@ -285,8 +285,8 @@ class DesktopColumns extends StatelessWidget {
             const Spacer(),
           ],
         ),
-        Container(height: 60),
-      ],
+        Container(height: 60)
+      ,
     );
   }
 }

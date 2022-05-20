@@ -110,7 +110,7 @@ class _TransformationsDemoState extends State<TransformationsDemo>
       ),
       body: Container(
         color: backgroundColor,
-        child: LayoutBuilder(
+         LayoutBuilder(
           builder: (context, constraints) {
             // Draw the scene as big as is available, but allow the user to
             // translate beyond that to a visibleSize that's a bit bigger.
@@ -130,10 +130,10 @@ class _TransformationsDemoState extends State<TransformationsDemo>
             }
 
             return ClipRect(
-              child: GestureDetector(
+               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTapUp: _onTapUp,
-                child: InteractiveViewer(
+                 InteractiveViewer(
                   key: _targetKey,
                   scaleEnabled: !kIsWeb,
                   transformationController: _transformationController,
@@ -143,8 +143,8 @@ class _TransformationsDemoState extends State<TransformationsDemo>
                   ),
                   minScale: 0.01,
                   onInteractionStart: _onScaleStart,
-                  child: SizedBox.expand(
-                    child: CustomPaint(
+                   SizedBox.expand(
+                     CustomPaint(
                       size: _board.size,
                       painter: _BoardPainter(
                         board: _board,
@@ -187,7 +187,7 @@ class _TransformationsDemoState extends State<TransformationsDemo>
                 width: double.infinity,
                 height: 150,
                 padding: const EdgeInsets.all(12),
-                child: EditBoardPoint(
+                 EditBoardPoint(
                   boardPoint: _board.selected,
                   onColorSelection: (color) {
                     setState(() {

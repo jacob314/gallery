@@ -33,7 +33,7 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Column(
-          children: [
+          
             Text(localizations.demoFadeThroughTitle),
             Text(
               '(${localizations.demoFadeThroughDemoInstructions})',
@@ -41,8 +41,8 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
                   .textTheme
                   .subtitle2
                   .copyWith(color: Colors.white),
-            ),
-          ],
+            )
+          ,
         ),
       ),
       body: PageTransitionSwitcher(
@@ -54,10 +54,10 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
           return FadeThroughTransition(
             animation: animation,
             secondaryAnimation: secondaryAnimation,
-            child: child,
+             child,
           );
         },
-        child: _pageList[_pageIndex],
+         _pageList[_pageIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
@@ -92,18 +92,18 @@ class _ExampleCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Expanded(
-      child: Card(
-        child: Stack(
-          children: [
+       Card(
+         Stack(
+          
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+              
                 Expanded(
-                  child: Container(
+                   Container(
                     color: Colors.black26,
-                    child: Padding(
+                     Padding(
                       padding: const EdgeInsets.all(30),
-                      child: Ink.image(
+                       Ink.image(
                         image: const AssetImage(
                           'placeholders/placeholder_image.png',
                           package: 'flutter_gallery_assets',
@@ -114,9 +114,9 @@ class _ExampleCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8),
-                  child: Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    
                       Text(
                         localizations.demoFadeThroughTextPlaceholder,
                         style: textTheme.bodyText1,
@@ -124,17 +124,17 @@ class _ExampleCard extends StatelessWidget {
                       Text(
                         localizations.demoFadeThroughTextPlaceholder,
                         style: textTheme.caption,
-                      ),
-                    ],
+                      )
+                    ,
                   ),
-                ),
-              ],
+                )
+              ,
             ),
             InkWell(
               splashColor: Colors.black38,
               onTap: () {},
-            ),
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -145,16 +145,16 @@ class _AlbumsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+       [
         ...List.generate(
           3,
           (index) => Expanded(
-            child: Row(
+             Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+              
                 _ExampleCard(),
-                _ExampleCard(),
-              ],
+                _ExampleCard()
+              ,
             ),
           ),
         ),
@@ -167,10 +167,10 @@ class _PhotosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      
         _ExampleCard(),
-        _ExampleCard(),
-      ],
+        _ExampleCard()
+      ,
     );
   }
 }

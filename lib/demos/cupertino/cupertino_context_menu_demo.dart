@@ -21,20 +21,20 @@ class CupertinoContextMenuDemo extends StatelessWidget {
           galleryLocalizations.demoCupertinoContextMenuTitle,
         ),
       ),
-      child: Column(
+       Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        
           Center(
-            child: SizedBox(
+             SizedBox(
               width: 100,
               height: 100,
-              child: CupertinoContextMenu(
+               CupertinoContextMenu(
                 actions: [
                   CupertinoContextMenuAction(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
+                     Text(
                       galleryLocalizations.demoCupertinoContextMenuActionOne,
                     ),
                   ),
@@ -42,27 +42,27 @@ class CupertinoContextMenuDemo extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
+                     Text(
                       galleryLocalizations.demoCupertinoContextMenuActionTwo,
                     ),
                   ),
                 ],
-                child: const FlutterLogo(size: 250),
+                 const FlutterLogo(size: 250),
               ),
             ),
           ),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.all(30),
-            child: Text(
+             Text(
               galleryLocalizations.demoCupertinoContextMenuActionText,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.black,
               ),
             ),
-          ),
-        ],
+          )
+        ,
       ),
     );
   }
